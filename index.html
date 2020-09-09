@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bardh Hoxha's Research Website</title>
+    <meta content="Bardh Hoxha" name="author">
+    <meta name="description"
+          content="Bardh Hoxha. Page for research, publications and tools in logic, mathematics and system testing & verification.">
+    <meta name='keywords'
+          content='Bardh Hoxha, temporal logic, motion, planning, hybrid systems, control, embedded systems, robotics, robust testing, robustness, verification, metric temporal logic, parameter estimation, software, matlab, simulink, s-taliro, staliro, vispec, cyber physical systems, arizona state university'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Nixie+One|Libre+Baskerville' rel='stylesheet' type='text/css'>
+
+
+
+    <!-- Google Analytics -->
+    <script>
+        window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+        };
+        ga.l = +new Date;
+        ga('create', 'UA-53335203-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->   
+
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script>
+
+
+    <link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
+
+    <link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css'/>
+    <script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script>
+    <link rel='stylesheet' href='unitegallery/themes/default/ug-theme-default.css' type='text/css'/>
+
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+        function expand(id) {
+            var idImg = id + "_img";
+            var idA = id + "_anchor";
+            document.getElementById(id).style.display = "block";
+            document.getElementById(idImg).src = "collapse.gif";
+            document.getElementById(idA).href = "javascript: collapse('" + id + "');";
+        }
+
+        function collapse(id) {
+            var idImg = id + "_img";
+            var idA = id + "_anchor";
+            document.getElementById(id).style.display = "none";
+            document.getElementById(idImg).src = "expand.gif";
+            document.getElementById(idA).href = "javascript: expand('" + id + "');";
+        }
+
+        function exp(id) {
+            var idA = id + "_anchor";
+            document.getElementById(id).style.display = "block";
+            document.getElementById(idA).href = "javascript: cps('" + id + "');";
+        }
+
+        function cps(id) {
+            var idA = id + "_anchor";
+            document.getElementById(id).style.display = "none";
+            document.getElementById(idA).href = "javascript: exp('" + id + "');";
+        }
+    </script>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+
+<!-- Subhead
+================================================== -->
+
+<header class="jumbotron subhead cd-fixed-bg cd-bg-1" id="overview">
+
+    <!--  <div id="stripes">
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+ </div> -->
+
+
+
+    <div class="container">
+
+
+        <ul class = "headerblock">
+
+
+            <div class ="txtBlock">
+                <h1>Bardh Hoxha</h1>
+                <p class="lead"></p>
+                <p class="lead"></p>
+            </div>
+
+            <div class="profile"><img src="assets/img/profile.jpg" alt="Mountain View" ></div>
+
+            
+            <!--<div class="center-wrap">-->
+
+
+                <!--<div class="title-container">-->
+
+                    <!--<div class="title"><a href="https://sites.google.com/asu.edu/mtcps2018">Welcome</a></div>-->
+
+                <!--</div>-->
+
+            <!--</div>-->
+        </ul>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+
+        <div class="span3 bs-docs-sidebar">
+            <ul class="nav nav-list bs-docs-sidenav" data-offset-top="300" data-spy="affix">
+                <li><a href="#bio"><i class="icon-chevron-right"></i>Bio</a></li>
+                <li><a href="#updates"><i class="icon-chevron-right"></i>Updates</a></li>
+                <li><a href="#publications"><i class="icon-chevron-right"></i>Publications</a></li>
+                <li><a href="#group"><i class="icon-chevron-right"></i>Group</a></li>
+                <li><a href="#teaching"><i class="icon-chevron-right"></i>Teaching</a></li>
+                <li><a href="#software"><i class="icon-chevron-right"></i>Software</a></li>
+                <li><a href="#contact"><i class="icon-chevron-right"></i>Contact</a></li>
+                <li><a href="#news"><i class="icon-chevron-right"></i>News</a></li>
+            </ul>
+        </div>
+
+        <div class="span9">
+            <div class="cd-container">
+                <section id="bio" class="bio cd-scrikkubg-bg cd-color-2">
+
+
+                    <div class="page-header">
+                        <h1>Bio -  <a
+                                href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank"><img
+                                src="assets/img/scholar_logo_30dp.png" alt="Mountain View" style="height:32px; "></a>
+                                <!-- <a href="/~bhoxha/Bardh_Hoxha_CV.pdf" target="_blank"
+                                     onClick="ga('send', 'event', 'download', 'click', 'CV');">CV</a> - -->
+                            <!-- <a href="https://outlook.office365.com/owa/calendar/88cc10dfdb6e4ecdb098eadc63d260b8@cs.siu.edu/3018e568a62d48259beabc9579a2c49c11032034445673593805/calendar.html"
+                               target="_blank">Calendar</a></h1> -->
+                    </div>
+
+                    <p>
+                        Bardh has a PhD degree in Computer Science in the area of testing and verification of Cyber-Physical Systems. Previously, Bardh was part of the Cyber-Physical Systems Lab at Arizona State University. He received his Masters degree in Mathematics from Central Connecticut State University and a Bachelors degree in Computer Science from New York Institute of Technology.
+
+                    <p>
+
+                        His main research interests include: Formal methods, Testing and Verification of Cyber-Physical Systems, Logic, Motion Planning for Autonomous Vehicles, and Human Robot Interaction.
+
+                    <p>
+                </section>
+            </div>
+
+            <section id="updates">
+                <div class="page-header">
+                    <h1>Updates</h1>
+                </div>
+                <p class="content">
+                    <a class="twitter-timeline" height="500" width="500" data-show-replies="false" data-chrome="noheader nofooter noscrollbar" href="https://twitter.com/bardhhoxha?ref_src=twsrc%5Etfw">Tweets by bardhhoxha</a>
+                    <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <!--</p>-->
+                </p>
+            </section>
+
+            <section id="publications">
+                <!-- <div class="stars"></div> -->
+                <div class="page-header">
+                    <h1>Publications</h1>
+                </div>
+                <h3>Peer-reviewed papers and technical reports
+                </h3>
+
+                <ol id="pub-list">
+                </ol>
+
+				<h3>Ph.D. Thesis </h3>
+
+				<ol id="thesis-list">
+						<li>
+							<div class="paper-title">Formal Requirements-Driven Analysis of Cyber Physical Systems
+								(<a href="/~bhoxha/papers/PhD_Diss_Hoxha.pdf" target="_blank"
+									onClick="ga('send', 'event', 'download', 'click', 'PhD_Diss_Hoxha');">PDF</a>)
+							</div>
+							<div class="paper-authors">Bardh Hoxha</div>
+							<div class="paper-details">Arizona State University,
+								Tempe, AZ, August 2017
+							</div>
+						</li>
+					</ol>
+
+                <h3>Presentations, Posters and Demos</h3>
+                <ol id="presentation-list">
+                    <li>
+                        <div class="paper-title">Demo: System Testing with S-TaLiRo: Recent Functionality and Additions
+                            (<a href="/~bhoxha/papers/hscc2016demo.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'hscc2016demo');">PDF</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha and Georgios Fainekos</div>
+                        <div class="paper-details">ACM/IEEE Hybrid Systems: Computation and Control [HSCC], Vienna,
+                            Austria, April 2016
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-title">Pareto Front Exploration for Parametric Temporal Logic Specifications
+                            of Cyber-Physical Systems (<a href="/~bhoxha/papers/MTCPS16_1.pdf" target="_blank"
+                                                          onClick="ga('send', 'event', 'download', 'click', 'MTCPS16_1');">PDF</a>,
+                            <a href="/~bhoxha/papers/MT_CPS_2016_Pres.pdf" target="_blank"
+                               onClick="ga('send', 'event', 'download', 'click', 'MT_CPS_2016_Pres');">Pres</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha and Georgios Fainekos</div>
+                        <div class="paper-details">1st Workshop on Monitoring and Testing of Cyber-Physical Systems
+                            [MTCPS], Vienna, Austria, April 2016
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-title">Planning in Dynamic Environments Through Temporal Logic Monitoring (<a
+                                href="/~bhoxha/papers/PlanHS16.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'PlanHS16');">PDF</a>, <a
+                                href="/~bhoxha/papers/planhs_pres_bh.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'planhs_pres_bh');">Pres</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha and Georgios Fainekos</div>
+                        <div class="paper-details">The Thirtieth AAAI Conference on Artificial Intelligence Workshop on
+                            Planning for Hybrid Systems Phoenix [AAAI PlanHS], Arizona, February 2016
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-title">VISPEC: A graphical tool for easy elicitation of MTL requirements (<a
+                                href="/~bhoxha/papers/iros2015.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'iros2015');">PDF</a>, <a
+                                href="/~bhoxha/papers/iros2015techRep.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'iros2015techRep');">TechRep</a>, <a
+                                href="/~bhoxha/papers/iros2015presentation.pdf" target="_blank"
+                                onClick="ga('send', 'event', 'download', 'click', 'iros2015presentation');">Pres</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha, Nikolaos Mavridis, and Georgios Fainekos</div>
+                        <div class="paper-details">IEEE/RSJ International Conference on Intelligent Robots and Systems
+                            [IROS], Hamburg, Germany, September 2015
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-title">Demo: S-TaLiRo: A tool for Testing and Verification for Hybrid Systems:
+                            Recent Functionality and Additions (<a href="/~bhoxha/papers/HSCC2014ToolDemo.pdf"
+                                                                   target="_blank"
+                                                                   onClick="ga('send', 'event', 'download', 'click', 'HSCC2014ToolDemo');">PDF</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha, Houssam Abbas, Adel Dokhanchi, and Georgios Fainekos
+                        </div>
+                        <div class="paper-details">ACM/IEEE Hybrid Systems: Computation and Control [HSCC], Berlin,
+                            Germany, April 2014
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-title">[Poster] Metric Temporal Logic Falsification and Path Planning for
+                            Robotic Systems (<a href="/~bhoxha/papers/hscc2013poster.pdf" target="_blank"
+                                                onClick="ga('send', 'event', 'download', 'click', 'hscc2013poster');">PDF</a>)
+                        </div>
+                        <div class="paper-authors">Bardh Hoxha and Georgios Fainekos</div>
+                        <div class="paper-details">ACM/IEEE Hybrid Systems: Computation and Control [HSCC], Berlin,
+                            Germany, April 2014
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="paper-title">[Poster] Robustness-Guided Temporal Logic Testing for Stochastic Hybrid
+                            Systems (<a href="/~bhoxha/papers/hscc2014poster.pdf" target="_blank"
+                                        onClick="ga('send', 'event', 'download', 'click', 'hscc2014poster');">PDF</a>)
+                        </div>
+                        <div class="paper-authors">Houssam Abbas, Bardh Hoxha, Georgios Fainekos, Koichi Ueda</div>
+                        <div class="paper-details">ACM/IEEE Hybrid Systems: Computation and Control [HSCC], Berlin,
+                            Germany, April 2014
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="paper-title">[Poster] Conformance Testing as Falsification for Cyber-Physical
+                            Systems (<a href="/~bhoxha/papers/iccps2014poster.pdf" target="_blank"
+                                        onClick="ga('send', 'event', 'download', 'click', 'iccps2013poster');">PDF</a>)
+                        </div>
+                        <div class="paper-authors">H. Abbas, B. Hoxha, G. Fainekos, J. V. Deshmukh, J. Kapinski, K.
+                            Ueda
+                        </div>
+                        <div class="paper-details">ACM/IEEE International Conference on Cyber-Physical Systems [ICCPS],
+                            Berlin, Germany, April 2014
+                        </div>
+                    </li>
+                </ol>
+
+            </section>
+
+            <!-- <section id="group">
+                <div class="page-header">
+                    <h1>Group</h1>
+                </div>
+
+                <h4> PhD</h4>
+                <div class="profileStud">
+                    <a href="https://sites.google.com/view/ouraniaspantidi/" target="_blank"><img src="/~bhoxha/assets/img/ourania.jpg" alt="none"></a>
+                    <p><a href="https://sites.google.com/view/ouraniaspantidi/" target="_blank">Ourania Spantidi</a></p>
+                </div>
+                <div>
+
+                </div>
+
+
+                <h4> Masters</h4>
+                <div> Kole Cralley
+                </div>
+                <div> Kendra Kennedy
+                </div>
+
+
+            </section> -->
+
+
+            <section id="teaching">
+                <div class="page-header">
+                    <h1>Teaching</h1>
+                </div>
+                <h4>Southern Illinois University, Carbondale, IL</h4>
+                <ul id="course-list">
+                    <li>
+                        <div class="course">CS 404: Autonomous Mobile Robots - Spring 2019 (<a
+                                href="CS404S19.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course">CS 410/591: Computer Security - Spring 2019 (<a
+                                href="CS410591S19.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course">CS 491/591: Cyber-Physical Systems - Fall 2018 (<a
+                                href="CS591F18.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+					<li>
+						<div class="course">CS 499: Senior Project - Spring 2018 (<a
+								href="CS499S18.html">Link</a>)
+						</div>
+						<div class="instructor">Instructor: Bardh Hoxha</div>
+					</li>
+                    <li>
+                        <div class="course">CS 498: Senior Project - Fall 2017 (<a
+                                href="CS498F17.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course">CS 290: Comm Skills & Ethics - Fall 2017 (<a
+                                href="CS290F17.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                </ul>
+
+
+                <h4>Arizona State University, Tempe, AZ</h4>
+                <ul id="course-list">
+                    <li>
+                        <div class="course">CSE 552: Randomized and Approximation Algorithms - Fall 2013 (<a
+                                href="https://www.public.asu.edu/~ccolbou/src/cse552f13.html">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: <a href="https://www.public.asu.edu/~ccolbou/">Charles
+                            Colbourn</a></div>
+                        <div class="instructor">TA: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course">CSE 355: Introduction to Theoretical Computer Science - Fall 2012 (<a
+                                href="https://sites.google.com/a/asu.edu/cse355-fall-2012/">Link</a>)
+                        </div>
+                        <div class="instructor">Instructor: <a href="https://www.public.asu.edu/~gfaineko/">Georgios
+                            Fainekos</a></div>
+                        <div class="instructor">TA: Bardh Hoxha</div>
+                    </li>
+                </ul>
+                <h4>Central Connecticut State University, New Britain, CT</h4>
+                <ul>
+                    <li>
+                        <div class="course">Algebra - 2011</div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                </ul>
+                <h4>Capital Community College, Hartford, CT</h4>
+                <ul>
+                    <li>
+                        <div class="course">Principles of Statistics - 2011</div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course">Introduction to Software Applications - 2011</div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                    <li>
+                        <div class="course"><a
+                                href="https://cdn.carnegiefoundation.org/wp-content/uploads/2014/07/SW_one_pager_2016.pdf">Statway
+                            - 2011</a></div>
+                        <div class="instructor">Instructor: Bardh Hoxha</div>
+                    </li>
+                </ul>
+
+            </section>
+
+
+
+            <section id="software">
+                <div class="page-header">
+                    <h1>Software</h1>
+                </div>
+                <h3> TLTk</h3>
+                <div> TLTk is a modular tool for parallel robustness computation of Signal Temporal Logic (STL) specifications.  At the core of the tool, an algorithm for robustness computation is utilized that supports multi-threaded CPU/GPU computation. . The tool enables parallel robustness computation of large traces. In addition, the python implementation enables the addition and modification of temporal operators for application-specific scenarios</div>
+
+                <ul id=toolFeatures>
+                    <li>The user guide can be found <a href="http://www.bhoxha.com/tltk">here.</a></li>
+                    <li>The docker image can be found <a href="https://hub.docker.com/r/bardhh/tltk">here.</a></li>
+                    <li>The github repo can be found <a href="https://bitbucket.org/versyslab/tltk/">here.</a></li>
+                    <li>The python library can be found <a href="https://pypi.org/project/tltk-mtl/">here.</a></li>
+                </ul>
+
+                <h3> S-TaLiRo</h3>
+                <div> S-TaLiro is a suite of tools for testing and verification of Cyber-Physical Systems. It is a
+                    toolbox for Matlab/Simulink. It enables the analysis of continuous and hybrid dynamical systems
+                    using temporal logics.
+                </div>
+                <div>The main features of S-TaLiRo include:</div>
+                <ul id=toolFeatures>
+                    <li>Robustness guided falsification of MTL specifications</li>
+                    <li>Parameter estimation of parametric MTL formulas</li>
+                    <li>Finding the expected robustness of Stochasic Systems</li>
+                    <li>Runtime Verification of MTL specifications</li>
+                    <li>Conformance testing</li>
+                </ul>
+                <div> S-TaLiRo has been applied to numerous challenging applications from the automotive and medical
+                    device industries. To download or learn more visit the <a
+                            href="https://sites.google.com/a/asu.edu/s-taliro/">S-TaLiRo website</a>. The <a
+                            href="/~bhoxha/papers/DIFTS2014.pdf">DIFTS2014</a> paper also provides a good overview of
+                    the tool and its features.
+                </div>
+                <div> In 2012 and 2014, S-Taliro was nominated as a technological breakthrough by the industry! (<a
+                        href="https://faculty.washington.edu/scottcs/NSF/2012/NSF_Compendium_2012-WEB.pdf">Read the
+                    report</a>)
+                </div>
+
+                <h3> ViSpec</h3>
+                <div> One of the main barriers preventing widespread use of formal methods is the elicitation of formal
+                    specifications. ViSpec is a graphical tool designed for the development and visualization of formal
+                    specifications by people that do not have training in formal logic. The tool enables users to
+                    develop specifications using a graphical formalism which is then automatically translated to Metric
+                    Temporal Logic (MTL). .
+                </div>
+
+                <div>Follow the <a href="https://sites.google.com/a/asu.edu/s-taliro/vispec">link</a> to download the
+                    software. Update coming soon...
+                </div>
+            </section>
+
+            <section id="contact">
+                <div class="page-header">
+                    <h1>Contact</h1>
+                </div>
+                <!-- <div>Email: bhoxha at cs dot siu dot edu</div> -->
+                <div>LinkedIn: <a href="https://www.linkedin.com/in/bardhhoxha">Link</a></div>
+                <div>Google Scholar: <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en">Link</a>
+                </div>
+                <!-- <div>Office Address: Engineering A409E, 1230 Lincoln Drive, Southern Illinois University,
+					Carbondale, IL  62901
+					(<a href="https://siu.edu/maps/">SIU map</a>)
+                </div> -->
+                <div></div>
+            </section>
+
+
+            <section id="Other News">
+                <div class="page-header">
+                    <h1>Other News</h1>
+                </div>
+                <h4>S5 & Summer of Innovation - Dayton, Ohio - Summer 2017</h4>
+                <div> The summer of innovation event was organized by AFRL & WBI to apply formal methods to their <a
+                        href="https://github.com/afrl-rq/OpenUxAS" target="_blank">UxAS</a> multi-vehicle planning
+                    system.
+                </div>
+                <div></div>
+                <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                <div id="blueimp-gallery" class="blueimp-gallery">
+                    <div class="slides"></div>
+                    <h3 class="title"></h3>
+                    <a class="prev">‹</a>
+                    <a class="next">›</a>
+                    <a class="close">×</a>
+                    <a class="play-pause"></a>
+                    <ol class="indicator"></ol>
+                </div>
+                <div id="imgstyle">
+                    <div id="links">
+                        <a href="assets/img/SOI1.JPG"
+                           title="S5 Symposim - Summer Of Innovation - AFRL - WBI, Dayton 2017">
+                            <img src="assets/img/SOI1_tn.jpg"
+                                 alt="S5 Symposim - Summer Of Innovation - AFRL - WBI, Dayton 2017">
+                        </a>
+                    </div>
+                </div>
+                <script src="assets/js/blueimp-gallery.min.js"></script>
+                <script>
+                    document.getElementById('links').onclick = function (event) {
+                        event = event || window.event;
+                        var target = event.target || event.srcElement,
+                            link = target.src ? target.parentNode : target,
+                            options = {index: link, event: event},
+                            links = this.getElementsByTagName('a');
+                        blueimp.Gallery(links, options);
+                    };
+                </script>
+
+            </section>
+
+            <section id="time">
+                <div id="footer" align='center'>
+                    <script language="Javascript">
+                        var dateModified = document.lastModified;
+                        mydate = dateModified.slice(0, 10);
+                        document.write("Last Updated: " + mydate + "");
+                    </script>
+                </div>
+            </section>
+
+
+
+        </div> <!-- /container -->
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+
+            function parse(document){
+                $(document).find("paper").each(function(){
+                    $("#pub-list").append(
+                        '<li>' +
+                        '<div class = "paper-title paper-conf">' +
+                        $(this).attr('title') +
+                        '</div>' +
+                        '</li>'
+                    );
+                });
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: "papers.xml",
+                dataType: "xml",
+                crossDomain: true,
+                success: function(xml){
+                    $(xml).find('paper').each(function(){
+//                        var sTitle = $(this).find('Title').text();
+//                        var sPublisher = $(this).find('Publisher').text();
+//                        $("<li></li>").html(sTitle + ", " + sPublisher).appendTo("#dvContent ul");
+
+                        var paperType = $(this).attr('type')
+
+                        var techRep = $(this).find('techRep')
+                        if( techRep.length == 1)
+                        {
+                            techRep = ', <a href ="' + $(this).find('techRep').text().trim() +'" target="_blank">TechRep</a>)'
+                        }
+                        else
+                        {
+                            techRep = ')'
+                        }
+
+                        var award = $(this).find('award')
+                        if( award.length == 1)
+                        {
+                            award = '<div class = "paper-footnote">' + '★' +
+                                $(this).find('award').text().trim() +
+                                '</div>'
+                        }
+                        else
+                        {
+                            award = ''
+                        }
+
+
+                        $("#pub-list").append(
+                            '<li>' +
+
+                            '<div class = "paper-title paper-' + paperType +'">' +
+                            $(this).find('title').text().trim() +
+                            ' (<a href ="' + $(this).find('link').text().trim()+'" target="_blank" onClick="ga("send", "event", "download", "click", "' + $(this).find('tag').text().trim() + '");">PDF</a>' +
+                            techRep +
+                            '</div>' +
+
+                            '<div class = "paper-authors">' +
+                            $(this).find('authors').text().trim() +
+                            '</div>' +
+
+                            '<div class = "paper-details">' +
+                            $(this).find('other').text().trim() +
+                            '</div>' +
+
+                            award +
+
+                            '</li>'
+                        );
+
+                    });
+                },
+                error: function() {
+                alert("An error occurred while processing XML file.");
+            }
+        });
+        });
+    </script>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.js"></script>
+    <script type="application/ld+json">
+    	{
+    	  "@context": "https://schema.org",
+    	  "@type": "WebSite",
+    	  "name": "Bardh Hoxha",
+    	  "jobTitle": "",
+    	  "url": "https://www.bhoxha.com",
+    	  "author": {
+          "@type": "Person",
+          "name": "Bardh Hoxha",
+          "affiliation": ""
+          },
+          "description": "Bardh Hoxha"
+    	}
+    </script>
+</div>
+</body>
+</html>

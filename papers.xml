@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<papers>
+    <paper type="conf">
+        <title>
+            Robustness of Specifications and its applications to Falsification, Parameter Mining, and Runtime Monitoring with S-TaLiRo
+        </title>
+        <authors>
+            Georgios Fainekos, Bardh Hoxha, Sriram Sankaranarayanan
+        </authors>
+        <other>
+            Runtime Verification (RV), Porto, 2019
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/RV2019.pdf
+        </link>
+        <tag>
+            RV2019
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            ARCH-COMP18 Category Report: Results on the Falsification Benchmarks
+        </title>
+        <authors>
+            Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha, Georgios Fainekos, Gidon Ernst, Zhenya Zhang, Paolo Arcaini, Ichiro Hasuo, Sean Sedwards
+        </authors>
+        <other>
+            International Workshop on Applied Verification of Continuous and Hybrid Systems (ARCH), July 2018
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/ARCH2018.pdf
+        </link>
+        <tag>
+            ARCH2018
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Formal Requirement Debugging for Testing and Verification of Cyber-Physical Systems
+        </title>
+        <authors>
+            Adel Dokhanchi, Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            ACM Transactions on Embedded Computing Systems [TECS], 2018
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/TECS2017.pdf
+        </link>
+        <tag>
+            TECS2018
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Experience Report: Application of Falsification Methods on the UxAS System
+        </title>
+        <authors>
+            Cumhur Erkan Tuncali, Bardh Hoxha, Guohui Ding, Georgios Fainekos, and Sriram Sankaranarayanan
+        </authors>
+        <other>
+            NASA Formal Methods (NFM), April 2018
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/NFM2018.pdf
+        </link>
+        <tag>
+            NFM2018
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Mission Planning for Multiple Vehicles with Temporal Specifications using UxAS
+        </title>
+        <authors>
+            Luan V Nguyen, Bardh Hoxha, Taylor T Johnson, Georgios Fainekos
+        </authors>
+        <other>
+            IFAC Conference on Analysis and Design of Hybrid Systems (ADHS), July 2018
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/adhs2018.pdf
+        </link>
+        <tag>
+            ADHS2018
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Vacuity Aware Falsification for MTL Request-Response Specifications
+        </title>
+        <authors>
+            Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            Conference on Automation Science and Engineering (CASE), 2017
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/CASE2017.pdf
+        </link>
+        <tag>
+            CASE2017
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            ARCH-COMP17 Category Report: Preliminary Results on the Falsification Benchmarks
+        </title>
+        <authors>
+            Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha, Georgios E Fainekos
+        </authors>
+        <other>
+            International Workshop on Applied Verification of Continuous and Hybrid Systems (ARCH), 2017
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/ARCH2017.pdf
+        </link>
+        <tag>
+            ARCH2017
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Mining parametric temporal logic properties in model-based design for cyber-physical systems
+        </title>
+        <authors>
+            Bardh Hoxha, Adel Dokhanchi and Georgios Fainekos
+        </authors>
+        <other>
+            International Journal on Software Tools for Technology Transfer [STTT], 2017
+        </other>
+        <link>
+            http://rdcu.be/o1h0
+        </link>
+        <techRep>
+            https://arxiv.org/abs/1512.07956
+        </techRep>
+        <tag>
+            sttt2015
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            An Efficient Algorithm for Monitoring Practical TPTL Specifications
+        </title>
+        <authors>
+            Adel Dokhanchi, Bardh Hoxha, Cumhur Erkan Tuncali, and Georgios Fainekos
+        </authors>
+        <other>
+            The 14th ACM-IEEE International Conference on Formal Methods and Models for System Design [MEMOCODE],
+            Kanpur, India,
+            November 2016
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/Memocode2016_CameraReady.pdf
+        </link>
+        <tag>
+            Memocode2016
+        </tag>
+    </paper>
+
+    <paper type="work">
+        <title>
+            Pareto Front Exploration for Parametric Temporal Logic Specifications of Cyber-Physical Systems
+        </title>
+        <authors>
+            Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            1st Workshop on Monitoring and Testing of Cyber-Physical Systems [MTCPS], Vienna, Austria, April 2016
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/MTCPS16_1.pdf
+        </link>
+        <tag>
+            MTCPS16_1
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            MITL Specification Debugging for Monitoring of Cyber-Physical Systems
+        </title>
+        <authors>
+            Adel Dokhanchi, Bardh Hoxha, and Georgios Fainekos
+        </authors>
+        <other>
+            1st Workshop on Monitoring and Testing of Cyber-Physical Systems [MTCPS], Vienna, Austria, April 2016
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/MTCPS16_2.pdf
+        </link>
+        <tag>
+            MTCPS16_2
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Planning in Dynamic Environments Through Temporal Logic Monitoring
+        </title>
+        <authors>
+            Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            The Thirtieth AAAI Conference on Artificial Intelligence Workshop on Planning for Hybrid Systems [AAAI
+            PlanHS],
+            Phoenix, Arizona, February 2016
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/PlanHS16.pdf
+        </link>
+        <tag>
+            PlanHS16
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Metric Interval Temporal Logic Specification Elicitation and Debugging
+        </title>
+        <authors>
+            Adel Dokhanchi, Bardh Hoxha, and Georgios Fainekos
+        </authors>
+        <other>
+            The 13th ACM-IEEE International Conference on Formal Methods and Models for System Design [MEMOCODE],
+            Austin, Texas,
+            September 2015
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/memocode2015.pdf
+        </link>
+        <tag>
+            memocode2015
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            VISPEC: A graphical tool for elicitation of MTL requirements
+        </title>
+        <authors>
+            Bardh Hoxha, Nikolaos Mavridis, and Georgios Fainekos
+        </authors>
+        <other>
+            IEEE/RSJ International Conference on Intelligent Robots and Systems [IROS], Hamburg, Germany, September 2015
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/iros2015.pdf
+        </link>
+        <techRep>
+            http://www.bhoxha.com/papers/iros2015techRep.pdf
+        </techRep>
+        <tag>
+            iros2015
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Towards Formal Specification Visualization for Testing and Monitoring of Cyber-Physical Systems
+        </title>
+        <authors>
+            Bardh Hoxha, Hoang Bach, Houssam Abbas, Adel Dokhanchi, Yoshihiro Kobayashi, and Georgios Fainekos
+        </authors>
+        <other>
+            Design and Implementation of Formal Tools and Systems [DIFTS], Lausanne, Switzerland, October 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/DIFTS2014.pdf
+        </link>
+        <tag>
+            difts2014
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            On-Line Monitoring for Temporal Logic Robustness
+        </title>
+        <authors>
+            Adel Dokhanchi, Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            Runtime Verification [RV], Toronto, Canada, September 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/rv2014tech.pdf
+        </link>
+        <tag>
+            rv2014tech
+        </tag>
+    </paper>
+    <paper type="other">
+        <title>
+            Conformance Testing as Falsification for Cyber-Physical Systems
+        </title>
+        <authors>
+            H. Abbas, B. Hoxha, G. Fainekos, J. V. Deshmukh, J. Kapinski, K. Ueda
+        </authors>
+        <other>
+            Technical Report arXiv:1401.5200, 2014
+        </other>
+        <link>
+            http://arxiv.org/abs/1401.5200
+        </link>
+        <tag>
+            conformanceArxiv
+        </tag>
+    </paper>
+    <paper type="other">
+        <title>
+            WiP Abstract: Conformance Testing as Falsification for Cyber-Physical Systems
+        </title>
+        <authors>
+            H. Abbas, B. Hoxha, G. Fainekos, J. V. Deshmukh, J. Kapinski, K. Ueda
+        </authors>
+        <other>
+            ACM/IEEE International Conference on Cyber-Physical Systems [ICCPS], Berlin, Germany, April 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/iccps2014wip.pdf
+        </link>
+        <tag>
+            iccps2014wip
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Robustness-Guided Temporal Logic Testing and Verification for Stochastic Cyber-Physical Systems
+        </title>
+        <authors>
+            Houssam Abbas*, Bardh Hoxha*, Georgios Fainekos, Koichi Ueda
+        </authors>
+        <other>
+            IEEE International Conference on CYBER Technology in Automation, Control, and Intelligent Systems [CYBER],
+            Hong
+            Kong, June 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/Cyber2014.pdf
+        </link>
+        <award>
+            Finalist for best student paper award
+        </award>
+        <tag>
+            cyber2014
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Benchmarks for Temporal Logic Requirements for Automotive Systems
+        </title>
+        <authors>
+            Bardh Hoxha, Houssam Abbas and Georgios Fainekos
+        </authors>
+        <other>
+            Applied Verification for Continuous and Hybrid Systems [ARCH], Berlin, Germany, April 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/arch2014bench.pdf
+        </link>
+        <tag>
+            arch2014bench
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Using S-TaLiRo on Industrial Size Automotive Models
+        </title>
+        <authors>
+            Bardh Hoxha, Houssam Abbas and Georgios Fainekos
+        </authors>
+        <other>
+            Applied Verification for Continuous and Hybrid Systems [ARCH], Berlin, Germany, April 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/arch2014exp.pdf
+        </link>
+        <tag>
+            arch2014exp
+        </tag>
+    </paper>
+    <paper type="other">
+        <title>
+            System Testing with S-TaLiRo: Recent Functionality and Additions
+        </title>
+        <authors>
+            Bardh Hoxha, Adel Dokhanchi, Georgios Fainekos
+        </authors>
+        <other>
+            Hybrid Systems: Computation and Control [HSCC], Berlin,  April. 2014
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/hscc2014.pdf
+        </link>
+        <tag>
+            hscc2014
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Querying Parametric Temporal Logic Properties on Embedded Systems
+        </title>
+        <authors>
+            Hengyi Yang, Bardh Hoxha and Georgios Fainekos
+        </authors>
+        <other>
+            Int. Conference on Testing Software and Systems [ICTSS], Aalborg, Denmark, Nov. 2012
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/ictss2012.pdf
+        </link>
+        <tag>
+            ictss2012
+        </tag>
+    </paper>
+</papers>
