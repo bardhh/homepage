@@ -15,6 +15,10 @@
   width: device-width;
 }*/
 
+html {
+  scroll-behavior: smooth;
+}
+
 #tab { display:inline-block;
   margin-left: 40px; }
 
@@ -268,7 +272,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   border-bottom: 1px solid #ddd;
 }
 .subhead h1 {
-  font-size: 60px;
+  font-size: 32px;
+  text-align: center;
 }
 .subhead p {
   margin-bottom: 20px;
@@ -798,7 +803,6 @@ form.bs-docs-example {
 
 .bs-docs-sidenav {
   width: 228px;
-  margin: 30px 0 0;
   padding: 0;
   background-color: #fff;
   -webkit-border-radius: 6px;
@@ -814,6 +818,8 @@ form.bs-docs-example {
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
+  font-variant-caps: small-caps;
+  text-align:center;
 }
 .bs-docs-sidenav > li:first-child > a {
   -webkit-border-radius: 6px 6px 0 0;
@@ -875,11 +881,21 @@ form.bs-docs-example {
     max-width: 970px;
   }
   .bs-docs-sidenav {
-    width: 258px;
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
   }
   .bs-docs-sidenav > li > a {
     width: 230px \9; /* Override the previous IE8-9 hack */
   }
+}
+
+.icons {
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  /* object-fit: contain; */
 }
 
 /* Desktop
@@ -902,10 +918,16 @@ form.bs-docs-example {
   /* When affixed, space properly */
   .bs-docs-sidenav {
     top: 0;
-    width: 218px;
+    width: 180px;
     margin-top: 30px;
     margin-right: 0;
   }
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  top: 0;
+  width: 100%
 }
 
 /* Tablet to desktop
@@ -921,8 +943,9 @@ form.bs-docs-example {
   }
   /* Adjust sidenav width */
   .bs-docs-sidenav {
-    width: 166px;
+    width: 180px;
     margin-top: 20px;
+    margin: 50px 0 0 0px;
   }
   .bs-docs-sidenav.affix {
     top: 0;
@@ -1230,23 +1253,56 @@ stuffstuffstuffstuffstuff
 stuffstuffstuffstuffstuff
 stuffstuffstuffstuffstuff*/
 
-.txtBlock{
+.headerblock{
+  display: flex;
+  flex-direction: column; 
+  /* align-items: center; */
+  /* justify-content: center; */
+}
 
+.txtBlock{
     float:left;
-    display: initial;
+    display: flex;
+    /* display: contents; */
+    width: 255px;
+    /* align-self: center; */
+    align-items: center;
+    justify-content: center;
+    margin-top:-5px;
 
 }
 
+.iconBlock{
+  float:left;
+  display: flex;
+  /* display: contents; */
+  width: 255px;
+  /* align-self: center; */
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: -25px; */
+  margin-bottom: -25px;
+  /* padding-top: -20px; */
+  margin-top: -15px;
+  /* border-top: 1px solid gray; */
+  height: 40px
+}
+
+.txtBlock h1{
+  
+}
+
+
 .profile{
 
-  float:right;
-  display: initial;
-
+  float:left;
+  /* display: initial; */
+  margin-top:-10px;
 }
 
 .profile img{
 
-    height: 201px;
+    width: 250px;
     /*margin-left: 20px;*/
 
     -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.9));
@@ -1712,6 +1768,7 @@ h1, .container {
   font-family: 'Helvetica Neue', sans-serif;
   /*font-family: 'Nixie One', sans-serif;*/
   /*font-family: 'Julius Sans One', sans-serif;*/
+  width: 1250px;
 }
 
 #imgstyle{

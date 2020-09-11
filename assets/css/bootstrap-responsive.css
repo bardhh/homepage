@@ -110,7 +110,7 @@
     clear: both;
   }
   [class*="span"] {
-    float: left;
+    float: right;
     min-height: 1px;
     margin-left: 30px;
   }
@@ -148,7 +148,7 @@
     width: 370px;
   }
   .span3 {
-    width: 270px;
+    width: 250px;
   }
   .span2 {
     width: 170px;

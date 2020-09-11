@@ -27,14 +27,16 @@
     <!-- End Google Analytics -->   
 
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type='text/javascript' src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script>
+    <script type='text/javascript' src='assets/js/myscroll.js'></script>
 
 
     <link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
-
     <link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css'/>
     <script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script>
     <link rel='stylesheet' href='unitegallery/themes/default/ug-theme-default.css' type='text/css'/>
+    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
 
 
     <!-- Le styles -->
@@ -107,15 +109,26 @@
         <ul class = "headerblock">
 
 
+
+
+            <div class="profile"><img src="assets/img/profile.jpg" alt="Mountain View" ></div>
+            
             <div class ="txtBlock">
                 <h1>Bardh Hoxha</h1>
                 <p class="lead"></p>
                 <p class="lead"></p>
             </div>
-
-            <div class="profile"><img src="assets/img/profile.jpg" alt="Mountain View" ></div>
-
             
+            <div class ="iconBlock">
+                <!-- <h2><a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank"><i class="fab fa-docker"></i></a></h2> -->
+                <h2><a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank"><img src="assets/img/googlescholar.svg" alt="twitter" class="icons"></a></h2>
+                <h2><a href="https://twitter.com/bardhhoxha" target="_blank"><img src="assets/img/twitter.svg" alt="twitter" class="icons"></a></h2>
+                <h2><a href="https://hub.docker.com/u/bardhh" target="_blank"><img src="assets/img/docker.svg" alt="docker" class="icons"></a></h2>
+                
+                
+            </div>
+
+
             <!--<div class="center-wrap">-->
 
 
@@ -137,12 +150,12 @@
     ================================================== -->
     <div class="row">
 
-        <div class="span3 bs-docs-sidebar">
-            <ul class="nav nav-list bs-docs-sidenav" data-offset-top="300" data-spy="affix">
-                <li><a href="#bio"><i class="icon-chevron-right"></i>Bio</a></li>
+        <div class="span3 bs-docs-sidebar affix ">
+            <ul class="nav nav-list bs-docs-sidenav " data-offset-top="300" data-spy="affix">
+                <li><a href="#bio"><i class="icon-chevron-right"></i>About Me</a></li>
                 <li><a href="#updates"><i class="icon-chevron-right"></i>Updates</a></li>
                 <li><a href="#publications"><i class="icon-chevron-right"></i>Publications</a></li>
-                <li><a href="#group"><i class="icon-chevron-right"></i>Group</a></li>
+                <!-- <li><a href="#group"><i class="icon-chevron-right"></i>Group</a></li> -->
                 <li><a href="#teaching"><i class="icon-chevron-right"></i>Teaching</a></li>
                 <li><a href="#software"><i class="icon-chevron-right"></i>Software</a></li>
                 <li><a href="#contact"><i class="icon-chevron-right"></i>Contact</a></li>
@@ -156,21 +169,17 @@
 
 
                     <div class="page-header">
-                        <h1>Bio -  <a
-                                href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank"><img
-                                src="assets/img/scholar_logo_30dp.png" alt="Mountain View" style="height:32px; "></a>
+                        <h1>Welcome 
+                            
                                 <!-- <a href="/~bhoxha/Bardh_Hoxha_CV.pdf" target="_blank"
                                      onClick="ga('send', 'event', 'download', 'click', 'CV');">CV</a> - -->
                             <!-- <a href="https://outlook.office365.com/owa/calendar/88cc10dfdb6e4ecdb098eadc63d260b8@cs.siu.edu/3018e568a62d48259beabc9579a2c49c11032034445673593805/calendar.html"
                                target="_blank">Calendar</a></h1> -->
                     </div>
-
                     <p>
-                        I am a Senior Principal Scientist at the Frontier Research Group at Toyota Research Institute of North America (TRINA). My research interests include Formal methods, Testing and Verification of Cyber-Physical Systems (CPS), Logic, Motion Planning for Autonomous Vehicles, and Human Robot Interaction. Please reach out to me if you are a self-motivated student interested in working in these areas. We typically have students join our group for various research projects.
+                        I am a Senior Principal Scientist at Toyota Research Institute of North America (TRINA) in Ann Arbor, Michigan. My research interests include Formal methods, Testing and Verification of Cyber-Physical Systems (CPS), Logic, Motion Planning for Autonomous Mobility, and Human-Robot Interaction. Please reach out to me if you are a self-motivated student interested in working in any of these areas. Strong candidates that demonstrate the ability to define and persue research problems get invited to join us for research internships during the summer. 
                     <p>
-
                         I completed my PhD degree in Computer Science in the area of testing and verification of Cyber-Physical Systems at Arizona State University, advised by <a href="https://www.public.asu.edu/~gfaineko/">Georgios Fainekos</a>. My research was focused on simulation-based methods for testing CPS using formal requirements. Specifically, the problems of falsification and parameter mining of temporal logic requirements. 
-
                     <p>
                 </section>
             </div>
@@ -198,7 +207,7 @@
                 <ol id="pub-list">
                 </ol>
 
-				<h3>Ph.D. Thesis </h3>
+				<h3>PhD Thesis </h3>
 
 				<ol id="thesis-list">
 						<li>
@@ -498,7 +507,7 @@
             </section>
 
 
-            <section id="Other News">
+            <section id="news">
                 <div class="page-header">
                     <h1>Other News</h1>
                 </div>
