@@ -1084,6 +1084,17 @@ background-position: center center;
 	  ;
 */
 
+.no-webp cd-fixed-bg {
+  background-image: url("../img/bkg2.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  /*padding: 0px;*/
+}
+
 .cd-fixed-bg {
   background-image: url("../img/bkg2.webp");
   -webkit-background-size: cover;
