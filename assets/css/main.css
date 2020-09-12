@@ -1095,7 +1095,7 @@ background-position: center center;
   /*padding: 0px;*/
 }
 
-.cd-fixed-bg {
+.webp .cd-fixed-bg {
   background-image: url("../img/bkg2.webp");
   -webkit-background-size: cover;
   -moz-background-size: cover;
