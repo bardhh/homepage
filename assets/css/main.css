@@ -579,7 +579,7 @@ h2+.row {
 
 /* Example sites showcase */
 .example-sites {
-  xmargin-left: 20px;
+  margin-left: 20px;
 }
 
 .example-sites img {
@@ -938,11 +938,7 @@ form.bs-docs-example {
   opacity: .5;
 }
 
-.bs-docs-sidenav .active .icon-chevron-right,
-.bs-docs-sidenav .active a:hover .icon-chevron-right {
-  /* background-image: url(../img/glyphicons-halflings-white.png); */
-  /* opacity: 1; */
-}
+
 
 .bs-docs-sidenav.affix {
   top: 40px;
@@ -1052,7 +1048,7 @@ form.bs-docs-example {
   display: inline;
 }
 
-.paper-authors {}
+
 
 .paper-details {
   font-style: italic;
@@ -1062,9 +1058,6 @@ form.bs-docs-example {
   font-weight: bold;
 }
 
-.instructor {
-  /*    font-style: italic;*/
-}
 
 #toolFeatures li {
   list-style: square;
@@ -1163,7 +1156,7 @@ stuffstuffstuffstuffstuff*/
   height: 40px
 }
 
-.txtBlock h1 {}
+
 
 
 .profile {
