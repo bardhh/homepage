@@ -1323,8 +1323,7 @@ textarea::-webkit-input-placeholder {
 @media (min-width: 1200px){
 
   .page-header {
-    padding-bottom: 9px;
-    margin: 20px 0 30px;
+    margin: 20px 0 20px;
     border-bottom: 1px solid #eeeeee;
   }
 
