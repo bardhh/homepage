@@ -2002,6 +2002,10 @@ a.twitter-timeline {
     padding-top: 0;
   }
 
+  .bs-docs-sidebar {
+    position:relative;
+  }
+
   .txtBlock {
     float: left;
     display: flex;
