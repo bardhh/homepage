@@ -1919,6 +1919,7 @@ a.twitter-timeline {
   .container {
     display: flex;
     flex-direction: column;
+    font-family: 'Helvetica Neue', sans-serif;
   }
 
   .botcontainer,
