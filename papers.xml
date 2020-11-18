@@ -2,6 +2,57 @@
 <papers>
     <paper type="conf">
         <title>
+           Search-based Test-Case Generation by Monitoring Responsibility Safety Rules
+        </title>
+        <authors>
+           Mohammad Hekmatnejad, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <other>
+            International Conference on Intelligent Transportation Systems (ITSC), 2020
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/ITSC2020.pdf
+        </link>
+        <tag>
+            ITSC2020
+        </tag>
+    </paper>
+    <paper type="other">
+        <title>
+           Application of Simulation-Based Methods on Autonomous Vehicle Control with Deep Neural Network: Work-in-Progress
+        </title>
+        <authors>
+            Yuji Date, Takeshi Baba, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov
+        </authors>
+        <other>
+            International Conference on Embedded Software (EMSOFT), 2020
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/EMSOFT2020.pdf
+        </link>
+        <tag>
+            EMSOFT2020
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           TLTk: A Toolbox for Parallel Robustness Computation of Temporal Logic Specifications
+        </title>
+        <authors>
+            Joseph Cralley, Ourania Spantidi, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <other>
+            Runtime Verification (RV), 2020
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/RV2020.pdf
+        </link>
+        <tag>
+            RV2020
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
             Robustness of Specifications and its Applications to Falsification, Parameter Mining, and Runtime Monitoring with S-TaLiRo
         </title>
         <authors>
