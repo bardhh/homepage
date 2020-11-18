@@ -1010,9 +1010,10 @@ form.bs-docs-example {
   /*position: absolute;*/
   background-image: url("../img/conf.png");
   background-repeat: no-repeat;
-  background-size: 1.3em;
+  background-size: 1.1em;
   padding-left: 25px;
   display: inline;
+  vertical-align: middle;
   /*text-rendering: auto;*/
   /*-webkit-font-smoothing: antialiased;*/
 }
@@ -1027,25 +1028,28 @@ form.bs-docs-example {
 .paper-jour {
   background-image: url("../img/jour.png");
   background-repeat: no-repeat;
-  background-size: 1.3em;
+  background-size: 1.1em;
   padding-left: 25px;
   display: inline;
+  vertical-align: middle;
 }
 
 .paper-work {
   background-image: url("../img/work.png");
   background-repeat: no-repeat;
-  background-size: 1.3em;
+  background-size: 1.1em;
   padding-left: 25px;
   display: inline;
+  vertical-align: middle;
 }
 
 .paper-other {
   background-image: url("../img/other.png");
   background-repeat: no-repeat;
-  background-size: 1.3em;
+  background-size: 1.1em;
   padding-left: 25px;
   display: inline;
+  vertical-align: middle;
 }
 
 
