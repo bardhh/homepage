@@ -17,6 +17,23 @@
             ITSC2020
         </tag>
     </paper>
+    <paper type="conf">
+        <title>
+           Specification-guided Software Fault Localization for Autonomous Mobile Systems
+        </title>
+        <authors>
+           Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Jyotirmoy V. Deshmukh
+        </authors>
+        <other>
+            The 18th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE), 2020
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/MEMOCODE2020.pdf
+        </link>
+        <tag>
+            MEMOCODE2020
+        </tag>
+    </paper>
     <paper type="other">
         <title>
            Application of Simulation-Based Methods on Autonomous Vehicle Control with Deep Neural Network: Work-in-Progress
