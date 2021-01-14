@@ -2,6 +2,40 @@
 <papers>
     <paper type="conf">
         <title>
+           Reachability Analysis of Deep ReLU Neural Networks using Facet-Vertex Incidence [To Appear]
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson,Danil Prokhorov
+        </authors>
+        <other>
+            Hybrid Systems: Computation and Control (HSCC), 2021
+        </other>
+        <link>
+            
+        </link>
+        <tag>
+            HSCC, 2021
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+           Risk-bounded Control using Stochastic Barrier Functions
+        </title>
+        <authors>
+           Shakiba Yaghoubi, Keyvan Majd, Georgios Fainekos, Tomoya Yamaguchi, Danil Prokhorov, Bardh Hoxha
+        </authors>
+        <other>
+            IEEE Control Systems Letters (L-CSS), 2020 
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/LCSS2020.pdf
+        </link>
+        <tag>
+            LCSS2020
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Search-based Test-Case Generation by Monitoring Responsibility Safety Rules
         </title>
         <authors>
