@@ -2,7 +2,58 @@
 <papers>
     <paper type="conf">
         <title>
-           Reachability Analysis of Deep ReLU Neural Networks using Facet-Vertex Incidence [To Appear]
+           Safe Navigation in Human Occupied Environments Using Sampling and Control Barrier Functions
+        </title>
+        <authors>
+           Keyvan Majd, Shakiba Yaghoubi, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos
+        </authors>
+        <other>
+            IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
+        </other>
+        <link>
+            https://arxiv.org/pdf/2105.01204
+        </link>
+        <tag>
+            IROS2021
+        </tag>
+    </paper>
+        <paper type="conf">
+        <title>
+           Discovering physical interaction vulnerabilities in IoT deployments
+        </title>
+        <authors>
+           Muslum Ozgur Ozmen, Xuansong Li, Andrew Chun-An Chu, Z Berkay Celik, Bardh Hoxha, Xiangyu Zhang
+        </authors>
+        <other>
+            arXiv preprint, 2021
+        </other>
+        <link>
+            https://arxiv.org/pdf/2102.01812
+        </link>
+        <tag>
+            IOT2021
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           Reachability Analysis of Convolutional Neural Networks
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
+        </authors>
+        <other>
+            arXiv preprint, 2021
+        </other>
+        <link>
+            https://arxiv.org/pdf/2106.12074
+        </link>
+        <tag>
+            CNN2021
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           Reachability Analysis of Deep ReLU Neural Networks using Facet-Vertex Incidence
         </title>
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
@@ -14,7 +65,7 @@
             http://www.bhoxha.com/papers/HSCC2021.pdf
         </link>
         <tag>
-            HSCC, 2021
+            HSCC2021
         </tag>
     </paper>
     <paper type="jour">
