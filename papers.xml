@@ -2,6 +2,23 @@
 <papers>
     <paper type="conf">
         <title>
+           Neural Network Repair with Reachability Analysis
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
+        </authors>
+        <other>
+            arXiv preprint, 2021
+        </other>
+        <link>
+            https://arxiv.org/pdf/2108.04214.pdf
+        </link>
+        <tag>
+            DNNRapair2021
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Safe Navigation in Human Occupied Environments Using Sampling and Control Barrier Functions
         </title>
         <authors>
