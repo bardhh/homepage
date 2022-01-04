@@ -2,6 +2,23 @@
 <papers>
     <paper type="conf">
         <title>
+           Risk-Bounded Control with Kalman Filtering and Stochastic Barrier Functions
+        </title>
+        <authors>
+           Shakiba Yaghoubi, Keyvan Majd, Georgios Fainekos, Tomoya Yamaguchi, Danil Prokhorov, Bardh Hoxha
+        </authors>
+        <other>
+            IEEE Conference on Decision and Control (CDC), 2021
+        </other>
+        <link>
+            https://arxiv.org/abs/2112.14912
+        </link>
+        <tag>
+            CDC2021
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            PerceMon: Online Monitoring for Perception Systems
         </title>
         <authors>
