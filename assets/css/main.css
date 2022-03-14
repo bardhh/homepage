@@ -1859,7 +1859,7 @@ a.twitter-timeline {
   .container {
     /*font-family: 'Open Sans', sans-serif;*/
     /*font-family: 'Open Sans Condensed', sans-serif;*/
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     /*font-family: 'Nixie One', sans-serif;*/
     /*font-family: 'Julius Sans One', sans-serif;*/
     width: 1250px;
