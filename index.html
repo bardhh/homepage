@@ -182,12 +182,12 @@
       <!-- Docs nav
     ================================================== -->
       <div class="row">
-        <div class="span3 bs-docs-sidebar affix">
-          <ul
-            class="nav nav-list bs-docs-sidenav"
-            data-offset-top="300"
-            data-spy="affix"
-          >
+        <div
+          class="span3 bs-docs-sidebar affix"
+          data-offset-top="300"
+          data-spy="affix"
+        >
+          <ul class="nav nav-list bs-docs-sidenav">
             <li>
               <a href="#bio"><i class="icon-chevron-right"></i>About Me</a>
             </li>
@@ -275,6 +275,7 @@
                   }
                 })(document, "script", "twitter-wjs");
               </script>
+
               <!--</p>-->
             </p>
           </section>
@@ -835,114 +836,126 @@
         <!-- /container -->
       </div>
       <!-- /container -->
+    </div>
+    <script type="text/javascript" async>
+      $(document).ready(function () {
+        function parse(document) {
+          $(document)
+            .find("paper")
+            .each(function () {
+              $("#pub-list").append(
+                "<li>" +
+                  '<div class = "paper-title paper-conf">' +
+                  $(this).attr("title") +
+                  "</div>" +
+                  "</li>"
+              );
+            });
+        }
 
-      <script type="text/javascript" async>
-        $(document).ready(function () {
-          function parse(document) {
-            $(document)
+        $.ajax({
+          type: "GET",
+          url: "papers.xml",
+          dataType: "xml",
+          crossDomain: true,
+          success: function (xml) {
+            $(xml)
               .find("paper")
               .each(function () {
+                //                        var sTitle = $(this).find('Title').text();
+                //                        var sPublisher = $(this).find('Publisher').text();
+                //                        $("<li></li>").html(sTitle + ", " + sPublisher).appendTo("#dvContent ul");
+
+                var paperType = $(this).attr("type");
+
+                var techRep = $(this).find("techRep");
+                if (techRep.length == 1) {
+                  techRep =
+                    ', <a href ="' +
+                    $(this).find("techRep").text().trim() +
+                    '" target="_blank" rel="noopener">TechRep</a>)';
+                } else {
+                  techRep = ")";
+                }
+
+                var award = $(this).find("award");
+                if (award.length == 1) {
+                  award =
+                    '<div class = "paper-footnote">' +
+                    "★" +
+                    $(this).find("award").text().trim() +
+                    "</div>";
+                } else {
+                  award = "";
+                }
+
                 $("#pub-list").append(
                   "<li>" +
-                    '<div class = "paper-title paper-conf">' +
-                    $(this).attr("title") +
+                    '<div class = "paper-title paper-' +
+                    paperType +
+                    '">' +
+                    $(this).find("title").text().trim() +
+                    ' (<a href ="' +
+                    $(this).find("link").text().trim() +
+                    '" target="_blank" rel="noopener" onClick="ga("send", "event", "download", "click", "' +
+                    $(this).find("tag").text().trim() +
+                    '");">PDF</a>' +
+                    techRep +
                     "</div>" +
+                    '<div class = "paper-authors">' +
+                    $(this).find("authors").text().trim() +
+                    "</div>" +
+                    '<div class = "paper-details">' +
+                    $(this).find("other").text().trim() +
+                    "</div>" +
+                    award +
                     "</li>"
                 );
               });
-          }
-
-          $.ajax({
-            type: "GET",
-            url: "papers.xml",
-            dataType: "xml",
-            crossDomain: true,
-            success: function (xml) {
-              $(xml)
-                .find("paper")
-                .each(function () {
-                  //                        var sTitle = $(this).find('Title').text();
-                  //                        var sPublisher = $(this).find('Publisher').text();
-                  //                        $("<li></li>").html(sTitle + ", " + sPublisher).appendTo("#dvContent ul");
-
-                  var paperType = $(this).attr("type");
-
-                  var techRep = $(this).find("techRep");
-                  if (techRep.length == 1) {
-                    techRep =
-                      ', <a href ="' +
-                      $(this).find("techRep").text().trim() +
-                      '" target="_blank" rel="noopener">TechRep</a>)';
-                  } else {
-                    techRep = ")";
-                  }
-
-                  var award = $(this).find("award");
-                  if (award.length == 1) {
-                    award =
-                      '<div class = "paper-footnote">' +
-                      "★" +
-                      $(this).find("award").text().trim() +
-                      "</div>";
-                  } else {
-                    award = "";
-                  }
-
-                  $("#pub-list").append(
-                    "<li>" +
-                      '<div class = "paper-title paper-' +
-                      paperType +
-                      '">' +
-                      $(this).find("title").text().trim() +
-                      ' (<a href ="' +
-                      $(this).find("link").text().trim() +
-                      '" target="_blank" rel="noopener" onClick="ga("send", "event", "download", "click", "' +
-                      $(this).find("tag").text().trim() +
-                      '");">PDF</a>' +
-                      techRep +
-                      "</div>" +
-                      '<div class = "paper-authors">' +
-                      $(this).find("authors").text().trim() +
-                      "</div>" +
-                      '<div class = "paper-details">' +
-                      $(this).find("other").text().trim() +
-                      "</div>" +
-                      award +
-                      "</li>"
-                  );
-                });
-            },
-            error: function () {
-              alert("An error occurred while processing XML file.");
-            },
-          });
-        });
-      </script>
-      <script
-        type="text/javascript"
-        src="unitegallery/js/unitegallery.min.js"
-        async
-      ></script>
-
-      <!-- Le javascript
-    ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="assets/js/bootstrap.js" async></script>
-      <script type="application/ld+json" async>
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Bardh Hoxha",
-          "jobTitle": "",
-          "url": "https://www.bhoxha.com",
-          "author": {
-            "@type": "Person",
-            "name": "Bardh Hoxha",
-            "affiliation": ""
           },
-          "description": "Bardh Hoxha"
-        }
-      </script>
-    </div>
+          error: function () {
+            alert("An error occurred while processing XML file.");
+          },
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="unitegallery/js/unitegallery.min.js"
+      async
+    ></script>
+
+    <script type="text/javascript">
+      // When the user scrolls the page, execute myFunction
+      var targetOffset = 400;
+
+      var $w = $(window).scroll(function(){
+          if ( $w.scrollTop() > targetOffset ) {
+              $('.span3').css({"backgroud":"blue"});
+          } else {
+            // ...
+          }
+      });
+    </script>
+
+    <!-- Le javascript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.js" async></script>
+    <script type="application/ld+json" async>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bardh Hoxha",
+        "jobTitle": "",
+        "url": "https://www.bhoxha.com",
+        "author": {
+          "@type": "Person",
+          "name": "Bardh Hoxha",
+          "affiliation": ""
+        },
+        "description": "Bardh Hoxha"
+      }
+    </script>
   </body>
 </html>
