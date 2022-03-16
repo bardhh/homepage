@@ -209,9 +209,6 @@
             <li>
               <a href="#contact"><i class="icon-chevron-right"></i>Contact</a>
             </li>
-            <li>
-              <a href="#news"><i class="icon-chevron-right"></i>News</a>
-            </li>
           </ul>
         </div>
 
@@ -765,62 +762,6 @@
 					(<a href="https://siu.edu/maps/">SIU map</a>)
                 </div> -->
             <div></div>
-          </section>
-
-          <section id="news">
-            <div class="page-header">
-              <h1>Other News</h1>
-            </div>
-            <h4>S5 & Summer of Innovation - Dayton, Ohio - Summer 2017</h4>
-            <div>
-              The summer of innovation event was organized by AFRL & WBI to
-              apply formal methods to their
-              <a
-                href="https://github.com/afrl-rq/OpenUxAS"
-                target="_blank"
-                rel="noopener"
-                >UxAS</a
-              >
-              multi-vehicle planning system.
-            </div>
-            <div></div>
-            <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
-            <div id="blueimp-gallery" class="blueimp-gallery">
-              <div class="slides"></div>
-              <h3 class="title"></h3>
-              <a class="prev">‹</a>
-              <a class="next">›</a>
-              <a class="close">×</a>
-              <a class="play-pause"></a>
-              <ol class="indicator"></ol>
-            </div>
-            <div id="imgstyle">
-              <div id="links">
-                <a
-                  href="assets/img/SOI1.JPG"
-                  title="S5 Symposim - Summer Of Innovation - AFRL - WBI, Dayton 2017"
-                >
-                  <img
-                    src="assets/img/SOI1_tn.webp"
-                    alt="S5 Symposim - Summer Of Innovation - AFRL - WBI, Dayton 2017"
-                  />
-                </a>
-              </div>
-            </div>
-            <script src="assets/js/blueimp-gallery.min.js"></script>
-            <script>
-              document.getElementById("links").onclick = function (event) {
-                event = event || window.event;
-                var target = event.target || event.srcElement,
-                  link = target.src ? target.parentNode : target,
-                  options = {
-                    index: link,
-                    event: event,
-                  },
-                  links = this.getElementsByTagName("a");
-                blueimp.Gallery(links, options);
-              };
-            </script>
           </section>
 
           <section id="time">
