@@ -2030,8 +2030,9 @@ a.twitter-timeline {
 
   ul,
   ol {
-    padding: 0;
+    /* padding: 0; */
     margin: 0 0 0 0;
+    padding-left: 25px;
   }
 
 }
