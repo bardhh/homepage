@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <papers>
+    <paper type="jour">
+        <title>
+           Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
+        </title>
+        <authors>
+           Mohammad Hekmatnejad, Bardh Hoxha, Jyotirmoy V. Deshmukh, Yezhou Yang, and Georgios Fainekos
+        </authors>
+        <other>
+            (under review)
+        </other>
+        <link>
+            https://arxiv.org/pdf/2206.14372.pdf
+        </link>
+        <tag>
+            IJRR2021
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
            Risk-Bounded Control with Kalman Filtering and Stochastic Barrier Functions

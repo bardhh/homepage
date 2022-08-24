@@ -1832,9 +1832,9 @@ a.twitter-timeline {
 
 @media (min-width: 1200px) {
   
-  section {
+  /* section {
     padding-top: 20px;
-  }
+  } */
 
   
   .bs-docs-container {
