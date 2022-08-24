@@ -79,6 +79,10 @@ body {
   text-align: justify;
 }
 
+.headertxt a{
+  color: #00078fc6
+}
+
 
 a {
   color: #0088cc;
