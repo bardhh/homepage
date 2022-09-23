@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <papers>
     <paper type="jour">
+    <paper type="conf">
+        <title>
+           Neural Network Repair with Reachability Analysis
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
+        </authors>
+        <other>
+            International Conference on Formal Modeling and Analysis of Timed Systems (FORMATS), 2022
+        </other>
+        <link>
+            https://arxiv.org/pdf/2108.04214.pdf
+        </link>
+        <tag>
+            DNNRapair2022
+        </tag>
+    </paper>
+    <paper type="other">
+        <title>
+           Safety Verification and Repair of Deep Neural Networks
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
+        </authors>
+        <other>
+            ICML Workshop on Formal Verification of Machine Learning, 2022
+        </other>
+        <link>
+            https://slideslive.com/38985959
+        </link>
+        <tag>
+            ICMLDNNRapair2022
+        </tag>
+    </paper>
         <title>
            Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
         </title>
@@ -49,23 +83,6 @@
         </link>
         <tag>
             RV2021
-        </tag>
-    </paper>
-    <paper type="conf">
-        <title>
-           Neural Network Repair with Reachability Analysis
-        </title>
-        <authors>
-           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
-        </authors>
-        <other>
-            arXiv preprint, 2021
-        </other>
-        <link>
-            https://arxiv.org/pdf/2108.04214.pdf
-        </link>
-        <tag>
-            DNNRapair2021
         </tag>
     </paper>
     <paper type="conf">
