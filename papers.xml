@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <papers>
-    <paper type="jour">
     <paper type="conf">
         <title>
            Neural Network Repair with Reachability Analysis
@@ -68,6 +67,23 @@
             CDC2021
         </tag>
     </paper>
+    <paper type="jour">
+        <title>
+           Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
+        </title>
+        <authors>
+           Mohammad Hekmatnejad, Bardh Hoxha, Jyotirmoy V. Deshmukh, Yezhou Yang, and Georgios Fainekos
+        </authors>
+        <other>
+            (under review)
+        </other>
+        <link>
+            https://arxiv.org/pdf/2206.14372.pdf
+        </link>
+        <tag>
+            IJRR2021
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
            PerceMon: Online Monitoring for Perception Systems
@@ -83,6 +99,23 @@
         </link>
         <tag>
             RV2021
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           Neural Network Repair with Reachability Analysis
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
+        </authors>
+        <other>
+            arXiv preprint, 2021
+        </other>
+        <link>
+            https://arxiv.org/pdf/2108.04214.pdf
+        </link>
+        <tag>
+            DNNRapair2021
         </tag>
     </paper>
     <paper type="conf">
