@@ -31,9 +31,10 @@
             https://slideslive.com/38985959
         </link>
         <tag>
-            ICMLDNNRapair2022
+            ICML_DNNRapair2022
         </tag>
     </paper>
+    <paper type="jour">
         <title>
            Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
         </title>
