@@ -2,6 +2,23 @@
 <papers>
     <paper type="conf">
         <title>
+           Runtime Assurance for Autonomous Driving with Neural Reachability
+        </title>
+        <authors>
+           Sergiy Bogomolov, Abdelrahman Hekal, Bardh Hoxha, Tomoya Yamaguchi
+        </authors>
+        <other>
+            International Conference on Intelligent Transportation Systems (ITSC), 2022
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/ITSC2022.pdf
+        </link>
+        <tag>
+            ITSC2022
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Neural Network Repair with Reachability Analysis
         </title>
         <authors>
