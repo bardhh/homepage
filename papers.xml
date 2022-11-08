@@ -88,7 +88,7 @@
             CDC2021
         </tag>
     </paper>
-    <paper type="jour">
+    <!-- <paper type="jour">
         <title>
            Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
         </title>
@@ -104,7 +104,7 @@
         <tag>
             IJRR2021
         </tag>
-    </paper>
+    </paper> -->
     <paper type="conf">
         <title>
            PerceMon: Online Monitoring for Perception Systems
