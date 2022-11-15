@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <papers>
+    </paper>
+        <paper type="conf">
+        <title>
+           Discovering physical interaction vulnerabilities in IoT deployments
+        </title>
+        <authors>
+           Muslum Ozgur Ozmen, Xuansong Li, Andrew Chun-An Chu, Z Berkay Celik, Bardh Hoxha, Xiangyu Zhang
+        </authors>
+        <other>
+            The 14th International Symposium on Cyberspace Safety and Security (CSS), 2022
+        </other>
+        <link>
+            https://arxiv.org/pdf/2102.01812
+        </link>
+        <tag>
+            CSS2022
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
            Runtime Assurance for Autonomous Driving with Neural Reachability
@@ -124,23 +142,6 @@
     </paper>
     <paper type="conf">
         <title>
-           Neural Network Repair with Reachability Analysis
-        </title>
-        <authors>
-           Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
-        </authors>
-        <other>
-            arXiv preprint, 2021
-        </other>
-        <link>
-            https://arxiv.org/pdf/2108.04214.pdf
-        </link>
-        <tag>
-            DNNRapair2021
-        </tag>
-    </paper>
-    <paper type="conf">
-        <title>
            Safe Navigation in Human Occupied Environments Using Sampling and Control Barrier Functions
         </title>
         <authors>
@@ -155,24 +156,6 @@
         <tag>
             IROS2021
         </tag>
-    </paper>
-        <paper type="conf">
-        <title>
-           Discovering physical interaction vulnerabilities in IoT deployments
-        </title>
-        <authors>
-           Muslum Ozgur Ozmen, Xuansong Li, Andrew Chun-An Chu, Z Berkay Celik, Bardh Hoxha, Xiangyu Zhang
-        </authors>
-        <other>
-            arXiv preprint, 2021
-        </other>
-        <link>
-            https://arxiv.org/pdf/2102.01812
-        </link>
-        <tag>
-            IOT2021
-        </tag>
-    </paper>
     <paper type="conf">
         <title>
            Reachability Analysis of Convolutional Neural Networks
