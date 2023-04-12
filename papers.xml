@@ -2,6 +2,74 @@
 <papers>
     <paper type="conf">
         <title>
+           A Neurosymbolic Approach to the Verification of Temporal Logic Properties of Learning enabled Control Systems
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov, Geogios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), 2023
+        </other>
+        <link>
+            https://arxiv.org/pdf/2303.05394
+        </link>
+        <tag>
+            ICCPS2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Risk-Awareness in Learning Neural Controllers for Temporal Logic Objectives
+        </title>
+        <authors>
+            Navid Hashemi, Xin Qin, Jyotirmoy V Deshmukh, Georgios Fainekos, Bardh Hoxha, Danil Prokhorov, Tomoya Yamaguchi
+        </authors>
+        <other>
+            American Control Conference (ACC), 2023
+        </other>
+        <link>
+            https://arxiv.org/pdf/2302.02501
+        </link>
+        <tag>
+            ACC2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Timed Partial Order Inference Algorithm
+        </title>
+        <authors>
+            Kandai Watanabe, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Morteza Lahijanian, Sriram Sankaranarayan, Tomoya Yamaguchi
+        </authors>
+        <other>
+            International Conference on Automated Planning and Scheduling (ICAPS), 2023
+        </other>
+        <link>
+            https://arxiv.org/pdf/2302.02501
+        </link>
+        <tag>
+            ICAPS2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Safety Under Uncertainty: Tight Bounds with Risk-Aware Control Barrier Functions
+        </title>
+        <authors>
+            Mitchell Black, Georgios Fainekos, Bardh Hoxha, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            IEEE Conference on Decision and Control (CDC), 2022
+        </other>
+        <link>
+            https://arxiv.org/abs/2304.01040
+        </link>
+        <tag>
+            CDC2022
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Discovering physical interaction vulnerabilities in IoT deployments
         </title>
         <authors>
