@@ -2,23 +2,6 @@
 <papers>
     <paper type="conf">
         <title>
-           Verification of Recurrent Neural Networks with Star Reachability
-        </title>
-        <authors>
-           Hoang-Dung Tran, Sungwoo Choi, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov
-        </authors>
-        <other>
-            Hybrid Systems: Computation and Control (HSCC), 2023
-        </other>
-        <link>
-            http://www.bhoxha.com/papers/HSCC2023RnnVer.pdf
-        </link>
-        <tag>
-            HSCC2023-rnn
-        </tag>
-    </paper>
-    <paper type="conf">
-        <title>
            Quantitative Verification for Neural Networks using ProbStars
         </title>
         <authors>
@@ -36,19 +19,19 @@
     </paper>
     <paper type="conf">
         <title>
-           A Neurosymbolic Approach to the Verification of Temporal Logic Properties of Learning enabled Control Systems
+           Verification of Recurrent Neural Networks with Star Reachability
         </title>
         <authors>
-           Navid Hashemi, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov, Geogios Fainekos, Jyotirmoy Deshmukh
+           Hoang-Dung Tran, Sungwoo Choi, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov
         </authors>
         <other>
-            ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), 2023
+            Hybrid Systems: Computation and Control (HSCC), 2023
         </other>
         <link>
-            https://arxiv.org/pdf/2303.05394
+            http://www.bhoxha.com/papers/HSCC2023RNNVer.pdf
         </link>
         <tag>
-            ICCPS2023
+            HSCC2023-rnn
         </tag>
     </paper>
     <paper type="conf">
