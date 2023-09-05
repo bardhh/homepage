@@ -2,6 +2,23 @@
 <papers>
     <paper type="conf">
         <title>
+          Checkmate: Fault Timing Localization for Multi-Robot Scenarios
+        </title>
+        <authors>
+           Ippei Nishitani, Tomoya Yamaguchi, Bardh Hoxha
+        </authors>
+        <other>
+            IEEE International Conference on Automation Science and Engineering (CASE), 2023
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/CASE2023.pdf
+        </link>
+        <tag>
+            CASE2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Quantitative Verification for Neural Networks using ProbStars
         </title>
         <authors>
