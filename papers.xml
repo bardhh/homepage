@@ -2,6 +2,39 @@
 <papers>
     <paper type="conf">
         <title>
+           Pattern Matching for Perception Streams
+        </title>
+        <authors>
+           Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
+        </authors>
+        <other>
+            Runtime Verification (RV), 2023
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/RV2023.pdf
+        </link>
+        <tag>
+            RV2023
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            RTAMT – Runtime Robustness Monitors with Application to CPS and Robotics
+        </title>
+        <authors>
+            Tomoya Yamaguchi, Bardh Hoxha and Dejan Ničković
+        </authors>
+        <other>
+            International Journal on Software Tools for Technology Transfer (STTT), 2017
+        </other>
+        <link>
+            https://link.springer.com/article/10.1007/s10009-023-00720-3
+        </link>
+        <tag>
+            STTT2023
+        </tag>
+    <paper type="conf">
+        <title>
           Checkmate: Fault Timing Localization for Multi-Robot Scenarios
         </title>
         <authors>
