@@ -10,6 +10,9 @@
         <other>
             Runtime Verification (RV), 2023
         </other>
+        <award>
+            Nominated for Best Paper award
+        </award>
         <link>
             https://www.bhoxha.com/papers/RV2023.pdf
         </link>
@@ -33,6 +36,7 @@
         <tag>
             STTT2023
         </tag>
+    </paper>
     <paper type="conf">
         <title>
           Checkmate: Fault Timing Localization for Multi-Robot Scenarios
