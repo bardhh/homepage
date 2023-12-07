@@ -2,6 +2,40 @@
 <papers>
     <paper type="conf">
         <title>
+           Safe Control Synthesis for Hybrid Systems through Local Control Barrier Functions
+        </title>
+        <authors>
+           Shuo Yang, Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Rahul Mangharam
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/acc2024.pdf
+        </link>
+        <tag>
+            ACC2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           Robust Conformal Prediction for STL Runtime Verification under Distribution Shift
+        </title>
+        <authors>
+           Yiqi Zhao, Bardh Hoxha, Georgios Fainekos, Jyotirmoy V Deshmukh, Lars Lindemann
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/iccps2024.pdf
+        </link>
+        <tag>
+            ICCPS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Pattern Matching for Perception Streams
         </title>
         <authors>
