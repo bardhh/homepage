@@ -31,7 +31,7 @@
 }
 
 @article{hoxha2014benchmarks,
-  title={Benchmarks for Temporal Logic Requirements for Automotive Systems.},
+  title={Benchmarks for Temporal Logic Requirements for Automotive Systems},
   author={Hoxha, Bardh and Abbas, Houssam and Fainekos, Georgios},
   journal={ARCH@ CPSWeek},
   volume={34},
@@ -66,7 +66,7 @@
 }
 
 @inproceedings{hoxha2016planning,
-  title={Planning in Dynamic Environments Through Temporal Logic Monitoring.},
+  title={Planning in Dynamic Environments Through Temporal Logic Monitoring},
   author={Hoxha, Bardh and Fainekos, Georgios},
   booktitle={AAAI Workshop: Planning for Hybrid Systems},
   volume={16},
@@ -180,7 +180,7 @@
 }
 
 @inproceedings{dokhanchi2017arch,
-  title={ARCH-COMP17 Category Report: Preliminary Results on the Falsification Benchmarks.},
+  title={ARCH-COMP17 Category Report: Preliminary Results on the Falsification Benchmarks},
   author={Dokhanchi, Adel and Yaghoubi, Shakiba and Hoxha, Bardh and Fainekos, Georgios},
   booktitle={ARCH@ CPSWeek},
   pages={170--174},
@@ -193,7 +193,7 @@
 }
 
 @inproceedings{dokhanchi2018arch,
-  title={ARCH-COMP18 Category Report: Results on the Falsification Benchmarks.},
+  title={ARCH-COMP18 Category Report: Results on the Falsification Benchmarks},
   author={Dokhanchi, Adel and Yaghoubi, Shakiba and Hoxha, Bardh and Fainekos, Georgios and Ernst, Gidon and Zhang, Zhenya and Arcaini, Paolo and Hasuo, Ichiro and Sedwards, Sean},
   booktitle={ARCH@ ADHS},
   pages={104--109},
