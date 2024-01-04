@@ -432,7 +432,7 @@
 }
 
 @article{yamaguchi2023rtamt,
-  title={RTAMT--Runtime Robustness Monitors with Application to CPS and Robotics},
+  title={RTAMT - Runtime Robustness Monitors with Application to CPS and Robotics},
   author={Yamaguchi, Tomoya and Hoxha, Bardh and Ni{\v{c}}kovi{\'c}, Dejan},
   journal={International Journal on Software Tools for Technology Transfer},
   pages={1--21},

@@ -16,7 +16,7 @@
             ACC2024
         </tag>
         <bibtex>bibtex/ACC2024_Yang.bib</bibtex>
-    <bibtex>bibtex/ACC2024_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/ACC2024_Yang.bib</bibtex><bibtex>bibtex/ACC2024_Yang.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Robust Conformal Prediction for STL Runtime Verification under Distribution Shift
@@ -34,7 +34,7 @@
             ICCPS2024
         </tag>
         <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex>
-    <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex></paper>
+    <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex><bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Pattern Matching for Perception Streams
@@ -58,7 +58,7 @@
             RV2023
         </tag>
         <bibtex>bibtex/RV2023_Anderson.bib</bibtex>
-    <bibtex>bibtex/RV2023_Anderson.bib</bibtex></paper>
+    <bibtex>bibtex/RV2023_Anderson.bib</bibtex><bibtex>bibtex/RV2023_Anderson.bib</bibtex></paper>
     <paper type="jour">
         <title>
             RTAMT--Runtime Robustness Monitors with Application to CPS and Robotics
@@ -97,7 +97,7 @@
             CASE2023
         </tag>
         <bibtex>bibtex/CASE2023_Nishitani.bib</bibtex>
-    <bibtex>bibtex/CASE2023_Nishitani.bib</bibtex></paper>
+    <bibtex>bibtex/CASE2023_Nishitani.bib</bibtex><bibtex>bibtex/CASE2023_Nishitani.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Quantitative Verification for Neural Networks using ProbStars
@@ -118,7 +118,7 @@
             HSCC2023-probstars
         </tag>
         <bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex>
-    <bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex></paper>
+    <bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex><bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Verification of Recurrent Neural Networks with Star Reachability
@@ -139,7 +139,7 @@
             HSCC2023-rnn
         </tag>
         <bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex>
-    <bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex></paper>
+    <bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex><bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex></paper>
     <paper type="conf">
         <title>
            A Neurosymbolic Approach to the Verification of Temporal Logic Properties of Learning-enabled Control Systems
@@ -156,7 +156,7 @@
         <tag>
             ICCPS2023
         </tag>
-    <bibtex>bibtex/ICCPS2023_Hashemi.bib</bibtex></paper>
+    <bibtex>bibtex/ICCPS2023_Hashemi.bib</bibtex><bibtex>bibtex/ICCPS2023_Hashemi.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Risk-Awareness in Learning Neural Controllers for Temporal Logic Objectives
@@ -174,7 +174,7 @@
             ACC2023
         </tag>
         <bibtex>bibtex/ACC2023_Hashemi.bib</bibtex>
-    <bibtex>bibtex/ACC2023_Hashemi.bib</bibtex></paper>
+    <bibtex>bibtex/ACC2023_Hashemi.bib</bibtex><bibtex>bibtex/ACC2023_Hashemi.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Timed Partial Order Inference Algorithm
@@ -195,7 +195,7 @@
             ICAPS2023
         </tag>
         <bibtex>bibtex/ICAPS2023_Watanabe.bib</bibtex>
-    <bibtex>bibtex/ICAPS2023_Watanabe.bib</bibtex></paper>
+    <bibtex>bibtex/ICAPS2023_Watanabe.bib</bibtex><bibtex>bibtex/ICAPS2023_Watanabe.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Safety Under Uncertainty: Tight Bounds with Risk-Aware Control Barrier Functions
@@ -213,7 +213,7 @@
             CDC2022
         </tag>
         <bibtex>bibtex/CDC2022_Black.bib</bibtex>
-    <bibtex>bibtex/CDC2022_Black.bib</bibtex></paper>
+    <bibtex>bibtex/CDC2022_Black.bib</bibtex><bibtex>bibtex/CDC2022_Black.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Discovering physical interaction vulnerabilities in IoT deployments
@@ -231,7 +231,7 @@
             CSS2022
         </tag>
         <bibtex>bibtex/CSS2022_Ozmen.bib</bibtex>
-    <bibtex>bibtex/CSS2022_Ozmen.bib</bibtex></paper>
+    <bibtex>bibtex/CSS2022_Ozmen.bib</bibtex><bibtex>bibtex/CSS2022_Ozmen.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Runtime Assurance for Autonomous Driving with Neural Reachability
@@ -249,7 +249,7 @@
             ITSC2022
         </tag>
         <bibtex>bibtex/ITSC2022_Bogomolov.bib</bibtex>
-    <bibtex>bibtex/ITSC2022_Bogomolov.bib</bibtex></paper>
+    <bibtex>bibtex/ITSC2022_Bogomolov.bib</bibtex><bibtex>bibtex/ITSC2022_Bogomolov.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Neural Network Repair with Reachability Analysis
@@ -273,7 +273,7 @@
             DNNRapair2022
         </tag>
         <bibtex>bibtex/DNNRapair2022_Yang.bib</bibtex>
-    <bibtex>bibtex/DNNRapair2022_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/DNNRapair2022_Yang.bib</bibtex><bibtex>bibtex/DNNRapair2022_Yang.bib</bibtex></paper>
     <paper type="other">
         <title>
            Safety Verification and Repair of Deep Neural Networks
@@ -294,7 +294,7 @@
             ICML_DNNRapair2022
         </tag>
         <bibtex>bibtex/ICML_DNNRapair2022_Yang.bib</bibtex>
-    <bibtex>bibtex/ICML_DNNRapair2022_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/ICML_DNNRapair2022_Yang.bib</bibtex><bibtex>bibtex/ICML_DNNRapair2022_Yang.bib</bibtex></paper>
     <paper type="jour">
         <title>
            Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
@@ -312,7 +312,7 @@
             IJRR2021
         </tag>
         <bibtex>bibtex/IJRR2021_Hekmatnejad.bib</bibtex>
-    <bibtex>bibtex/IJRR2021_Hekmatnejad.bib</bibtex></paper>
+    <bibtex>bibtex/IJRR2021_Hekmatnejad.bib</bibtex><bibtex>bibtex/IJRR2021_Hekmatnejad.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Risk-Bounded Control with Kalman Filtering and Stochastic Barrier Functions
@@ -330,7 +330,7 @@
             CDC2021
         </tag>
         <bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex>
-    <bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex></paper>
+    <bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex><bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex></paper>
 
     <paper type="conf">
         <title>
@@ -352,7 +352,7 @@
             RV2021
         </tag>
         <bibtex>bibtex/RV2021_Balakrishnan.bib</bibtex>
-    <bibtex>bibtex/RV2021_Balakrishnan.bib</bibtex></paper>
+    <bibtex>bibtex/RV2021_Balakrishnan.bib</bibtex><bibtex>bibtex/RV2021_Balakrishnan.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Safe Navigation in Human Occupied Environments Using Sampling and Control Barrier Functions
@@ -370,7 +370,7 @@
             IROS2021
         </tag>
         <bibtex>bibtex/IROS2021_Majd.bib</bibtex>
-    <bibtex>bibtex/IROS2021_Majd.bib</bibtex></paper>
+    <bibtex>bibtex/IROS2021_Majd.bib</bibtex><bibtex>bibtex/IROS2021_Majd.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Reachability Analysis of Convolutional Neural Networks
@@ -391,7 +391,7 @@
             CNN2021
         </tag>
         <bibtex>bibtex/CNN2021_Yang.bib</bibtex>
-    <bibtex>bibtex/CNN2021_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/CNN2021_Yang.bib</bibtex><bibtex>bibtex/CNN2021_Yang.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Reachability Analysis of Deep ReLU Neural Networks using Facet-Vertex Incidence
@@ -412,7 +412,7 @@
             HSCC2021
         </tag>
         <bibtex>bibtex/HSCC2021_Yang.bib</bibtex>
-    <bibtex>bibtex/HSCC2021_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/HSCC2021_Yang.bib</bibtex><bibtex>bibtex/HSCC2021_Yang.bib</bibtex></paper>
     <paper type="jour">
         <title>
            Risk-bounded Control using Stochastic Barrier Functions
@@ -430,7 +430,7 @@
             LCSS2020
         </tag>
         <bibtex>bibtex/LCSS2020_Yaghoubi.bib</bibtex>
-    <bibtex>bibtex/LCSS2020_Yaghoubi.bib</bibtex></paper>
+    <bibtex>bibtex/LCSS2020_Yaghoubi.bib</bibtex><bibtex>bibtex/LCSS2020_Yaghoubi.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Search-based Test-Case Generation by Monitoring Responsibility Safety Rules
@@ -448,7 +448,7 @@
             ITSC2020
         </tag>
         <bibtex>bibtex/ITSC2020_Hekmatnejad.bib</bibtex>
-    <bibtex>bibtex/ITSC2020_Hekmatnejad.bib</bibtex></paper>
+    <bibtex>bibtex/ITSC2020_Hekmatnejad.bib</bibtex><bibtex>bibtex/ITSC2020_Hekmatnejad.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Specification-guided Software Fault Localization for Autonomous Mobile Systems
@@ -466,7 +466,7 @@
             MEMOCODE2020
         </tag>
         <bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex>
-    <bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex></paper>
+    <bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex><bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex></paper>
     <paper type="other">
         <title>
            Application of Simulation-Based Methods on Autonomous Vehicle Control with Deep Neural Network: Work-in-Progress
@@ -484,7 +484,7 @@
             EMSOFT2020
         </tag>
         <bibtex>bibtex/EMSOFT2020_Date.bib</bibtex>
-    <bibtex>bibtex/EMSOFT2020_Date.bib</bibtex></paper>
+    <bibtex>bibtex/EMSOFT2020_Date.bib</bibtex><bibtex>bibtex/EMSOFT2020_Date.bib</bibtex></paper>
     <paper type="conf">
         <title>
            TLTk: A Toolbox for Parallel Robustness Computation of Temporal Logic Specifications
@@ -505,7 +505,7 @@
             RV2020
         </tag>
         <bibtex>bibtex/RV2020_Cralley.bib</bibtex>
-    <bibtex>bibtex/RV2020_Cralley.bib</bibtex></paper>
+    <bibtex>bibtex/RV2020_Cralley.bib</bibtex><bibtex>bibtex/RV2020_Cralley.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Robustness of Specifications and its Applications to Falsification, Parameter Mining, and Runtime Monitoring with S-TaLiRo
@@ -526,7 +526,7 @@
             RV2019
         </tag>
         <bibtex>bibtex/RV2019_Fainekos.bib</bibtex>
-    <bibtex>bibtex/RV2019_Fainekos.bib</bibtex></paper>
+    <bibtex>bibtex/RV2019_Fainekos.bib</bibtex><bibtex>bibtex/RV2019_Fainekos.bib</bibtex></paper>
     <paper type="work">
         <title>
             ARCH-COMP18 Category Report: Results on the Falsification Benchmarks
@@ -543,7 +543,7 @@
         <tag>
             ARCH2018
         </tag>
-    <bibtex>bibtex/ARCH2018_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/ARCH2018_Dokhanchi.bib</bibtex><bibtex>bibtex/ARCH2018_Dokhanchi.bib</bibtex></paper>
     <paper type="jour">
         <title>
             Formal Requirement Debugging for Testing and Verification of Cyber-Physical Systems
@@ -561,7 +561,7 @@
             TECS2018
         </tag>
         <bibtex>bibtex/TECS2018_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/TECS2018_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/TECS2018_Dokhanchi.bib</bibtex><bibtex>bibtex/TECS2018_Dokhanchi.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Experience Report: Application of Falsification Methods on the UxAS System
@@ -579,7 +579,7 @@
             NFM2018
         </tag>
         <bibtex>bibtex/NFM2018_Tuncali.bib</bibtex>
-    <bibtex>bibtex/NFM2018_Tuncali.bib</bibtex></paper>
+    <bibtex>bibtex/NFM2018_Tuncali.bib</bibtex><bibtex>bibtex/NFM2018_Tuncali.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Mission Planning for Multiple Vehicles with Temporal Specifications using UxAS
@@ -597,7 +597,7 @@
             ADHS2018
         </tag>
         <bibtex>bibtex/ADHS2018_Nguyen.bib</bibtex>
-    <bibtex>bibtex/ADHS2018_Nguyen.bib</bibtex></paper>
+    <bibtex>bibtex/ADHS2018_Nguyen.bib</bibtex><bibtex>bibtex/ADHS2018_Nguyen.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Vacuity Aware Falsification for MTL Request-Response Specifications
@@ -615,7 +615,7 @@
             CASE2017
         </tag>
         <bibtex>bibtex/CASE2017_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/CASE2017_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/CASE2017_Dokhanchi.bib</bibtex><bibtex>bibtex/CASE2017_Dokhanchi.bib</bibtex></paper>
     <paper type="work">
         <title>
             ARCH-COMP17 Category Report: Preliminary Results on the Falsification Benchmarks
@@ -632,7 +632,7 @@
         <tag>
             ARCH2017
         </tag>
-    <bibtex>bibtex/ARCH2017_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/ARCH2017_Dokhanchi.bib</bibtex><bibtex>bibtex/ARCH2017_Dokhanchi.bib</bibtex></paper>
     <paper type="jour">
         <title>
             Mining parametric temporal logic properties in model-based design for cyber-physical systems
@@ -653,7 +653,7 @@
             sttt2015
         </tag>
         <bibtex>bibtex/sttt2015_Hoxha.bib</bibtex>
-    <bibtex>bibtex/sttt2015_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/sttt2015_Hoxha.bib</bibtex><bibtex>bibtex/sttt2015_Hoxha.bib</bibtex></paper>
     <paper type="conf">
         <title>
             An Efficient Algorithm for Monitoring Practical TPTL Specifications
@@ -673,7 +673,7 @@
             Memocode2016
         </tag>
         <bibtex>bibtex/Memocode2016_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/Memocode2016_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/Memocode2016_Dokhanchi.bib</bibtex><bibtex>bibtex/Memocode2016_Dokhanchi.bib</bibtex></paper>
 
     <paper type="work">
         <title>
@@ -692,7 +692,7 @@
             MTCPS16_1
         </tag>
         <bibtex>bibtex/MTCPS16_1_Hoxha.bib</bibtex>
-    <bibtex>bibtex/MTCPS16_1_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/MTCPS16_1_Hoxha.bib</bibtex><bibtex>bibtex/MTCPS16_1_Hoxha.bib</bibtex></paper>
     <paper type="work">
         <title>
             MITL Specification Debugging for Monitoring of Cyber-Physical Systems
@@ -710,7 +710,7 @@
             MTCPS16_2
         </tag>
         <bibtex>bibtex/MTCPS16_2_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/MTCPS16_2_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/MTCPS16_2_Dokhanchi.bib</bibtex><bibtex>bibtex/MTCPS16_2_Dokhanchi.bib</bibtex></paper>
     <paper type="work">
         <title>
             Planning in Dynamic Environments Through Temporal Logic Monitoring
@@ -729,7 +729,7 @@
         <tag>
             PlanHS16
         </tag>
-    <bibtex>bibtex/PlanHS16_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/PlanHS16_Hoxha.bib</bibtex><bibtex>bibtex/PlanHS16_Hoxha.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Metric Interval Temporal Logic Specification Elicitation and Debugging
@@ -749,7 +749,7 @@
             memocode2015
         </tag>
         <bibtex>bibtex/memocode2015_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/memocode2015_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/memocode2015_Dokhanchi.bib</bibtex><bibtex>bibtex/memocode2015_Dokhanchi.bib</bibtex></paper>
     <paper type="conf">
         <title>
             VISPEC: A graphical tool for elicitation of MTL requirements
@@ -770,7 +770,7 @@
             iros2015
         </tag>
         <bibtex>bibtex/iros2015_Hoxha.bib</bibtex>
-    <bibtex>bibtex/iros2015_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/iros2015_Hoxha.bib</bibtex><bibtex>bibtex/iros2015_Hoxha.bib</bibtex></paper>
     <paper type="work">
         <title>
             Towards Formal Specification Visualization for Testing and Monitoring of Cyber-Physical Systems
@@ -788,7 +788,7 @@
             difts2014
         </tag>
         <bibtex>bibtex/difts2014_Hoxha.bib</bibtex>
-    <bibtex>bibtex/difts2014_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/difts2014_Hoxha.bib</bibtex><bibtex>bibtex/difts2014_Hoxha.bib</bibtex></paper>
     <paper type="conf">
         <title>
             On-Line Monitoring for Temporal Logic Robustness
@@ -806,7 +806,7 @@
             rv2014tech
         </tag>
         <bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex>
-    <bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex></paper>
+    <bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex><bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex></paper>
     <paper type="other">
         <title>
             Conformance Testing as Falsification for Cyber-Physical Systems
@@ -824,7 +824,7 @@
             conformanceArxiv
         </tag>
         <bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex>
-    <bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex></paper>
+    <bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex><bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex></paper>
     <paper type="other">
         <title>
             WiP Abstract: Conformance Testing as Falsification for Cyber-Physical Systems
@@ -864,7 +864,7 @@
             cyber2014
         </tag>
         <bibtex>bibtex/cyber2014_Abbas.bib</bibtex>
-    <bibtex>bibtex/cyber2014_Abbas.bib</bibtex></paper>
+    <bibtex>bibtex/cyber2014_Abbas.bib</bibtex><bibtex>bibtex/cyber2014_Abbas.bib</bibtex></paper>
     <paper type="work">
         <title>
             Benchmarks for Temporal Logic Requirements for Automotive Systems
@@ -881,7 +881,7 @@
         <tag>
             arch2014bench
         </tag>
-    <bibtex>bibtex/arch2014bench_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/arch2014bench_Hoxha.bib</bibtex><bibtex>bibtex/arch2014bench_Hoxha.bib</bibtex></paper>
     <paper type="work">
         <title>
             Using S-TaLiRo on Industrial Size Automotive Models
@@ -899,7 +899,7 @@
             arch2014exp
         </tag>
         <bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex>
-    <bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex><bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex></paper>
     <paper type="other">
         <title>
             System Testing with S-TaLiRo: Recent Functionality and Additions
@@ -917,7 +917,7 @@
             hscc2014
         </tag>
         <bibtex>bibtex/hscc2014_Hoxha.bib</bibtex>
-    <bibtex>bibtex/hscc2014_Hoxha.bib</bibtex></paper>
+    <bibtex>bibtex/hscc2014_Hoxha.bib</bibtex><bibtex>bibtex/hscc2014_Hoxha.bib</bibtex></paper>
     <paper type="conf">
         <title>
             Querying Parametric Temporal Logic Properties on Embedded Systems
@@ -935,5 +935,5 @@
             ictss2012
         </tag>
         <bibtex>bibtex/ictss2012_Yang.bib</bibtex>
-    <bibtex>bibtex/ictss2012_Yang.bib</bibtex></paper>
+    <bibtex>bibtex/ictss2012_Yang.bib</bibtex><bibtex>bibtex/ictss2012_Yang.bib</bibtex></paper>
 </papers>
