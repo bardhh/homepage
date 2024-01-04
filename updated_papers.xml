@@ -1,6 +1,23 @@
 <papers>
     <paper type="conf">
         <title>
+           Feasible Space Monitoring for Multiple Control Barrier Functions with application to Large Scale Indoor Navigation
+        </title>
+        <authors>
+           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv, 2023
+        </other>
+        <link>
+            https://arxiv.org/pdf/2312.07803.pdf
+        </link>
+        <tag>
+            ICRA_2024_Parwana
+        </tag>
+    <bibtex>bibtex/ICRA_2024_Parwana_Parwana.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
            Safe Control Synthesis for Hybrid Systems through Local Control Barrier Functions
         </title>
         <authors>
