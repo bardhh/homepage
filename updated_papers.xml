@@ -61,7 +61,7 @@
     <bibtex>bibtex/RV2023_Anderson.bib</bibtex></paper>
     <paper type="jour">
         <title>
-            RTAMT &#8211; Runtime Robustness Monitors with Application to CPS and Robotics
+            RTAMT--Runtime Robustness Monitors with Application to CPS and Robotics
         </title>
         <authors>
             Tomoya Yamaguchi, Bardh Hoxha and Dejan Nic&#780;kovic&#769;
@@ -78,7 +78,8 @@
         <tag>
             STTT2023
         </tag>
-    </paper>
+
+    <bibtex>bibtex/STTT2023_Yamaguchi.bib</bibtex></paper>
     <paper type="conf">
         <title>
           Checkmate: Fault Timing Localization for Multi-Robot Scenarios
