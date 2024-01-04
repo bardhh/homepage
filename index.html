@@ -706,7 +706,6 @@
         type: "GET",
         url: "./papers.xml",
         dataType: "xml",
-        // crossDomain: true,
         success: function (xml) {
           $(xml)
             .find("paper")
@@ -716,23 +715,30 @@
               const techRep =
                 $this.find("techRep").length === 1
                   ? `, <a href ="${$this
-                    .find("techRep")
-                    .text()
-                    .trim()}" target="_blank" rel="noopener">TechRep</a>`
+                      .find("techRep")
+                      .text()
+                      .trim()}" target="_blank" rel="noopener">TechRep</a>`
                   : "";
               const code =
                 $this.find("code").length === 1
                   ? `, <a href ="${$this
-                    .find("code")
-                    .text()
-                    .trim()}" target="_blank" rel="noopener">code</a>`
+                      .find("code")
+                      .text()
+                      .trim()}" target="_blank" rel="noopener">code</a>`
+                  : "";
+              const bibtex =
+                $this.find("bibtex").length === 1
+                  ? `, <a href ="${$this
+                      .find("bibtex")
+                      .text()
+                      .trim()}" target="_blank" rel="noopener">BibTeX</a>`
                   : "";
               const award =
                 $this.find("award").length === 1
                   ? `<div class="paper-footnote">★${$this
-                    .find("award")
-                    .text()
-                    .trim()}</div>`
+                      .find("award")
+                      .text()
+                      .trim()}</div>`
                   : "";
 
               $("#pub-list").append(`
@@ -740,18 +746,18 @@
                   <div class="paper-title paper-${paperType}">
                     ${$this.find("title").text().trim()} 
                     (<a href ="${$this
-                  .find("link")
-                  .text()
-                  .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">PDF</a>${techRep}${code})
+                      .find("link")
+                      .text()
+                      .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">PDF</a>${techRep}${code}${bibtex})
                   </div>
                   <div class="paper-authors">${$this
-                  .find("authors")
-                  .text()
-                  .trim()}</div>
+                      .find("authors")
+                      .text()
+                      .trim()}</div>
                   <div class="paper-details">${$this
-                  .find("other")
-                  .text()
-                  .trim()}</div>
+                      .find("other")
+                      .text()
+                      .trim()}</div>
                   ${award}
                 </li>`);
             });
@@ -766,6 +772,7 @@
       });
     });
   </script>
+
 
   <!-- Le javascript
   ================================================== -->

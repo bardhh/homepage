@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <papers>
     <paper type="conf">
         <title>
@@ -16,6 +15,7 @@
         <tag>
             ACC2024
         </tag>
+        <bibtex>bibtex/ACC2024_Yang.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -33,6 +33,7 @@
         <tag>
             ICCPS2024
         </tag>
+        <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -56,13 +57,14 @@
         <tag>
             RV2023
         </tag>
+        <bibtex>bibtex/RV2023_Anderson.bib</bibtex>
     </paper>
     <paper type="jour">
         <title>
-            RTAMT – Runtime Robustness Monitors with Application to CPS and Robotics
+            RTAMT &#8211; Runtime Robustness Monitors with Application to CPS and Robotics
         </title>
         <authors>
-            Tomoya Yamaguchi, Bardh Hoxha and Dejan Ničković
+            Tomoya Yamaguchi, Bardh Hoxha and Dejan Nic&#780;kovic&#769;
         </authors>
         <other>
             International Journal on Software Tools for Technology Transfer (STTT), 2023
@@ -93,6 +95,7 @@
         <tag>
             CASE2023
         </tag>
+        <bibtex>bibtex/CASE2023_Nishitani.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -113,6 +116,7 @@
         <tag>
             HSCC2023-probstars
         </tag>
+        <bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -133,6 +137,7 @@
         <tag>
             HSCC2023-rnn
         </tag>
+        <bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -167,6 +172,7 @@
         <tag>
             ACC2023
         </tag>
+        <bibtex>bibtex/ACC2023_Hashemi.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -187,6 +193,7 @@
         <tag>
             ICAPS2023
         </tag>
+        <bibtex>bibtex/ICAPS2023_Watanabe.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -204,6 +211,7 @@
         <tag>
             CDC2022
         </tag>
+        <bibtex>bibtex/CDC2022_Black.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -221,6 +229,7 @@
         <tag>
             CSS2022
         </tag>
+        <bibtex>bibtex/CSS2022_Ozmen.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -238,6 +247,7 @@
         <tag>
             ITSC2022
         </tag>
+        <bibtex>bibtex/ITSC2022_Bogomolov.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -261,6 +271,7 @@
         <tag>
             DNNRapair2022
         </tag>
+        <bibtex>bibtex/DNNRapair2022_Yang.bib</bibtex>
     </paper>
     <paper type="other">
         <title>
@@ -281,6 +292,7 @@
         <tag>
             ICML_DNNRapair2022
         </tag>
+        <bibtex>bibtex/ICML_DNNRapair2022_Yang.bib</bibtex>
     </paper>
     <paper type="jour">
         <title>
@@ -298,6 +310,7 @@
         <tag>
             IJRR2021
         </tag>
+        <bibtex>bibtex/IJRR2021_Hekmatnejad.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -315,24 +328,9 @@
         <tag>
             CDC2021
         </tag>
+        <bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex>
     </paper>
-    <!-- <paper type="jour">
-        <title>
-           Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
-        </title>
-        <authors>
-           Mohammad Hekmatnejad, Bardh Hoxha, Jyotirmoy V. Deshmukh, Yezhou Yang, and Georgios Fainekos
-        </authors>
-        <other>
-            (under review)
-        </other>
-        <link>
-            https://arxiv.org/pdf/2206.14372.pdf
-        </link>
-        <tag>
-            IJRR2021
-        </tag>
-    </paper> -->
+
     <paper type="conf">
         <title>
            PerceMon: Online Monitoring for Perception Systems
@@ -352,6 +350,7 @@
         <tag>
             RV2021
         </tag>
+        <bibtex>bibtex/RV2021_Balakrishnan.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -369,6 +368,7 @@
         <tag>
             IROS2021
         </tag>
+        <bibtex>bibtex/IROS2021_Majd.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -389,6 +389,7 @@
         <tag>
             CNN2021
         </tag>
+        <bibtex>bibtex/CNN2021_Yang.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -409,6 +410,7 @@
         <tag>
             HSCC2021
         </tag>
+        <bibtex>bibtex/HSCC2021_Yang.bib</bibtex>
     </paper>
     <paper type="jour">
         <title>
@@ -426,6 +428,7 @@
         <tag>
             LCSS2020
         </tag>
+        <bibtex>bibtex/LCSS2020_Yaghoubi.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -443,6 +446,7 @@
         <tag>
             ITSC2020
         </tag>
+        <bibtex>bibtex/ITSC2020_Hekmatnejad.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -460,6 +464,7 @@
         <tag>
             MEMOCODE2020
         </tag>
+        <bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex>
     </paper>
     <paper type="other">
         <title>
@@ -477,6 +482,7 @@
         <tag>
             EMSOFT2020
         </tag>
+        <bibtex>bibtex/EMSOFT2020_Date.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -497,6 +503,7 @@
         <tag>
             RV2020
         </tag>
+        <bibtex>bibtex/RV2020_Cralley.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -517,6 +524,7 @@
         <tag>
             RV2019
         </tag>
+        <bibtex>bibtex/RV2019_Fainekos.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -551,6 +559,7 @@
         <tag>
             TECS2018
         </tag>
+        <bibtex>bibtex/TECS2018_Dokhanchi.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -568,6 +577,7 @@
         <tag>
             NFM2018
         </tag>
+        <bibtex>bibtex/NFM2018_Tuncali.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -585,6 +595,7 @@
         <tag>
             ADHS2018
         </tag>
+        <bibtex>bibtex/ADHS2018_Nguyen.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -602,6 +613,7 @@
         <tag>
             CASE2017
         </tag>
+        <bibtex>bibtex/CASE2017_Dokhanchi.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -639,6 +651,7 @@
         <tag>
             sttt2015
         </tag>
+        <bibtex>bibtex/sttt2015_Hoxha.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -658,6 +671,7 @@
         <tag>
             Memocode2016
         </tag>
+        <bibtex>bibtex/Memocode2016_Dokhanchi.bib</bibtex>
     </paper>
 
     <paper type="work">
@@ -676,6 +690,7 @@
         <tag>
             MTCPS16_1
         </tag>
+        <bibtex>bibtex/MTCPS16_1_Hoxha.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -693,6 +708,7 @@
         <tag>
             MTCPS16_2
         </tag>
+        <bibtex>bibtex/MTCPS16_2_Dokhanchi.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -731,6 +747,7 @@
         <tag>
             memocode2015
         </tag>
+        <bibtex>bibtex/memocode2015_Dokhanchi.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -751,6 +768,7 @@
         <tag>
             iros2015
         </tag>
+        <bibtex>bibtex/iros2015_Hoxha.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -768,6 +786,7 @@
         <tag>
             difts2014
         </tag>
+        <bibtex>bibtex/difts2014_Hoxha.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -785,6 +804,7 @@
         <tag>
             rv2014tech
         </tag>
+        <bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex>
     </paper>
     <paper type="other">
         <title>
@@ -802,6 +822,7 @@
         <tag>
             conformanceArxiv
         </tag>
+        <bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex>
     </paper>
     <paper type="other">
         <title>
@@ -841,6 +862,7 @@
         <tag>
             cyber2014
         </tag>
+        <bibtex>bibtex/cyber2014_Abbas.bib</bibtex>
     </paper>
     <paper type="work">
         <title>
@@ -875,6 +897,7 @@
         <tag>
             arch2014exp
         </tag>
+        <bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex>
     </paper>
     <paper type="other">
         <title>
@@ -892,6 +915,7 @@
         <tag>
             hscc2014
         </tag>
+        <bibtex>bibtex/hscc2014_Hoxha.bib</bibtex>
     </paper>
     <paper type="conf">
         <title>
@@ -909,5 +933,6 @@
         <tag>
             ictss2012
         </tag>
+        <bibtex>bibtex/ictss2012_Yang.bib</bibtex>
     </paper>
 </papers>
