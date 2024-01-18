@@ -240,6 +240,23 @@
     <bibtex>bibtex/CSS2022_Ozmen.bib</bibtex></paper>
     <paper type="conf">
         <title>
+           Safety Verification and Repair of Deep Neural Networks
+        </title>
+        <authors>
+           Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Taylor T Johnson
+        </authors>
+        <other>
+            Workshop on Formal Verification of Machine Learning (WFVML 2022)
+        </other>
+        <link>
+            http://www.bhoxha.com/papers/WFML2022.pdf
+        </link>
+        <tag>
+            WFML2022
+        </tag>
+    <bibtex>bibtex/WFML.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
            Runtime Assurance for Autonomous Driving with Neural Reachability
         </title>
         <authors>
