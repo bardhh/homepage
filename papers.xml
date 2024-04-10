@@ -1,6 +1,57 @@
 <papers>
     <paper type="conf">
         <title>
+            Risk-Aware Fixed-Time Stabilization of Stochastic Systems under Measurement Uncertainty
+        </title>
+        <authors>
+            itchell Black, Georgios Fainekos, Bardh Hoxha, Dimitra Panagou
+        </authors>
+        <other>
+            American Control Conference (ACC), 2024
+        </other>
+        <link>
+            https://arxiv.org/abs/2403.20258
+        </link>
+        <tag>
+            ACC2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+        Scaling Learning based Policy Optimization for Temporal Tasks via Dropout
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://arxiv.org/abs/2403.15826
+        </link>
+        <tag>
+            TCPS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           SMT-Based Dynamic Multi-Robot Task Allocation
+        </title>
+        <authors>
+           Victoria Marie Tuck, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, S Shankar Sastry, Sanjit A Seshia
+        </authors>
+        <other>
+            NASA Formal Methods (NFM), 2024
+        </other>
+        <link>
+            https://arxiv.org/abs/2403.11737
+        </link>
+        <tag>
+            NFM 2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
            Feasible Space Monitoring for Multiple Control Barrier Functions with application to Large Scale Indoor Navigation
         </title>
         <authors>
