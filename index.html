@@ -526,6 +526,37 @@
               <h1>Software</h1>
             </div>
 
+            <h3>CBFKit: A Control Barrier Function Toolbox for Robotics Applications</h3>
+            <div>
+              CBFKit is a Python/ROS2 toolbox designed to facilitate safe planning and control for robotics
+              applications, particularly in uncertain environments. The toolbox utilizes Control Barrier Functions
+              (CBFs) to provide formal safety guarantees while offering flexibility and ease of use. Key features
+              include:
+            </div>
+
+            <ul id="toolFeatures">
+              <li>Generalized Framework: Supports the design of CBFs for various robotic systems operating in both
+                deterministic and stochastic settings.</li>
+              <li>ROS Integration: Seamlessly connects with ROS2, enabling multi-robot applications, environment and map
+                encoding, and integration with motion planning algorithms.</li>
+              <li>Diverse CBF Options: Provides a variety of CBF formulations and algorithms to address different
+                control scenarios.</li>
+              <li>Model-based and Model-free Control: Accommodates both model-based control strategies using system
+                dynamics and model-free control approaches.</li>
+              <li>Safety Guarantee: CBFs provide mathematically rigorous guarantees of safety by ensuring the system
+                remains within a defined safe operating region.</li>
+              <li>Flexibility: Allows users to specify custom safety constraints and barrier functions to tailor the
+                control behavior to specific needs.</li>
+              <li>Efficiency: Leverages JAX for efficient automatic differentiation and jaxopt for fast quadratic
+                program (QP) solving, enabling real-time control applications.</li>
+              <li>Code Generation: Simplifies model creation with automatic code generation for dynamics, controllers,
+                and certificate functions.</li>
+              <li>Usability: Includes tutorials and examples for a smooth learning curve and rapid prototyping.</li>
+              <li>Functional Programming: Built on functional programming principles, emphasizing data immutability and
+                programmatic determinism.</li>
+              <li>The repository can be found <a href="https://github.com/bardhh/cbfkit">here</a>.</li>
+            </ul>
+
             <h3>Strem: A Spatio-Temporal Regular Expression Matcher</h3>
             <div>
               STREM, implemented in RUST, is a versatile tool for efficient pattern matching in perception streams,
@@ -715,30 +746,30 @@
               const techRep =
                 $this.find("techRep").length === 1
                   ? `, <a href ="${$this
-                      .find("techRep")
-                      .text()
-                      .trim()}" target="_blank" rel="noopener">TechRep</a>`
+                    .find("techRep")
+                    .text()
+                    .trim()}" target="_blank" rel="noopener">TechRep</a>`
                   : "";
               const code =
                 $this.find("code").length === 1
                   ? `, <a href ="${$this
-                      .find("code")
-                      .text()
-                      .trim()}" target="_blank" rel="noopener">code</a>`
+                    .find("code")
+                    .text()
+                    .trim()}" target="_blank" rel="noopener">code</a>`
                   : "";
               const bibtex =
                 $this.find("bibtex").length === 1
                   ? `, <a href ="${$this
-                      .find("bibtex")
-                      .text()
-                      .trim()}" target="_blank" rel="noopener">BibTeX</a>`
+                    .find("bibtex")
+                    .text()
+                    .trim()}" target="_blank" rel="noopener">BibTeX</a>`
                   : "";
               const award =
                 $this.find("award").length === 1
                   ? `<div class="paper-footnote">★${$this
-                      .find("award")
-                      .text()
-                      .trim()}</div>`
+                    .find("award")
+                    .text()
+                    .trim()}</div>`
                   : "";
 
               $("#pub-list").append(`
@@ -746,18 +777,18 @@
                   <div class="paper-title paper-${paperType}">
                     ${$this.find("title").text().trim()} 
                     (<a href ="${$this
-                      .find("link")
-                      .text()
-                      .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">PDF</a>${techRep}${code}${bibtex})
+                  .find("link")
+                  .text()
+                  .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">PDF</a>${techRep}${code}${bibtex})
                   </div>
                   <div class="paper-authors">${$this
-                      .find("authors")
-                      .text()
-                      .trim()}</div>
+                  .find("authors")
+                  .text()
+                  .trim()}</div>
                   <div class="paper-details">${$this
-                      .find("other")
-                      .text()
-                      .trim()}</div>
+                  .find("other")
+                  .text()
+                  .trim()}</div>
                   ${award}
                 </li>`);
             });

@@ -1,6 +1,26 @@
 <papers>
     <paper type="conf">
         <title>
+        CBFKit: A Control Barrier Function Toolbox for Robotics Applications
+        </title>
+        <authors>
+           Mitchell Black and Georgios Fainekos and Bardh Hoxha and Hideki Okamoto and Danil Prokhorov
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://arxiv.org/abs/2404.07158
+        </link>
+        <code>
+            https://github.com/bardhh/cbfkit
+        </code>
+        <tag>
+            IROS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
             Risk-Aware Fixed-Time Stabilization of Stochastic Systems under Measurement Uncertainty
         </title>
         <authors>
@@ -52,23 +72,6 @@
     </paper>
     <paper type="conf">
         <title>
-           Feasible Space Monitoring for Multiple Control Barrier Functions with application to Large Scale Indoor Navigation
-        </title>
-        <authors>
-           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
-        </authors>
-        <other>
-            arXiv, 2023
-        </other>
-        <link>
-            https://arxiv.org/pdf/2312.07803.pdf
-        </link>
-        <tag>
-            ICRA_2024_Parwana
-        </tag>
-    <bibtex>bibtex/ICRA_2024_Parwana_Parwana.bib</bibtex></paper>
-    <paper type="conf">
-        <title>
            Safe Control Synthesis for Hybrid Systems through Local Control Barrier Functions
         </title>
         <authors>
@@ -101,6 +104,23 @@
             ICCPS2024
         </tag>
     <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Feasible Space Monitoring for Multiple Control Barrier Functions with application to Large Scale Indoor Navigation
+        </title>
+        <authors>
+           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://arxiv.org/pdf/2312.07803.pdf
+        </link>
+        <tag>
+            ICRA_2024_Parwana
+        </tag>
+    <bibtex>bibtex/ICRA_2024_Parwana_Parwana.bib</bibtex></paper>
     <paper type="conf">
         <title>
            Pattern Matching for Perception Streams
