@@ -1,6 +1,23 @@
 <papers>
     <paper type="conf">
         <title>
+            Optimal Planning for Timed Partial Order Specifications
+        </title>
+        <authors>
+            Kandai Watanabe, Georgios Fainekos, Bardh Hoxha, Morteza Lahijanian, Hideki Okamoto, Sriram Sankaranarayanan
+        </authors>
+        <other>
+            2024 IEEE International Conference on Robotics and Automation (ICRA2024), May 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf
+        </link>
+        <tag>
+            ICRA2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
         CBFKit: A Control Barrier Function Toolbox for Robotics Applications
         </title>
         <authors>
