@@ -764,6 +764,14 @@
                     .text()
                     .trim()}" target="_blank" rel="noopener">BibTeX</a>`
                   : "";
+              // New video link addition
+              const video =
+                $this.find("video").length === 1
+                  ? `, <a href ="${$this
+                    .find("video")
+                    .text()
+                    .trim()}" target="_blank" rel="noopener">Video</a>`
+                  : "";
               const award =
                 $this.find("award").length === 1
                   ? `<div class="paper-footnote">★${$this
@@ -771,7 +779,7 @@
                     .text()
                     .trim()}</div>`
                   : "";
-
+  
               $("#pub-list").append(`
                 <li>
                   <div class="paper-title paper-${paperType}">
@@ -779,7 +787,7 @@
                     (<a href ="${$this
                   .find("link")
                   .text()
-                  .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">PDF</a>${techRep}${code}${bibtex})
+                  .trim()}" target="_blank" rel="noopener" onClick="ga('send', 'event', 'download', 'click', '${$this.find("tag").text().trim()}');">pdf</a>${techRep}${code}${video}${bibtex})
                   </div>
                   <div class="paper-authors">${$this
                   .find("authors")
