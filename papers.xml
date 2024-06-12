@@ -1,6 +1,26 @@
 <papers>
     <paper type="conf">
         <title>
+            SMT-Based Dynamic Multi-Robot Task Allocation
+        </title>
+        <authors>
+            Victoria Marie Tuck, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Shankar Sastry, Sanjit Seshia
+        </authors>
+        <other>
+            NASA Formal Methods Symposium, June 2024
+        </other>
+        <link>
+            https://arxiv.org/pdf/2403.11737
+        </link>
+        <!-- <video>
+            https://urldefense.com/v3/__https://youtu.be/_1YuUj3fuV0__;!!B-Wf7dNC-A!5CIko1U7kCI5jujQiVV1HtZI-Uq_oGFOKbLDehVNRaHPbHPG9oKc8gij9jt_sx9NLJuwdSaXyX8uqHNjqnA3e0PkqzwtENDbdA$
+        </video> -->
+        <tag>
+            NFM2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
             Optimal Planning for Timed Partial Order Specifications
         </title>
         <authors>
