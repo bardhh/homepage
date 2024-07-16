@@ -1,13 +1,31 @@
 <papers>
     <paper type="conf">
         <title>
+            LB4TL: Smooth Semantics for Temporal Logic for Scalable Training of Neural Feedback Controllers
+        </title>
+        <authors>
+            Navid Hashemi, Sam Williams, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            The 8th IFAC Conference on Analysis and Design of Hybrid Systems (ADHS), July 2024
+        </other>
+        <link>
+            https://arxiv.org/abs/2403.15826
+        </link>
+        <theme>Optimal Planning and Control</theme>
+        <tag>
+            ADHS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
             SMT-Based Dynamic Multi-Robot Task Allocation
         </title>
         <authors>
             Victoria Marie Tuck, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Shankar Sastry, Sanjit Seshia
         </authors>
         <other>
-            NASA Formal Methods Symposium, June 2024
+            NASA Formal Methods Symposium (NFM), June 2024
         </other>
         <link>
             https://arxiv.org/pdf/2403.11737
@@ -67,7 +85,7 @@
             Risk-Aware Fixed-Time Stabilization of Stochastic Systems under Measurement Uncertainty
         </title>
         <authors>
-            itchell Black, Georgios Fainekos, Bardh Hoxha, Dimitra Panagou
+            Mitchell Black, Georgios Fainekos, Bardh Hoxha, Dimitra Panagou
         </authors>
         <other>
             American Control Conference (ACC), 2024
