@@ -52,6 +52,7 @@
   <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
 
   <script type="text/javascript">
     function expand(id) {
@@ -160,8 +161,21 @@
           <li>
             <a href="#updates"><i class="icon-chevron-right"></i>Updates</a>
           </li>
-          <li>
-            <a href="#publications"><i class="icon-chevron-right"></i>Publications</a>
+          <li class="dropdown">
+            <a href="#publicationsMenu" class="dropdown-toggle" id="publicationsMenu"><i class="icon-chevron-right"></i>Publications <b class="caret"></b></a>
+            <div class="dropdown-menu">
+              <ul>
+                  <li><a href="#" data-filter="*">All</a></li>
+                  <li><a href="#" data-filter=".theme1">Optimal Planning and Control</a></li>
+                  <li><a href="#" data-filter=".theme2">Runtime Verification and Monitoring</a></li>
+                  <li><a href="#" data-filter=".theme3">Risk-Aware and Stochastic Systems</a></li>
+                  <li><a href="#" data-filter=".theme4">Learning-enabled Systems</a></li>
+                  <li><a href="#" data-filter=".theme5">Control Barrier Functions</a></li>
+                  <li><a href="#" data-filter=".theme6">Verification and Repair of Neural Networks</a></li>
+                  <li><a href="#" data-filter=".theme7">Testing and Verification</a></li>
+                  <li><a href="#" data-filter=".theme8">Temporal Logic and Specification Debugging</a></li>
+              </ul>
+          </div>
           </li>
           <!-- <li><a href="#group"><i class="icon-chevron-right"></i>Group</a></li> -->
           <li>
@@ -244,7 +258,6 @@
           </section>
 
           <section id="publications">
-            <!-- <div class="stars"></div> -->
             <div class="page-header">
               <h1>Publications</h1>
             </div>
@@ -810,7 +823,50 @@
         },
       });
     });
+
+    
   </script>
+
+<script type="text/javascript" async>
+  $(document).ready(function() {
+    $('#publicationsMenu').click(function(e) {
+      e.preventDefault();
+      var $dropdownMenu = $(this).next('.dropdown-menu');
+      if ($dropdownMenu.parent().hasClass('open')) {
+        $dropdownMenu.parent().removeClass('open');
+        $dropdownMenu.css('max-height', '0');
+      } else {
+        // Close other open dropdowns if any
+        $('.dropdown').removeClass('open');
+        $('.dropdown-menu').css('max-height', '0');
+
+        // Open this dropdown
+        $dropdownMenu.parent().addClass('open');
+        $dropdownMenu.css('max-height', '200px'); // Adjust according to content
+      }
+      // Scroll to the publications section
+      $('html, body').animate({
+        scrollTop: $("#publications").offset().top
+      }, 500);
+    });
+
+    // Scroll to publications section when any subitem is clicked
+    $('.dropdown-menu a').click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $("#publications").offset().top
+      }, 500);
+    });
+
+    // Optional: Clicking outside of dropdown closes it
+    $(document).click(function(e) {
+      if (!$(e.target).closest('.dropdown').length) {
+        $('.dropdown').removeClass('open');
+        $('.dropdown-menu').css('max-height', '0');
+      }
+    });
+  });
+</script>
 
 
   <!-- Le javascript
