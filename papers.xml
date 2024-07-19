@@ -1,4 +1,22 @@
 <papers>
+    <paper type="work">
+        <title>
+            Model Predictive Path Integral Methods with Reach-Avoid Tasks and Control Barrier Functions
+        </title>
+        <authors>
+            Hardik Parwana, Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov
+        </authors>
+        <other>
+            Towards Safe Autonomy: Emerging Requirements, Definitions, and Methods, July 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/rss-tsa24.pdf
+        </link>
+        <theme>Optimal Planning and Control</theme>
+        <tag>
+            TSA2024
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
             LB4TL: Smooth Semantics for Temporal Logic for Scalable Training of Neural Feedback Controllers
