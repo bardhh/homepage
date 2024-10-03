@@ -17,6 +17,24 @@
             TSA2024
         </tag>
     </paper>
+    <paper type="jour">
+        <title>
+        Scaling Learning based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            ACM Transactions on Cyber-Physical Systems, 2024
+        </other>
+        <theme>Learning-enabled Systems</theme>
+        <link>
+            https://arxiv.org/abs/2403.15826
+        </link>
+        <tag>
+            TCPS2024
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
             LB4TL: Smooth Semantics for Temporal Logic for Scalable Training of Neural Feedback Controllers
@@ -85,7 +103,7 @@
            Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov
         </authors>
         <other>
-            arXiv, 2024
+            IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2024
         </other>
         <link>
             https://arxiv.org/abs/2404.07158
@@ -114,24 +132,6 @@
         </link>
         <tag>
             ACC2024
-        </tag>
-    </paper>
-    <paper type="conf">
-        <title>
-        Scaling Learning based Policy Optimization for Temporal Tasks via Dropout
-        </title>
-        <authors>
-           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
-        </authors>
-        <other>
-            arXiv, 2024
-        </other>
-        <theme>Learning-enabled Systems</theme>
-        <link>
-            https://arxiv.org/abs/2403.15826
-        </link>
-        <tag>
-            TCPS2024
         </tag>
     </paper>
     <paper type="conf">
