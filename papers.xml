@@ -1,4 +1,25 @@
 <papers>
+    <paper type="conf">
+        <title>
+        Neural Configuration Distance Function for Continuum Robot Control
+        </title>
+        <authors>
+        Kehan Long, Hardik Parwana, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Nikolay Atanasov
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <theme>Learning-enabled Systems</theme>
+        <link>
+            https://arxiv.org/pdf/2409.13865
+        </link>
+        <code>
+            https://github.com/cps-atlas/ndf-coroco
+        </code>
+        <tag>
+            ICRA2024
+        </tag>
+    </paper>
     <paper type="work">
         <title>
             Model Predictive Path Integral Methods with Reach-Avoid Tasks and Control Barrier Functions
