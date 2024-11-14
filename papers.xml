@@ -1,4 +1,22 @@
 <papers>
+    <paper type="jour">
+        <title>
+        Querying Perception Streams with Spatial Regular Expressions
+        </title>
+        <authors>
+           Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <!-- <theme>Learning-enabled Systems</theme> -->
+        <link>
+            https://arxiv.org/pdf/2411.05946
+        </link>
+        <tag>
+            STTT2024
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
         Neural Configuration Distance Function for Continuum Robot Control
