@@ -1,4 +1,22 @@
 <papers>
+    <paper type="conf">
+        <title>
+        Risk-aware MPPI for Stochastic Hybrid Systems
+        </title>
+        <authors>
+           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <!-- <theme>Learning-enabled Systems</theme> -->
+        <link>
+            https://arxiv.org/pdf/2411.09198
+        </link>
+        <tag>
+            MPPI2024
+        </tag>
+    </paper>
     <paper type="jour">
         <title>
         Querying Perception Streams with Spatial Regular Expressions
