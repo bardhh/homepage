@@ -9,10 +9,15 @@
         <other>
             arXiv, 2024
         </other>
-        <!-- <theme>Learning-enabled Systems</theme> -->
         <link>
             https://arxiv.org/pdf/2411.09198
         </link>
+        <video>
+            https://private-user-images.githubusercontent.com/19849515/371942037-c75edbed-d587-4282-b8d9-2c74940301af.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzIxNzYyNjIsIm5iZiI6MTczMjE3NTk2MiwicGF0aCI6Ii8xOTg0OTUxNS8zNzE5NDIwMzctYzc1ZWRiZWQtZDU4Ny00MjgyLWI4ZDktMmM3NDk0MDMwMWFmLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTIxVDA3NTkyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhNmRmODBlNjQ1MDMyYjg2ZjNkMjA1Y2E5NDI4NjU4MTdkOWZmMjBiZDViMGM0NGY5Yjg0NTlkZDI1MDg3ZGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.kvEQS-RPm8EjLlAZL0jFmT7cq4Z2bpuHZDFSfq8DM1o
+        </video>
+        <code>
+            https://github.com/hardikparwana/social-navigation
+        </code>
         <tag>
             MPPI2024
         </tag>
@@ -69,6 +74,9 @@
         <link>
             https://www.bhoxha.com/papers/rss-tsa24.pdf
         </link>
+        <code>
+            https://github.com/bardhh/cbfkit/tree/mppi-extension
+        </code>
         <theme>Optimal Planning and Control</theme>
         <tag>
             TSA2024
@@ -284,7 +292,7 @@
         </other>
         <theme>Runtime Verification and Monitoring</theme>
         <link>
-            https://link.springer.com/article/10.1007/s10009-023-00720-3
+            https://www.bhoxha.com/papers/rtamt2023.pdf
         </link>
         <code>
         https://github.com/nickovic/rtamt
