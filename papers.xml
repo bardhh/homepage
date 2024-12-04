@@ -1,4 +1,21 @@
 <papers>
+    <paper type="work">
+        <title>
+            From Dashcam Videos to Driving Simulations: Stress Testing Automated Vehicles against Rare Events
+        </title>
+        <authors>
+           Yan Miao, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov, Sayan Mitra
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <link>
+            https://arxiv.org/pdf/2411.16027
+        </link>
+        <tag>
+            AAAIw2024
+        </tag>
+    </paper>
     <paper type="conf">
         <title>
         Risk-aware MPPI for Stochastic Hybrid Systems
@@ -84,7 +101,7 @@
     </paper>
     <paper type="jour">
         <title>
-        Scaling Learning based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
+        Scaling Learning-based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
         </title>
         <authors>
            Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
