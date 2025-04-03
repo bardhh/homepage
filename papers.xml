@@ -1,4 +1,38 @@
 <papers>
+    <paper type="jour">
+        <title>
+            Reachability analysis of recurrent neural networks
+        </title>
+        <authors>
+           Sung Woo Choi, Yuntao Li, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Georgios Fainekos, Danil Prokhorov, Hoang-Dung Tran
+        </authors>
+        <other>
+            Nonlinear Analysis: Hybrid Systems, 2025
+        </other>
+        <link>
+            https://www.sciencedirect.com/science/article/abs/pii/S1751570X2500007X
+        </link>
+        <tag>
+            NAHS2025
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Scaling Learning-based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy V Deshmukh
+        </authors>
+        <other>
+            ACM Transactions on Cyber-Physical Systems, 2025
+        </other>
+        <link>
+            https://dl.acm.org/doi/full/10.1145/3696112
+        </link>
+        <tag>
+            TCPS2025
+        </tag>
+    </paper>
     <paper type="work">
         <title>
             From Dashcam Videos to Driving Simulations: Stress Testing Automated Vehicles against Rare Events
@@ -7,7 +41,7 @@
            Yan Miao, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov, Sayan Mitra
         </authors>
         <other>
-            arXiv, 2024
+            Machine Learning for Autonomous Driving - AAAI, 2025
         </other>
         <link>
             https://arxiv.org/pdf/2411.16027
@@ -24,7 +58,7 @@
            Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
         </authors>
         <other>
-            arXiv, 2024
+            ACC, 2025
         </other>
         <link>
             https://arxiv.org/pdf/2411.09198
@@ -47,7 +81,7 @@
            Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
         </authors>
         <other>
-            arXiv, 2024
+            ITSS, 2024
         </other>
         <!-- <theme>Learning-enabled Systems</theme> -->
         <link>
@@ -75,7 +109,7 @@
             https://github.com/cps-atlas/ndf-coroco
         </code>
         <tag>
-            ICRA2024
+            IROS2025
         </tag>
     </paper>
     <paper type="work">
