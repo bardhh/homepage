@@ -286,35 +286,72 @@ section {
       } */
 
       .header-text-box {
-        background: rgba(255, 255, 255, 0.35); /* true semi-transparency */
-        -webkit-backdrop-filter: blur(6px);
-        backdrop-filter: blur(6px);
-        padding: 1.5rem 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        color: #1e293b;
-        max-width: 720px;
+        /* --- Core Glass Effect --- */
+        /* Slightly more transparent background */
+        background: rgba(255, 255, 255, 0.15); /* Lower alpha (was 0.2 or 0.35) */
+      
+        /* Stronger blur effect */
+        -webkit-backdrop-filter: blur(18px); /* Increase blur (was 6px or 12px) */
+        backdrop-filter: blur(18px);
+      
+        /* --- Visual Styling --- */
+        /* Subtle border to define the 'glass' edge */
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      
+        /* Existing rounded corners */
+        border-radius: 1rem; /* 16px */
+      
+        /* Adjusted shadow for depth */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Adjust spread/opacity as needed */
+      
+        /* --- Layout & Text --- */
+        padding: 1.5rem 2rem; /* Keep appropriate padding */
+        max-width: 720px;    /* Keep max-width if desired */
+      
+        /* --- Text Color (Crucial for Readability) --- */
+        /* Set default dark text color for elements inside */
+        color: #111827; /* A very dark grey/off-black */
       }
+      
+      /* Ensure specific text elements inside have good contrast */
       .header-text-box h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #0f172a;
+        color: #ffffff; /* Slightly darker/bluer black for heading */
+        font-size: 3rem; /* Adjust as needed */
+        font-weight: 600;
         margin-bottom: 0.3rem;
-        letter-spacing: -0.5px;
+        letter-spacing: 0px;
       }
+      
       .header-text-box p {
-        font-size: 1.1rem;
-        color: #334155;
-        margin-bottom: 0.2rem;
+        color: #1f2937; /* Dark grey for paragraphs */
+        font-size: 0%; /* Adjust as needed */
+        margin-bottom: 0rem;
       }
+      
+      /* Optional: Adjust specific paragraph styles if needed */
+      .header-text-box p.lead.fs-4 {
+         /* Keep fs-4 styles, color is inherited from .header-text-box p */
+         font-weight: 400; /* Default lead weight */
+      }
+      .header-text-box p.lead.fs-5 {
+         /* Keep fs-5 styles, color is inherited */
+         font-weight: 500; /* Default lead weight */
+         color: #1f2937; /* Make slightly lighter if desired */
+      }
+      
+      
+      /* --- Ensure Icons Outside This Box Remain White --- */
+      /* (The original header-icons rules should still work fine) */
       .header-icons a {
-        color: #1f2937;
-        opacity: 0.85;
-        transition: all 0.2s ease;
+        color: #f1f5f9; /* Keep icons light/white */
+        opacity: 0.9;
+        transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease; /* Added color transition */
       }
+      
       .header-icons a:hover {
-        color: #1d4ed8;
-        transform: scale(1.1);
+        color: #ffffff; /* Make brighter white on hover */
+        opacity: 1;
+        transform: scale(1.15);
       }
 
       /* Card improvements */
