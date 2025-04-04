@@ -1,7 +1,7 @@
 <papers>
     <paper type="jour">
         <title>
-            Reachability analysis of recurrent neural networks
+            Reachability Analysis of Recurrent Neural Networks
         </title>
         <authors>
            Sung Woo Choi, Yuntao Li, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Georgios Fainekos, Danil Prokhorov, Hoang-Dung Tran
@@ -24,7 +24,7 @@
            Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy V Deshmukh
         </authors>
         <other>
-            ACM Transactions on Cyber-Physical Systems, 2025
+            Transactions on Cyber-Physical Systems, 2025
         </other>
         <link>
             https://dl.acm.org/doi/full/10.1145/3696112
@@ -35,7 +35,7 @@
     </paper>
     <paper type="work">
         <title>
-            From Dashcam Videos to Driving Simulations: Stress Testing Automated Vehicles against Rare Events
+            From Dashcam Videos to Driving Simulations: Stress Testing Automated Vehicles Against Rare Events
         </title>
         <authors>
            Yan Miao, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov, Sayan Mitra
@@ -58,7 +58,7 @@
            Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
         </authors>
         <other>
-            ACC, 2025
+            American Control Conference, 2025
         </other>
         <link>
             https://arxiv.org/pdf/2411.09198
@@ -81,7 +81,7 @@
            Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
         </authors>
         <other>
-            ITSS, 2024
+            Software Tools for Technology Transfer, 2024
         </other>
         <!-- <theme>Learning-enabled Systems</theme> -->
         <link>
