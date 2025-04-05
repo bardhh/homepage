@@ -550,3 +550,67 @@ body {
 .paper-work {
   border-left: 4px solid #f72585; /* Pink for workshops */
 }
+
+/* Optional: Fine-tune GitHub Button Vertical Alignment */
+.github-button iframe {
+  vertical-align: middle; /* Try middle alignment */
+  /* You might need a pixel adjustment sometimes, e.g.: */
+  margin-bottom: 2px; 
+}
+
+/* Ensure the button group has some space below it if needed */
+#software .card .card-body > div:last-child { /* Target the last div (button group) */
+    margin-bottom: 0; /* Remove default bottom margin if card-body adds padding */
+}
+
+
+/* === GitHub Composite Button Styling === */
+
+.github-composite-button {
+  display: inline-flex; /* Arrange items inline and use flex properties */
+  align-items: center; /* Vertically align items in the middle */
+  border: 1px solid #d0d7de; /* Subtle border like GitHub's buttons */
+  border-radius: 6px; /* Rounded corners */
+  background-color: #f6f8fa; /* Default background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* Match GitHub font */
+  font-size: 12px; /* Match GitHub button size */
+  line-height: 20px; /* Match GitHub button line height */
+  font-weight: 600; /* Match GitHub button weight */
+  vertical-align: middle; /* Helps align the whole block with surrounding text */
+  cursor: default; /* The container itself isn't clickable */
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.github-composite-button:hover {
+  background-color: #f0f2f4; /* Slightly darker on hover */
+  border-color: #d0d7de;
+}
+
+/* Style the repository link part */
+.github-composite-button .repo-link {
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  padding: 4px 8px 4px 10px; /* Adjust padding (top, right, bottom, left) */
+  text-decoration: none;
+  color: #0969da; /* GitHub link blue */
+  border-right: 1px solid #d0d7de; /* Separator line */
+  margin-right: -1px; /* Overlap border slightly for seamless look */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.github-composite-button .repo-link .separator {
+  display: none; /* Hide the text separator, using border instead */
+}
+
+.github-composite-button .repo-link:hover {
+  text-decoration: underline; /* Underline only the repo link part on hover */
+}
+
+/* Style the container for the GitHub iframe */
+.github-composite-button a.github-button {
+  display: inline-block; /* Needed for vertical alignment */
+  vertical-align: middle;
+  line-height: inherit; /* Inherit line-height */
+  margin-left: 0; /* Remove any potential margin */
+  /* The background/border are handled by the parent div now */
+}
