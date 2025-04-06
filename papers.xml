@@ -12,6 +12,7 @@
         <link>
             https://www.sciencedirect.com/science/article/abs/pii/S1751570X2500007X
         </link>
+        <theme>Learning-based Control and Analysis</theme>
         <tag>
             NAHS2025
         </tag>
@@ -29,6 +30,7 @@
         <link>
             https://dl.acm.org/doi/full/10.1145/3696112
         </link>
+        <theme>Learning-based Control and Analysis</theme>
         <tag>
             TCPS2025
         </tag>
@@ -46,6 +48,7 @@
         <link>
             https://arxiv.org/pdf/2411.16027
         </link>
+        <theme>Testing, Falsification, and Specification</theme>
         <tag>
             AAAIw2024
         </tag>
@@ -69,6 +72,8 @@
         <code>
             https://github.com/hardikparwana/social-navigation
         </code>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Risk and Stochasticity</theme>
         <tag>
             MPPI2024
         </tag>
@@ -83,7 +88,7 @@
         <other>
             Software Tools for Technology Transfer, 2024
         </other>
-        <!-- <theme>Learning-enabled Systems</theme> -->
+        <theme>Runtime Verification and Monitoring</theme>
         <link>
             https://arxiv.org/pdf/2411.05946
         </link>
@@ -104,7 +109,8 @@
         <other>
             arXiv, 2024
         </other>
-        <theme>Learning-enabled Systems</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <link>
             https://arxiv.org/pdf/2409.13865
         </link>
@@ -131,7 +137,7 @@
         <code>
             https://github.com/bardhh/cbfkit/tree/mppi-extension
         </code>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <tag>
             TSA2024
         </tag>
@@ -146,7 +152,7 @@
         <other>
             ACM Transactions on Cyber-Physical Systems, 2024
         </other>
-        <theme>Learning-enabled Systems</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <link>
             https://arxiv.org/abs/2403.15826
         </link>
@@ -167,7 +173,7 @@
         <link>
             https://www.bhoxha.com/papers/adhs2024.pdf
         </link>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <tag>
             ADHS2024
         </tag>
@@ -185,7 +191,7 @@
         <link>
             https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf
         </link>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <video>
             https://urldefense.com/v3/__https://youtu.be/_1YuUj3fuV0__;!!B-Wf7dNC-A!5CIko1U7kCI5jujQiVV1HtZI-Uq_oGFOKbLDehVNRaHPbHPG9oKc8gij9jt_sx9NLJuwdSaXyX8uqHNjqnA3e0PkqzwtENDbdA$
         </video>
@@ -206,7 +212,7 @@
         <link>
             https://arxiv.org/abs/2404.07158
         </link>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <code>
             https://github.com/bardhh/cbfkit
         </code>
@@ -224,7 +230,8 @@
         <other>
             American Control Conference (ACC), 2024
         </other>
-        <theme>Risk-Aware and Stochastic Systems</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Risk and Stochasticity</theme>
         <link>
             https://arxiv.org/abs/2403.20258
         </link>
@@ -242,7 +249,7 @@
         <other>
             NASA Formal Methods (NFM), 2024
         </other>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <link>
             https://arxiv.org/abs/2403.11737
         </link>
@@ -263,7 +270,7 @@
         <other>
             ACC, 2024
         </other>
-        <theme>Control Barrier Functions</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <link>
             https://www.bhoxha.com/papers/acc2024.pdf
         </link>
@@ -282,6 +289,7 @@
             ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), Hong Kong, China, 2024
         </other>
         <theme>Runtime Verification and Monitoring</theme>
+        <theme>Risk and Stochasticity</theme>
         <link>
             https://www.bhoxha.com/papers/ICCPS2024.pdf
         </link>
@@ -302,7 +310,8 @@
         <other>
             arXiv, 2024
         </other>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <link>
             https://arxiv.org/pdf/2312.07803.pdf
         </link>
@@ -336,10 +345,10 @@
     <bibtex>bibtex/RV2023_Anderson.bib</bibtex></paper>
     <paper type="jour">
         <title>
-            RTAMT &#8211; Runtime Robustness Monitors with Application to CPS and Robotics
+            RTAMT – Runtime Robustness Monitors with Application to CPS and Robotics
         </title>
         <authors>
-            Tomoya Yamaguchi, Bardh Hoxha and Dejan Nic&#780;kovic&#769;
+            Tomoya Yamaguchi, Bardh Hoxha and Dejan Ničković
         </authors>
         <other>
             International Journal on Software Tools for Technology Transfer (STTT), 2023
@@ -383,7 +392,8 @@
         <other>
             Hybrid Systems: Computation and Control (HSCC), 2023
         </other>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Risk and Stochasticity</theme>
         <link>
             https://www.bhoxha.com/papers/HSCC2023ProbStars.pdf
         </link>
@@ -404,7 +414,7 @@
         <other>
             Hybrid Systems: Computation and Control (HSCC), 2023
         </other>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <link>
             https://www.bhoxha.com/papers/HSCC2023RNNVer.pdf
         </link>
@@ -422,7 +432,7 @@
         <authors>
            Navid Hashemi, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov, Geogios Fainekos, Jyotirmoy Deshmukh
         </authors>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), 2023
         </other>
@@ -443,7 +453,8 @@
         <other>
             American Control Conference (ACC), 2023
         </other>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Risk and Stochasticity</theme>
         <link>
             https://arxiv.org/abs/2210.07439
         </link>
@@ -458,7 +469,7 @@
         <authors>
             Kandai Watanabe, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Morteza Lahijanian, Sriram Sankaranarayan, Tomoya Yamaguchi
         </authors>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             International Conference on Automated Planning and Scheduling (ICAPS), 2023
         </other>
@@ -476,7 +487,8 @@
         <title>
             Safety Under Uncertainty: Tight Bounds with Risk-Aware Control Barrier Functions
         </title>
-        <theme>Risk-Aware and Stochastic Systems</theme>
+        <theme>Risk and Stochasticity</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <authors>
             Mitchell Black, Georgios Fainekos, Bardh Hoxha, Danil Prokhorov, Dimitra Panagou
         </authors>
@@ -494,7 +506,7 @@
         <title>
            Discovering physical interaction vulnerabilities in IoT deployments
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
            Muslum Ozgur Ozmen, Xuansong Li, Andrew Chun-An Chu, Z Berkay Celik, Bardh Hoxha, Xiangyu Zhang
         </authors>
@@ -512,7 +524,7 @@
         <title>
            Safety Verification and Repair of Deep Neural Networks
         </title>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Taylor T Johnson
         </authors>
@@ -534,6 +546,7 @@
            Sergiy Bogomolov, Abdelrahman Hekal, Bardh Hoxha, Tomoya Yamaguchi
         </authors>
         <theme>Runtime Verification and Monitoring</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             International Conference on Intelligent Transportation Systems (ITSC), 2022
         </other>
@@ -551,7 +564,7 @@
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
         </authors>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             International Conference on Formal Modeling and Analysis of Timed Systems (FORMATS), 2022
         </other>
@@ -575,7 +588,7 @@
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
         </authors>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             ICML Workshop on Formal Verification of Machine Learning, 2022
         </other>
@@ -593,7 +606,7 @@
         <title>
            Formalizing and Evaluating Requirements of Perception Systems for Automated Vehicles using Spatio-Temporal Perception Logic
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
            Mohammad Hekmatnejad, Bardh Hoxha, Jyotirmoy V. Deshmukh, Yezhou Yang, and Georgios Fainekos
         </authors>
@@ -617,6 +630,8 @@
         <other>
             IEEE Conference on Decision and Control (CDC), 2021
         </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Risk and Stochasticity</theme>
         <link>
             https://arxiv.org/abs/2112.14912
         </link>
@@ -624,7 +639,7 @@
             CDC2021
         </tag>
     <bibtex>bibtex/CDC2021_Yaghoubi.bib</bibtex></paper>
-    
+
     <paper type="conf">
         <title>
            PerceMon: Online Monitoring for Perception Systems
@@ -653,7 +668,7 @@
         <authors>
            Keyvan Majd, Shakiba Yaghoubi, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos
         </authors>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <other>
             IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
         </other>
@@ -668,7 +683,7 @@
         <title>
            Reachability Analysis of Convolutional Neural Networks
         </title>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
         </authors>
@@ -692,7 +707,7 @@
         <authors>
            Xiaodong Yang, Tomoya Yamaguchi, Hoang-Dung Tran, Bardh Hoxha, Taylor T Johnson, Danil Prokhorov
         </authors>
-        <theme>Verification and Repair or Neural Networks</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             Hybrid Systems: Computation and Control (HSCC), 2021
         </other>
@@ -713,9 +728,10 @@
         <authors>
            Shakiba Yaghoubi, Keyvan Majd, Georgios Fainekos, Tomoya Yamaguchi, Danil Prokhorov, Bardh Hoxha
         </authors>
-        <theme>Risk-Aware and Stochastic Systems</theme>
+        <theme>Risk and Stochasticity</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <other>
-            IEEE Control Systems Letters (L-CSS), 2020 
+            IEEE Control Systems Letters (L-CSS), 2020
         </other>
         <link>
             http://www.bhoxha.com/papers/LCSS2020.pdf
@@ -728,7 +744,7 @@
         <title>
            Search-based Test-Case Generation by Monitoring Responsibility Safety Rules
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
            Mohammad Hekmatnejad, Bardh Hoxha, Georgios Fainekos
         </authors>
@@ -749,7 +765,7 @@
         <authors>
            Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov, Jyotirmoy V. Deshmukh
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Runtime Verification and Monitoring</theme>
         <other>
             The 18th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE), 2020
         </other>
@@ -767,7 +783,8 @@
         <authors>
             Yuji Date, Takeshi Baba, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
+        <theme>Learning-based Control and Analysis</theme>
         <other>
             International Conference on Embedded Software (EMSOFT), 2020
         </other>
@@ -785,7 +802,8 @@
         <authors>
             Joseph Cralley, Ourania Spantidi, Bardh Hoxha, Georgios Fainekos
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             Runtime Verification (RV), 2020
         </other>
@@ -803,7 +821,8 @@
         <title>
             Robustness of Specifications and its Applications to Falsification, Parameter Mining, and Runtime Monitoring with S-TaLiRo
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
+        <theme>Runtime Verification and Monitoring</theme>
         <authors>
             Georgios Fainekos, Bardh Hoxha, Sriram Sankaranarayanan
         </authors>
@@ -824,7 +843,7 @@
         <title>
             ARCH-COMP18 Category Report: Results on the Falsification Benchmarks
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha, Georgios Fainekos, Gidon Ernst, Zhenya Zhang, Paolo Arcaini, Ichiro Hasuo, Sean Sedwards
         </authors>
@@ -842,7 +861,7 @@
         <title>
             Formal Requirement Debugging for Testing and Verification of Cyber-Physical Systems
         </title>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             Adel Dokhanchi, Bardh Hoxha and Georgios Fainekos
         </authors>
@@ -860,7 +879,7 @@
         <title>
             Experience Report: Application of Falsification Methods on the UxAS System
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             Cumhur Erkan Tuncali, Bardh Hoxha, Guohui Ding, Georgios Fainekos, and Sriram Sankaranarayanan
         </authors>
@@ -878,7 +897,7 @@
         <title>
             Mission Planning for Multiple Vehicles with Temporal Specifications using UxAS
         </title>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
         <authors>
             Luan V Nguyen, Bardh Hoxha, Taylor T Johnson, Georgios Fainekos
         </authors>
@@ -899,7 +918,7 @@
         <authors>
             Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha and Georgios Fainekos
         </authors>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             Conference on Automation Science and Engineering (CASE), 2017
         </other>
@@ -917,7 +936,7 @@
         <authors>
             Adel Dokhanchi, Shakiba Yaghoubi, Bardh Hoxha, Georgios E Fainekos
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             International Workshop on Applied Verification of Continuous and Hybrid Systems (ARCH), 2017
         </other>
@@ -938,7 +957,7 @@
         <other>
             International Journal on Software Tools for Technology Transfer (STTT), 2017
         </other>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <link>
             http://rdcu.be/o1h0
         </link>
@@ -977,7 +996,7 @@
         <authors>
             Bardh Hoxha and Georgios Fainekos
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             1st Workshop on Monitoring and Testing of Cyber-Physical Systems (MTCPS), Vienna, Austria, April 2016
         </other>
@@ -995,7 +1014,7 @@
         <authors>
             Adel Dokhanchi, Bardh Hoxha, and Georgios Fainekos
         </authors>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             1st Workshop on Monitoring and Testing of Cyber-Physical Systems (MTCPS), Vienna, Austria, April 2016
         </other>
@@ -1013,7 +1032,8 @@
         <authors>
             Bardh Hoxha and Georgios Fainekos
         </authors>
-        <theme>Optimal Planning and Control</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Runtime Verification and Monitoring</theme>
         <other>
             The Thirtieth AAAI Conference on Artificial Intelligence Workshop on Planning for Hybrid Systems (AAAI
             PlanHS),
@@ -1033,7 +1053,7 @@
         <authors>
             Adel Dokhanchi, Bardh Hoxha, and Georgios Fainekos
         </authors>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             The 13th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE),
             Austin, Texas,
@@ -1053,7 +1073,7 @@
         <authors>
             Bardh Hoxha, Nikolaos Mavridis, and Georgios Fainekos
         </authors>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Hamburg, Germany, September 2015
         </other>
@@ -1074,7 +1094,8 @@
         <authors>
             Bardh Hoxha, Hoang Bach, Houssam Abbas, Adel Dokhanchi, Yoshihiro Kobayashi, and Georgios Fainekos
         </authors>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
+        <theme>Runtime Verification and Monitoring</theme>
         <other>
             Design and Implementation of Formal Tools and Systems (DIFTS), Lausanne, Switzerland, October 2014
         </other>
@@ -1110,7 +1131,7 @@
         <authors>
             H. Abbas, B. Hoxha, G. Fainekos, J. V. Deshmukh, J. Kapinski, K. Ueda
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             Technical Report arXiv:1401.5200, 2014
         </other>
@@ -1125,7 +1146,7 @@
         <title>
             WiP Abstract: Conformance Testing as Falsification for Cyber-Physical Systems
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             H. Abbas, B. Hoxha, G. Fainekos, J. V. Deshmukh, J. Kapinski, K. Ueda
         </authors>
@@ -1154,7 +1175,8 @@
         <link>
             http://www.bhoxha.com/papers/Cyber2014.pdf
         </link>
-        <theme>Temporal Logic and Specification Debugging</theme>
+        <theme>Testing, Falsification, and Specification</theme>
+        <theme>Risk and Stochasticity</theme>
         <award>
             Finalist for best student paper award
         </award>
@@ -1172,7 +1194,7 @@
         <other>
             Applied Verification for Continuous and Hybrid Systems (ARCH), Berlin, Germany, April 2014
         </other>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <link>
             http://www.bhoxha.com/papers/arch2014bench.pdf
         </link>
@@ -1187,7 +1209,7 @@
         <authors>
             Bardh Hoxha, Houssam Abbas and Georgios Fainekos
         </authors>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <other>
             Applied Verification for Continuous and Hybrid Systems (ARCH), Berlin, Germany, April 2014
         </other>
@@ -1202,7 +1224,7 @@
         <title>
             System Testing with S-TaLiRo: Recent Functionality and Additions
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             Bardh Hoxha, Adel Dokhanchi, Georgios Fainekos
         </authors>
@@ -1220,7 +1242,7 @@
         <title>
             Querying Parametric Temporal Logic Properties on Embedded Systems
         </title>
-        <theme>Testing and Verification</theme>
+        <theme>Testing, Falsification, and Specification</theme>
         <authors>
             Hengyi Yang, Bardh Hoxha and Georgios Fainekos
         </authors>

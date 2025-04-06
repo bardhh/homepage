@@ -196,6 +196,7 @@
           <h2 class="section-title">Publications</h2>
           <h3 class="mt-4 mb-3 fs-5">Peer-reviewed Papers and Technical Reports</h3>
           <div class="pub-filters mb-4">
+            <!-- Type Filters (Keep as is) -->
             <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
               <button class="btn btn-sm btn-outline-primary active" data-filter="all">
                 <i class="fas fa-layer-group me-1"></i>All Publications
@@ -209,21 +210,37 @@
               <button class="btn btn-sm btn-outline-primary" data-filter="paper-work">
                 <i class="fas fa-laptop-code me-1"></i>Workshops
               </button>
-              <!-- Optional: Add a year filter if desired -->
               <button class="btn btn-sm btn-outline-secondary" data-filter="recent">
                 <i class="fas fa-calendar-alt me-1"></i>Recent (2020+)
               </button>
+            </div>
+
+            <!-- NEW Topic Filters -->
+            <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+               <!-- <small class="text-muted me-2 align-self-center">Filter by Topic:</small> -->
+               <button class="btn btn-sm btn-outline-info" data-filter="topic-learning-control">
+                <i class="fas fa-brain me-1"></i>Learning/Control
+              </button>
+              <button class="btn btn-sm btn-outline-info" data-filter="topic-optimal-planning">
+                <i class="fas fa-cogs me-1"></i>Planning/Control
+              </button>
+              <button class="btn btn-sm btn-outline-info" data-filter="topic-runtime-verification">
+                <i class="fas fa-desktop me-1"></i>Runtime V&M
+              </button>
+              <button class="btn btn-sm btn-outline-info" data-filter="topic-testing-falsification">
+                 <i class="fas fa-vial me-1"></i>Testing/Spec
+              </button>
+              <button class="btn btn-sm btn-outline-info" data-filter="topic-risk-stochasticity">
+                 <i class="fas fa-shield-alt me-1"></i>Risk/Stochasticity
+               </button>
+               <!-- Removed old topic buttons -->
             </div>
             <div class="mt-2 text-center text-md-start">
               <small class="text-muted filter-count"></small>
             </div>
           </div>
           <div id="pub-list">
-            <div class="text-center my-3">
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading publications...</span>
-              </div>
-            </div>
+             <!-- Loading indicator will be placed here by JS -->
           </div>
 
           <h3 class="mt-5 mb-3 fs-5">PhD Thesis</h3>
@@ -717,8 +734,38 @@
 
   <!-- Updated Publications Loader -->
   <script>
-    $(document).ready(function () {
+
+function getTopicClasses(themeText) {
+      if (!themeText) return 'topic-uncategorized'; // Assign a class if theme is missing
+      const lowerTheme = themeText.trim().toLowerCase();
+
+      // Direct mapping from theme text to CSS class
+      switch (lowerTheme) {
+          case 'learning-based control and analysis':
+              return 'topic-learning-control';
+          case 'optimal planning and safe control':
+              return 'topic-optimal-planning';
+          case 'runtime verification and monitoring':
+              return 'topic-runtime-verification';
+          case 'testing, falsification, and specification':
+              return 'topic-testing-falsification';
+          case 'risk and stochasticity':
+              return 'topic-risk-stochasticity';
+          default:
+              console.warn(`Unrecognized theme found in XML: "${themeText}"`);
+              return 'topic-uncategorized'; // Return a default class for unrecognized themes
+      }
+  }
+
+  // --- The rest of the $(document).ready() function remains the same ---
+  // It includes the AJAX call, card generation (which uses the updated getTopicClasses),
+  // the unified filter button handler, and the animation logic.
+
+  $(document).ready(function () {
       const pubListContainer = $("#pub-list");
+      const filterButtons = $('.pub-filters button'); // Select ALL filter buttons
+      const filterCountDisplay = $('.filter-count');
+
       pubListContainer.html(`
           <div class="text-center my-3">
               <div class="spinner-border text-primary" role="status">
@@ -726,134 +773,205 @@
               </div>
               <p class="mt-2 text-muted">Loading publications...</p>
           </div>`); // Add initial loading indicator
-  
-      // Add event listeners to filter buttons
-      $('.pub-filters button').on('click', function() {
-        // Update active button
-        $('.pub-filters button').removeClass('active');
-        $(this).addClass('active');
-        
-        const filterValue = $(this).data('filter');
-        
-        // Show all or filter
-        if (filterValue === 'all') {
-          $('#pub-list .card').show();
-        } else if (filterValue === 'recent') {
-          // Example of filtering by year (adjust as needed)
-          $('#pub-list .card').each(function() {
-            const details = $(this).find('.paper-details').text();
-            // Look for years 2020 or later in the details text
-            if (details.match(/(202\d|2030)/)) {
-              $(this).show();
-            } else {
-              $(this).hide();
-            }
-          });
-        } else {
-          $('#pub-list .card').hide();
-          $('#pub-list .card.' + filterValue).show();
-        }
-        
-        // Update count
-        const visibleCount = $('#pub-list .card:visible').length;
-        const totalCount = $('#pub-list .card').length;
-        $('.filter-count').text(`Showing ${visibleCount} of ${totalCount} publications`);
-      });
-  
-      $.ajax({
-        type: "GET",
-        url: "./papers.xml", // Assuming papers.xml is in the same directory
-        dataType: "xml",
-        success: function (xml) {
-          pubListContainer.empty(); // Clear loading indicator
-          let count = 0;
-          $(xml)
-            .find("paper")
-            .each(function () {
-              const $this = $(this);
-              const paperType = $this.attr("type") || "default"; // Added default type
-              const title = $this.find("title").text().trim();
-              const authors = $this.find("authors").text().trim();
-              const details = $this.find("other").text().trim();
-              const pdfLink = $this.find("link").text().trim();
-              const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10); // Fallback tag
-  
-              let links = `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
-  
-              if ($this.find("techRep").length === 1) {
-                links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
-              }
-              if ($this.find("code").length === 1) {
-                links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
-              }
-              if ($this.find("video").length === 1) {
-                links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
-              }
-              if ($this.find("bibtex").length === 1) {
-                links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
-              }
-  
-              let award = "";
-              if ($this.find("award").length === 1) {
-                award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
-              }
-  
-              // Use Bootstrap Card component
-              // Alternative version with smaller indicators
-// Modify your card HTML template to use flexbox layout
-const cardHtml = `
-  <div class="card mb-2 shadow-sm paper-${paperType}">
-    <div class="card-body">
-      <h5 class="card-title paper-title mb-2">${title}</h5>
-      <h6 class="card-subtitle text-muted paper-authors">${authors}</h6>
-      <p class="card-text paper-details">${details}</p>
-      <div class="d-flex flex-wrap justify-content-between align-items-center">
-        <div class="paper-links">
-           ${links}
-        </div>
-        <span class="pub-type-badge pub-type-${paperType}">
-          ${paperType === 'conf' ? 'Conference' : (paperType === 'jour' ? 'Journal' : (paperType === 'work' ? 'Workshop' : paperType))}
-        </span>
-      </div>
-      ${award}
-    </div>
-  </div>`;
-  
-              pubListContainer.append(cardHtml);
-              count++;
-            });
-  
-          // Update the initial count after loading
-          $('.filter-count').text(`Showing ${count} of ${count} publications`);
-            
-          // Apply animations to the cards
-          pubListContainer.find('.card').each(function(index) {
-            const card = $(this);
-            card.css({
-              'opacity': '0',
-              'transform': 'translateY(30px)',
-              'transition': 'opacity 0.6s ease, transform 0.6s ease'
-            });
-            
-            // Stagger animation for a cascade effect
-            setTimeout(function() {
-              card.css({
-                'opacity': '1',
-                'transform': 'translateY(0)'
-              });
-            }, index * 100); // 100ms delay between cards
-          });
-          
-          if (count === 0) {
-            pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+
+      // Unified click handler for all filter buttons
+      filterButtons.on('click', function() {
+          const $button = $(this);
+          const filterValue = $button.data('filter');
+          const isTopicButton = filterValue.startsWith('topic-');
+          const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
+
+          // Update active state for TYPE buttons OR TOPIC buttons separately
+          if (isTypeButton) {
+              $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
+              if (filterValue !== 'recent') $button.addClass('active');
+              else $('.pub-filters button[data-filter="all"]').addClass('active'); // Make 'All' active when 'recent' is clicked
+          } else if (isTopicButton) {
+               $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+               $button.addClass('active');
           }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          console.error("AJAX error loading publications:", textStatus, errorThrown);
-          pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
-        },
+
+          // If a type button is clicked, deactivate the topic button, and vice-versa
+          // Keep 'All' as the neutral type filter when a topic is selected
+          if (isTopicButton) {
+              $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
+              $('.pub-filters button[data-filter="all"]').addClass('active');
+          } else if (isTypeButton && filterValue !== 'all') {
+              $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+          } else if (filterValue === 'all') {
+               // Clicking "All" should also clear the topic filter selection
+               $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+          }
+
+
+          // Filter logic
+          const allCards = $('#pub-list .card');
+          allCards.hide(); // Hide all cards initially
+
+          // Determine active filters
+          const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
+          const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter'); // Will be undefined if none active
+
+          let selector = '#pub-list .card'; // Start with all cards
+
+          // Apply type filter (if not 'all')
+          if (activeTypeFilter !== 'all') {
+              selector += '.' + activeTypeFilter;
+          }
+
+          // Apply topic filter (if one is active)
+          if (activeTopicFilter) {
+              selector += '.' + activeTopicFilter;
+          }
+
+          // Special case for 'Recent' - filter the currently selected items by year
+          if (filterValue === 'recent') {
+              $(selector).filter(function() { // Filter the already selected cards
+                  const details = $(this).find('.paper-details').text();
+                  return details.match(/(202\d|2030)/); // Matches 2020-2030
+              }).show();
+          } else {
+              // Show cards matching the combined selector
+              $(selector).show();
+          }
+
+          // Update count
+          const visibleCount = $('#pub-list .card:visible').length;
+          const totalCount = allCards.length;
+          filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
       });
-    });
+
+
+      $.ajax({
+          type: "GET",
+          url: "./papers.xml", // Assuming papers.xml is in the same directory
+          dataType: "xml",
+          success: function (xml) {
+              pubListContainer.empty(); // Clear loading indicator
+              let totalLoadedCount = 0;
+              $(xml)
+                  .find("paper")
+                  .each(function () {
+                      const $this = $(this);
+                      const paperType = $this.attr("type") || "other"; // Use 'other' if type missing
+                      const title = $this.find("title").text().trim();
+                      const authors = $this.find("authors").text().trim();
+                      const details = $this.find("other").text().trim();
+                      const pdfLink = $this.find("link").text().trim();
+                      const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
+
+                      // --- MODIFIED BLOCK START ---
+                      let combinedTopicClasses = new Set(); // Use a Set to avoid duplicates
+                      $this.find("theme").each(function() { // Iterate over ALL theme tags
+                          const themeText = $(this).text().trim();
+                          if (themeText) { // Make sure theme text is not empty
+                              const topicClass = getTopicClasses(themeText); // Get class for this specific theme
+                              if (topicClass && topicClass !== 'topic-uncategorized') {
+                                 combinedTopicClasses.add(topicClass);
+                              } else if (topicClass === 'topic-uncategorized') {
+                                  console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
+                              }
+                          }
+                      });
+
+                      // Join the collected classes into a string, add uncategorized if none found
+                      const topicClasses = combinedTopicClasses.size > 0 ?
+                                            Array.from(combinedTopicClasses).join(' ') :
+                                            'topic-uncategorized';
+                      // --- MODIFIED BLOCK END ---
+
+
+                      let links = '';
+                       if (pdfLink) { // Only add PDF link if present
+                           links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
+                       }
+
+
+                      if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
+                          links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
+                      }
+                      if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
+                          links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
+                      }
+                      if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
+                          links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
+                      }
+                      if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
+                          links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
+                      }
+
+                      let award = "";
+                      if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
+                          award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
+                      }
+
+                      // Generate badge text based on paper type
+                       let typeBadgeText = '';
+                       switch(paperType) {
+                           case 'conf': typeBadgeText = 'Conference'; break;
+                           case 'jour': typeBadgeText = 'Journal'; break;
+                           case 'work': typeBadgeText = 'Workshop'; break;
+                           case 'other': typeBadgeText = 'Other'; break; // Handle 'other' type
+                           default: typeBadgeText = paperType; // Use raw type if not recognized
+                       }
+
+                      // Add paper type class AND topic classes to the card div
+                      const cardHtml = `
+                          <div class="card mb-2 shadow-sm paper-${paperType} ${topicClasses}">
+                              <div class="card-body">
+                                  <h5 class="card-title paper-title mb-2">${title}</h5>
+                                  <h6 class="card-subtitle text-muted paper-authors">${authors}</h6>
+                                  <p class="card-text paper-details">${details}</p>
+                                  <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+                                      <div class="paper-links">
+                                          ${links}
+                                      </div>
+                                      <span class="pub-type-badge pub-type-${paperType} badge "">
+                                          ${typeBadgeText}
+                                      </span>
+                                  </div>
+                                  ${award}
+                              </div>
+                          </div>`;
+
+                      pubListContainer.append(cardHtml);
+                      totalLoadedCount++;
+                  });
+
+              // Update the initial count after loading
+              const allCards = $('#pub-list .card'); // Recalculate after loading
+              filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
+               // Trigger 'all' filter initially to show everything
+               $('.pub-filters button[data-filter="all"]').trigger('click');
+
+              // Apply animations (optional)
+              allCards.each(function (index) {
+                  const card = $(this);
+                  card.css({
+                      'opacity': '0',
+                      'transform': 'translateY(20px)',
+                      'transition': 'opacity 0.5s ease, transform 0.5s ease'
+                  });
+
+                  setTimeout(function () {
+                      card.css({
+                          'opacity': '1',
+                          'transform': 'translateY(0)'
+                      });
+                  }, index * 50);
+              });
+
+              if (totalLoadedCount === 0) {
+                  pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+              }
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+              console.error("AJAX error loading publications:", textStatus, errorThrown);
+              pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
+              filterCountDisplay.text(''); // Clear count on error
+          },
+      });
+  });
   </script>
 
   <script>
