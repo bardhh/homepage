@@ -87,7 +87,7 @@ box-shadow: 0 14px 26px rgba(0,0,0,.1);
 max-width: 220px;
 height: auto;
 border-radius: 6px;
-border: 5px solid #fff;
+/* border: 5px solid #fff; */
 transition: transform 0.3s;
 }
 .profile-img:hover {
