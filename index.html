@@ -50,7 +50,124 @@
   <!-- <link rel="stylesheet" href="unitegallery/css/unite-gallery.css" /> -->
 
   <!-- Custom CSS (New) -->
-  <link rel="stylesheet" href="assets/css/custom.css" />
+  <!-- <link rel="stylesheet" href="assets/css/custom.css" /> -->
+  <link rel="stylesheet" href="assets/css/custom.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </noscript>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starCountElements = document.querySelectorAll('.github-star-count');
+
+      starCountElements.forEach(element => {
+        const repo = element.dataset.repo;
+        if (!repo || !repo.includes('/')) {
+          console.warn('Invalid or missing data-repo attribute:', element);
+          element.textContent = '?'; // Indicate missing info
+          return;
+        }
+
+        const apiUrl = `https://api.github.com/repos/${repo}`;
+        // Set initial loading state (optional)
+        element.textContent = '...';
+
+        fetch(apiUrl)
+          .then(response => {
+            // Check for rate limit errors (403) or repo not found (404)
+            if (response.status === 403) {
+              console.warn(`GitHub API rate limit likely exceeded for ${repo}.`);
+              element.textContent = 'Limit'; // Indicate rate limit
+              return null;
+            } else if (response.status === 404) {
+              console.warn(`Repository ${repo} not found.`);
+              element.textContent = 'N/A'; // Indicate not found
+              return null;
+            } else if (!response.ok) {
+              console.error(`GitHub API error for ${repo}: ${response.status}`);
+              element.textContent = 'Err'; // Generic error
+              return null;
+            }
+            // Log remaining rate limit (useful for debugging)
+            // console.log(`Rate limit remaining for ${repo}:`, response.headers.get('X-RateLimit-Remaining'));
+            return response.json();
+          })
+          .then(data => {
+            if (data && typeof data.stargazers_count !== 'undefined') {
+              // Format large numbers if desired (optional)
+              // const count = data.stargazers_count > 999 ? (data.stargazers_count/1000).toFixed(1) + 'k' : data.stargazers_count;
+              // element.textContent = count;
+              element.textContent = data.stargazers_count; // Display exact count
+            } else if (data !== null) {
+              // Handle case where response was ok but count missing (unlikely for repos)
+              element.textContent = '?';
+            }
+          })
+          .catch(error => {
+            console.error(`Error fetching GitHub stars for ${repo}:`, error);
+            element.textContent = 'Err'; // Indicate fetch error
+          });
+      });
+    });
+  </script>
+
+  <script defer>
+    $(document).ready(function () {
+      // --- Software Filtering Logic ---
+
+      const $softwareListContainer = $("#software-list");
+      const $softwareCards = $softwareListContainer.find('.card');
+      const $softwareFilterButtons = $('.software-filters button');
+      const $softwareFilterCount = $('.software-filter-count');
+
+      // Function to update software count
+      function updateSoftwareCount() {
+        const visibleCount = $softwareListContainer.find('.card:visible').length;
+        const totalCount = $softwareCards.length;
+        $softwareFilterCount.text(`Showing ${visibleCount} of ${totalCount} tools`);
+      }
+
+      // Initial count update on page load
+      updateSoftwareCount();
+
+      // Add event listeners to software filter buttons
+      $softwareFilterButtons.on('click', function () {
+        const $button = $(this);
+
+        // Update active button state
+        $softwareFilterButtons.removeClass('active');
+        $button.addClass('active');
+
+        const filterValue = $button.data('filter');
+
+        // Show/hide cards based on filter
+        if (filterValue === 'all') {
+          $softwareCards.show(); // Show all cards
+        } else {
+          $softwareCards.hide(); // Hide all cards first
+          $softwareCards.filter('.' + filterValue).show(); // Show only matching cards
+        }
+
+        // Update the count display
+        updateSoftwareCount();
+      });
+
+      // --- End Software Filtering Logic ---
+
+      // --- Your Existing Publication Loader/Filter Logic Goes Here (or was already included above) ---
+      // $.ajax({... }); // The publication loader
+      // $('.pub-filters button').on('click', ...); // The publication filter handler
+
+      // --- Your Existing Star Count Fetcher Logic Goes Here ---
+      // document.addEventListener('DOMContentLoaded', () => { ... }); // Or the jQuery equivalent if preferred
+
+      // --- Your Existing Animation Logic Goes Here ---
+      // let observer = new IntersectionObserver(...);
+      // document.querySelectorAll(...).forEach(...);
+
+    }); // End $(document).ready()
+
+  </script>
 
   <!-- Critical CSS Removed - Handled by custom.css or Bootstrap -->
   <style>
@@ -217,8 +334,8 @@
 
             <!-- NEW Topic Filters -->
             <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-               <!-- <small class="text-muted me-2 align-self-center">Filter by Topic:</small> -->
-               <button class="btn btn-sm btn-outline-info" data-filter="topic-learning-control">
+              <!-- <small class="text-muted me-2 align-self-center">Filter by Topic:</small> -->
+              <button class="btn btn-sm btn-outline-info" data-filter="topic-learning-control">
                 <i class="fas fa-brain me-1"></i>Learning/Control
               </button>
               <button class="btn btn-sm btn-outline-info" data-filter="topic-optimal-planning">
@@ -228,19 +345,19 @@
                 <i class="fas fa-desktop me-1"></i>Runtime V&M
               </button>
               <button class="btn btn-sm btn-outline-info" data-filter="topic-testing-falsification">
-                 <i class="fas fa-vial me-1"></i>Testing/Spec
+                <i class="fas fa-vial me-1"></i>Testing/Spec
               </button>
               <button class="btn btn-sm btn-outline-info" data-filter="topic-risk-stochasticity">
-                 <i class="fas fa-shield-alt me-1"></i>Risk/Stochasticity
-               </button>
-               <!-- Removed old topic buttons -->
+                <i class="fas fa-shield-alt me-1"></i>Risk/Stochasticity
+              </button>
+              <!-- Removed old topic buttons -->
             </div>
             <div class="mt-2 text-center text-md-start">
               <small class="text-muted filter-count"></small>
             </div>
           </div>
           <div id="pub-list">
-             <!-- Loading indicator will be placed here by JS -->
+            <!-- Loading indicator will be placed here by JS -->
           </div>
 
           <h3 class="mt-5 mb-3 fs-5">PhD Thesis</h3>
@@ -375,294 +492,320 @@
 
         </section>
 
-                <!-- Software Section -->
-                <section id="software" class="mb-5 pt-4 pt-lg-0">
-                  <h2 class="section-title">Software</h2>
-        
-                  <!-- START: Added Software Filters -->
-                  <div class="software-filters mb-4">
-                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-                      <button class="btn btn-sm btn-outline-primary active" data-filter="all">
-                        <i class="fas fa-layer-group me-1"></i>All Tools
-                      </button>
-                      <button class="btn btn-sm btn-outline-primary" data-filter="filter-verify">
-                        <i class="fas fa-check-double me-1"></i>Verification/Testing/Monitoring
-                      </button>
-                      <button class="btn btn-sm btn-outline-primary" data-filter="filter-task">
-                        <i class="fas fa-robot me-1"></i>Task Assignment
-                      </button>
-                      <button class="btn btn-sm btn-outline-primary" data-filter="filter-control">
-                        <i class="fas fa-sliders-h me-1"></i>Control
-                      </button>
-                    </div>
-                    <div class="mt-2 text-center text-md-start">
-                      <small class="text-muted software-filter-count"></small> <!-- Count display -->
-                    </div>
-                  </div>
-                  <!-- END: Added Software Filters -->
-        
-                  <!-- START: Added Software List Container and Category Classes -->
-                  <div id="software-list">
-        
-                    <!-- CBFKit: Control -->
-                    <div class="card mb-4 shadow-sm filter-control">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">CBFKit: A Control Barrier Function Toolbox for Robotics Applications</h3>
-                        <p class="mb-1">Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers, sensors, and estimators, ensuring safety even in uncertain environments.</p>
-                        <a href="https://github.com/bardhh/cbfkit" target="_blank" rel="noopener"
-                           class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                           aria-label="Go to CBFKit Repository on GitHub">
-                          <i class="fab fa-github" aria-hidden="true"></i>
-                          <span class="repo-text">Repository</span>
-                          <span class="separator" aria-hidden="true">|</span>
-                          <i class="fas fa-star" aria-hidden="true"></i>
-                          <span class="github-star-count" data-repo="bardhh/cbfkit">...</span>
-                        </a>
-                        <a href="https://arxiv.org/abs/2404.07158" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-secondary">
-                          <i class="fas fa-file-pdf me-1"></i> IROS2024
-                        </a>
-                      </div>
-                    </div>
-        
-                    <!-- STREM: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">STREM: A Spatio-Temporal Regular Expression Matcher</h3>
-                        <p class="mb-1">STREM, written in RUST, is a flexible tool for efficient pattern matching in perception streams, supporting both offline and online use. It employs Spatial Regular Expressions (SpREs), merging classic regex with topological logic to enable queries for occlusions and object interactions over time. Its interface, similar to grep, offers advanced spatial and temporal reasoning.</p>
-                        <a href="https://github.com/cps-atlas/strem" target="_blank" rel="noopener"
-                               class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                               aria-label="Go to STREM Repository on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span class="repo-text">Repository</span>
-                                <span class="separator" aria-hidden="true">|</span>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span class="github-star-count" data-repo="cps-atlas/strem">...</span>
-                            </a>
-                        <a href="https://arxiv.org/pdf/2411.05946" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-secondary">
-                          <i class="fas fa-file-pdf me-1"></i> STTT2024
-                        </a>
-                      </div>
-                    </div>
-        
-                    <!-- NDF-CoRoCo: control -->
-                    <div class="card mb-4 shadow-sm filter-control">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">NDF-CoRoCo: Cooperative Perception with Neural Density Fields</h3>
-                        <p class="mb-1">Companion codebase for the paper 'NDF-CoRoCo: Cooperative Perception and Recognition Using Neural Density Fields'. Focuses on cooperative perception using Neural Density Fields for robotics applications.</p>
-                        <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
-                          <a href="https://github.com/cps-atlas/ndf-coroco" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                             aria-label="Go to NDF-CoRoCo Repository on GitHub">
-                              <i class="fab fa-github" aria-hidden="true"></i>
-                              <span class="repo-text">Repository</span>
-                              <span class="separator" aria-hidden="true">|</span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <span class="github-star-count" data-repo="cps-atlas/ndf-coroco">...</span>
-                          </a>
-                          <a href="https://arxiv.org/abs/2404.16704" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-secondary">
-                            <i class="ai ai-arxiv me-1"></i> arXiv Paper
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- RTAMT: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">RTAMT: Real-Time STL Monitoring Library</h3>
-                        <p class="mb-1">RTAMT is a Python library for real-time and offline monitoring of Signal Temporal Logic (STL) specifications. It supports both discrete-time and dense-time semantics, with optimized performance for online applications.</p>
-                        <ul class="list-styled mb-2">
-                          <li>Offline & Online STL Monitoring</li>
-                          <li>Discrete-Time & Dense-Time Support</li>
-                          <li>Optimized C++ Backend for Online Monitoring</li>
-                          <li>Python 2 and 3 Compatible</li>
-                        </ul>
-                        <a href="https://github.com/nickovic/rtamt" target="_blank" rel="noopener"
-                               class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                               aria-label="Go to RTAMT Repository on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span class="repo-text">Repository</span>
-                                <span class="separator" aria-hidden="true">|</span>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span class="github-star-count" data-repo="nickovic/rtamt">...</span>
-                            </a>
-                        <a href="/papers/rtamt2023.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">
-                          <i class="fas fa-file-pdf me-1"></i> STTT2023
-                        </a>
-                      </div>
-                    </div>
-        
-                    <!-- StarV: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">StarV: Event-driven Monitoring & Verification Codesign</h3>
-                        <p class="mb-2">StarV is a framework for monitoring and verification codesign in distributed learning-enabled Cyber-Physical Systems. It uses event-driven execution and star set reachability to verify complex behaviors of dynamical systems in real time.</p>
-                        <ul class="list-styled mb-2">
-                          <li>Event-driven Monitoring Architecture</li>
-                          <li>Supports Distributed CPS with Learning Components</li>
-                          <li>Star Set-based Reachability Analysis</li>
-                          <li>Focus on Real-time Safety and Efficiency</li>
-                        </ul>
-                        <a href="https://github.com/V2A2/StarV" target="_blank" rel="noopener"
-                               class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                               aria-label="Go to StarV Repository on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span class="repo-text">Repository</span>
-                                <span class="separator" aria-hidden="true">|</span>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span class="github-star-count" data-repo="V2A2/StarV">...</span>
-                            </a>
-                      </div>
-                    </div>
-        
-                     <!-- Specless: task assignment -->
-                    <div class="card mb-4 shadow-sm filter-task">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">Specless: SPECification LEarning and Strategy Synthesis</h3>
-                        <p class="mb-1">Python library for learning specification from demonstrations and synthesizing strategies that satisfy the given specification. Can be used in various applications including task assignment for robotics.</p>
-                        <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
-                          <a href="https://github.com/watakandai/specless" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                             aria-label="Go to Specless Repository on GitHub">
-                              <i class="fab fa-github" aria-hidden="true"></i>
-                              <span class="repo-text">Repository</span>
-                              <span class="separator" aria-hidden="true">|</span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <span class="github-star-count" data-repo="watakandai/specless">...</span>
-                          </a>
-                          <!-- Optional Paper Link -->
-                          <a href="https://arxiv.org/pdf/2302.02501" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICAPS 2023</a>
-                          <a href="https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICRA 2024</a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- MRTA-sim: Task Assignment -->
-                    <div class="card mb-4 shadow-sm filter-task">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">MRTA-sim: Multi-Robot Task Allocation Stack</h3>
-                        <p class="mb-1">A ROS package providing a stack for simulating and implementing various multi-robot task allocation (MRTA) algorithms in environments like Gazebo.</p>
-                        <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
-                          <a href="https://github.com/victoria-tuck/multi-robot-task-allocation-stack" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                             aria-label="Go to MRTA-sim Repository on GitHub">
-                              <i class="fab fa-github" aria-hidden="true"></i>
-                              <span class="repo-text">Repository</span>
-                              <span class="separator" aria-hidden="true">|</span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <span class="github-star-count" data-repo="victoria-tuck/multi-robot-task-allocation-stack">...</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- SMrTa: Task Assignment -->
-                    <div class="card mb-4 shadow-sm filter-task">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">SMrTa: SMT-Based Dynamic Multi-Robot Task Allocation</h3>
-                        <p class="mb-1">Implementation for the NFM 2024 paper "SMT-Based Dynamic Multi-Robot Task Allocation", providing tools for solving dynamic MRTA problems using SMT solvers.</p>
-                        <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
-                          <a href="https://github.com/victoria-tuck/SMrTa" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                             aria-label="Go to SMrTa Repository on GitHub">
-                              <i class="fab fa-github" aria-hidden="true"></i>
-                              <span class="repo-text">Repository</span>
-                              <span class="separator" aria-hidden="true">|</span>
-                              <i class="fas fa-star" aria-hidden="true"></i>
-                              <span class="github-star-count" data-repo="victoria-tuck/SMrTa">...</span>
-                          </a>
-                          <a href="https://arxiv.org/abs/2403.11737" target="_blank" rel="noopener"
-                             class="btn btn-sm btn-outline-secondary">
-                            <i class="fas fa-file-pdf me-1"></i> NFM 2024
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <!-- Veritex: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">VERITEX: Deep Neural Network Verification</h3>
-                        <p class="mb-1">Veritex is a Python toolbox for verification and automated repair of Deep Neural Networks, supporting both exact and over-approximate analysis of reachable outputs. It helps debug unsafe behaviors and generate provably safe DNNs.</p>
-                        <a href="https://github.com/Shaddadi/veritex" target="_blank" rel="noopener"
-                               class="btn btn-sm btn-outline-primary github-repo-stars-link"
-                               aria-label="Go to VERITEX Repository on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span class="repo-text">Repository</span>
-                                <span class="separator" aria-hidden="true">|</span>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span class="github-star-count" data-repo="Shaddadi/veritex">...</span>
-                            </a>
-                      </div>
-                    </div>
-        
-                    <!-- TLTk: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">TLTk: Lightweight Tool for Robustness Computation of STL</h3>
-                        <p class="mb-1">TLTk is a modular Python-based tool for parallel robustness computation of Signal Temporal Logic (STL) specifications. It supports multi-threaded CPU/GPU execution and enables extensible operator definitions.</p>
-                        <a href="https://www.bhoxha.com/tltk/index.html" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-primary">
-                          <i class="fas fa-book me-1"></i> User Guide
-                        </a>
-                        <a href="https://hub.docker.com/r/bardhh/tltk" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-secondary">
-                          <i class="fab fa-docker me-1"></i> Docker
-                        </a>
-                        <a href="https://bitbucket.org/versyslab/tltk/" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-dark">
-                          <i class="fab fa-bitbucket me-1"></i> Bitbucket
-                        </a>
-                        <a href="https://pypi.org/project/tltk-mtl/" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-success">
-                          <i class="fab fa-python me-1"></i> PyPI
-                        </a>
-                      </div>
-                    </div>
-        
-                    <!-- S-TaLiRo: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">S-TaLiRo: Toolbox for Testing and Verification of CPS</h3>
-                        <p class="mb-1">S-TaLiRo is a toolbox for Matlab/Simulink that supports testing and verification of hybrid and continuous Cyber-Physical Systems using Metric Temporal Logic (MTL). Widely used in automotive and medical domains.</p>
-                        <a href="https://cpslab.assembla.com/spaces/s-taliro_public/subversion/source" target="_blank" rel="noopener"
-                          class="btn btn-sm btn-outline-primary">
-                          <i class="fas fa-external-link-alt me-1"></i> Website
-                        </a>
-                        <a href="/papers/DIFTS2014.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">
-                          <i class="fas fa-file-pdf me-1"></i> DIFTS2014
-                        </a>
-                        <a href="https://faculty.washington.edu/scottcs/NSF/2012/NSF_Compendium_2012-WEB.pdf" target="_blank"
-                          rel="noopener" class="btn btn-sm btn-outline-info">
-                          <i class="fas fa-award me-1"></i> NSF Report
-                        </a>
-                      </div>
-                    </div>
-        
-                    <!-- ViSpec: Verification/Testing/Monitoring -->
-                    <div class="card mb-4 shadow-sm filter-verify">
-                      <div class="card-body">
-                        <h3 class="card-title fs-5">ViSpec: Elicitation of Formal Specifications</h3>
-                        <p class="mb-1">ViSpec is a graphical tool designed to help non-experts develop formal specifications using an intuitive interface. It translates visual representations into Metric Temporal Logic (MTL) automatically.</p>
-                        <ul class="list-styled mb-2">
-                          <li>Visual MTL Specification Builder</li>
-                          <li>Automatic Translation to Formal Logic</li>
-                          <li>Accessible to Users Without Formal Methods Expertise</li>
-                        </ul>
-                        <!-- <a href="https://sites.google.com/a/asu.edu/s-taliro/vispec" target="_blank" rel="noopener"
+        <!-- Software Section -->
+        <section id="software" class="mb-5 pt-4 pt-lg-0">
+          <h2 class="section-title">Software</h2>
+
+          <!-- START: Added Software Filters -->
+          <div class="software-filters mb-4">
+            <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+              <button class="btn btn-sm btn-outline-primary active" data-filter="all">
+                <i class="fas fa-layer-group me-1"></i>All Tools
+              </button>
+              <button class="btn btn-sm btn-outline-primary" data-filter="filter-verify">
+                <i class="fas fa-check-double me-1"></i>Verification/Testing/Monitoring
+              </button>
+              <button class="btn btn-sm btn-outline-primary" data-filter="filter-task">
+                <i class="fas fa-robot me-1"></i>Task Assignment
+              </button>
+              <button class="btn btn-sm btn-outline-primary" data-filter="filter-control">
+                <i class="fas fa-sliders-h me-1"></i>Control
+              </button>
+            </div>
+            <div class="mt-2 text-center text-md-start">
+              <small class="text-muted software-filter-count"></small> <!-- Count display -->
+            </div>
+          </div>
+          <!-- END: Added Software Filters -->
+
+          <!-- START: Added Software List Container and Category Classes -->
+          <div id="software-list">
+
+            <!-- CBFKit: Control -->
+            <div class="card mb-4 shadow-sm filter-control">
+              <div class="card-body">
+                <h3 class="card-title fs-5">CBFKit: A Control Barrier Function Toolbox for Robotics Applications</h3>
+                <p class="mb-1">Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible
+                  Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers,
+                  sensors, and estimators, ensuring safety even in uncertain environments.</p>
+                <a href="https://github.com/bardhh/cbfkit" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                  aria-label="Go to CBFKit Repository on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                  <span class="repo-text">Repository</span>
+                  <span class="separator" aria-hidden="true">|</span>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <span class="github-star-count" data-repo="bardhh/cbfkit">...</span>
+                </a>
+                <a href="https://arxiv.org/abs/2404.07158" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-file-pdf me-1"></i> IROS2024
+                </a>
+              </div>
+            </div>
+
+            <!-- STREM: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">STREM: A Spatio-Temporal Regular Expression Matcher</h3>
+                <p class="mb-1">STREM, written in RUST, is a flexible tool for efficient pattern matching in perception
+                  streams, supporting both offline and online use. It employs Spatial Regular Expressions (SpREs),
+                  merging classic regex with topological logic to enable queries for occlusions and object interactions
+                  over time. Its interface, similar to grep, offers advanced spatial and temporal reasoning.</p>
+                <a href="https://github.com/cps-atlas/strem" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                  aria-label="Go to STREM Repository on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                  <span class="repo-text">Repository</span>
+                  <span class="separator" aria-hidden="true">|</span>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <span class="github-star-count" data-repo="cps-atlas/strem">...</span>
+                </a>
+                <a href="https://arxiv.org/pdf/2411.05946" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-file-pdf me-1"></i> STTT2024
+                </a>
+              </div>
+            </div>
+
+            <!-- NDF-CoRoCo: control -->
+            <div class="card mb-4 shadow-sm filter-control">
+              <div class="card-body">
+                <h3 class="card-title fs-5">NDF-CoRoCo: Cooperative Perception with Neural Density Fields</h3>
+                <p class="mb-1">Companion codebase for the paper 'NDF-CoRoCo: Cooperative Perception and Recognition
+                  Using Neural Density Fields'. Focuses on cooperative perception using Neural Density Fields for
+                  robotics applications.</p>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                  <a href="https://github.com/cps-atlas/ndf-coroco" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                    aria-label="Go to NDF-CoRoCo Repository on GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="repo-text">Repository</span>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span class="github-star-count" data-repo="cps-atlas/ndf-coroco">...</span>
+                  </a>
+                  <a href="https://arxiv.org/abs/2404.16704" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-secondary">
+                    <i class="ai ai-arxiv me-1"></i> arXiv Paper
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- RTAMT: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">RTAMT: Real-Time STL Monitoring Library</h3>
+                <p class="mb-1">RTAMT is a Python library for real-time and offline monitoring of Signal Temporal Logic
+                  (STL) specifications. It supports both discrete-time and dense-time semantics, with optimized
+                  performance for online applications.</p>
+                <ul class="list-styled mb-2">
+                  <li>Offline & Online STL Monitoring</li>
+                  <li>Discrete-Time & Dense-Time Support</li>
+                  <li>Optimized C++ Backend for Online Monitoring</li>
+                  <li>Python 2 and 3 Compatible</li>
+                </ul>
+                <a href="https://github.com/nickovic/rtamt" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                  aria-label="Go to RTAMT Repository on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                  <span class="repo-text">Repository</span>
+                  <span class="separator" aria-hidden="true">|</span>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <span class="github-star-count" data-repo="nickovic/rtamt">...</span>
+                </a>
+                <a href="/papers/rtamt2023.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-file-pdf me-1"></i> STTT2023
+                </a>
+              </div>
+            </div>
+
+            <!-- StarV: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">StarV: Event-driven Monitoring & Verification Codesign</h3>
+                <p class="mb-2">StarV is a framework for monitoring and verification codesign in distributed
+                  learning-enabled Cyber-Physical Systems. It uses event-driven execution and star set reachability to
+                  verify complex behaviors of dynamical systems in real time.</p>
+                <ul class="list-styled mb-2">
+                  <li>Event-driven Monitoring Architecture</li>
+                  <li>Supports Distributed CPS with Learning Components</li>
+                  <li>Star Set-based Reachability Analysis</li>
+                  <li>Focus on Real-time Safety and Efficiency</li>
+                </ul>
+                <a href="https://github.com/V2A2/StarV" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                  aria-label="Go to StarV Repository on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                  <span class="repo-text">Repository</span>
+                  <span class="separator" aria-hidden="true">|</span>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <span class="github-star-count" data-repo="V2A2/StarV">...</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Specless: task assignment -->
+            <div class="card mb-4 shadow-sm filter-task">
+              <div class="card-body">
+                <h3 class="card-title fs-5">Specless: SPECification LEarning and Strategy Synthesis</h3>
+                <p class="mb-1">Python library for learning specification from demonstrations and synthesizing
+                  strategies that satisfy the given specification. Can be used in various applications including task
+                  assignment for robotics.</p>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                  <a href="https://github.com/watakandai/specless" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                    aria-label="Go to Specless Repository on GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="repo-text">Repository</span>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span class="github-star-count" data-repo="watakandai/specless">...</span>
+                  </a>
+                  <!-- Optional Paper Link -->
+                  <a href="https://arxiv.org/pdf/2302.02501" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICAPS 2023</a>
+                  <a href="https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICRA 2024</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- MRTA-sim: Task Assignment -->
+            <div class="card mb-4 shadow-sm filter-task">
+              <div class="card-body">
+                <h3 class="card-title fs-5">MRTA-sim: Multi-Robot Task Allocation Stack</h3>
+                <p class="mb-1">A ROS package providing a stack for simulating and implementing various multi-robot task
+                  allocation (MRTA) algorithms in environments like Gazebo.</p>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                  <a href="https://github.com/victoria-tuck/multi-robot-task-allocation-stack" target="_blank"
+                    rel="noopener" class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                    aria-label="Go to MRTA-sim Repository on GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="repo-text">Repository</span>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span class="github-star-count"
+                      data-repo="victoria-tuck/multi-robot-task-allocation-stack">...</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- SMrTa: Task Assignment -->
+            <div class="card mb-4 shadow-sm filter-task">
+              <div class="card-body">
+                <h3 class="card-title fs-5">SMrTa: SMT-Based Dynamic Multi-Robot Task Allocation</h3>
+                <p class="mb-1">Implementation for the NFM 2024 paper "SMT-Based Dynamic Multi-Robot Task Allocation",
+                  providing tools for solving dynamic MRTA problems using SMT solvers.</p>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                  <a href="https://github.com/victoria-tuck/SMrTa" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                    aria-label="Go to SMrTa Repository on GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="repo-text">Repository</span>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span class="github-star-count" data-repo="victoria-tuck/SMrTa">...</span>
+                  </a>
+                  <a href="https://arxiv.org/abs/2403.11737" target="_blank" rel="noopener"
+                    class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-file-pdf me-1"></i> NFM 2024
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Veritex: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">VERITEX: Deep Neural Network Verification</h3>
+                <p class="mb-1">Veritex is a Python toolbox for verification and automated repair of Deep Neural
+                  Networks, supporting both exact and over-approximate analysis of reachable outputs. It helps debug
+                  unsafe behaviors and generate provably safe DNNs.</p>
+                <a href="https://github.com/Shaddadi/veritex" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary github-repo-stars-link"
+                  aria-label="Go to VERITEX Repository on GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                  <span class="repo-text">Repository</span>
+                  <span class="separator" aria-hidden="true">|</span>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <span class="github-star-count" data-repo="Shaddadi/veritex">...</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- TLTk: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">TLTk: Lightweight Tool for Robustness Computation of STL</h3>
+                <p class="mb-1">TLTk is a modular Python-based tool for parallel robustness computation of Signal
+                  Temporal Logic (STL) specifications. It supports multi-threaded CPU/GPU execution and enables
+                  extensible operator definitions.</p>
+                <a href="https://www.bhoxha.com/tltk/index.html" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-primary">
+                  <i class="fas fa-book me-1"></i> User Guide
+                </a>
+                <a href="https://hub.docker.com/r/bardhh/tltk" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-secondary">
+                  <i class="fab fa-docker me-1"></i> Docker
+                </a>
+                <a href="https://bitbucket.org/versyslab/tltk/" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-dark">
+                  <i class="fab fa-bitbucket me-1"></i> Bitbucket
+                </a>
+                <a href="https://pypi.org/project/tltk-mtl/" target="_blank" rel="noopener"
+                  class="btn btn-sm btn-outline-success">
+                  <i class="fab fa-python me-1"></i> PyPI
+                </a>
+              </div>
+            </div>
+
+            <!-- S-TaLiRo: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">S-TaLiRo: Toolbox for Testing and Verification of CPS</h3>
+                <p class="mb-1">S-TaLiRo is a toolbox for Matlab/Simulink that supports testing and verification of
+                  hybrid and continuous Cyber-Physical Systems using Metric Temporal Logic (MTL). Widely used in
+                  automotive and medical domains.</p>
+                <a href="https://cpslab.assembla.com/spaces/s-taliro_public/subversion/source" target="_blank"
+                  rel="noopener" class="btn btn-sm btn-outline-primary">
+                  <i class="fas fa-external-link-alt me-1"></i> Website
+                </a>
+                <a href="/papers/DIFTS2014.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-file-pdf me-1"></i> DIFTS2014
+                </a>
+                <a href="https://faculty.washington.edu/scottcs/NSF/2012/NSF_Compendium_2012-WEB.pdf" target="_blank"
+                  rel="noopener" class="btn btn-sm btn-outline-info">
+                  <i class="fas fa-award me-1"></i> NSF Report
+                </a>
+              </div>
+            </div>
+
+            <!-- ViSpec: Verification/Testing/Monitoring -->
+            <div class="card mb-4 shadow-sm filter-verify">
+              <div class="card-body">
+                <h3 class="card-title fs-5">ViSpec: Elicitation of Formal Specifications</h3>
+                <p class="mb-1">ViSpec is a graphical tool designed to help non-experts develop formal specifications
+                  using an intuitive interface. It translates visual representations into Metric Temporal Logic (MTL)
+                  automatically.</p>
+                <ul class="list-styled mb-2">
+                  <li>Visual MTL Specification Builder</li>
+                  <li>Automatic Translation to Formal Logic</li>
+                  <li>Accessible to Users Without Formal Methods Expertise</li>
+                </ul>
+                <!-- <a href="https://sites.google.com/a/asu.edu/s-taliro/vispec" target="_blank" rel="noopener"
                           class="btn btn-sm btn-outline-primary">
                           <i class="fas fa-download me-1"></i> Download
                         </a> -->
-                      </div>
-                    </div>
-        
-                  </div> <!-- End #software-list -->
-                  <!-- END: Added Software List Container -->
-        
-                </section>
+              </div>
+            </div>
+
+          </div> <!-- End #software-list -->
+          <!-- END: Added Software List Container -->
+
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="mb-5 pt-4 pt-lg-0 shadow-sm">
@@ -733,35 +876,35 @@
   <!-- <script src="unitegallery/themes/default/ug-theme-default.js" defer></script> -->
 
   <!-- Updated Publications Loader -->
-  <script>
+  <script defer>
 
-function getTopicClasses(themeText) {
+    function getTopicClasses(themeText) {
       if (!themeText) return 'topic-uncategorized'; // Assign a class if theme is missing
       const lowerTheme = themeText.trim().toLowerCase();
 
       // Direct mapping from theme text to CSS class
       switch (lowerTheme) {
-          case 'learning-based control and analysis':
-              return 'topic-learning-control';
-          case 'optimal planning and safe control':
-              return 'topic-optimal-planning';
-          case 'runtime verification and monitoring':
-              return 'topic-runtime-verification';
-          case 'testing, falsification, and specification':
-              return 'topic-testing-falsification';
-          case 'risk and stochasticity':
-              return 'topic-risk-stochasticity';
-          default:
-              console.warn(`Unrecognized theme found in XML: "${themeText}"`);
-              return 'topic-uncategorized'; // Return a default class for unrecognized themes
+        case 'learning-based control and analysis':
+          return 'topic-learning-control';
+        case 'optimal planning and safe control':
+          return 'topic-optimal-planning';
+        case 'runtime verification and monitoring':
+          return 'topic-runtime-verification';
+        case 'testing, falsification, and specification':
+          return 'topic-testing-falsification';
+        case 'risk and stochasticity':
+          return 'topic-risk-stochasticity';
+        default:
+          console.warn(`Unrecognized theme found in XML: "${themeText}"`);
+          return 'topic-uncategorized'; // Return a default class for unrecognized themes
       }
-  }
+    }
 
-  // --- The rest of the $(document).ready() function remains the same ---
-  // It includes the AJAX call, card generation (which uses the updated getTopicClasses),
-  // the unified filter button handler, and the animation logic.
+    // --- The rest of the $(document).ready() function remains the same ---
+    // It includes the AJAX call, card generation (which uses the updated getTopicClasses),
+    // the unified filter button handler, and the animation logic.
 
-  $(document).ready(function () {
+    $(document).ready(function () {
       const pubListContainer = $("#pub-list");
       const filterButtons = $('.pub-filters button'); // Select ALL filter buttons
       const filterCountDisplay = $('.filter-count');
@@ -775,148 +918,148 @@ function getTopicClasses(themeText) {
           </div>`); // Add initial loading indicator
 
       // Unified click handler for all filter buttons
-      filterButtons.on('click', function() {
-          const $button = $(this);
-          const filterValue = $button.data('filter');
-          const isTopicButton = filterValue.startsWith('topic-');
-          const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
+      filterButtons.on('click', function () {
+        const $button = $(this);
+        const filterValue = $button.data('filter');
+        const isTopicButton = filterValue.startsWith('topic-');
+        const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
 
-          // Update active state for TYPE buttons OR TOPIC buttons separately
-          if (isTypeButton) {
-              $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
-              if (filterValue !== 'recent') $button.addClass('active');
-              else $('.pub-filters button[data-filter="all"]').addClass('active'); // Make 'All' active when 'recent' is clicked
-          } else if (isTopicButton) {
-               $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-               $button.addClass('active');
-          }
+        // Update active state for TYPE buttons OR TOPIC buttons separately
+        if (isTypeButton) {
+          $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
+          if (filterValue !== 'recent') $button.addClass('active');
+          else $('.pub-filters button[data-filter="all"]').addClass('active'); // Make 'All' active when 'recent' is clicked
+        } else if (isTopicButton) {
+          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+          $button.addClass('active');
+        }
 
-          // If a type button is clicked, deactivate the topic button, and vice-versa
-          // Keep 'All' as the neutral type filter when a topic is selected
-          if (isTopicButton) {
-              $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
-              $('.pub-filters button[data-filter="all"]').addClass('active');
-          } else if (isTypeButton && filterValue !== 'all') {
-              $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-          } else if (filterValue === 'all') {
-               // Clicking "All" should also clear the topic filter selection
-               $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-          }
+        // If a type button is clicked, deactivate the topic button, and vice-versa
+        // Keep 'All' as the neutral type filter when a topic is selected
+        if (isTopicButton) {
+          $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
+          $('.pub-filters button[data-filter="all"]').addClass('active');
+        } else if (isTypeButton && filterValue !== 'all') {
+          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+        } else if (filterValue === 'all') {
+          // Clicking "All" should also clear the topic filter selection
+          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+        }
 
 
-          // Filter logic
-          const allCards = $('#pub-list .card');
-          allCards.hide(); // Hide all cards initially
+        // Filter logic
+        const allCards = $('#pub-list .card');
+        allCards.hide(); // Hide all cards initially
 
-          // Determine active filters
-          const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
-          const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter'); // Will be undefined if none active
+        // Determine active filters
+        const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
+        const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter'); // Will be undefined if none active
 
-          let selector = '#pub-list .card'; // Start with all cards
+        let selector = '#pub-list .card'; // Start with all cards
 
-          // Apply type filter (if not 'all')
-          if (activeTypeFilter !== 'all') {
-              selector += '.' + activeTypeFilter;
-          }
+        // Apply type filter (if not 'all')
+        if (activeTypeFilter !== 'all') {
+          selector += '.' + activeTypeFilter;
+        }
 
-          // Apply topic filter (if one is active)
-          if (activeTopicFilter) {
-              selector += '.' + activeTopicFilter;
-          }
+        // Apply topic filter (if one is active)
+        if (activeTopicFilter) {
+          selector += '.' + activeTopicFilter;
+        }
 
-          // Special case for 'Recent' - filter the currently selected items by year
-          if (filterValue === 'recent') {
-              $(selector).filter(function() { // Filter the already selected cards
-                  const details = $(this).find('.paper-details').text();
-                  return details.match(/(202\d|2030)/); // Matches 2020-2030
-              }).show();
-          } else {
-              // Show cards matching the combined selector
-              $(selector).show();
-          }
+        // Special case for 'Recent' - filter the currently selected items by year
+        if (filterValue === 'recent') {
+          $(selector).filter(function () { // Filter the already selected cards
+            const details = $(this).find('.paper-details').text();
+            return details.match(/(202\d|2030)/); // Matches 2020-2030
+          }).show();
+        } else {
+          // Show cards matching the combined selector
+          $(selector).show();
+        }
 
-          // Update count
-          const visibleCount = $('#pub-list .card:visible').length;
-          const totalCount = allCards.length;
-          filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
+        // Update count
+        const visibleCount = $('#pub-list .card:visible').length;
+        const totalCount = allCards.length;
+        filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
       });
 
 
       $.ajax({
-          type: "GET",
-          url: "./papers.xml", // Assuming papers.xml is in the same directory
-          dataType: "xml",
-          success: function (xml) {
-              pubListContainer.empty(); // Clear loading indicator
-              let totalLoadedCount = 0;
-              $(xml)
-                  .find("paper")
-                  .each(function () {
-                      const $this = $(this);
-                      const paperType = $this.attr("type") || "other"; // Use 'other' if type missing
-                      const title = $this.find("title").text().trim();
-                      const authors = $this.find("authors").text().trim();
-                      const details = $this.find("other").text().trim();
-                      const pdfLink = $this.find("link").text().trim();
-                      const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
+        type: "GET",
+        url: "./papers.xml", // Assuming papers.xml is in the same directory
+        dataType: "xml",
+        success: function (xml) {
+          pubListContainer.empty(); // Clear loading indicator
+          let totalLoadedCount = 0;
+          $(xml)
+            .find("paper")
+            .each(function () {
+              const $this = $(this);
+              const paperType = $this.attr("type") || "other"; // Use 'other' if type missing
+              const title = $this.find("title").text().trim();
+              const authors = $this.find("authors").text().trim();
+              const details = $this.find("other").text().trim();
+              const pdfLink = $this.find("link").text().trim();
+              const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
 
-                      // --- MODIFIED BLOCK START ---
-                      let combinedTopicClasses = new Set(); // Use a Set to avoid duplicates
-                      $this.find("theme").each(function() { // Iterate over ALL theme tags
-                          const themeText = $(this).text().trim();
-                          if (themeText) { // Make sure theme text is not empty
-                              const topicClass = getTopicClasses(themeText); // Get class for this specific theme
-                              if (topicClass && topicClass !== 'topic-uncategorized') {
-                                 combinedTopicClasses.add(topicClass);
-                              } else if (topicClass === 'topic-uncategorized') {
-                                  console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
-                              }
-                          }
-                      });
+              // --- MODIFIED BLOCK START ---
+              let combinedTopicClasses = new Set(); // Use a Set to avoid duplicates
+              $this.find("theme").each(function () { // Iterate over ALL theme tags
+                const themeText = $(this).text().trim();
+                if (themeText) { // Make sure theme text is not empty
+                  const topicClass = getTopicClasses(themeText); // Get class for this specific theme
+                  if (topicClass && topicClass !== 'topic-uncategorized') {
+                    combinedTopicClasses.add(topicClass);
+                  } else if (topicClass === 'topic-uncategorized') {
+                    console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
+                  }
+                }
+              });
 
-                      // Join the collected classes into a string, add uncategorized if none found
-                      const topicClasses = combinedTopicClasses.size > 0 ?
-                                            Array.from(combinedTopicClasses).join(' ') :
-                                            'topic-uncategorized';
-                      // --- MODIFIED BLOCK END ---
-
-
-                      let links = '';
-                       if (pdfLink) { // Only add PDF link if present
-                           links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
-                       }
+              // Join the collected classes into a string, add uncategorized if none found
+              const topicClasses = combinedTopicClasses.size > 0 ?
+                Array.from(combinedTopicClasses).join(' ') :
+                'topic-uncategorized';
+              // --- MODIFIED BLOCK END ---
 
 
-                      if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
-                          links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
-                      }
-                      if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
-                          links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
-                      }
-                      if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
-                          links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
-                      }
-                      if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
-                          links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
-                      }
+              let links = '';
+              if (pdfLink) { // Only add PDF link if present
+                links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
+              }
 
-                      let award = "";
-                      if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
-                          award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
-                      }
 
-                      // Generate badge text based on paper type
-                       let typeBadgeText = '';
-                       switch(paperType) {
-                           case 'conf': typeBadgeText = 'Conference'; break;
-                           case 'jour': typeBadgeText = 'Journal'; break;
-                           case 'work': typeBadgeText = 'Workshop'; break;
-                           case 'other': typeBadgeText = 'Other'; break; // Handle 'other' type
-                           default: typeBadgeText = paperType; // Use raw type if not recognized
-                       }
+              if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
+                links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
+              }
+              if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
+                links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
+              }
+              if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
+                links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
+              }
+              if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
+                links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
+              }
 
-                      // Add paper type class AND topic classes to the card div
-                      const cardHtml = `
+              let award = "";
+              if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
+                award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
+              }
+
+              // Generate badge text based on paper type
+              let typeBadgeText = '';
+              switch (paperType) {
+                case 'conf': typeBadgeText = 'Conference'; break;
+                case 'jour': typeBadgeText = 'Journal'; break;
+                case 'work': typeBadgeText = 'Workshop'; break;
+                case 'other': typeBadgeText = 'Other'; break; // Handle 'other' type
+                default: typeBadgeText = paperType; // Use raw type if not recognized
+              }
+
+              // Add paper type class AND topic classes to the card div
+              const cardHtml = `
                           <div class="card mb-2 shadow-sm paper-${paperType} ${topicClasses}">
                               <div class="card-body">
                                   <h5 class="card-title paper-title mb-2">${title}</h5>
@@ -934,44 +1077,44 @@ function getTopicClasses(themeText) {
                               </div>
                           </div>`;
 
-                      pubListContainer.append(cardHtml);
-                      totalLoadedCount++;
-                  });
+              pubListContainer.append(cardHtml);
+              totalLoadedCount++;
+            });
 
-              // Update the initial count after loading
-              const allCards = $('#pub-list .card'); // Recalculate after loading
-              filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
-               // Trigger 'all' filter initially to show everything
-               $('.pub-filters button[data-filter="all"]').trigger('click');
+          // Update the initial count after loading
+          const allCards = $('#pub-list .card'); // Recalculate after loading
+          filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
+          // Trigger 'all' filter initially to show everything
+          $('.pub-filters button[data-filter="all"]').trigger('click');
 
-              // Apply animations (optional)
-              allCards.each(function (index) {
-                  const card = $(this);
-                  card.css({
-                      'opacity': '0',
-                      'transform': 'translateY(20px)',
-                      'transition': 'opacity 0.5s ease, transform 0.5s ease'
-                  });
+          // Apply animations (optional)
+          allCards.each(function (index) {
+            const card = $(this);
+            card.css({
+              'opacity': '0',
+              'transform': 'translateY(20px)',
+              'transition': 'opacity 0.5s ease, transform 0.5s ease'
+            });
 
-                  setTimeout(function () {
-                      card.css({
-                          'opacity': '1',
-                          'transform': 'translateY(0)'
-                      });
-                  }, index * 50);
+            setTimeout(function () {
+              card.css({
+                'opacity': '1',
+                'transform': 'translateY(0)'
               });
+            }, index * 50);
+          });
 
-              if (totalLoadedCount === 0) {
-                  pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
-              }
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-              console.error("AJAX error loading publications:", textStatus, errorThrown);
-              pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
-              filterCountDisplay.text(''); // Clear count on error
-          },
+          if (totalLoadedCount === 0) {
+            pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+          }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error("AJAX error loading publications:", textStatus, errorThrown);
+          pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
+          filterCountDisplay.text(''); // Clear count on error
+        },
       });
-  });
+    });
   </script>
 
   <script>
@@ -1074,118 +1217,9 @@ function getTopicClasses(themeText) {
     }
     </script>
   <!-- <script async src="assets\js\btn.js"> -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const starCountElements = document.querySelectorAll('.github-star-count');
-  
-        starCountElements.forEach(element => {
-          const repo = element.dataset.repo;
-          if (!repo || !repo.includes('/')) {
-            console.warn('Invalid or missing data-repo attribute:', element);
-            element.textContent = '?'; // Indicate missing info
-            return;
-          }
-  
-          const apiUrl = `https://api.github.com/repos/${repo}`;
-          // Set initial loading state (optional)
-          element.textContent = '...';
-  
-          fetch(apiUrl)
-            .then(response => {
-              // Check for rate limit errors (403) or repo not found (404)
-              if (response.status === 403) {
-                 console.warn(`GitHub API rate limit likely exceeded for ${repo}.`);
-                 element.textContent = 'Limit'; // Indicate rate limit
-                 return null;
-              } else if (response.status === 404) {
-                 console.warn(`Repository ${repo} not found.`);
-                 element.textContent = 'N/A'; // Indicate not found
-                 return null;
-              } else if (!response.ok) {
-                console.error(`GitHub API error for ${repo}: ${response.status}`);
-                element.textContent = 'Err'; // Generic error
-                return null;
-              }
-              // Log remaining rate limit (useful for debugging)
-              // console.log(`Rate limit remaining for ${repo}:`, response.headers.get('X-RateLimit-Remaining'));
-              return response.json();
-            })
-            .then(data => {
-              if (data && typeof data.stargazers_count !== 'undefined') {
-                // Format large numbers if desired (optional)
-                // const count = data.stargazers_count > 999 ? (data.stargazers_count/1000).toFixed(1) + 'k' : data.stargazers_count;
-                // element.textContent = count;
-                element.textContent = data.stargazers_count; // Display exact count
-              } else if (data !== null) {
-                  // Handle case where response was ok but count missing (unlikely for repos)
-                   element.textContent = '?';
-              }
-            })
-            .catch(error => {
-              console.error(`Error fetching GitHub stars for ${repo}:`, error);
-              element.textContent = 'Err'; // Indicate fetch error
-            });
-        });
-      });
-    </script>
-    <script>
-      $(document).ready(function () {
-        // --- Software Filtering Logic ---
-  
-        const $softwareListContainer = $("#software-list");
-        const $softwareCards = $softwareListContainer.find('.card');
-        const $softwareFilterButtons = $('.software-filters button');
-        const $softwareFilterCount = $('.software-filter-count');
-  
-        // Function to update software count
-        function updateSoftwareCount() {
-          const visibleCount = $softwareListContainer.find('.card:visible').length;
-          const totalCount = $softwareCards.length;
-          $softwareFilterCount.text(`Showing ${visibleCount} of ${totalCount} tools`);
-        }
-  
-        // Initial count update on page load
-        updateSoftwareCount();
-  
-        // Add event listeners to software filter buttons
-        $softwareFilterButtons.on('click', function() {
-          const $button = $(this);
-  
-          // Update active button state
-          $softwareFilterButtons.removeClass('active');
-          $button.addClass('active');
-  
-          const filterValue = $button.data('filter');
-  
-          // Show/hide cards based on filter
-          if (filterValue === 'all') {
-            $softwareCards.show(); // Show all cards
-          } else {
-            $softwareCards.hide(); // Hide all cards first
-            $softwareCards.filter('.' + filterValue).show(); // Show only matching cards
-          }
-  
-          // Update the count display
-          updateSoftwareCount();
-        });
-  
-        // --- End Software Filtering Logic ---
-  
-        // --- Your Existing Publication Loader/Filter Logic Goes Here (or was already included above) ---
-        // $.ajax({... }); // The publication loader
-        // $('.pub-filters button').on('click', ...); // The publication filter handler
-  
-        // --- Your Existing Star Count Fetcher Logic Goes Here ---
-        // document.addEventListener('DOMContentLoaded', () => { ... }); // Or the jQuery equivalent if preferred
-  
-        // --- Your Existing Animation Logic Goes Here ---
-        // let observer = new IntersectionObserver(...);
-        // document.querySelectorAll(...).forEach(...);
-  
-      }); // End $(document).ready()
-  
-    </script>
-  
+
+
+
 </body>
 
 </html>
