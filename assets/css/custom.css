@@ -1,512 +1,244 @@
-/* Add these to your custom.css */
+/* Condensed and Refactored CSS */
+
 :root {
-    --primary-color: #4361ee; /* Professional blue */
-    --accent-color: #3a0ca3; /* Complementary purple */
-    --text-primary: #2d3748;
-    --text-secondary: #4a5568;
-    --background-light: #f8fafc;
-  }
-  
-  body {
-    color: var(--text-primary);
-  }
-  
-  .section-title {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 0.75rem;
-    margin-bottom: 1.75rem;
-  }
+  --primary-color: #4361ee; /* Professional blue */
+  --accent-color: #3a0ca3; /* Complementary purple */
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --background-light: #f8fafc;
+  /* Assuming Bootstrap variables might be used based on original 'a' tag style */
+  /* Add these if Bootstrap isn't defining them */
+  /* --bs-primary-rgb: 67, 97, 238; */
+  /* --bs-link-hover-color-rgb: 29, 78, 216; */
+  /* --bs-primary: var(--primary-color); */ /* Map BS primary to our primary */
+}
 
-
+/* === Base Styles === */
 body {
-font-family: 'Inter', sans-serif;
-font-size: 16px;
-line-height: 1.7;
-color: #4A4A4A; / Softer yet clear readability /
-background-color: #f8fafc; / Soft-light background */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; /* Overridden later styles chose 16px */
+  line-height: 1.7;
+  color: #1f2937; /* Last defined body color */
+  background-color: var(--background-light); /* Consistent background */
 }
 
 h1, h2, h3, h4, h5, h6 {
-font-family: 'Poppins', sans-serif;
-color: #2d3748; /* Darker/ cleaner headings */
+  font-family: 'Poppins', sans-serif;
+  color: #2d3748; /* Default heading color */
+}
+
+h1, h2, h3 {
+  color: #111827; /* Darker color for major headings (last definition) */
+  font-weight: 600; /* Added weight for major headings (last definition) */
 }
 
 a {
-color: rgb(var(--bs-primary-rgb));
+  color: #2563eb; /* Last defined link color */
+  text-decoration: none; /* Last defined link decoration */
 }
 a:hover {
-color: rgb(var(--bs-link-hover-color-rgb));
-text-decoration: underline;
+  color: #1d4ed8; /* Last defined link hover color */
+  text-decoration: underline; /* Consistent underline on hover */
 }
 
-/* Enhanced Section Titles /
-.section-title {
-border-bottom: 3px solid #70a9ff;  / Slightly brighter brand color */
-display: inline-block;
-padding-bottom: 0.3rem;
-margin-bottom: 1.5rem;
+/* === Header === */
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  background-image: url('assets/img/bkg2.webp');
+  background-size: cover;
+  background-position: center;
 }
 
-/* Elevated Card Designs */
-/* Compact Cards */
-.card.custom-override {
-    padding: 0.3rem 0.5rem;
-    margin-bottom: 0.75rem;
-    --bs-card-spacer-y: 0.5rem; /* or any value you prefer */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+  z-index: 0;
 }
 
-/* .card mb3 {
-    margin-bottom: 0;
-} */
-.card .card-title {
-font-size: 1rem;
-margin-bottom: 0.2rem;
+header .container {
+  position: relative;
+  z-index: 1;
 }
 
-.card .card-subtitle {
-font-size: 0.85rem;
-/* margin-bottom: 0.3rem; */
-}
-
-.card .card-text {
-font-size: 0.8rem;
-margin-bottom: 0rem;
-}
-
-.card .btn {
-font-size: 0.7rem;
-padding: 0.15rem 0.4rem;
-}
-/* .card:hover {
-transform: translateY(-3px);
-box-shadow: 0 14px 26px rgba(0,0,0,.1);
-} */
-
-/* Profile Image Enhancement */
 .profile-img {
-max-width: 220px;
-height: auto;
-border-radius: 6px;
-/* border: 5px solid #fff; */
-transition: transform 0.3s;
+  max-width: 220px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* Last defined shadow */
+  transition: transform 0.3s ease; /* Last defined transition */
 }
 .profile-img:hover {
-transform: scale(1.05);
+  transform: scale(1.05); /* Consistent hover effect */
 }
 
+/* Glassmorphism Text Box in Header */
+.header-text-box {
+  background: rgba(255, 255, 255, 0.15); /* From more detailed definition */
+  -webkit-backdrop-filter: blur(18px); /* From more detailed definition */
+  backdrop-filter: blur(18px); /* From more detailed definition */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* From more detailed definition */
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* From more detailed definition */
+  padding: 1.5rem 2rem;
+  max-width: 720px;
+  color: #111827; /* Default text color inside box */
+}
+
+.header-text-box h1 {
+  color: #ffffff; /* Ensure heading contrast */
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0px;
+}
+
+.header-text-box p {
+  color: #1f2937; /* Dark grey for paragraphs */
+  font-size: initial; /* Resetting the 0% from original */
+  margin-bottom: 0rem;
+}
+.header-text-box p.lead { /* General lead style inside */
+   font-weight: 400;
+}
+.header-text-box p.lead.fs-5 { /* Specific override */
+   font-weight: 500;
+   color: #1f2937; /* Explicitly set if needed, otherwise inherits */
+}
+
+/* Header Icons (Outside Text Box) */
+.header-icons a {
+  color: #f1f5f9; /* Last defined color */
+  opacity: 0.9; /* Last defined opacity */
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease; /* Last defined transition */
+}
+.header-icons a:hover {
+  color: #ffffff; /* Last defined hover color */
+  opacity: 1; /* Last defined hover opacity */
+  transform: scale(1.15); /* Last defined hover transform */
+}
+
+/* === Sections & Titles === */
+.section-title {
+  /* Merging properties from multiple definitions, prioritizing later ones */
+  border-left: 5px solid #60a5fa; /* Last defined border */
+  padding-left: 0.75rem;
+  margin-bottom: 1.5rem; /* From middle definition */
+  display: inline-block; /* From middle definition */
+  padding-bottom: 0.3rem; /* From middle definition */
+  font-weight: 600; /* Last defined weight */
+  color: #1e293b; /* Last defined color */
+}
+
+/* === Sidebar === */
 .sidebar-sticky {
   position: sticky;
   top: 20px; /* match data-bs-offset or adjust */
-  height: calc(100vh - 100px); /* optional, for full height */
-  overflow-y: auto; /* optional, if you want scrolling inside the sidebar */
+  height: calc(100vh - 100px); /* optional */
+  overflow-y: auto; /* optional */
 }
+
 #sidebarNav .nav-link.active,
 #sidebarNav .nav-link:hover {
-background-color: #e8eff6;
-color: #2c7be5;
-border-radius: 6px;
+  background-color: #e8eff6; /* Using non-commented definition */
+  color: #2c7be5; /* Using non-commented definition */
+  border-radius: 6px; /* Using non-commented definition */
+  /* Removed transform: translateX(5px); from commented rule */
 }
 
-/* Button Enhancements */
-.btn-outline-primary, .btn-outline-secondary, .btn-outline-success {
-transition: all 0.25s ease;
-}
-.btn-outline-primary:hover, .btn-outline-secondary:hover, .btn-outline-success:hover {
-color: #fff;
-}
-
-/* Responsive Tweaks (Mobile-first approach) */
-@media (max-width: 992px) {
-.sidebar-sticky {
-border-right: none;
-border-bottom: 1px solid #e9ecef;
-margin-bottom: 24px;
-}
-body {
-padding: 10px;
-}
-}
-
-/* Smooth transitions */
-
-{ transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
-/* Custom scrollbars for enhanced UX */
-::-webkit-scrollbar {
-width: 8px;
-}
-::-webkit-scrollbar-track {
-background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-background-color: #b3cce4;
-border-radius: 20px;
-}
-
-section {
-    counter-reset: publication teaching software pres;
-    }
-    
-    /* Publications numbering */
-    #publications .card.paper-conf .card-title::before,
-    #publications .card.paper-jour .card-title::before,
-    #publications .card.paper-work .card-title::before {
-    counter-increment: publication;
-    content: counter(publication) ". ";
-    font-weight: bold;
-    color: var(--bs-primary);
-    }
-    
-    /* Presentation numbering */
-    #presentation-list .card .card-title::before {
-    counter-increment: pres;
-    content: counter(pres) ". ";
-    font-weight: bold;
-    color: var(--bs-primary);
-    }
-    
-    /* Teaching numbering */
-    #teaching .list-group-item::before {
-    /* counter-increment: teaching; */
-    /* content: counter(teaching) ". "; */
-    font-weight: bold;
-    color: var(--bs-primary);
-    margin-right:5px;
-    }
-    
-    /* Software numbering */
-    #software .card-title::before {
-    counter-increment: software;
-    content: counter(software) ". ";
-    font-weight: bold;
-    color: var(--bs-primary);
-    }
-
-    header {
-        position: relative;
-        overflow: hidden;
-        padding: 5rem 0;
-        background-image: url('assets/img/bkg2.webp');
-        background-size: cover;
-        background-position: center;
-      }
-    
-      header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6));
-        z-index: 0;
-      }
-    
-      header .container {
-        position: relative;
-        z-index: 1;
-      }
-    
-      .header-icons a {
-        color: #f1f5f9;
-        transition: transform 0.2s ease, color 0.2s ease;
-      }
-    
-      .header-icons a:hover {
-        color: #93c5fd;
-        transform: scale(1.1);
-      }
-    
-      .profile-img {
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      }
-    
-      /* Section title with highlight effect */
-      .section-title {
-        border-left: 5px solid #60a5fa;
-        padding-left: 0.75rem;
-        font-weight: 600;
-        color: #1e293b;
-      }
-    
-      /* Card hover effect */
-      /* .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 32px rgba(0,0,0,0.1);
-      } */
-    
-      /* Enhanced typography */
-      body {
-        font-size: 17px;
-        color: #1f2937;
-      }
-      h1, h2, h3 {
-        color: #111827;
-      }
-    
-      /* Responsive tweaks */
-      @media (max-width: 768px) {
-        .display-4 {
-          font-size: 2.25rem;
-          
-        }
-        .lead {
-          font-size: 1rem;
-        }
-      }
-    
-      /* Link color cleanup */
-      a {
-        color: #2563eb;
-        text-decoration: none;
-      }
-      a:hover {
-        color: #1d4ed8;
-        text-decoration: underline;
-      }
-    
-      /* Footer updates */
-      footer {
-        background-color: #f1f5f9;
-        color: #6b7280;
-        font-size: 0.9rem;
-      }
-    
-      /* #contact .card-body ul {
-        padding-left: 0;
-      }
-      #contact li {
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-      }
-      #contact li i {
-        margin-right: 0.75rem;
-        font-size: 1.25rem;
-        color: #3b82f6;
-      } */
-
-      .header-text-box {
-        /* --- Core Glass Effect --- */
-        /* Slightly more transparent background */
-        background: rgba(255, 255, 255, 0.15); /* Lower alpha (was 0.2 or 0.35) */
-      
-        /* Stronger blur effect */
-        -webkit-backdrop-filter: blur(18px); /* Increase blur (was 6px or 12px) */
-        backdrop-filter: blur(18px);
-      
-        /* --- Visual Styling --- */
-        /* Subtle border to define the 'glass' edge */
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      
-        /* Existing rounded corners */
-        border-radius: 1rem; /* 16px */
-      
-        /* Adjusted shadow for depth */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Adjust spread/opacity as needed */
-      
-        /* --- Layout & Text --- */
-        padding: 1.5rem 2rem; /* Keep appropriate padding */
-        max-width: 720px;    /* Keep max-width if desired */
-      
-        /* --- Text Color (Crucial for Readability) --- */
-        /* Set default dark text color for elements inside */
-        color: #111827; /* A very dark grey/off-black */
-      }
-      
-      /* Ensure specific text elements inside have good contrast */
-      .header-text-box h1 {
-        color: #ffffff; /* Slightly darker/bluer black for heading */
-        font-size: 3rem; /* Adjust as needed */
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-        letter-spacing: 0px;
-      }
-      
-      .header-text-box p {
-        color: #1f2937; /* Dark grey for paragraphs */
-        font-size: 0%; /* Adjust as needed */
-        margin-bottom: 0rem;
-      }
-      
-      /* Optional: Adjust specific paragraph styles if needed */
-      .header-text-box p.lead.fs-4 {
-         /* Keep fs-4 styles, color is inherited from .header-text-box p */
-         font-weight: 400; /* Default lead weight */
-      }
-      .header-text-box p.lead.fs-5 {
-         /* Keep fs-5 styles, color is inherited */
-         font-weight: 500; /* Default lead weight */
-         color: #1f2937; /* Make slightly lighter if desired */
-      }
-      
-      
-      /* --- Ensure Icons Outside This Box Remain White --- */
-      /* (The original header-icons rules should still work fine) */
-      .header-icons a {
-        color: #f1f5f9; /* Keep icons light/white */
-        opacity: 0.9;
-        transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease; /* Added color transition */
-      }
-      
-      .header-icons a:hover {
-        color: #ffffff; /* Make brighter white on hover */
-        opacity: 1;
-        transform: scale(1.15);
-      }
-
-      /* Card improvements */
+/* === Cards === */
 .card {
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-  }
-  
-  /* .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-   */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover effect needs explicit :hover rule if desired */
+  overflow: hidden;
+  margin-bottom: 1rem; /* Default Bootstrap card margin, adjust if needed */
+}
+/* Re-add hover if desired, it was commented out multiple times */
+/* .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+} */
 
-   /* Enhanced header */
-.header-text-box {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 1rem;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .profile-img {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease;
-  }
-  
-  .profile-img:hover {
-    transform: scale(1.05);
-  }
-  
-  .header-icons a {
-    opacity: 0.9;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  
-  .header-icons a:hover {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-
-  /* Improved sidebar */
-/* #sidebarNav .nav-link {
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-  } */
-  
-  /* #sidebarNav .nav-link.active,
-  #sidebarNav .nav-link:hover {
-    background-color: #eef2ff;
-    color: var(--primary-color);
-    transform: translateX(5px);
-  } */
-
-  /* Typography improvements */
-body {
-    line-height: 1.7;
-    font-size: 16px;
-  }
-  
-  h1, h2, h3 {
-    font-weight: 600;
-  }
-  
-  .paper-title {
-    color: var(--text-primary);
-    font-weight: 600;
-    line-height: 1.4;
-  }
-  
-  .paper-authors {
-    color: var(--text-secondary);
-  }
-
-  /* Button enhancements */
-.btn-outline-primary, 
-.btn-outline-secondary, 
-.btn-outline-success {
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+/* Specific styles for elements within standard cards */
+.card .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.card .card-subtitle {
+  font-size: 0.85rem;
+  /* margin-bottom: 0.3rem; */ /* Kept commented as original */
+}
+.card .card-text {
+  font-size: 0.8rem;
+  margin-bottom: 0rem;
+}
+.card .btn { /* Styles for buttons specifically inside cards */
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
 }
 
-.btn-outline-primary:hover, 
-.btn-outline-secondary:hover, 
-.btn-outline-success:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Compact Cards specific override */
+.card.custom-override {
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.75rem;
+    --bs-card-spacer-y: 0.5rem; /* Bootstrap variable override */
 }
 
-/* Filter button styling */
-.pub-filters .btn {
-    transition: all 0.2s ease;
-    margin-bottom: 0.25rem;
-  }
-  
-  .pub-filters .btn.active {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  }
-  
-  /* Publication type visual indicators */
-  .paper-conf {
-    border-left: 4px solid #4361ee; /* Blue for conferences */
-  }
-  
-  .paper-jour {
-    border-left: 4px solid #06d6a0; /* Green for journals */
-  }
-  
-  .paper-work {
-    border-left: 4px solid #f72585; /* Pink for workshops */
-  }
-  
-  /* Add small type badges in the top corner */
-  .card.paper-conf::before,
-  .card.paper-jour::before,
-  .card.paper-work::before {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.7rem;
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
-    opacity: 0.7;
-  }
-  
-  .card.paper-conf::before {
-    content: "Conference";
-    background-color: rgba(67, 97, 238, 0.1);
-    color: #4361ee;
-  }
-  
-  .card.paper-jour::before {
-    content: "Journal";
-    background-color: rgba(6, 214, 160, 0.1);
-    color: #06d6a0;
-  }
-  
-  .card.paper-work::before {
-    content: "Workshop";
-    background-color: rgba(247, 37, 133, 0.1);
-    color: #f72585;
-  }
+/* === Publications / Numbering / Badges === */
+section {
+  counter-reset: publication teaching software pres;
+}
 
-  /* Remove any existing ::before styling that might be causing overlap */
+/* Numbering using counters */
+#publications .card.paper-conf .card-title::before,
+#publications .card.paper-jour .card-title::before,
+#publications .card.paper-work .card-title::before {
+  counter-increment: publication;
+  content: counter(publication) ". ";
+  font-weight: bold;
+  color: var(--bs-primary, var(--primary-color)); /* Fallback to local primary */
+}
+
+#presentation-list .card .card-title::before {
+  counter-increment: pres;
+  content: counter(pres) ". ";
+  font-weight: bold;
+  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+}
+
+#teaching .list-group-item::before {
+  /* counter-increment: teaching; */ /* Kept commented */
+  /* content: counter(teaching) ". "; */ /* Kept commented */
+  font-weight: bold;
+  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+  margin-right: 5px;
+}
+
+#software .card-title::before {
+  counter-increment: software;
+  content: counter(software) ". ";
+  font-weight: bold;
+  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+}
+
+/* Publication Card Styling (Borders and Badges) */
+.paper-conf { border-left: 4px solid #4361ee; } /* Blue */
+.paper-jour { border-left: 4px solid #06d6a0; } /* Green */
+.paper-work { border-left: 4px solid #f72585; } /* Pink */
+
+/* Disable top ::before badges (as per later rule) */
 .card.paper-conf::before,
 .card.paper-jour::before,
 .card.paper-work::before {
-  display: none; /* Remove the previous pseudo-element labels */
+  display: none;
 }
 
 /* Bottom publication type badges */
@@ -515,102 +247,160 @@ body {
   font-size: 0.7rem;
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
-  margin-top: 0.5rem;
+  margin-top: 0px; /* Overriding default 0.5rem */
   opacity: 0.8;
   font-weight: 500;
 }
+.pub-type-conf { background-color: rgba(67, 97, 238, 0.1); color: #4361ee; }
+.pub-type-jour { background-color: rgba(6, 214, 160, 0.1); color: #06d6a0; }
+.pub-type-work { background-color: rgba(247, 37, 133, 0.1); color: #f72585; }
 
-.pub-type-conf {
-  background-color: rgba(67, 97, 238, 0.1);
-  color: #4361ee;
-  margin-top:0px;
+/* Publication Specific Typography */
+.paper-title {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.paper-authors {
+  color: var(--text-secondary);
 }
 
-.pub-type-jour {
-  background-color: rgba(6, 214, 160, 0.1);
-  color: #06d6a0;
-  margin-top:0px;
+/* Publication Filters */
+.pub-filters .btn {
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+.pub-filters .btn.active {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-.pub-type-work {
-  background-color: rgba(247, 37, 133, 0.1);
-  color: #f72585;
-  margin-top:0px;
+
+/* === Buttons === */
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success {
+  border-radius: 6px; /* From later definition */
+  font-weight: 500; /* From later definition */
+  transition: all 0.2s ease; /* From later definition (0.2s vs 0.25s) */
 }
 
-/* Keep the colored left borders */
-.paper-conf {
-  border-left: 4px solid #4361ee; /* Blue for conferences */
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-outline-success:hover {
+  color: #fff; /* From initial definition */
+  transform: translateY(-2px); /* From later definition */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* From later definition */
 }
 
-.paper-jour {
-  border-left: 4px solid #06d6a0; /* Green for journals */
+/* === GitHub Composite Button Styling === */
+.github-composite-button {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background-color: #f6f8fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+  vertical-align: middle;
+  cursor: default;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
-
-.paper-work {
-  border-left: 4px solid #f72585; /* Pink for workshops */
+.github-composite-button:hover {
+  background-color: #f0f2f4;
+  border-color: #d0d7de;
+}
+.github-composite-button .repo-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px 4px 10px;
+  text-decoration: none;
+  color: #0969da;
+  border-right: 1px solid #d0d7de;
+  margin-right: -1px;
+  white-space: nowrap;
+}
+.github-composite-button .repo-link .separator {
+  display: none; /* Use border instead */
+}
+.github-composite-button .repo-link:hover {
+  text-decoration: underline;
+}
+.github-composite-button a.github-button { /* Iframe container */
+  display: inline-block;
+  vertical-align: middle;
+  line-height: inherit;
+  margin-left: 0;
 }
 
 /* Optional: Fine-tune GitHub Button Vertical Alignment */
 .github-button iframe {
-  vertical-align: middle; /* Try middle alignment */
-  /* You might need a pixel adjustment sometimes, e.g.: */
-  margin-bottom: 2px; 
-}
-
-/* Ensure the button group has some space below it if needed */
-#software .card .card-body > div:last-child { /* Target the last div (button group) */
-    margin-bottom: 0; /* Remove default bottom margin if card-body adds padding */
-}
-
-
-/* === GitHub Composite Button Styling === */
-
-.github-composite-button {
-  display: inline-flex; /* Arrange items inline and use flex properties */
-  align-items: center; /* Vertically align items in the middle */
-  border: 1px solid #d0d7de; /* Subtle border like GitHub's buttons */
-  border-radius: 6px; /* Rounded corners */
-  background-color: #f6f8fa; /* Default background */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* Match GitHub font */
-  font-size: 12px; /* Match GitHub button size */
-  line-height: 20px; /* Match GitHub button line height */
-  font-weight: 600; /* Match GitHub button weight */
-  vertical-align: middle; /* Helps align the whole block with surrounding text */
-  cursor: default; /* The container itself isn't clickable */
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-.github-composite-button:hover {
-  background-color: #f0f2f4; /* Slightly darker on hover */
-  border-color: #d0d7de;
-}
-
-/* Style the repository link part */
-.github-composite-button .repo-link {
-  display: inline-flex; /* Align icon and text */
-  align-items: center;
-  padding: 4px 8px 4px 10px; /* Adjust padding (top, right, bottom, left) */
-  text-decoration: none;
-  color: #0969da; /* GitHub link blue */
-  border-right: 1px solid #d0d7de; /* Separator line */
-  margin-right: -1px; /* Overlap border slightly for seamless look */
-  white-space: nowrap; /* Prevent wrapping */
-}
-
-.github-composite-button .repo-link .separator {
-  display: none; /* Hide the text separator, using border instead */
-}
-
-.github-composite-button .repo-link:hover {
-  text-decoration: underline; /* Underline only the repo link part on hover */
-}
-
-/* Style the container for the GitHub iframe */
-.github-composite-button a.github-button {
-  display: inline-block; /* Needed for vertical alignment */
   vertical-align: middle;
-  line-height: inherit; /* Inherit line-height */
-  margin-left: 0; /* Remove any potential margin */
-  /* The background/border are handled by the parent div now */
+  margin-bottom: 2px; /* Adjust as needed */
+}
+/* Ensure button group in software card has space */
+#software .card .card-body > div:last-child {
+    margin-bottom: 0;
+}
+
+/* === Footer === */
+footer {
+  background-color: #f1f5f9;
+  color: #6b7280;
+  font-size: 0.9rem;
+  padding: 1rem 0; /* Added some default padding */
+}
+
+/* === Utilities & Overrides === */
+
+/* Apply smooth transitions selectively (Original '*' selector was inefficient) */
+/* Consider adding transitions specifically to elements like a, button, .card, .profile-img etc. if desired */
+/* Keeping original global transition for now to 'maintain functionality as is', but this is not recommended */
+* {
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #b3cce4;
+  border-radius: 20px;
+}
+
+/* === Responsive Tweaks === */
+@media (max-width: 992px) {
+  .sidebar-sticky {
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 24px;
+    position: static; /* Override sticky for smaller screens? Check layout */
+    height: auto;
+    overflow-y: visible;
+  }
+  body {
+    padding: 10px; /* Applies only on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.25rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .header-text-box h1 {
+    font-size: 2.5rem; /* Adjust header font size on mobile */
+  }
+  .header-text-box {
+    padding: 1rem 1.5rem; /* Adjust padding */
+  }
 }
