@@ -1,6 +1,60 @@
 <papers>
     <paper type="jour">
         <title>
+            Distributionally Robust Predictive Runtime Verification under Spatio-Temporal Logic Specifications
+        </title>
+        <authors>
+           Yiqi Zhao, Emily Zhu, Bardh Hoxha, Georgios Fainekos, Jyotirmoy V Deshmukh, Lars Lindemann
+        </authors>
+        <other>
+            Transactions on Cyber-Physical Systems (TCPS), 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.02964
+        </link>
+        <theme>Runtime Verification and Monitoring</theme> 
+        <tag>
+            Zhao25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+        </title>
+        <authors>
+           Xinyi Wang, Taekyung Kim, Bardh Hoxha, Georgios Fainekos, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv preprint arXiv:2504.06513, 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.06513
+        </link>
+        <theme>Motion Planning and Control</theme> 
+        <tag>
+            Wang25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            MRTA-Sim: A Modular Simulator for Multi-Robot Allocation, Planning, and Control in Open-World Environments
+        </title>
+        <authors>
+           Victoria Marie Tuck, Hardik Parwana, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, S Shankar Sastry, Sanjit A Seshia
+        </authors>
+        <other>
+            arXiv, 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.15418
+        </link>
+        <theme>Optimal Planning and Safe Control</theme>
+        <tag>
+            Tuck25
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
             Reachability Analysis of Recurrent Neural Networks
         </title>
         <authors>
@@ -13,6 +67,7 @@
             https://www.sciencedirect.com/science/article/abs/pii/S1751570X2500007X
         </link>
         <theme>Learning-based Control and Analysis</theme>
+        <theme>Runtime Verification and Monitoring</theme>
         <tag>
             NAHS2025
         </tag>
