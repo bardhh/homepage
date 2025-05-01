@@ -831,7 +831,7 @@
             MEMOCODE2020
         </tag>
     <bibtex>bibtex/MEMOCODE2020_Yamaguchi.bib</bibtex></paper>
-    <paper type="other">
+    <paper type="work">
         <title>
            Application of Simulation-Based Methods on Autonomous Vehicle Control with Deep Neural Network: Work-in-Progress
         </title>
@@ -1179,7 +1179,7 @@
             rv2014tech
         </tag>
     <bibtex>bibtex/rv2014tech_Dokhanchi.bib</bibtex></paper>
-    <paper type="other">
+    <paper type="conf">
         <title>
             Conformance Testing as Falsification for Cyber-Physical Systems
         </title>
@@ -1197,7 +1197,7 @@
             conformanceArxiv
         </tag>
     <bibtex>bibtex/conformanceArxiv_Abbas.bib</bibtex></paper>
-    <paper type="other">
+    <paper type="conf">
         <title>
             WiP Abstract: Conformance Testing as Falsification for Cyber-Physical Systems
         </title>
@@ -1275,7 +1275,7 @@
             arch2014exp
         </tag>
     <bibtex>bibtex/arch2014exp_Hoxha.bib</bibtex></paper>
-    <paper type="other">
+    <paper type="work">
         <title>
             System Testing with S-TaLiRo: Recent Functionality and Additions
         </title>
