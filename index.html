@@ -4,53 +4,127 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Enhanced SEO Meta Tags -->
   <meta name="description"
-    content="Bardh Hoxha - Senior Principal Scientist @ TRINA. Explore research publications and software tools focused on cyber-physical systems verification, learning-based control, temporal logic, safe planning, and runtime monitoring for autonomous systems." />
+    content="Dr. Bardh Hoxha - Senior Principal Scientist at Toyota Research Institute of North America (TRINA). Expert in cyber-physical systems verification, learning-based control, temporal logic, safe planning, runtime monitoring, and autonomous systems research." />
   <meta name="keywords"
-    content="Bardh Hoxha, cyber-physical systems, temporal logic, formal methods, runtime verification, system testing, falsification, reachability analysis, control barrier functions, learning-based control, autonomous systems, robotics, S-TaLiRo, CBFKit, TRINA" />
+    content="Bardh Hoxha, cyber-physical systems, temporal logic, formal methods, runtime verification, system testing, falsification, reachability analysis, control barrier functions, learning-based control, autonomous systems, robotics, S-TaLiRo, CBFKit, TRINA, Toyota Research, signal temporal logic, STL, hybrid systems, safety verification" />
   <meta name="author" content="Bardh Hoxha" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="distribution" content="global" />
+  <meta name="rating" content="general" />
 
-  <title>Bardh Hoxha | Research Website</title>
+  <!-- Enhanced Open Graph Meta Tags -->
+  <meta property="og:title" content="Dr. Bardh Hoxha | Senior Principal Scientist | Research Website">
+  <meta property="og:description"
+    content="Leading research in cyber-physical systems, formal methods, and autonomous systems at Toyota Research Institute of North America (TRINA). Explore publications, software tools, and academic contributions.">
+  <meta property="og:image" content="https://www.bhoxha.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dr. Bardh Hoxha - Research in Cyber-Physical Systems and Autonomous Systems">
+  <meta property="og:url" content="https://www.bhoxha.com">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Bardh Hoxha Research">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Bardh">
+  <meta property="profile:last_name" content="Hoxha">
+  <meta property="profile:username" content="bardhh">
 
-  <!-- Resource hints -->
+  <!-- Enhanced Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bardhh">
+  <meta name="twitter:creator" content="@bardhh">
+  <meta name="twitter:title" content="Dr. Bardh Hoxha | Senior Principal Scientist | Research Website">
+  <meta name="twitter:description"
+    content="Leading research in cyber-physical systems, formal methods, and autonomous systems at Toyota Research Institute of North America (TRINA).">
+  <meta name="twitter:image" content="https://www.bhoxha.com/assets/img/og-image.jpg">
+  <meta name="twitter:image:alt" content="Dr. Bardh Hoxha - Research in Cyber-Physical Systems and Autonomous Systems">
+
+  <!-- Academic and Research Specific Meta Tags -->
+  <meta name="citation_author" content="Bardh Hoxha">
+  <meta name="citation_title" content="Research in Cyber-Physical Systems and Autonomous Systems">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_language" content="en">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="theme-color" content="#0d6efd">
+  <meta name="msapplication-TileColor" content="#0d6efd">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Bardh Hoxha">
+
+  <title>Dr. Bardh Hoxha | Senior Principal Scientist | Cyber-Physical Systems Research</title>
+
+  <!-- Enhanced Resource hints for performance -->
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/img/bkg2.webp">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://api.github.com">
+  <link rel="dns-prefetch" href="https://scholar.google.com">
+  <link rel="dns-prefetch" href="https://www.linkedin.com">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/img/bhicon.png" />
+  <!-- Preload critical images -->
+  <link rel="preload" as="image" href="assets/img/profile.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/bkg2.webp" type="image/webp">
 
-  <!-- Analytics (early load) -->
+  <!-- Enhanced Favicon and Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#0d6efd">
+  <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+
+  <!-- Analytics (early load with optimized loading) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53335203-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
-    gtag("config", "UA-53335203-1");
+    gtag("config", "UA-53335203-1", {
+      page_title: 'Homepage',
+      page_location: window.location.href,
+      send_page_view: false
+    });
+    gtag("event", "page_view", {
+      page_title: 'Homepage',
+      page_location: window.location.href
+    });
   </script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600&display=swap"
+  <!-- Optimized Google Fonts with display=swap for performance -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></noscript>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+  <!-- Optimized Bootstrap CSS with preload -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  </noscript>
 
-  <!-- Font Awesome -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <!-- Optimized Font Awesome with preload -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+  </noscript>
 
-  <!-- Academicons -->
-  <!-- <link rel="stylesheet" href="assets/css/academicons.min.css" /> -->
-  <link rel="stylesheet" href="assets/css/academicons.min.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="assets/css/academicons.min.css"></noscript>
+  <!-- Optimized Academicons -->
+  <link rel="preload" href="assets/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="assets/css/academicons.min.css">
+  </noscript>
 
   <!-- Custom CSS (Already optimized) -->
   <link rel="stylesheet" href="assets/css/custom.css" media="print" onload="this.media='all'">
@@ -58,129 +132,414 @@
     <link rel="stylesheet" href="assets/css/custom.css">
   </noscript>
 
-  <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-      const starCountElements = document.querySelectorAll('.github-star-count');
+  <!-- Optimized GitHub Star Count Script -->
+  <script type="module">
+    // Optimized GitHub API calls with caching and error handling
+    document.addEventListener('DOMContentLoaded', async () => {
+      const elements = document.querySelectorAll('.github-star-count');
+      const cache = new Map();
 
-      starCountElements.forEach(element => {
-        const repo = element.dataset.repo;
-        if (!repo || !repo.includes('/')) {
-          console.warn('Invalid or missing data-repo attribute:', element);
-          element.textContent = '?'; // Indicate missing info
-          return;
+      // Batch process repos to avoid rate limiting
+      const repos = Array.from(elements).map(el => el.dataset.repo).filter(Boolean);
+      const uniqueRepos = [...new Set(repos)];
+
+      for (const repo of uniqueRepos) {
+        if (!repo.includes('/')) {
+          console.warn('Invalid repo format:', repo);
+          continue;
         }
 
-        const apiUrl = `https://api.github.com/repos/${repo}`;
-        // Set initial loading state (optional)
-        element.textContent = '...';
+        try {
+          // Check cache first
+          if (cache.has(repo)) {
+            updateElements(repo, cache.get(repo));
+            continue;
+          }
 
-        fetch(apiUrl)
-          .then(response => {
-            // Check for rate limit errors (403) or repo not found (404)
-            if (response.status === 403) {
-              console.warn(`GitHub API rate limit likely exceeded for ${repo}.`);
-              element.textContent = 'Limit'; // Indicate rate limit
-              return null;
-            } else if (response.status === 404) {
-              console.warn(`Repository ${repo} not found.`);
-              element.textContent = 'N/A'; // Indicate not found
-              return null;
-            } else if (!response.ok) {
-              console.error(`GitHub API error for ${repo}: ${response.status}`);
-              element.textContent = 'Err'; // Generic error
-              return null;
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+          const res = await fetch(`https://api.github.com/repos/${repo}`, {
+            signal: controller.signal,
+            headers: {
+              'Accept': 'application/vnd.github.v3+json'
             }
-            // Log remaining rate limit (useful for debugging)
-            // console.log(`Rate limit remaining for ${repo}:`, response.headers.get('X-RateLimit-Remaining'));
-            return response.json();
-          })
-          .then(data => {
-            if (data && typeof data.stargazers_count !== 'undefined') {
-              // Format large numbers if desired (optional)
-              // const count = data.stargazers_count > 999 ? (data.stargazers_count/1000).toFixed(1) + 'k' : data.stargazers_count;
-              // element.textContent = count;
-              element.textContent = data.stargazers_count; // Display exact count
-            } else if (data !== null) {
-              // Handle case where response was ok but count missing (unlikely for repos)
-              element.textContent = '?';
-            }
-          })
-          .catch(error => {
-            console.error(`Error fetching GitHub stars for ${repo}:`, error);
-            element.textContent = 'Err'; // Indicate fetch error
           });
-      });
+
+          clearTimeout(timeoutId);
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+
+          const data = await res.json();
+          const starCount = data.stargazers_count || 0;
+
+          cache.set(repo, starCount);
+          updateElements(repo, starCount);
+
+          // Small delay to avoid hitting rate limits
+          await new Promise(resolve => setTimeout(resolve, 100));
+
+        } catch (error) {
+          console.error(`Error fetching stars for ${repo}:`, error);
+          updateElements(repo, 'N/A');
+        }
+      }
+
+      function updateElements(repo, count) {
+        elements.forEach(el => {
+          if (el.dataset.repo === repo) {
+            el.textContent = count;
+          }
+        });
+      }
     });
   </script>
 
-  <script defer>
-    $(document).ready(function () {
-      // --- Software Filtering Logic ---
-
-      const $softwareListContainer = $("#software-list");
-      const $softwareCards = $softwareListContainer.find('.card');
-      const $softwareFilterButtons = $('.software-filters button');
-      const $softwareFilterCount = $('.software-filter-count');
-
-      // Function to update software count
-      function updateSoftwareCount() {
-        const visibleCount = $softwareListContainer.find('.card:visible').length;
-        const totalCount = $softwareCards.length;
-        $softwareFilterCount.text(`Showing ${visibleCount} of ${totalCount} tools`);
-      }
-
-      // Initial count update on page load
-      updateSoftwareCount();
-
-      // Add event listeners to software filter buttons
-      $softwareFilterButtons.on('click', function () {
-        const $button = $(this);
-
-        // Update active button state
-        $softwareFilterButtons.removeClass('active');
-        $button.addClass('active');
-
-        const filterValue = $button.data('filter');
-
-        // Show/hide cards based on filter
-        if (filterValue === 'all') {
-          $softwareCards.show(); // Show all cards
-        } else {
-          $softwareCards.hide(); // Hide all cards first
-          $softwareCards.filter('.' + filterValue).show(); // Show only matching cards
-        }
-
-        // Update the count display
-        updateSoftwareCount();
-      });
-
-      // --- End Software Filtering Logic ---
-
-      // --- Your Existing Publication Loader/Filter Logic Goes Here (or was already included above) ---
-      // $.ajax({... }); // The publication loader
-      // $('.pub-filters button').on('click', ...); // The publication filter handler
-
-      // --- Your Existing Star Count Fetcher Logic Goes Here ---
-      // document.addEventListener('DOMContentLoaded', () => { ... }); // Or the jQuery equivalent if preferred
-
-      // --- Your Existing Animation Logic Goes Here ---
-      // let observer = new IntersectionObserver(...);
-      // document.querySelectorAll(...).forEach(...);
-
-    }); // End $(document).ready()
-
-  </script>
-
-  <!-- Critical CSS Removed - Handled by custom.css or Bootstrap -->
-  <style>
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+  <!-- Optimized jQuery and main script loading -->
+  <script>
+    // Optimized script loading
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      if (callback) script.onload = callback;
+      document.head.appendChild(script);
     }
 
+    // Defer non-critical JavaScript
+    document.addEventListener('DOMContentLoaded', function () {
+      // Load jQuery only when needed
+      if (!window.jQuery) {
+        loadScript('assets/js/jquery-3.5.1.min.js', initializeFiltering);
+      } else {
+        initializeFiltering();
+      }
+    });
 
-    /* Sticky sidebar needs a top offset, set in custom.css */
+    function initializeFiltering() {
+      // Software filtering logic - optimized
+      const softwareContainer = document.getElementById('software-list');
+      const softwareCards = softwareContainer ? softwareContainer.querySelectorAll('.card') : [];
+      const softwareButtons = document.querySelectorAll('.software-filters button');
+      const softwareCounter = document.querySelector('.software-filter-count');
+
+      function updateSoftwareCount() {
+        if (!softwareCounter) return;
+        const visible = Array.from(softwareCards).filter(card =>
+          card.style.display !== 'none' && !card.hidden
+        ).length;
+        softwareCounter.textContent = `Showing ${visible} of ${softwareCards.length} tools`;
+      }
+
+      softwareButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Update active state
+          softwareButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+
+          const filter = this.dataset.filter;
+
+          // Show/hide cards efficiently
+          softwareCards.forEach(card => {
+            const shouldShow = filter === 'all' || card.classList.contains(filter);
+            card.style.display = shouldShow ? 'block' : 'none';
+          });
+
+          updateSoftwareCount();
+        });
+      });
+
+      // Initial count
+      updateSoftwareCount();
+    }
+  </script>
+
+  <!-- Critical CSS for above-the-fold content -->
+  <style>
+    /* Critical CSS for immediate rendering */
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+    }
+
+    /* Optimize hero section loading */
+    .hero-section {
+      min-height: 60vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.9);
+    }
+
+    /* Loading states */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    /* Sticky sidebar optimization */
+    .sidebar-sticky {
+      position: sticky;
+      top: 2rem;
+      height: calc(100vh - 4rem);
+      overflow-y: auto;
+    }
+
+    /* Compact Research Section Styles */
+    .research-card-compact {
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .research-card-compact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .research-card-compact .card-header {
+      border: none;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .research-card-compact .card-header h6 {
+      /* font-weight: 700; */
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      color:white
+    }
+
+    .research-card-compact .card-header small {
+      opacity: 0.9;
+      font-weight: 500;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .research-card-compact .expand-icon {
+      transition: transform 0.3s ease;
+      font-size: 0.8rem;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .research-card-compact .collapsed .expand-icon {
+      transform: rotate(0deg);
+    }
+
+    .research-card-compact .expand-icon:not(.collapsed) {
+      transform: rotate(180deg);
+    }
+
+    /* Enhanced contrast for warning card (yellow background) */
+    .research-card-compact .card-header.bg-warning {
+      color: #000 !important;
+    }
+
+    .research-card-compact .card-header.bg-warning h6,
+    .research-card-compact .card-header.bg-warning small,
+    .research-card-compact .card-header.bg-warning i {
+      color: #000 !important;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .research-card-compact .card-header.bg-warning .btn-outline-dark {
+      border-color: #000;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .research-card-compact .card-header.bg-warning .btn-outline-dark:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive improvements for compact cards */
+    @media (max-width: 768px) {
+      .research-card-compact .card-header {
+        padding: 0.75rem;
+      }
+      
+      .research-card-compact .card-body {
+        padding: 0.75rem;
+      }
+    }
+
+    /* Enhanced Research Section Styles */
+    .research-card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .research-card .card-header {
+      border: none;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary) 100%);
+    }
+
+    .research-card .card-header.bg-primary {
+      background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
+    }
+
+    .research-card .card-header.bg-success {
+      background: linear-gradient(135deg, #198754 0%, #157347 100%) !important;
+    }
+
+    .research-card .card-header.bg-info {
+      background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%) !important;
+    }
+
+    .research-card .card-header.bg-warning {
+      background: linear-gradient(135deg, #ffc107 0%, #ffca2c 100%) !important;
+    }
+
+    .research-card .card-header.bg-danger {
+      background: linear-gradient(135deg, #dc3545 0%, #b02a37 100%) !important;
+    }
+
+    .research-card .card-header.bg-secondary {
+      background: linear-gradient(135deg, #6c757d 0%, #565e64 100%) !important;
+    }
+
+    .research-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .research-stat {
+      padding: 0.5rem;
+    }
+
+    .research-stat h3 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+
+    .expand-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .collapsed .expand-icon {
+      transform: rotate(0deg);
+    }
+
+    .expand-icon:not(.collapsed) {
+      transform: rotate(180deg);
+    }
+
+    [data-bs-toggle="collapse"]:not(.collapsed) .expand-text::after {
+      content: " Less";
+    }
+
+    [data-bs-toggle="collapse"].collapsed .expand-text::after {
+      content: "";
+    }
+
+    [data-bs-toggle="collapse"]:not(.collapsed) .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+      .research-card .card-header {
+        padding: 1rem;
+      }
+
+      .research-card .card-header .d-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .research-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 0.75rem auto;
+      }
+
+      .research-stat h3 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Badge enhancements */
+    .badge {
+      font-weight: 500;
+      font-size: 0.75em;
+      padding: 0.4em 0.8em;
+    }
+
+    /* Card body enhancements */
+    .research-card .card-body {
+      padding: 1.5rem;
+    }
+
+    .research-card .card-body h6 {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Collapse button enhancements */
+    .research-card .btn {
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .research-card .btn:hover {
+      transform: translateY(-1px);
+    }
   </style>
+
+  <!-- Add Chart.js for research metrics visualization -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
 
 </head>
 
@@ -197,7 +556,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#bio">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#updates">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
           <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
           <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
           <li class="nav-item"><a class="nav-link" href="#software">Software</a></li>
@@ -207,10 +566,9 @@
     </div>
   </nav>
 
-  <!-- Header / Hero Section -->
+  <!-- Enhanced Header / Hero Section with optimized images -->
   <header class="py-5 mb-4 text-white" id="overview" style="position:relative; overflow:hidden;">
-    <div
-      style="background:url('assets/img/bkg2.webp') no-repeat center center; background-size: cover; position:absolute; top:0;left:0;width:100%;height:100%;filter: brightness(70%);">
+    <div style="background:url('assets/img/bkg2.webp') no-repeat center center; background-size: cover; position:absolute; top:0;left:0;width:100%;height:100%;filter: brightness(70%);">
     </div>
     <div class="container position-relative">
       <!-- Added a semi-transparent overlay for text readability -->
@@ -221,14 +579,14 @@
             <!-- Profile Picture -->
             <div class="mb-3 mb-md-0 me-md-4">
               <picture>
-                <source srcset="assets/img/profile.webp" type="image/webp" />
-                <source srcset="assets/img/profile.jpg" type="image/jpeg" />
-                <img src="assets/img/profile.webp" alt="Bardh Hoxha Profile Picture" class="profile-img" />
+                <source srcset="assets/img/profile.webp" type="image/webp">
+                <source srcset="assets/img/profile.jpg" type="image/jpeg">
+                <img src="assets/img/profile.webp" alt="Bardh Hoxha Profile Picture" class="profile-img"
+                  loading="eager" width="200" height="200" decoding="async" />
               </picture>
             </div>
 
             <!-- Text Info -->
-            <!-- <div class="flex-grow-1 mb-3 mb-md-0"> -->
             <div class="flex-grow-1 mb-3 mb-md-0 header-text-box p-4 rounded-3">
               <h1 class="display-4 fw-bold">Bardh Hoxha</h1>
               <p class="lead fs-4">Senior Principal Scientist</p>
@@ -258,6 +616,7 @@
           </div>
         </div>
       </div>
+    </div>
   </header>
 
 
@@ -269,6 +628,8 @@
       <aside class="col-lg-3 d-none d-lg-block sidebar-sticky">
         <nav id="sidebarNav" class="nav nav-pills flex-column">
           <a class="nav-link" href="#bio"><i class="fas fa-user fa-fw me-2"></i>About Me</a>
+          <!-- <a class="nav-link" href="#news"><i class="fas fa-newspaper fa-fw me-2"></i>News</a> -->
+          <a class="nav-link" href="#research"><i class="fas fa-microscope fa-fw me-2"></i>Research Areas</a>
           <a class="nav-link" href="#publications"><i class="fas fa-book-open fa-fw me-2"></i>Publications</a>
           <a class="nav-link" href="#teaching"><i class="fas fa-chalkboard-user fa-fw me-2"></i>Teaching</a>
           <a class="nav-link" href="#software"><i class="fas fa-code fa-fw me-2"></i>Software</a>
@@ -295,6 +656,7 @@
             applying formal methods in the perception - planning - control
             loop in open-world environments.
           </p>
+
           <p>
             I have served on the program committee for AAAI 23,
             <a href="https://hscc.acm.org/2023/organizers/" rel="noopener" target="_blank">HSCC 23</a>,
@@ -310,54 +672,375 @@
           </p>
         </section>
 
+
+
+        <!-- Research Areas Section -->
+        <section id="research" class="mb-5 pt-4 pt-lg-0">
+          <h2 class="section-title">Research Areas</h2>
+          <!-- <p class="mb-4">My research focuses on interconnected areas in cyber-physical systems, formal methods, and autonomous systems, with applications in both industry and academia.</p> -->
+          
+          <!-- Condensed Research Overview Stats -->
+          <!-- <div class="row mb-4">
+            <div class="col-lg-12">
+              <div class="card bg-gradient-primary text-white shadow">
+                <div class="card-body p-3">
+                  <div class="row text-center">
+                    <div class="col-3">
+                      <h4 class="fw-bold mb-0">6</h4>
+                      <small>Research Areas</small>
+                    </div>
+                    <div class="col-3">
+                      <h4 class="fw-bold mb-0">50+</h4>
+                      <small>Publications</small>
+                    </div>
+                    <div class="col-3">
+                      <h4 class="fw-bold mb-0">10+</h4>
+                      <small>Software Tools</small>
+                    </div>
+                    <div class="col-3">
+                      <h4 class="fw-bold mb-0">15+</h4>
+                      <small>Years Experience</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
+          <!-- Condensed Research Areas Grid -->
+          <div class="row g-3">
+            <!-- Safe Learning-Based Control -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-primary text-white py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-shield-alt fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">Safe Learning-Based Control</h6>
+                        <small class="opacity-75">Control Theory + Machine Learning</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#safeControl" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Control methods that integrate learning algorithms with formal safety constraints for autonomous system behavior.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-primary bg-opacity-10 text-primary small">CBFs</span>
+                    <span class="badge bg-primary bg-opacity-10 text-primary small">MPPI</span>
+                    <span class="badge bg-primary bg-opacity-10 text-primary small">Safe RL</span>
+                  </div>
+                  
+                  <div class="collapse" id="safeControl">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Mathematical frameworks for safety during learning</li>
+                            <li>• Real-time constraint satisfaction in uncertain environments</li>
+                            <li>• Applications in robotics and autonomous navigation</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Runtime Verification & Monitoring -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-success text-white py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-search fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">Runtime Verification & Monitoring</h6>
+                        <small class="opacity-75">Real-time Safety Assurance</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#runtimeVerification" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Real-time monitoring systems for system safety and correctness during operation using formal specification languages.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-success bg-opacity-10 text-success small">STL</span>
+                    <span class="badge bg-success bg-opacity-10 text-success small">RTAMT</span>
+                    <span class="badge bg-success bg-opacity-10 text-success small">StarV</span>
+                  </div>
+                  
+                  <div class="collapse" id="runtimeVerification">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Online monitoring algorithms with low overhead</li>
+                            <li>• Distributed monitoring for multi-agent systems</li>
+                            <li>• Event-driven architectures for scalability</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- System Testing & Falsification -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-info text-white py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-vial fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">System Testing & Falsification</h6>
+                        <small class="opacity-75">Automated Verification</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#systemTesting" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Automated testing frameworks for finding system failures and validating cyber-physical systems against temporal logic specifications.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-info bg-opacity-10 text-info small">S-TaLiRo</span>
+                    <span class="badge bg-info bg-opacity-10 text-info small">MTL/STL</span>
+                    <span class="badge bg-info bg-opacity-10 text-info small">Optimization</span>
+                  </div>
+                  
+                  <div class="collapse" id="systemTesting">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Search-based testing using evolutionary algorithms</li>
+                            <li>• Robustness analysis and quantification</li>
+                            <li>• Simulation-based verification approaches</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Autonomous Systems -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-warning text-dark py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-robot fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">Autonomous Systems</h6>
+                        <small class="opacity-75">Multi-Agent Systems</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#autonomousSystems" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Autonomous system design with focus on safety, reliability, and performance in complex environments.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-warning bg-opacity-10 text-dark small">Motion Planning</span>
+                    <span class="badge bg-warning bg-opacity-10 text-dark small">Multi-Agent</span>
+                    <span class="badge bg-warning bg-opacity-10 text-dark small">ROS/ROS2</span>
+                  </div>
+                  
+                  <div class="collapse" id="autonomousSystems">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Cooperative perception and decision making</li>
+                            <li>• Task assignment and scheduling</li>
+                            <li>• Human-robot interaction</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spatial-Temporal Reasoning -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-danger text-white py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-brain fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">Spatial-Temporal Reasoning</h6>
+                        <small class="opacity-75">Pattern Recognition & Logic</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#spatialTemporal" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Pattern matching and reasoning over spatial and temporal data streams using logical frameworks and algorithms.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-danger bg-opacity-10 text-danger small">SpRE</span>
+                    <span class="badge bg-danger bg-opacity-10 text-danger small">STREM</span>
+                    <span class="badge bg-danger bg-opacity-10 text-danger small">Rust</span>
+                  </div>
+                  
+                  <div class="collapse" id="spatialTemporal">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Spatial Regular Expressions for object interactions</li>
+                            <li>• Real-time pattern matching in perception streams</li>
+                            <li>• Topological reasoning about occlusions and visibility</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Risk & Uncertainty -->
+            <div class="col-lg-6 col-md-6 mb-3">
+              <div class="card h-100 shadow-sm research-card-compact border-0">
+                <div class="card-header bg-secondary text-white py-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-chart-line fa-lg me-2"></i>
+                      <div>
+                        <h6 class="mb-0">Risk & Uncertainty</h6>
+                        <small class="opacity-75">Probabilistic Safety</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#riskUncertainty" aria-expanded="false">
+                      <i class="fas fa-chevron-down expand-icon"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body py-2">
+                  <p class="card-text small mb-2">Handling uncertainty and risk in safety-critical systems through probabilistic and stochastic methods.</p>
+                  <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary small">Stochastic</span>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary small">Risk Assessment</span>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary small">Reachability</span>
+                  </div>
+                  
+                  <div class="collapse" id="riskUncertainty">
+                    <div class="border-top pt-2 mt-2">
+                      <div class="row">
+                        <div class="col-12">
+                          <h6 class="text-muted mb-1 small">Research Focus:</h6>
+                          <ul class="list-unstyled small mb-2">
+                            <li>• Probabilistic safety analysis with confidence bounds</li>
+                            <li>• Stochastic reachability for uncertain systems</li>
+                            <li>• Risk-aware planning and decision making</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         
+        </section>
+
         <!-- Publications Section -->
         <section id="publications" class="mb-5 pt-4 pt-lg-0">
           <h2 class="section-title">Publications</h2>
-          <h3 class="mt-4 mb-3 fs-5">Peer-reviewed Papers and Technical Reports</h3>
-          <div class="pub-filters mb-4">
-            <!-- Type Filters (Keep as is) -->
-            <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-              <button class="btn btn-sm btn-outline-primary active" data-filter="all">
-                <i class="fas fa-layer-group me-1"></i>All Publications
-              </button>
-              <button class="btn btn-sm btn-outline-primary" data-filter="paper-conf">
-                <i class="fas fa-users me-1"></i>Conferences
-              </button>
-              <button class="btn btn-sm btn-outline-primary" data-filter="paper-jour">
-                <i class="fas fa-book me-1"></i>Journals
-              </button>
-              <button class="btn btn-sm btn-outline-primary" data-filter="paper-work">
-                <i class="fas fa-laptop-code me-1"></i>Workshops
-              </button>
-              <button class="btn btn-sm btn-outline-secondary" data-filter="recent">
-                <i class="fas fa-calendar-alt me-1"></i>Recent (2020+)
-              </button>
+
+          <!-- Enhanced Search and Filter Section -->
+          <div class="publication-controls mb-4">
+            <!-- Search Bar -->
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  <input type="text" class="form-control" id="publicationSearch"
+                    placeholder="Search publications by title, authors, venue, or keywords..." />
+                  <button class="btn btn-outline-secondary" type="button" id="clearSearch">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              
             </div>
 
-            <!-- NEW Topic Filters -->
-            <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-              <!-- <small class="text-muted me-2 align-self-center">Filter by Topic:</small> -->
-              <button class="btn btn-sm btn-outline-info" data-filter="topic-learning-control">
-                <i class="fas fa-brain me-1"></i>Learning/Control
-              </button>
-              <button class="btn btn-sm btn-outline-info" data-filter="topic-optimal-planning">
-                <i class="fas fa-cogs me-1"></i>Planning/Control
-              </button>
-              <button class="btn btn-sm btn-outline-info" data-filter="topic-runtime-verification">
-                <i class="fas fa-desktop me-1"></i>Verification/Monitoring
-              </button>
-              <button class="btn btn-sm btn-outline-info" data-filter="topic-testing-falsification">
-                <i class="fas fa-vial me-1"></i>Testing/Spec
-              </button>
-              <button class="btn btn-sm btn-outline-info" data-filter="topic-risk-stochasticity">
-                <i class="fas fa-shield-alt me-1"></i>Risk/Stochasticity
-              </button>
-              <!-- Removed old topic buttons -->
-            </div>
-            <div class="mt-2 text-center text-md-start">
-              <small class="text-muted filter-count"></small>
+
+
+            <!-- Filter Buttons -->
+            <h3 class="mt-4 mb-3 fs-5">Peer-reviewed Papers and Technical Reports</h3>
+            <div class="pub-filters mb-4">
+              <!-- Type Filters -->
+              <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                <button class="btn btn-sm btn-outline-primary active" data-filter="all">
+                  <i class="fas fa-layer-group me-1"></i>All Publications
+                </button>
+                <button class="btn btn-sm btn-outline-primary" data-filter="paper-conf">
+                  <i class="fas fa-users me-1"></i>Conferences
+                </button>
+                <button class="btn btn-sm btn-outline-primary" data-filter="paper-jour">
+                  <i class="fas fa-book me-1"></i>Journals
+                </button>
+                <button class="btn btn-sm btn-outline-primary" data-filter="paper-work">
+                  <i class="fas fa-laptop-code me-1"></i>Workshops
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" data-filter="recent">
+                  <i class="fas fa-calendar-alt me-1"></i>Recent (2020+)
+                </button>
+              </div>
+
+              <!-- Topic Filters -->
+              <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                <button class="btn btn-sm btn-outline-info" data-filter="topic-learning-control">
+                  <i class="fas fa-brain me-1"></i>Learning/Control
+                </button>
+                <button class="btn btn-sm btn-outline-info" data-filter="topic-optimal-planning">
+                  <i class="fas fa-cogs me-1"></i>Planning/Control
+                </button>
+                <button class="btn btn-sm btn-outline-info" data-filter="topic-runtime-verification">
+                  <i class="fas fa-desktop me-1"></i>Verification/Monitoring
+                </button>
+                <button class="btn btn-sm btn-outline-info" data-filter="topic-testing-falsification">
+                  <i class="fas fa-vial me-1"></i>Testing/Spec
+                </button>
+                <button class="btn btn-sm btn-outline-info" data-filter="topic-risk-stochasticity">
+                  <i class="fas fa-shield-alt me-1"></i>Risk/Stochasticity
+                </button>
+              </div>
+              <div class="mt-2 text-center text-md-start d-flex justify-content-between align-items-center">
+                <small class="text-muted filter-count"></small>
+                <small class="text-muted" id="searchResults" style="display: none;"></small>
+              </div>
             </div>
           </div>
+
           <div id="pub-list">
             <!-- Loading indicator will be placed here by JS -->
           </div>
@@ -410,52 +1093,189 @@
         <!-- Teaching Section -->
         <section id="teaching" class="mb-5 pt-4 pt-lg-0 list-group">
           <h2 class="section-title">Teaching</h2>
+          <p class="mb-4">I am passionate about education and have taught a diverse range of courses in computer
+            science, focusing on both theoretical foundations and practical applications in autonomous systems and
+            cybersecurity.</p>
 
           <!-- SIU -->
           <h3 class="mt-4 mb-3 fs-5">Southern Illinois University, Carbondale, IL</h3>
-          <div class="list-group">
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 404: Autonomous Mobile Robots</h5>
-                <small>Spring 2019</small>
+          <div class="accordion" id="siuAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs404heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs404collapse" aria-expanded="false" aria-controls="cs404collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 404: Autonomous Mobile Robots</strong>
+                    <small class="text-muted">Spring 2019</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs404collapse" class="accordion-collapse collapse" aria-labelledby="cs404heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> Advanced undergraduate course covering the fundamentals of
+                    autonomous mobile robotics including sensing, perception, localization, mapping, path planning, and
+                    control.</p>
+                  <p><strong>Topics Covered:</strong></p>
+                  <ul>
+                    <li>Robot kinematics and dynamics</li>
+                    <li>Sensor fusion and perception</li>
+                    <li>SLAM (Simultaneous Localization and Mapping)</li>
+                    <li>Path planning algorithms</li>
+                    <li>Control theory for mobile robots</li>
+                    <li>ROS (Robot Operating System) programming</li>
+                  </ul>
+                  <p><strong>Projects:</strong> Students implemented autonomous navigation systems using real mobile
+                    robots and simulation environments.</p>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 410/591: Computer Security</h5>
-                <small>Spring 2019</small>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs410heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs410collapse" aria-expanded="false" aria-controls="cs410collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 410/591: Computer Security</strong>
+                    <small class="text-muted">Spring 2019</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs410collapse" class="accordion-collapse collapse" aria-labelledby="cs410heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> Comprehensive course on computer security principles,
+                    practices, and applications for both undergraduate and graduate students.</p>
+                  <p><strong>Topics Covered:</strong></p>
+                  <ul>
+                    <li>Cryptography and encryption methods</li>
+                    <li>Network security protocols</li>
+                    <li>System vulnerabilities and attack vectors</li>
+                    <li>Access control and authentication</li>
+                    <li>Security in cyber-physical systems</li>
+                    <li>Incident response and forensics</li>
+                  </ul>
+                  <p><strong>Hands-on Labs:</strong> Students gained practical experience with penetration testing,
+                    cryptographic implementations, and security analysis tools.</p>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 491/591: Cyber-Physical Systems</h5>
-                <small>Fall 2018</small>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs491heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs491collapse" aria-expanded="false" aria-controls="cs491collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 491/591: Cyber-Physical Systems</strong>
+                    <small class="text-muted">Fall 2018</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs491collapse" class="accordion-collapse collapse" aria-labelledby="cs491heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> Advanced course introducing the design, analysis, and
+                    verification of cyber-physical systems that integrate computation, networking, and physical
+                    processes.</p>
+                  <p><strong>Topics Covered:</strong></p>
+                  <ul>
+                    <li>Hybrid system modeling and analysis</li>
+                    <li>Real-time systems and scheduling</li>
+                    <li>Formal verification methods</li>
+                    <li>Temporal logic specifications</li>
+                    <li>Control theory for CPS</li>
+                    <li>Safety and security in CPS</li>
+                  </ul>
+                  <p><strong>Research Component:</strong> Graduate students conducted original research projects in CPS
+                    verification and published results in workshop proceedings.</p>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 499: Senior Project</h5>
-                <small>Spring 2018</small>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs499spr18heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs499spr18collapse" aria-expanded="false" aria-controls="cs499spr18collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 499: Senior Project</strong>
+                    <small class="text-muted">Spring 2018</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs499spr18collapse" class="accordion-collapse collapse" aria-labelledby="cs499spr18heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> Capstone project course where students work individually or in
+                    teams to design, implement, and present substantial software systems.</p>
+                  <p><strong>Project Examples:</strong></p>
+                  <ul>
+                    <li>Autonomous drone navigation system</li>
+                    <li>IoT-based smart home security platform</li>
+                    <li>Machine learning-based medical diagnosis tool</li>
+                    <li>Real-time traffic monitoring system</li>
+                  </ul>
+                  <p><strong>Skills Developed:</strong> Project management, software engineering practices, technical
+                    presentation, and real-world problem solving.</p>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 498: Senior Project</h5>
-                <small>Fall 2017</small>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs498heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs498collapse" aria-expanded="false" aria-controls="cs498collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 498: Senior Project</strong>
+                    <small class="text-muted">Fall 2017</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs498collapse" class="accordion-collapse collapse" aria-labelledby="cs498heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> First semester of the two-semester senior capstone sequence,
+                    focusing on project planning, requirements analysis, and initial implementation.</p>
+                  <p><strong>Learning Outcomes:</strong></p>
+                  <ul>
+                    <li>Requirements engineering and system design</li>
+                    <li>Technology selection and architecture planning</li>
+                    <li>Project timeline and milestone development</li>
+                    <li>Literature review and market analysis</li>
+                  </ul>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
-            <a href="" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">CS 290: Communication Skills & Ethics</h5>
-                <small>Fall 2017</small>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="cs290heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#cs290collapse" aria-expanded="false" aria-controls="cs290collapse">
+                  <div class="d-flex w-100 justify-content-between me-3">
+                    <strong>CS 290: Communication Skills & Ethics</strong>
+                    <small class="text-muted">Fall 2017</small>
+                  </div>
+                </button>
+              </h2>
+              <div id="cs290collapse" class="accordion-collapse collapse" aria-labelledby="cs290heading"
+                data-bs-parent="#siuAccordion">
+                <div class="accordion-body">
+                  <p><strong>Course Description:</strong> Essential course developing professional communication skills
+                    and understanding of ethical issues in computer science and technology.</p>
+                  <p><strong>Key Components:</strong></p>
+                  <ul>
+                    <li>Technical writing and documentation</li>
+                    <li>Oral presentation skills</li>
+                    <li>Professional ethics in computing</li>
+                    <li>Privacy and data protection</li>
+                    <li>Social responsibility in technology</li>
+                    <li>Team collaboration and leadership</li>
+                  </ul>
+                  <p><strong>Assessment Methods:</strong> Technical reports, presentations, case study analyses, and
+                    peer evaluations.</p>
+                </div>
               </div>
-              <p class="mb-1">Instructor: Bardh Hoxha</p>
-            </a>
+            </div>
           </div>
 
           <!-- ASU -->
@@ -471,6 +1291,8 @@
                 <a href="https://www.public.asu.edu/~ccolbou/">Charles Colbourn</a> |
                 TA: Bardh Hoxha
               </p>
+              <p class="mb-2 small text-muted">Graduate-level course covering probabilistic algorithms, randomized data
+                structures, approximation algorithms, and their applications in computer science and optimization.</p>
               <small>
                 <a href="https://www.public.asu.edu/~ccolbou/src/cse552f13.html" target="_blank" rel="noopener">Course
                   Link</a>
@@ -484,6 +1306,8 @@
               <p class="mb-1">
                 Instructor: Georgios Fainekos | TA: Bardh Hoxha
               </p>
+              <p class="mb-2 small text-muted">Fundamental course covering automata theory, formal languages,
+                computability, and complexity theory, providing the theoretical foundation for computer science.</p>
               <small>
                 <a href="https://web.archive.org/web/20130213002455/https://www.public.asu.edu/~gfaineko/Teaching/CSE355.html"
                   target="_blank" rel="noopener">Course Link</a>
@@ -491,7 +1315,28 @@
             </div>
           </div>
 
-
+          <!-- Teaching Philosophy -->
+          <div class="mt-5 p-4 bg-light rounded">
+            <h3 class="fs-5 mb-3"><i class="fas fa-lightbulb text-warning me-2"></i>Teaching Philosophy</h3>
+            <p class="mb-2">
+              My teaching approach integrates theoretical foundations with practical applications to prepare students 
+              for complex challenges in computer science and engineering. I focus on:
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li><i class="fas fa-check text-success me-2"></i><strong>Project-Based Learning:</strong> Connecting theoretical concepts to real implementations</li>
+                  <li><i class="fas fa-check text-success me-2"></i><strong>Problem-Solving Skills:</strong> Developing systematic approaches to complex problems</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li><i class="fas fa-check text-success me-2"></i><strong>Current Technologies:</strong> Using industry-standard tools and methods</li>
+                  <li><i class="fas fa-check text-success me-2"></i><strong>Technical Communication:</strong> Emphasizing clear documentation and presentation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Software Section -->
@@ -666,10 +1511,8 @@
                     <span class="github-star-count" data-repo="watakandai/specless">...</span>
                   </a>
                   <!-- Optional Paper Link -->
-                  <a href="https://arxiv.org/pdf/2302.02501" target="_blank" rel="noopener"
-                    class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICAPS 2023</a>
-                  <a href="https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf" target="_blank" rel="noopener"
-                    class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICRA 2024</a>
+                  <a href="https://arxiv.org/pdf/2302.02501" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICAPS 2023</a>
+                  <a href="https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="fas fa-file-pdf me-1"></i> ICRA 2024</a>
                 </div>
               </div>
             </div>
@@ -695,7 +1538,7 @@
               </div>
             </div>
 
-            <!-- SMrTa: Task Assignment -->
+            <!-- SMrTa: Task Allocation -->
             <div class="card mb-4 shadow-sm filter-task">
               <div class="card-body">
                 <h3 class="card-title fs-5">SMrTa: SMT-Based Dynamic Multi-Robot Task Allocation</h3>
@@ -809,117 +1652,253 @@
 
         </section>
 
-        <!-- Contact Section -->
+        <!-- Enhanced Contact Section with Form -->
         <section id="contact" class="mb-5 pt-4 pt-lg-0 shadow-sm">
-          <h2 class="section-title">Contact</h2>
-          <div class="card">
+          <h2 class="section-title" style="opacity: 1; transform: translateY(0px);">Contact</h2>
+          <div class="card" style="opacity: 1; transform: translateY(0px);">
             <div class="card-body">
               <ul class="list-unstyled">
                 <li class="mb-2">
                   <i class="fas fa-envelope fa-fw me-2 text-muted"></i> Email:
-                  <img src="assets/img/e-address.svg" alt="Email address"
-                    style="height: 1.2em; vertical-align: middle;" />
+                  <img src="assets/img/e-address.svg" alt="Email address" style="height: 1.2em; vertical-align: middle;">
                 </li>
                 <li class="mb-2">
                   <i class="fab fa-linkedin fa-fw me-2 text-muted"></i> LinkedIn:
-                  <a href="https://www.linkedin.com/in/bardhhoxha" target="_blank"
-                    rel="noopener">linkedin.com/in/bardhhoxha</a>
+                  <a href="https://www.linkedin.com/in/bardhhoxha" target="_blank" rel="noopener">linkedin.com/in/bardhhoxha</a>
                 </li>
                 <li class="mb-2">
                   <i class="ai ai-google-scholar fa-fw me-2 text-muted"></i> Google Scholar:
-                  <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank"
-                    rel="noopener">View Profile</a>
+                  <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank" rel="noopener">View Profile</a>
                 </li>
                 <li class="mb-2">
                   <i class="fas fa-network-wired fa-fw me-2 text-muted"></i> Mathematics Genealogy:
                   <a href="media/geneaolgy.pdf" target="_blank" rel="noopener">View Tree (PDF)</a>
-                  <br />
-                  <small class="text-muted fst-italic">--- Generated using <a
-                      href="https://github.com/thearn/math-genealogy" target="_blank" rel="noopener">this repo</a> &
-                    data from the <a href="https://www.genealogy.math.ndsu.nodak.edu" target="_blank"
-                      rel="noopener">Math Genealogy Project</a>.</small>
+                  <br>
+                  <small class="text-muted fst-italic">--- Generated using <a href="https://github.com/thearn/math-genealogy" target="_blank" rel="noopener">this repo</a> &
+                    data from the <a href="https://www.genealogy.math.ndsu.nodak.edu" target="_blank" rel="noopener">Math Genealogy Project</a>.</small>
                 </li>
-
               </ul>
             </div>
           </div>
         </section>
 
-      </main>
-    </div>
-  </div>
+        <!-- Footer -->
+        <footer class="text-center py-5 border-top mt-5 bg-white shadow-sm">
+          <div id="footer">
+            <!-- Content will be inserted here by the script -->
+          </div>
+          <script>
+            try {
+              const dateModified = document.lastModified;
+              const mydate = new Date(dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+              const footerDiv = document.getElementById('footer');
+              if (footerDiv) {
+                footerDiv.textContent = "All Rights Reserved. Last Updated: " + mydate;
+              }
+            } catch (e) {
+              console.error("Could not parse lastModified date or find footer element");
+              const footerDiv = document.getElementById('footer');
+              if (footerDiv) {
+                footerDiv.textContent = "All Rights Reserved.";
+              }
+            }
+          </script>
+        </footer>
 
-  <!-- Footer -->
-  <footer class="text-center py-5 border-top mt-5 bg-white shadow-sm">
-  <div id="footer">
-    <!-- Content will be inserted here by the script -->
-  </div>
-  <script>
-    try {
-      const dateModified = document.lastModified;
-      const mydate = new Date(dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      const footerDiv = document.getElementById('footer');
-      if (footerDiv) {
-        footerDiv.textContent = "All Rights Reserved. Last Updated: " + mydate;
-      }
-    } catch (e) {
-      console.error("Could not parse lastModified date or find footer element");
-      // Optionally display a static message or nothing
-      const footerDiv = document.getElementById('footer');
-      if (footerDiv) {
-         footerDiv.textContent = "All Rights Reserved."; // Fallback text
-      }
-    }
-  </script>
-</footer>
+        <!-- Optimized Scripts Loading -->
+        <!-- jQuery (Load conditionally) -->
+        <script>
+          // Only load jQuery if not already present
+          if (!window.jQuery) {
+            document.write('<script src="assets/js/jquery-3.5.1.min.js"><\/script>');
+          }
+        </script>
 
-  <!-- Scripts -->
-  <!-- jQuery (Required by Unite Gallery, Keep if using it, otherwise can maybe remove if publication loader is changed to vanilla JS) -->
-  <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <!-- Bootstrap Bundle JS (Optimized loading) -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
 
-  <!-- Bootstrap Bundle JS (Includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+        <!-- Optimized Publications Loader with performance improvements -->
+        <script>
+          // Global variables for publications data
+          let chartsInitialized = false;
 
-  <!-- Unite Gallery JS (Keep if needed) -->
-  <!-- <script src="unitegallery/themes/default/ug-theme-default.js" defer></script> -->
+          function getTopicClasses(themeText) {
+            if (!themeText) return 'topic-uncategorized'; // Assign a class if theme is missing
+            const lowerTheme = themeText.trim().toLowerCase();
 
-  <!-- Updated Publications Loader -->
-  <script defer>
+            // Direct mapping from theme text to CSS class
+            switch (lowerTheme) {
+              case 'learning-based control and analysis':
+                return 'topic-learning-control';
+              case 'optimal planning and safe control':
+                return 'topic-optimal-planning';
+              case 'runtime verification and monitoring':
+                return 'topic-runtime-verification';
+              case 'testing, falsification, and specification':
+                return 'topic-testing-falsification';
+              case 'risk and stochasticity':
+                return 'topic-risk-stochasticity';
+              default:
+                console.warn(`Unrecognized theme found in XML: "${themeText}"`);
+                return 'topic-uncategorized'; // Return a default class for unrecognized themes
+            }
+          }
 
-    function getTopicClasses(themeText) {
-      if (!themeText) return 'topic-uncategorized'; // Assign a class if theme is missing
-      const lowerTheme = themeText.trim().toLowerCase();
+          // Publication search functionality
+          function setupPublicationSearch() {
+            const searchInput = document.getElementById('publicationSearch');
+            const clearButton = document.getElementById('clearSearch');
+            const searchResults = document.getElementById('searchResults');
 
-      // Direct mapping from theme text to CSS class
-      switch (lowerTheme) {
-        case 'learning-based control and analysis':
-          return 'topic-learning-control';
-        case 'optimal planning and safe control':
-          return 'topic-optimal-planning';
-        case 'runtime verification and monitoring':
-          return 'topic-runtime-verification';
-        case 'testing, falsification, and specification':
-          return 'topic-testing-falsification';
-        case 'risk and stochasticity':
-          return 'topic-risk-stochasticity';
-        default:
-          console.warn(`Unrecognized theme found in XML: "${themeText}"`);
-          return 'topic-uncategorized'; // Return a default class for unrecognized themes
-      }
-    }
+            if (!searchInput) return;
 
-    // --- The rest of the $(document).ready() function remains the same ---
-    // It includes the AJAX call, card generation (which uses the updated getTopicClasses),
-    // the unified filter button handler, and the animation logic.
+            searchInput.addEventListener('input', function () {
+              const searchTerm = this.value.toLowerCase().trim();
 
-    $(document).ready(function () {
-      const pubListContainer = $("#pub-list");
-      const filterButtons = $('.pub-filters button'); // Select ALL filter buttons
-      const filterCountDisplay = $('.filter-count');
+              if (searchTerm.length === 0) {
+                applyCurrentFilters();
+                searchResults.style.display = 'none';
+                clearButton.style.display = 'none';
+              } else {
+                clearButton.style.display = 'block';
+                performSearch(searchTerm);
+              }
+            });
 
-      pubListContainer.html(`
+            clearButton.addEventListener('click', function () {
+              searchInput.value = '';
+              searchInput.dispatchEvent(new Event('input'));
+              searchInput.focus();
+            });
+          }
+
+          function performSearch(searchTerm) {
+            const allCards = document.querySelectorAll('#pub-list .card');
+            let visibleCount = 0;
+
+            allCards.forEach(card => {
+              const title = card.querySelector('.paper-title')?.textContent.toLowerCase() || '';
+              const authors = card.querySelector('.paper-authors')?.textContent.toLowerCase() || '';
+              const details = card.querySelector('.paper-details')?.textContent.toLowerCase() || '';
+
+              const isMatch = title.includes(searchTerm) ||
+                authors.includes(searchTerm) ||
+                details.includes(searchTerm);
+
+              if (isMatch) {
+                card.style.display = 'block';
+                visibleCount++;
+                highlightSearchTerms(card, searchTerm);
+              } else {
+                card.style.display = 'none';
+              }
+            });
+
+            const searchResults = document.getElementById('searchResults');
+            const filterCount = document.querySelector('.filter-count');
+
+            searchResults.textContent = `Search: ${visibleCount} results for "${searchTerm}"`;
+            searchResults.style.display = 'block';
+            filterCount.textContent = `Showing ${visibleCount} of ${allCards.length} publications`;
+          }
+
+          function highlightSearchTerms(card, searchTerm) {
+            const elements = card.querySelectorAll('.paper-title, .paper-authors, .paper-details');
+            elements.forEach(el => {
+              let text = el.textContent;
+              const regex = new RegExp(`(${searchTerm})`, 'gi');
+              const highlighted = text.replace(regex, '<mark>$1</mark>');
+              if (highlighted !== text) {
+                el.innerHTML = highlighted;
+              }
+            });
+          }
+
+          function applyCurrentFilters() {
+            const activeFilter = document.querySelector('.pub-filters button.active');
+            if (activeFilter) {
+              activeFilter.click();
+            }
+          }
+
+          // BibTeX Export functionality
+          function setupBibtexExport() {
+            const exportBtn = document.getElementById('exportBibtex');
+            if (!exportBtn) return;
+
+            exportBtn.addEventListener('click', function () {
+              const visibleCards = Array.from(document.querySelectorAll('#pub-list .card')).filter(card =>
+                card.style.display !== 'none' && !card.hidden
+              );
+
+              if (visibleCards.length === 0) {
+                alert('No publications to export. Please adjust your filters or search.');
+                return;
+              }
+
+              let bibtexContent = '% BibTeX Export from Dr. Bardh Hoxha\'s Publications\n';
+              bibtexContent += '% Generated on ' + new Date().toLocaleDateString() + '\n\n';
+
+              visibleCards.forEach((card, index) => {
+                const title = card.querySelector('.paper-title')?.textContent.trim() || 'Unknown Title';
+                const authors = card.querySelector('.paper-authors')?.textContent.trim() || 'Unknown Authors';
+                const details = card.querySelector('.paper-details')?.textContent.trim() || '';
+
+                const yearMatch = details.match(/\b(19|20)\d{2}\b/);
+                const year = yearMatch ? yearMatch[0] : new Date().getFullYear();
+
+                const firstAuthor = authors.split(',')[0].trim().replace(/\s+/g, '');
+                const citationKey = `${firstAuthor}${year}${String.fromCharCode(97 + index)}`;
+
+                const cardClasses = card.className;
+                let entryType = 'article';
+                if (cardClasses.includes('paper-conf')) entryType = 'inproceedings';
+                else if (cardClasses.includes('paper-jour')) entryType = 'article';
+                else if (cardClasses.includes('paper-work')) entryType = 'inproceedings';
+
+                bibtexContent += `@${entryType}{${citationKey},\n`;
+                bibtexContent += `  title={${title}},\n`;
+                bibtexContent += `  author={${authors}},\n`;
+                bibtexContent += `  year={${year}},\n`;
+
+                if (details) {
+                  bibtexContent += `  note={${details}},\n`;
+                }
+
+                bibtexContent += '}\n\n';
+              });
+
+              const blob = new Blob([bibtexContent], { type: 'text/plain' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `hoxha_publications_${new Date().toISOString().split('T')[0]}.bib`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+
+              const toast = document.createElement('div');
+              toast.className = 'toast-notification';
+              toast.innerHTML = `<i class="fas fa-check-circle me-2"></i>Exported ${visibleCards.length} publications to BibTeX`;
+              toast.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #198754; color: white; padding: 12px 20px; border-radius: 5px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+              document.body.appendChild(toast);
+              setTimeout(() => document.body.removeChild(toast), 3000);
+            });
+          }
+
+
+
+
+
+          $(document).ready(function () {
+            const pubListContainer = $("#pub-list");
+            const filterButtons = $('.pub-filters button'); // Select ALL filter buttons
+            const filterCountDisplay = $('.filter-count');
+
+            pubListContainer.html(`
           <div class="text-center my-3">
               <div class="spinner-border text-primary" role="status">
                   <span class="visually-hidden">Loading publications...</span>
@@ -927,149 +1906,158 @@
               <p class="mt-2 text-muted">Loading publications...</p>
           </div>`); // Add initial loading indicator
 
-      // Unified click handler for all filter buttons
-      filterButtons.on('click', function () {
-        const $button = $(this);
-        const filterValue = $button.data('filter');
-        const isTopicButton = filterValue.startsWith('topic-');
-        const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
+            // Set up interactive features
+            setupPublicationSearch();
+            setupBibtexExport();
 
-        // Update active state for TYPE buttons OR TOPIC buttons separately
-        if (isTypeButton) {
-          $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
-          if (filterValue !== 'recent') $button.addClass('active');
-          else $('.pub-filters button[data-filter="all"]').addClass('active'); // Make 'All' active when 'recent' is clicked
-        } else if (isTopicButton) {
-          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-          $button.addClass('active');
-        }
+            // Set up metrics with a delay to ensure everything is loaded
+            setTimeout(() => {
+              setupMetricsCharts();
+            }, 1000);
 
-        // If a type button is clicked, deactivate the topic button, and vice-versa
-        // Keep 'All' as the neutral type filter when a topic is selected
-        if (isTopicButton) {
-          $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
-          $('.pub-filters button[data-filter="all"]').addClass('active');
-        } else if (isTypeButton && filterValue !== 'all') {
-          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-        } else if (filterValue === 'all') {
-          // Clicking "All" should also clear the topic filter selection
-          $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-        }
+            // Unified click handler for all filter buttons
+            filterButtons.on('click', function () {
+              const $button = $(this);
+              const filterValue = $button.data('filter');
+              const isTopicButton = filterValue.startsWith('topic-');
+              const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
 
+              // Update active state for TYPE buttons OR TOPIC buttons separately
+              if (isTypeButton) {
+                $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
+                if (filterValue !== 'recent') $button.addClass('active');
+                else $('.pub-filters button[data-filter="all"]').addClass('active'); // Make 'All' active when 'recent' is clicked
+              } else if (isTopicButton) {
+                $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+                $button.addClass('active');
+              }
 
-        // Filter logic
-        const allCards = $('#pub-list .card');
-        allCards.hide(); // Hide all cards initially
-
-        // Determine active filters
-        const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
-        const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter'); // Will be undefined if none active
-
-        let selector = '#pub-list .card'; // Start with all cards
-
-        // Apply type filter (if not 'all')
-        if (activeTypeFilter !== 'all') {
-          selector += '.' + activeTypeFilter;
-        }
-
-        // Apply topic filter (if one is active)
-        if (activeTopicFilter) {
-          selector += '.' + activeTopicFilter;
-        }
-
-        // Special case for 'Recent' - filter the currently selected items by year
-        if (filterValue === 'recent') {
-          $(selector).filter(function () { // Filter the already selected cards
-            const details = $(this).find('.paper-details').text();
-            return details.match(/(202\d|2030)/); // Matches 2020-2030
-          }).show();
-        } else {
-          // Show cards matching the combined selector
-          $(selector).show();
-        }
-
-        // Update count
-        const visibleCount = $('#pub-list .card:visible').length;
-        const totalCount = allCards.length;
-        filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
-      });
-
-
-      $.ajax({
-        type: "GET",
-        url: "./papers.xml", // Assuming papers.xml is in the same directory
-        dataType: "xml",
-        success: function (xml) {
-          pubListContainer.empty(); // Clear loading indicator
-          let totalLoadedCount = 0;
-          $(xml)
-            .find("paper")
-            .each(function () {
-              const $this = $(this);
-              const paperType = $this.attr("type") || "other"; // Use 'other' if type missing
-              const title = $this.find("title").text().trim();
-              const authors = $this.find("authors").text().trim();
-              const details = $this.find("other").text().trim();
-              const pdfLink = $this.find("link").text().trim();
-              const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
-
-              // --- MODIFIED BLOCK START ---
-              let combinedTopicClasses = new Set(); // Use a Set to avoid duplicates
-              $this.find("theme").each(function () { // Iterate over ALL theme tags
-                const themeText = $(this).text().trim();
-                if (themeText) { // Make sure theme text is not empty
-                  const topicClass = getTopicClasses(themeText); // Get class for this specific theme
-                  if (topicClass && topicClass !== 'topic-uncategorized') {
-                    combinedTopicClasses.add(topicClass);
-                  } else if (topicClass === 'topic-uncategorized') {
-                    console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
-                  }
-                }
-              });
-
-              // Join the collected classes into a string, add uncategorized if none found
-              const topicClasses = combinedTopicClasses.size > 0 ?
-                Array.from(combinedTopicClasses).join(' ') :
-                'topic-uncategorized';
-              // --- MODIFIED BLOCK END ---
-
-
-              let links = '';
-              if (pdfLink) { // Only add PDF link if present
-                links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
+              // If a type button is clicked, deactivate the topic button, and vice-versa
+              // Keep 'All' as the neutral type filter when a topic is selected
+              if (isTopicButton) {
+                $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
+                $('.pub-filters button[data-filter="all"]').addClass('active');
+              } else if (isTypeButton && filterValue !== 'all') {
+                $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
+              } else if (filterValue === 'all') {
+                // Clicking "All" should also clear the topic filter selection
+                $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
               }
 
 
-              if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
-                links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
-              }
-              if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
-                links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
-              }
-              if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
-                links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
-              }
-              if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
-                links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
+              // Filter logic
+              const allCards = $('#pub-list .card');
+              allCards.hide(); // Hide all cards initially
+
+              // Determine active filters
+              const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
+              const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter'); // Will be undefined if none active
+
+              let selector = '#pub-list .card'; // Start with all cards
+
+              // Apply type filter (if not 'all')
+              if (activeTypeFilter !== 'all') {
+                selector += '.' + activeTypeFilter;
               }
 
-              let award = "";
-              if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
-                award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
+              // Apply topic filter (if one is active)
+              if (activeTopicFilter) {
+                selector += '.' + activeTopicFilter;
               }
 
-              // Generate badge text based on paper type
-              let typeBadgeText = '';
-              switch (paperType) {
-                case 'conf': typeBadgeText = 'Conference'; break;
-                case 'jour': typeBadgeText = 'Journal'; break;
-                case 'work': typeBadgeText = 'Workshop'; break;
-                case 'other': typeBadgeText = 'Other'; break; // Handle 'other' type
-                default: typeBadgeText = paperType; // Use raw type if not recognized
+              // Special case for 'Recent' - filter the currently selected items by year
+              if (filterValue === 'recent') {
+                $(selector).filter(function () { // Filter the already selected cards
+                  const details = $(this).find('.paper-details').text();
+                  return details.match(/(202\d|2030)/); // Matches 2020-2030
+                }).show();
+              } else {
+                // Show cards matching the combined selector
+                $(selector).show();
               }
 
-              // Add paper type class AND topic classes to the card div
-              const cardHtml = `
+              // Update count
+              const visibleCount = $('#pub-list .card:visible').length;
+              const totalCount = allCards.length;
+              filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
+            });
+
+
+            $.ajax({
+              type: "GET",
+              url: "./papers.xml", // Assuming papers.xml is in the same directory
+              dataType: "xml",
+              success: function (xml) {
+                pubListContainer.empty(); // Clear loading indicator
+                let totalLoadedCount = 0;
+                $(xml)
+                  .find("paper")
+                  .each(function () {
+                    const $this = $(this);
+                    const paperType = $this.attr("type") || "other"; // Use 'other' if type missing
+                    const title = $this.find("title").text().trim();
+                    const authors = $this.find("authors").text().trim();
+                    const details = $this.find("other").text().trim();
+                    const pdfLink = $this.find("link").text().trim();
+                    const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
+
+                    // --- MODIFIED BLOCK START ---
+                    let combinedTopicClasses = new Set();
+                    $this.find("theme").each(function () {
+                      const themeText = $(this).text().trim();
+                      if (themeText) {
+                        const topicClass = getTopicClasses(themeText);
+                        if (topicClass && topicClass !== 'topic-uncategorized') {
+                          combinedTopicClasses.add(topicClass);
+                        } else if (topicClass === 'topic-uncategorized') {
+                          console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
+                        }
+                      }
+                    });
+
+                    // Join the collected classes into a string, add uncategorized if none found
+                    const topicClasses = combinedTopicClasses.size > 0 ?
+                      Array.from(combinedTopicClasses).join(' ') :
+                      'topic-uncategorized';
+                    // --- MODIFIED BLOCK END ---
+
+
+                    let links = '';
+                    if (pdfLink) { // Only add PDF link if present
+                      links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
+                    }
+
+
+                    if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
+                      links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
+                    }
+                    if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
+                      links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
+                    }
+                    if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
+                      links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
+                    }
+                    if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
+                      links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
+                    }
+
+                    let award = "";
+                    if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
+                      award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
+                    }
+
+                    // Generate badge text based on paper type
+                    let typeBadgeText = '';
+                    switch (paperType) {
+                      case 'conf': typeBadgeText = 'Conference'; break;
+                      case 'jour': typeBadgeText = 'Journal'; break;
+                      case 'work': typeBadgeText = 'Workshop'; break;
+                      case 'other': typeBadgeText = 'Other'; break; // Handle 'other' type
+                      default: typeBadgeText = paperType; // Use raw type if not recognized
+                    }
+
+                    // Add paper type class AND topic classes to the card div
+                    const cardHtml = `
                           <div class="card mb-2 shadow-sm paper-${paperType} ${topicClasses}">
                               <div class="card-body">
                                   <h5 class="card-title paper-title mb-2">${title}</h5>
@@ -1087,130 +2075,87 @@
                               </div>
                           </div>`;
 
-              pubListContainer.append(cardHtml);
-              totalLoadedCount++;
+                    pubListContainer.append(cardHtml);
+                    totalLoadedCount++;
+                  });
+
+                // Update the initial count after loading
+                const allCards = $('#pub-list .card'); // Recalculate after loading
+                filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
+                // Trigger 'all' filter initially to show everything
+                $('.pub-filters button[data-filter="all"]').trigger('click');
+
+                // Apply animations (optional)
+                allCards.each(function (index) {
+                  const card = $(this);
+                  card.css({
+                    'opacity': '0',
+                    'transform': 'translateY(20px)',
+                    'transition': 'opacity 0.5s ease, transform 0.5s ease'
+                  });
+
+                  setTimeout(function () {
+                    card.css({
+                      'opacity': '1',
+                      'transform': 'translateY(0)'
+                    });
+                  }, index * 50);
+                });
+
+                if (totalLoadedCount === 0) {
+                  pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.error("AJAX error loading publications:", textStatus, errorThrown);
+                pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
+                filterCountDisplay.text(''); // Clear count on error
+              },
             });
-
-          // Update the initial count after loading
-          const allCards = $('#pub-list .card'); // Recalculate after loading
-          filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
-          // Trigger 'all' filter initially to show everything
-          $('.pub-filters button[data-filter="all"]').trigger('click');
-
-          // Apply animations (optional)
-          allCards.each(function (index) {
-            const card = $(this);
-            card.css({
-              'opacity': '0',
-              'transform': 'translateY(20px)',
-              'transition': 'opacity 0.5s ease, transform 0.5s ease'
-            });
-
-            setTimeout(function () {
-              card.css({
-                'opacity': '1',
-                'transform': 'translateY(0)'
-              });
-            }, index * 50);
           });
+        </script>
 
-          if (totalLoadedCount === 0) {
-            pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+        <!-- Add custom styles for interactive features -->
+        <style>
+          .toast-notification {
+            animation: slideInRight 0.3s ease-out;
           }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          console.error("AJAX error loading publications:", textStatus, errorThrown);
-          pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
-          filterCountDisplay.text(''); // Clear count on error
-        },
-      });
-    });
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      let observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
+          @keyframes slideInRight {
+            from {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+
+            to {
+              transform: translateX(0);
+              opacity: 1;
+            }
           }
-        });
-      });
 
-      document.querySelectorAll('.section-title, .card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        observer.observe(el);
-      });
-    });
+          .form-control.is-valid,
+          .form-select.is-valid {
+            border-color: #198754;
+          }
 
-  </script>
+          .form-control.is-invalid,
+          .form-select.is-invalid {
+            border-color: #dc3545;
+          }
 
+          mark {
+            background-color: #fff3cd;
+            padding: 0;
+          }
 
-  <!-- Structured data for SEO (No changes needed) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Bardh Hoxha",
-      "url": "https://www.bhoxha.com", // Make sure this is the correct final URL
-      "author": {
-        "@type": "Person",
-        "name": "Bardh Hoxha",
-        "affiliation": {
-             "@type": "Organization",
-             "name": "Toyota Research Institute of North America"
-         }
-      },
-      "description": "Research website for Bardh Hoxha, focusing on logic, mathematics, system testing & verification." // Slightly more descriptive
-    }
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Bardh Hoxha",
-      "url": "https://www.bhoxha.com", // Your canonical website URL
-      "jobTitle": "Senior Principal Scientist",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Toyota Research Institute of North America",
-        "alternateName": "TRINA",
-        "url": "https://amrd.toyota.com/division/trina/" // Official URL if available
-      },
-      "alumniOf": {
-         "@type": "CollegeOrUniversity",
-         "name": "Arizona State University" // Your PhD institution
-       },
-      "knowsAbout": [ // Customize with your main areas of expertise
-        "Cyber-Physical Systems",
-        "Formal Methods",
-        "Temporal Logic",
-        "Runtime Verification",
-        "System Testing",
-        "Falsification",
-        "Reachability Analysis",
-        "Control Barrier Functions",
-        "Learning-based Control",
-        "Safe Control",
-        "Autonomous Systems",
-        "Robotics"
-      ],
-      "sameAs": [ // Links to your authoritative profiles
-        "https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en",
-        "https://www.linkedin.com/in/bardhhoxha",
-        "https://hub.docker.com/u/bardhh"
-        // Add GitHub profile URL if you have one: "https://github.com/yourusername"
-        // Add ORCID if you have one: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
-      ]
-    }
-    </script>
-  <!-- <script async src="assets\js\btn.js"> -->
+          #publicationSearch {
+            border-radius: 0.375rem 0 0 0.375rem;
+          }
 
-
-
-</body>
-
-</html>
+          .publication-controls {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #dee2e6;
+          }
+        </style>

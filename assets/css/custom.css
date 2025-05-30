@@ -177,7 +177,7 @@ header .container {
   /* margin-bottom: 0.3rem; */ /* Kept commented as original */
 }
 .card .card-text {
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   margin-bottom: 0rem;
 }
 .card .btn { /* Styles for buttons specifically inside cards */
