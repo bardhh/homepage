@@ -28,29 +28,12 @@
         <other>
             28th ACM International Conference on Hybrid Systems: Computation and Control (HSCC), 2025
         </other>
+        <link>
+            papers/hscc-tran-2025.pdf
         <theme>Runtime Verification and Monitoring</theme>
         <theme>Learning-based Control and Analysis</theme>
         <tag>
             HSCC2025-probstar
-        </tag>
-    </paper>
-    <paper type="jour">
-        <title>
-            Conformal Prediction in the Loop: Risk-Aware Control Barrier Functions for Stochastic Systems with Data-Driven State Estimators
-        </title>
-        <authors>
-            Junhui Zhang, Bardh Hoxha, Georgios Fainekos, Dimitra Panagou
-        </authors>
-        <link>
-            papers/csl-zhang-2025.pdf
-        </link>
-        <other>
-            IEEE Control Systems Letters, 2025
-        </other>
-        <theme>Risk and Stochasticity</theme>
-        <theme>Learning-based Control and Analysis</theme>
-        <tag>
-            ZhangJ25
         </tag>
     </paper>
     <paper type="unref">
@@ -61,7 +44,7 @@
             Hardik Parwana, Taekyung Kim, Kehan Long, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Dimitra Panagou
         </authors>
         <link>
-            papers/arxiv-parwana-2025.pdf
+            https://arxiv.org/pdf/2506.07325
         </link>
         <other>
             arXiv:2506.07325, 2025
@@ -80,7 +63,7 @@
             Hoang-Dung Tran, Sung Woo Choi, Yuntao Li, Qing Liu, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos
         </authors>
         <link>
-            papers/cav-tran-2025.pdf
+            papers/2025_StarV.pdf
         </link>
         <other>
             International Conference on Computer Aided Verification (CAV), 2025
@@ -89,22 +72,6 @@
         <theme>Learning-based Control and Analysis</theme>
         <tag>
             Tran25-CAV
-        </tag>
-    </paper>
-    <paper type="conf">
-        <title>
-            ProbStar Temporal Logic for Verifying Complex Behaviors of Learning-enabled Systems
-        </title>
-        <authors>
-            Hoang-Dung Tran, Sung Woo Choi, Yuntao Li, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos
-        </authors>
-        <other>
-            28th ACM International Conference on Hybrid Systems: Computation and Control (HSCC), 2025
-        </other>
-        <theme>Runtime Verification and Monitoring</theme>
-        <theme>Learning-based Control and Analysis</theme>
-        <tag>
-            HSCC2025-probstar
         </tag>
     </paper>
     <paper type="jour">
