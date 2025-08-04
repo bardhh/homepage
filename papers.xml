@@ -1,6 +1,633 @@
 <papers>
     <paper type="jour">
         <title>
+            Conformal Prediction in the Loop: Risk-Aware Control Barrier Functions for Stochastic Systems with Data-Driven State Estimators
+        </title>
+        <authors>
+            Jiaqi Zhang, Bardh Hoxha, Georgios Fainekos, Dimitra Panagou
+        </authors>
+        <link>
+            papers/letters-zhang-2025.pdf
+        </link>
+        <other>
+            IEEE Control Systems Letters, 2025
+        </other>
+        <theme>Risk and Stochasticity</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <tag>
+            Zhang25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            ProbStar Temporal Logic for Verifying Complex Behaviors of Learning-enabled Systems
+        </title>
+        <authors>
+            Hoang-Dung Tran, Sung Woo Choi, Yuntao Li, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <other>
+            28th ACM International Conference on Hybrid Systems: Computation and Control (HSCC), 2025
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            HSCC2025-probstar
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Conformal Prediction in the Loop: Risk-Aware Control Barrier Functions for Stochastic Systems with Data-Driven State Estimators
+        </title>
+        <authors>
+            Junhui Zhang, Bardh Hoxha, Georgios Fainekos, Dimitra Panagou
+        </authors>
+        <link>
+            papers/csl-zhang-2025.pdf
+        </link>
+        <other>
+            IEEE Control Systems Letters, 2025
+        </other>
+        <theme>Risk and Stochasticity</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            ZhangJ25
+        </tag>
+    </paper>
+    <paper type="unref">
+        <title>
+            BR-MPPI: Barrier Rate guided MPPI for Enforcing Multiple Inequality Constraints with Learned Signed Distance Field
+        </title>
+        <authors>
+            Hardik Parwana, Taekyung Kim, Kehan Long, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Dimitra Panagou
+        </authors>
+        <link>
+            papers/arxiv-parwana-2025.pdf
+        </link>
+        <other>
+            arXiv:2506.07325, 2025
+        </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            Parwana25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            StarV: A Qualitative and Quantitative Verification Tool for Learning-Enabled Systems
+        </title>
+        <authors>
+            Hoang-Dung Tran, Sung Woo Choi, Yuntao Li, Qing Liu, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <link>
+            papers/cav-tran-2025.pdf
+        </link>
+        <other>
+            International Conference on Computer Aided Verification (CAV), 2025
+        </other>
+        <theme>Formal Methods and Verification</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            Tran25-CAV
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            ProbStar Temporal Logic for Verifying Complex Behaviors of Learning-enabled Systems
+        </title>
+        <authors>
+            Hoang-Dung Tran, Sung Woo Choi, Yuntao Li, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <other>
+            28th ACM International Conference on Hybrid Systems: Computation and Control (HSCC), 2025
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            HSCC2025-probstar
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Distributionally Robust Predictive Runtime Verification under Spatio-Temporal Logic Specifications
+        </title>
+        <authors>
+           Yiqi Zhao, Emily Zhu, Bardh Hoxha, Georgios Fainekos, Jyotirmoy V Deshmukh, Lars Lindemann
+        </authors>
+        <other>
+            Transactions on Cyber-Physical Systems (TCPS), 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.02964
+        </link>
+        <theme>Runtime Verification and Monitoring</theme> 
+        <tag>
+            Zhao25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+        </title>
+        <authors>
+           Xinyi Wang, Taekyung Kim, Bardh Hoxha, Georgios Fainekos, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv preprint arXiv:2504.06513, 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.06513
+        </link>
+        <theme>Motion Planning and Control</theme> 
+        <tag>
+            Wang25
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            MRTA-Sim: A Modular Simulator for Multi-Robot Allocation, Planning, and Control in Open-World Environments
+        </title>
+        <authors>
+           Victoria Marie Tuck, Hardik Parwana, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, S Shankar Sastry, Sanjit A Seshia
+        </authors>
+        <other>
+            arXiv, 2025
+        </other>
+        <link>
+            https://arxiv.org/abs/2504.15418
+        </link>
+        <theme>Optimal Planning and Safe Control</theme>
+        <tag>
+            Tuck25
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Reachability Analysis of Recurrent Neural Networks
+        </title>
+        <authors>
+           Sung Woo Choi, Yuntao Li, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Georgios Fainekos, Danil Prokhorov, Hoang-Dung Tran
+        </authors>
+        <other>
+            Nonlinear Analysis: Hybrid Systems, 2025
+        </other>
+        <link>
+            https://www.sciencedirect.com/science/article/abs/pii/S1751570X2500007X
+        </link>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Runtime Verification and Monitoring</theme>
+        <tag>
+            NAHS2025
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+            Scaling Learning-based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy V Deshmukh
+        </authors>
+        <other>
+            Transactions on Cyber-Physical Systems, 2025
+        </other>
+        <link>
+            https://dl.acm.org/doi/full/10.1145/3696112
+        </link>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            TCPS2025
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            From Dashcam Videos to Driving Simulations: Stress Testing Automated Vehicles Against Rare Events
+        </title>
+        <authors>
+           Yan Miao, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov, Sayan Mitra
+        </authors>
+        <other>
+            Machine Learning for Autonomous Driving - AAAI, 2025
+        </other>
+        <link>
+            https://ar5iv.org/pdf/2411.16027
+        </link>
+        <theme>Testing, Falsification, and Specification</theme>
+        <tag>
+            AAAIw2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+        Risk-aware MPPI for Stochastic Hybrid Systems
+        </title>
+        <authors>
+           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            American Control Conference, 2025
+        </other>
+        <link>
+            https://ar5iv.org/pdf/2411.09198
+        </link>
+        <video>
+            https://private-user-images.githubusercontent.com/19849515/371942037-c75edbed-d587-4282-b8d9-2c74940301af.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMzNTM0NDgsIm5iZiI6MTczMzM1MzE0OCwicGF0aCI6Ii8xOTg0OTUxNS8zNzE5NDIwMzctYzc1ZWRiZWQtZDU4Ny00MjgyLWI4ZDktMmM3NDk0MDMwMWFmLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMjA0VDIyNTkwOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNjNDgyMzBlNzhhMjkzN2U2OGYwNGQ4ODc3YzVjNDNjZTUzODZjODZkMDhhNzVkYjQ4YzE2OGRmMzc0M2VjZjYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.i6mV0WsRAf8IyiRq4VRd3Yw5v7xznrUcIFOxzhcgnls
+        </video>
+        <code>
+            https://github.com/hardikparwana/social-navigation
+        </code>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Risk and Stochasticity</theme>
+        <tag>
+            MPPI2024
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+        Querying Perception Streams with Spatial Regular Expressions
+        </title>
+        <authors>
+           Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
+        </authors>
+        <other>
+            Software Tools for Technology Transfer, 2024
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <link>
+            https://arxiv.org/pdf/2411.05946
+        </link>
+        <code>
+            https://github.com/cps-atlas/strem
+        </code>
+        <tag>
+            STTT2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+        Neural Configuration Distance Function for Continuum Robot Control
+        </title>
+        <authors>
+        Kehan Long, Hardik Parwana, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Nikolay Atanasov
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <link>
+            https://arxiv.org/pdf/2409.13865
+        </link>
+        <code>
+            https://github.com/cps-atlas/ndf-coroco
+        </code>
+        <tag>
+            IROS2025
+        </tag>
+    </paper>
+    <paper type="work">
+        <title>
+            Model Predictive Path Integral Methods with Reach-Avoid Tasks and Control Barrier Functions
+        </title>
+        <authors>
+            Hardik Parwana, Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov
+        </authors>
+        <other>
+            Towards Safe Autonomy: Emerging Requirements, Definitions, and Methods, July 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/rss-tsa24.pdf
+        </link>
+        <code>
+            https://github.com/bardhh/cbfkit/tree/mppi-extension
+        </code>
+        <theme>Optimal Planning and Safe Control</theme>
+        <tag>
+            TSA2024
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
+        Scaling Learning-based Policy Optimization for Temporal Logic Tasks by Controller Network Dropout
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            ACM Transactions on Cyber-Physical Systems, 2024
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <link>
+            https://ar5iv.org/pdf/2403.15826
+        </link>
+        <tag>
+            TCPS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            LB4TL: Smooth Semantics for Temporal Logic for Scalable Training of Neural Feedback Controllers
+        </title>
+        <authors>
+            Navid Hashemi, Sam Williams, Bardh Hoxha, Danil Prokhorov, Georgios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <other>
+            The 8th IFAC Conference on Analysis and Design of Hybrid Systems (ADHS), July 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/adhs2024.pdf
+        </link>
+        <theme>Learning-based Control and Analysis</theme>
+        <tag>
+            ADHS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Optimal Planning for Timed Partial Order Specifications
+        </title>
+        <authors>
+            Kandai Watanabe, Georgios Fainekos, Bardh Hoxha, Morteza Lahijanian, Hideki Okamoto, Sriram Sankaranarayanan
+        </authors>
+        <other>
+            2024 IEEE International Conference on Robotics and Automation (ICRA), May 2024
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/ICRA2024_TPO_Optim.pdf
+        </link>
+        <theme>Optimal Planning and Safe Control</theme>
+        <video>
+            https://urldefense.com/v3/__https://youtu.be/_1YuUj3fuV0__;!!B-Wf7dNC-A!5CIko1U7kCI5jujQiVV1HtZI-Uq_oGFOKbLDehVNRaHPbHPG9oKc8gij9jt_sx9NLJuwdSaXyX8uqHNjqnA3e0PkqzwtENDbdA$
+        </video>
+        <tag>
+            ICRA2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+        CBFKit: A Control Barrier Function Toolbox for Robotics Applications
+        </title>
+        <authors>
+           Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov
+        </authors>
+        <other>
+            IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2024
+        </other>
+        <link>
+            https://ar5iv.org/abs/2404.07158
+        </link>
+        <theme>Optimal Planning and Safe Control</theme>
+        <code>
+            https://github.com/bardhh/cbfkit
+        </code>
+        <tag>
+            IROS2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Risk-Aware Fixed-Time Stabilization of Stochastic Systems under Measurement Uncertainty
+        </title>
+        <authors>
+            Mitchell Black, Georgios Fainekos, Bardh Hoxha, Dimitra Panagou
+        </authors>
+        <other>
+            American Control Conference (ACC), 2024
+        </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Risk and Stochasticity</theme>
+        <link>
+            https://ar5iv.org/abs/2403.20258
+        </link>
+        <tag>
+            ACC2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           SMT-Based Dynamic Multi-Robot Task Allocation
+        </title>
+        <authors>
+           Victoria Marie Tuck, Pei-Wei Chen, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, S Shankar Sastry, Sanjit A Seshia
+        </authors>
+        <other>
+            NASA Formal Methods (NFM), 2024
+        </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <link>
+            https://arxiv.org/abs/2403.11737
+        </link>
+        <code>
+            https://github.com/victoria-tuck/SMrTa
+        </code>
+        <tag>
+            NFM 2024
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+           Safe Control Synthesis for Hybrid Systems through Local Control Barrier Functions
+        </title>
+        <authors>
+           Shuo Yang, Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Rahul Mangharam
+        </authors>
+        <other>
+            ACC, 2024
+        </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <link>
+            https://www.bhoxha.com/papers/acc2024.pdf
+        </link>
+        <tag>
+            ACC2024
+        </tag>
+    <bibtex>bibtex/ACC2024_Yang.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Robust Conformal Prediction for STL Runtime Verification under Distribution Shift
+        </title>
+        <authors>
+           Yiqi Zhao, Bardh Hoxha, Georgios Fainekos, Jyotirmoy V Deshmukh, Lars Lindemann
+        </authors>
+        <other>
+            ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), Hong Kong, China, 2024
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Risk and Stochasticity</theme>
+        <link>
+            https://www.bhoxha.com/papers/ICCPS2024.pdf
+        </link>
+        <award>
+            Finalist for Best Paper Award
+        </award>
+        <tag>
+            ICCPS2024
+        </tag>
+    <bibtex>bibtex/ICCPS2024_Zhao.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Feasible Space Monitoring for Multiple Control Barrier Functions with application to Large Scale Indoor Navigation
+        </title>
+        <authors>
+           Hardik Parwana, Mitchell Black, Bardh Hoxha, Hideki Okamoto, Georgios Fainekos, Danil Prokhorov, Dimitra Panagou
+        </authors>
+        <other>
+            arXiv, 2024
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <link>
+            https://ar5iv.org/pdf/2312.07803.pdf
+        </link>
+        <tag>
+            ICRA_2024_Parwana
+        </tag>
+    <bibtex>bibtex/ICRA_2024_Parwana_Parwana.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Pattern Matching for Perception Streams
+        </title>
+        <authors>
+           Jacob Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto and Danil Prokhorov
+        </authors>
+        <other>
+            Runtime Verification (RV), Thessaloniki, Greece, 2023
+        </other>
+        <award>
+            Finalist for Best Paper Award
+        </award>
+        <theme>Runtime Verification and Monitoring</theme>
+        <link>
+            https://www.bhoxha.com/papers/RV2023.pdf
+        </link>
+        <code>
+        https://github.com/strem-org
+        </code>
+        <tag>
+            RV2023
+        </tag>
+    <bibtex>bibtex/RV2023_Anderson.bib</bibtex></paper>
+    <paper type="jour">
+        <title>
+            RTAMT – Runtime Robustness Monitors with Application to CPS and Robotics
+        </title>
+        <authors>
+            Tomoya Yamaguchi, Bardh Hoxha and Dejan Ničković
+        </authors>
+        <other>
+            International Journal on Software Tools for Technology Transfer (STTT), 2023
+        </other>
+        <theme>Runtime Verification and Monitoring</theme>
+        <link>
+            https://www.bhoxha.com/papers/rtamt2023.pdf
+        </link>
+        <code>
+        https://github.com/nickovic/rtamt
+        </code>
+        <tag>
+            STTT2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+          Checkmate: Fault Timing Localization for Multi-Robot Scenarios
+        </title>
+        <authors>
+           Ippei Nishitani, Tomoya Yamaguchi, Bardh Hoxha
+        </authors>
+        <other>
+            IEEE International Conference on Automation Science and Engineering (CASE), 2023
+        </other>
+        <link>
+            https://www.bhoxha.com/papers/CASE2023.pdf
+        </link>
+        <theme>Runtime Verification and Monitoring</theme>
+        <tag>
+            CASE2023
+        </tag>
+    <bibtex>bibtex/CASE2023_Nishitani.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Quantitative Verification for Neural Networks using ProbStars
+        </title>
+        <authors>
+           Hoang-Dung Tran, Sungwoo Choi, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos, Danil Prokhorov
+        </authors>
+        <other>
+            Hybrid Systems: Computation and Control (HSCC), 2023
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Risk and Stochasticity</theme>
+        <link>
+            https://www.bhoxha.com/papers/HSCC2023ProbStars.pdf
+        </link>
+        <code>
+        https://github.com/V2A2/StarV
+        </code>
+        <tag>
+            HSCC2023-probstars
+        </tag>
+    <bibtex>bibtex/HSCC2023-probstars_Tran.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           Verification of Recurrent Neural Networks with Star Reachability
+        </title>
+        <authors>
+           Hoang-Dung Tran, Sungwoo Choi, Xiaodong Yang, Tomoya Yamaguchi, Bardh Hoxha, Danil Prokhorov
+        </authors>
+        <other>
+            Hybrid Systems: Computation and Control (HSCC), 2023
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <link>
+            https://www.bhoxha.com/papers/HSCC2023RNNVer.pdf
+        </link>
+        <code>
+        https://github.com/verivital/nnv
+        </code>
+        <tag>
+            HSCC2023-rnn
+        </tag>
+    <bibtex>bibtex/HSCC2023-rnn_Tran.bib</bibtex></paper>
+    <paper type="conf">
+        <title>
+           A Neurosymbolic Approach to the Verification of Temporal Logic Properties of Learning enabled Control Systems
+        </title>
+        <authors>
+           Navid Hashemi, Bardh Hoxha, Tomoya Yamaguchi, Danil Prokhorov, Geogios Fainekos, Jyotirmoy Deshmukh
+        </authors>
+        <theme>Learning-based Control and Analysis</theme>
+        <other>
+            ACM/IEEE International Conference on Cyber-Physical Systems (ICCPS), 2023
+        </other>
+        <link>
+            https://arxiv.org/pdf/2303.05394
+        </link>
+        <tag>
+            ICCPS2023
+        </tag>
+    </paper>
+    <paper type="conf">
+        <title>
+            Risk-Awareness in Learning Neural Controllers for Temporal Logic Objectives
+        </title>
+        <authors>
+            Navid Hashemi, Xin Qin, Jyotirmoy V Deshmukh, Georgios Fainekos, Bardh Hoxha, Danil Prokhorov, Tomoya Yamaguchi
+        </authors>
+        <other>
+            American Control Conference (ACC), 2023
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Risk and Stochasticity</theme>
+        <link>
+            https://ar5iv.org/abs/2210.07439
+        </link>
+        <tag>
+            ACC2023
+        </tag>
+    <bibtex>bibtex/ACC2023_Hashemi.bib</bibtex>
+    </paper>
+    <paper type="jour">
+        <title>
             Distributionally Robust Predictive Runtime Verification under Spatio-Temporal Logic Specifications
         </title>
         <authors>
