@@ -11,6 +11,9 @@
         </other>
         <theme>Learning-based Control and Analysis</theme>
         <theme>Verification and Reachability</theme>
+        <link>
+            https://www.sciencedirect.com/science/article/abs/pii/S1751570X25000494
+        </link>
         <tag>
             Li26
         </tag>
@@ -28,6 +31,9 @@
         </other>
         <theme>Multi-Agent Systems</theme>
         <theme>Optimal Planning and Safe Control</theme>
+        <link>
+            https://arxiv.org/pdf/2508.14381
+        </link>
         <tag>
             Fronda26-Firefly
         </tag>
@@ -45,6 +51,9 @@
         </other>
         <theme>Multi-Agent Systems</theme>
         <theme>Autonomous Mobility and Planning</theme>
+        <link>
+            https://arxiv.org/pdf/2508.14380
+        </link>
         <tag>
             Fronda26-FairCoPlan
         </tag>
@@ -62,12 +71,15 @@
         </other>
         <theme>Multi-Agent Systems</theme>
         <theme>Task Allocation and Path Planning</theme>
+        <link>
+            https://ieeexplore.ieee.org/abstract/document/11164139
+        </link>
         <tag>
             Yamaguchi25
         </tag>
     </paper>
 
-    <paper type="unref">
+    <paper type="conf">
         <title>
             GPU-Accelerated Barrier-Rate Guided MPPI Control for Tractor-Trailer Systems
         </title>
@@ -99,6 +111,9 @@
         </other>
         <theme>Spatio-Temporal Logic</theme>
         <theme>Distributed Systems and Networks</theme>
+        <link>
+            https://dl.acm.org/doi/pdf/10.1145/3760258
+        </link>
         <tag>
             Zhao25-STLGO
         </tag>
@@ -141,7 +156,7 @@
             HSCC2025-probstar
         </tag>
     </paper>
-    <paper type="conference">
+    <paper type="conf">
         <title>
             BR-MPPI: Barrier Rate guided MPPI for Enforcing Multiple Inequality Constraints with Learned Signed Distance Field
         </title>
