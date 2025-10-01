@@ -1,6 +1,110 @@
 <papers>
     <paper type="jour">
         <title>
+            Quantitative Verification of Learning-Enabled Systems using ProbStar Reachability
+        </title>
+        <authors>
+            Yuntao Li, Sung Woo Choi, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos, Hoang-Dung Tran
+        </authors>
+        <other>
+            Nonlinear Analysis: Hybrid Systems 2026
+        </other>
+        <theme>Learning-based Control and Analysis</theme>
+        <theme>Verification and Reachability</theme>
+        <tag>
+            Li26
+        </tag>
+    </paper>
+
+    <paper type="conf">
+        <title>
+            FiReFly: Fair Distributed Receding Horizon Planning for Multiple UAVs
+        </title>
+        <authors>
+            Nathan Fronda, Bardh Hoxha, Houssam Abbas
+        </authors>
+        <other>
+            IEEE Intelligent Transportation Systems Conference (ITSC), 2026
+        </other>
+        <theme>Multi-Agent Systems</theme>
+        <theme>Optimal Planning and Safe Control</theme>
+        <tag>
+            Fronda26-Firefly
+        </tag>
+    </paper>
+
+    <paper type="conf">
+        <title>
+            Fair-CoPlan: Negotiated Flight Planning with Fair Deconfliction for Urban Air Mobility
+        </title>
+        <authors>
+            Nathan Fronda, Peter Smith, Bardh Hoxha, Yash Pant, Houssam Abbas
+        </authors>
+        <other>
+            IEEE Intelligent Transportation Systems Conference (ITSC), 2026
+        </other>
+        <theme>Multi-Agent Systems</theme>
+        <theme>Autonomous Mobility and Planning</theme>
+        <tag>
+            Fronda26-FairCoPlan
+        </tag>
+    </paper>
+
+    <paper type="conf">
+        <title>
+            Scalable Multi-Agent Path Finding for Delivery Robot Systems with Temporal and Edge Capacity Constraints on Weighted Graphs
+        </title>
+        <authors>
+            Tomoya Yamaguchi, Ippei Nishitani, Yusuke Ota, Bardh Hoxha, Georgios Fainekos
+        </authors>
+        <other>
+            2025 IEEE 21st International Conference on Automation Science and Engineering (CASE), 2025
+        </other>
+        <theme>Multi-Agent Systems</theme>
+        <theme>Task Allocation and Path Planning</theme>
+        <tag>
+            Yamaguchi25
+        </tag>
+    </paper>
+
+    <paper type="unref">
+        <title>
+            GPU-Accelerated Barrier-Rate Guided MPPI Control for Tractor-Trailer Systems
+        </title>
+        <authors>
+            Keyvan Majd, Hardik Parwana, Bardh Hoxha, Steven Hong, Hideki Okamoto, Georgios Fainekos
+        </authors>
+        <link>
+            https://arxiv.org/abs/2508.05773
+        </link>
+        <other>
+            arXiv preprint arXiv:2508.05773, 2025
+        </other>
+        <theme>Optimal Planning and Safe Control</theme>
+        <theme>Barrier Function Methods</theme>
+        <tag>
+            Majd25
+        </tag>
+    </paper>
+
+    <paper type="jour">
+        <title>
+            STL-GO: Spatio-Temporal Logic with Graph Operators for Distributed Systems with Multiple Network Topologies
+        </title>
+        <authors>
+            Yiqi Zhao, Xinyi Yu, Bardh Hoxha, Georgios Fainekos, Jyotirmoy Deshmukh, Lars Lindemann
+        </authors>
+        <other>
+            ACM Transactions on Embedded Computing Systems (TECS), 2025
+        </other>
+        <theme>Spatio-Temporal Logic</theme>
+        <theme>Distributed Systems and Networks</theme>
+        <tag>
+            Zhao25-STLGO
+        </tag>
+    </paper>
+    <paper type="jour">
+        <title>
             Conformal Prediction in the Loop: Risk-Aware Control Barrier Functions for Stochastic Systems with Data-Driven State Estimators
         </title>
         <authors>
@@ -37,7 +141,7 @@
             HSCC2025-probstar
         </tag>
     </paper>
-    <paper type="unref">
+    <paper type="conference">
         <title>
             BR-MPPI: Barrier Rate guided MPPI for Enforcing Multiple Inequality Constraints with Learned Signed Distance Field
         </title>
