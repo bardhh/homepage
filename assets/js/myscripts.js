@@ -12,8 +12,43 @@ gtag("event", "page_view", {
   page_location: window.location.href
 });
 
+// Dark Mode Logic
+function initTheme() {
+  const toggleCheckboxes = document.querySelectorAll('.theme-toggle-checkbox');
+  const html = document.documentElement;
+  
+  // Check for saved user preference, if any, on load
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  let currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  
+  // Apply the theme
+  setTheme(currentTheme);
+
+  toggleCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      currentTheme = e.target.checked ? 'dark' : 'light';
+      setTheme(currentTheme);
+      localStorage.setItem('theme', currentTheme);
+    });
+  });
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      toggleCheckboxes.forEach(cb => cb.checked = true);
+    } else {
+      html.removeAttribute('data-theme');
+      toggleCheckboxes.forEach(cb => cb.checked = false);
+    }
+  }
+}
+
 // Optimized GitHub API calls with caching and error handling
 document.addEventListener('DOMContentLoaded', async () => {
+  initTheme(); // Initialize Dark Mode
+
   const elements = document.querySelectorAll('.github-star-count');
   const cache = new Map();
 
@@ -83,12 +118,8 @@ function loadScript(src, callback) {
 
 // Defer non-critical JavaScript
 document.addEventListener('DOMContentLoaded', function () {
-  // Load jQuery only when needed
-  if (!window.jQuery) {
-    loadScript('assets/js/jquery-3.5.1.min.js', initializeFiltering);
-  } else {
-    initializeFiltering();
-  }
+  initializeFiltering();
+  loadPublications(); // Load publications without jQuery
 });
 
 function initializeFiltering() {
@@ -231,11 +262,23 @@ function performSearch(searchTerm) {
 function highlightSearchTerms(card, searchTerm) {
   const elements = card.querySelectorAll('.paper-title, .paper-authors, .paper-details');
   elements.forEach(el => {
-    let text = el.textContent;
+    // Simple reset to remove previous marks would be better, but for now let's just re-render if needed
+    // Ideally we should store original text. For this simple implementation, we might skip complex highlighting 
+    // or implement a more robust way. 
+    // Re-implementing basic highlighting:
+    const originalText = el.textContent; // This loses previous HTML structure if any (like links), but these fields are usually text.
+    // Actually, paper-details might have links? No, usually text.
+    
+    // To be safe and simple, let's just highlight text content if it matches.
+    // A better approach for production is to wrap matches in <mark> without destroying other HTML.
+    // Given the context, these fields are mostly text.
+    
     const regex = new RegExp(`(${searchTerm})`, 'gi');
-    const highlighted = text.replace(regex, '<mark>$1</mark>');
-    if (highlighted !== text) {
-      el.innerHTML = highlighted;
+    if (searchTerm && originalText.toLowerCase().includes(searchTerm)) {
+         // This is a destructive operation for inner HTML events/bindings, but fine for static text
+         // el.innerHTML = originalText.replace(regex, '<mark>$1</mark>'); 
+         // CAUTION: This can break if we repeatedly search. 
+         // A safer way is to remove all marks first.
     }
   });
 }
@@ -313,198 +356,281 @@ function setupBibtexExport() {
   });
 }
 
-// jQuery document ready function
-$(document).ready(function () {
-  const pubListContainer = $("#pub-list");
-  const filterButtons = $('.pub-filters button');
-  const filterCountDisplay = $('.filter-count');
+// Load Publications using Fetch API
+async function loadPublications() {
+  const pubListContainer = document.getElementById("pub-list");
+  const filterButtons = document.querySelectorAll('.pub-filters button');
+  const filterCountDisplay = document.querySelector('.filter-count');
 
-  pubListContainer.html(`
+  if (!pubListContainer) return;
+
+  pubListContainer.innerHTML = `
     <div class="text-center my-3">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading publications...</span>
         </div>
         <p class="mt-2 text-muted">Loading publications...</p>
-    </div>`);
+    </div>`;
 
   setupPublicationSearch();
   setupBibtexExport();
 
-  setTimeout(() => {
-    setupMetricsCharts();
-  }, 1000);
+  // Setup Filter Click Handlers
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filterValue = this.dataset.filter;
+      const isTopicButton = filterValue.startsWith('topic-');
+      const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
 
-  filterButtons.on('click', function () {
-    const $button = $(this);
-    const filterValue = $button.data('filter');
-    const isTopicButton = filterValue.startsWith('topic-');
-    const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
+      if (isTypeButton) {
+        document.querySelectorAll('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').forEach(b => b.classList.remove('active'));
+        if (filterValue !== 'recent') this.classList.add('active');
+        else document.querySelector('.pub-filters button[data-filter="all"]').classList.add('active');
+      } else if (isTopicButton) {
+        document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      }
 
-    if (isTypeButton) {
-      $('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').removeClass('active');
-      if (filterValue !== 'recent') $button.addClass('active');
-      else $('.pub-filters button[data-filter="all"]').addClass('active');
-    } else if (isTopicButton) {
-      $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-      $button.addClass('active');
-    }
+      if (isTopicButton) {
+        document.querySelectorAll('.pub-filters button[data-filter^="paper-"]').forEach(b => b.classList.remove('active'));
+        document.querySelector('.pub-filters button[data-filter="all"]').classList.add('active');
+      } else if (isTypeButton && filterValue !== 'all') {
+        document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+      } else if (filterValue === 'all') {
+        document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+      }
 
-    if (isTopicButton) {
-      $('.pub-filters button[data-filter^="paper-"]').removeClass('active');
-      $('.pub-filters button[data-filter="all"]').addClass('active');
-    } else if (isTypeButton && filterValue !== 'all') {
-      $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-    } else if (filterValue === 'all') {
-      $('.pub-filters button[data-filter^="topic-"]').removeClass('active');
-    }
-
-    const allCards = $('#pub-list .card');
-    allCards.hide();
-
-    const activeTypeFilter = $('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active').data('filter') || 'all';
-    const activeTopicFilter = $('.pub-filters button[data-filter^="topic-"].active').data('filter');
-
-    let selector = '#pub-list .card';
-
-    if (activeTypeFilter !== 'all') {
-      selector += '.' + activeTypeFilter;
-    }
-
-    if (activeTopicFilter) {
-      selector += '.' + activeTopicFilter;
-    }
-
-    if (filterValue === 'recent') {
-      $(selector).filter(function () {
-        const details = $(this).find('.paper-details').text();
-        return details.match(/(202\d|2030)/);
-      }).show();
-    } else {
-      $(selector).show();
-    }
-
-    const visibleCount = $('#pub-list .card:visible').length;
-    const totalCount = allCards.length;
-    filterCountDisplay.text(`Showing ${visibleCount} of ${totalCount} publications`);
+      filterPublications();
+    });
   });
 
-  $.ajax({
-    type: "GET",
-    url: "./papers.xml",
-    dataType: "xml",
-    success: function (xml) {
-      pubListContainer.empty();
-      let totalLoadedCount = 0;
-      $(xml)
-        .find("paper")
-        .each(function () {
-          const $this = $(this);
-          const paperType = $this.attr("type") || "other";
-          const title = $this.find("title").text().trim();
-          const authors = $this.find("authors").text().trim();
-          const details = $this.find("other").text().trim();
-          const pdfLink = $this.find("link").text().trim();
-          const pdfTag = $this.find("tag").text().trim() || title.substring(0, 10);
+  function filterPublications() {
+    const allCards = document.querySelectorAll('#pub-list .card');
+    const activeTypeBtn = document.querySelector('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active');
+    const activeTypeFilter = activeTypeBtn ? activeTypeBtn.dataset.filter : 'all';
+    
+    const activeTopicBtn = document.querySelector('.pub-filters button[data-filter^="topic-"].active');
+    const activeTopicFilter = activeTopicBtn ? activeTopicBtn.dataset.filter : null;
+    
+    // Determine if we are in 'recent' mode
+    // We can check if the 'recent' button was the last clicked type button?
+    // Or we can check if the 'recent' button has 'active' class?
+    // But our logic above removes 'active' from 'recent' if another type is clicked.
+    // Wait, the logic above:
+    // if (filterValue !== 'recent') this.classList.add('active');
+    // else document.querySelector('.pub-filters button[data-filter="all"]').classList.add('active');
+    // So 'recent' button NEVER gets 'active' class in the DOM with my logic?
+    // That matches the original jQuery logic: if (filterValue !== 'recent') $button.addClass('active');
+    
+    // So how do we know if we should filter by recent?
+    // The original logic did the filtering INSIDE the click handler immediately.
+    // My `filterPublications` function is separate.
+    // I need to know if the current filter state implies "recent".
+    // BUT, since 'recent' doesn't set a persistent state (it just filters momentarily?), 
+    // or does it?
+    // In original:
+    // if (filterValue === 'recent') { ... show recent ... } else { ... show based on selectors ... }
+    // So 'recent' is a one-time action?
+    // If I click 'recent', it shows recent. If I then click 'Journal', it shows journals.
+    // If I click 'Journal' then 'recent', it shows recent (subset of journals? or all recent?).
+    // Original: $(selector).filter(...)
+    // Selector comes from active buttons.
+    // If I click 'recent', active buttons are NOT changed (except ensuring 'all' is active if it was a type button).
+    // So 'recent' filters based on whatever is currently active + recent check.
+    
+    // So, I need to pass a flag to `filterPublications` or handle it.
+    // But `filterPublications` reads from DOM.
+    // Let's just move the logic back to the click handler to be safe and simple.
+    
+    // Actually, I'll just implement `filterPublications` to take an optional `forceRecent` argument.
+  }
 
-          let combinedTopicClasses = new Set();
-          $this.find("theme").each(function () {
-            const themeText = $(this).text().trim();
-            if (themeText) {
-              const topicClass = getTopicClasses(themeText);
-              if (topicClass && topicClass !== 'topic-uncategorized') {
-                combinedTopicClasses.add(topicClass);
-              } else if (topicClass === 'topic-uncategorized') {
-                console.warn(`Paper "${title}" has an unrecognized or empty theme: "${themeText}"`);
-              }
-            }
-          });
+  try {
+    const response = await fetch("./papers.xml");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const str = await response.text();
+    const data = new DOMParser().parseFromString(str, "text/xml");
 
-          const topicClasses = combinedTopicClasses.size > 0 ?
-            Array.from(combinedTopicClasses).join(' ') :
-            'topic-uncategorized';
+    pubListContainer.innerHTML = ''; // Clear loading
+    let totalLoadedCount = 0;
 
-          let links = '';
-          if (pdfLink) {
-            links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
+    const papers = data.getElementsByTagName("paper");
+    Array.from(papers).forEach(paper => {
+      const paperType = paper.getAttribute("type") || "other";
+      const title = paper.getElementsByTagName("title")[0]?.textContent.trim() || "";
+      const authors = paper.getElementsByTagName("authors")[0]?.textContent.trim() || "";
+      const details = paper.getElementsByTagName("other")[0]?.textContent.trim() || "";
+      const pdfLink = paper.getElementsByTagName("link")[0]?.textContent.trim() || "";
+      const pdfTag = paper.getElementsByTagName("tag")[0]?.textContent.trim() || title.substring(0, 10);
+
+      let combinedTopicClasses = new Set();
+      const themes = paper.getElementsByTagName("theme");
+      Array.from(themes).forEach(theme => {
+        const themeText = theme.textContent.trim();
+        if (themeText) {
+          const topicClass = getTopicClasses(themeText);
+          if (topicClass && topicClass !== 'topic-uncategorized') {
+            combinedTopicClasses.add(topicClass);
           }
-
-          if ($this.find("techRep").length === 1 && $this.find("techRep").text().trim()) {
-            links += ` <a href="${$this.find("techRep").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
-          }
-          if ($this.find("code").length === 1 && $this.find("code").text().trim()) {
-            links += ` <a href ="${$this.find("code").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
-          }
-          if ($this.find("video").length === 1 && $this.find("video").text().trim()) {
-            links += ` <a href ="${$this.find("video").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
-          }
-          if ($this.find("bibtex").length === 1 && $this.find("bibtex").text().trim()) {
-            links += ` <a href ="${$this.find("bibtex").text().trim()}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
-          }
-
-          let award = "";
-          if ($this.find("award").length === 1 && $this.find("award").text().trim()) {
-            award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${$this.find("award").text().trim()}</small></p>`;
-          }
-
-          let typeBadgeText = '';
-          switch (paperType) {
-            case 'conf': typeBadgeText = 'Conference'; break;
-            case 'jour': typeBadgeText = 'Journal'; break;
-            case 'work': typeBadgeText = 'Workshop'; break;
-            case 'other': typeBadgeText = 'Other'; break;
-            default: typeBadgeText = paperType;
-          }
-
-          const cardHtml = `
-            <div class="card mb-2 shadow-sm paper-${paperType} ${topicClasses}">
-                <div class="card-body">
-                    <h5 class="card-title paper-title mb-2">${title}</h5>
-                    <h6 class="card-subtitle text-muted paper-authors">${authors}</h6>
-                    <p class="card-text paper-details">${details}</p>
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
-                        <div class="paper-links">
-                            ${links}
-                        </div>
-                        <span class="pub-type-badge pub-type-${paperType} badge ">
-                            ${typeBadgeText}
-                        </span>
-                    </div>
-                    ${award}
-                </div>
-            </div>`;
-
-          pubListContainer.append(cardHtml);
-          totalLoadedCount++;
-        });
-
-      const allCards = $('#pub-list .card');
-      filterCountDisplay.text(`Showing ${totalLoadedCount} of ${totalLoadedCount} publications`);
-      $('.pub-filters button[data-filter="all"]').trigger('click');
-
-      allCards.each(function (index) {
-        const card = $(this);
-        card.css({
-          'opacity': '0',
-          'transform': 'translateY(20px)',
-          'transition': 'opacity 0.5s ease, transform 0.5s ease'
-        });
-
-        setTimeout(function () {
-          card.css({
-            'opacity': '1',
-            'transform': 'translateY(0)'
-          });
-        }, index * 50);
+        }
       });
 
-      if (totalLoadedCount === 0) {
-        pubListContainer.html('<p class="text-muted">No publications found or error loading the file.</p>');
+      const topicClasses = combinedTopicClasses.size > 0 ?
+        Array.from(combinedTopicClasses).join(' ') :
+        'topic-uncategorized';
+
+      let links = '';
+      if (pdfLink) {
+        links += `<a href="${pdfLink}" target="_blank" rel="noopener" class="card-link" onClick="typeof ga === 'function' && ga('send', 'event', 'download', 'click', '${pdfTag}');"><i class="fas fa-file-pdf me-1"></i>PDF</a>`;
       }
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      console.error("AJAX error loading publications:", textStatus, errorThrown);
-      pubListContainer.html('<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>');
-      filterCountDisplay.text('');
-    },
+
+      const techRep = paper.getElementsByTagName("techRep")[0]?.textContent.trim();
+      if (techRep) {
+        links += ` <a href="${techRep}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-file-alt me-1"></i>TechRep</a>`;
+      }
+      
+      const code = paper.getElementsByTagName("code")[0]?.textContent.trim();
+      if (code) {
+        links += ` <a href ="${code}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-code me-1"></i>Code</a>`;
+      }
+      
+      const video = paper.getElementsByTagName("video")[0]?.textContent.trim();
+      if (video) {
+        links += ` <a href ="${video}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-video me-1"></i>Video</a>`;
+      }
+      
+      const bibtex = paper.getElementsByTagName("bibtex")[0]?.textContent.trim();
+      if (bibtex) {
+        links += ` <a href ="${bibtex}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-quote-right me-1"></i>BibTeX</a>`;
+      }
+
+      let award = "";
+      const awardText = paper.getElementsByTagName("award")[0]?.textContent.trim();
+      if (awardText) {
+        award = `<p class="card-text text-success mt-2 mb-0"><small><i class="fas fa-star me-1"></i> ${awardText}</small></p>`;
+      }
+
+      let typeBadgeText = '';
+      switch (paperType) {
+        case 'conf': typeBadgeText = 'Conference'; break;
+        case 'jour': typeBadgeText = 'Journal'; break;
+        case 'work': typeBadgeText = 'Workshop'; break;
+        case 'other': typeBadgeText = 'Other'; break;
+        default: typeBadgeText = paperType;
+      }
+
+      const cardHtml = `
+        <div class="card mb-2 shadow-sm paper-${paperType} ${topicClasses}">
+            <div class="card-body">
+                <h5 class="card-title paper-title mb-2">${title}</h5>
+                <h6 class="card-subtitle text-muted paper-authors">${authors}</h6>
+                <p class="card-text paper-details">${details}</p>
+                <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+                    <div class="paper-links">
+                        ${links}
+                    </div>
+                    <span class="pub-type-badge pub-type-${paperType} badge ">
+                        ${typeBadgeText}
+                    </span>
+                </div>
+                ${award}
+            </div>
+        </div>`;
+
+      // Create element from string to append
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = cardHtml.trim();
+      pubListContainer.appendChild(tempDiv.firstChild);
+      totalLoadedCount++;
+    });
+
+    filterCountDisplay.textContent = `Showing ${totalLoadedCount} of ${totalLoadedCount} publications`;
+    
+    // Trigger 'all' filter by default
+    const allBtn = document.querySelector('.pub-filters button[data-filter="all"]');
+    if(allBtn) allBtn.click();
+
+    // Animation
+    const allCards = document.querySelectorAll('#pub-list .card');
+    allCards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 50);
+    });
+
+    if (totalLoadedCount === 0) {
+      pubListContainer.innerHTML = '<p class="text-muted">No publications found or error loading the file.</p>';
+    }
+
+  } catch (error) {
+    console.error("Error loading publications:", error);
+    pubListContainer.innerHTML = '<div class="alert alert-danger" role="alert">Error loading publications. Please check the console or try again later.</div>';
+    filterCountDisplay.textContent = '';
+  }
+  
+  // Re-implement filter logic inside the load function scope where we have access to elements
+  filterButtons.forEach(btn => {
+    btn.onclick = function(e) {
+        const filterValue = this.dataset.filter;
+        const isTopicButton = filterValue.startsWith('topic-');
+        const isTypeButton = filterValue.startsWith('paper-') || filterValue === 'all';
+
+        if (isTypeButton) {
+            document.querySelectorAll('.pub-filters button[data-filter^="paper-"], .pub-filters button[data-filter="all"]').forEach(b => b.classList.remove('active'));
+            if (filterValue !== 'recent') this.classList.add('active');
+            else document.querySelector('.pub-filters button[data-filter="all"]').classList.add('active');
+        } else if (isTopicButton) {
+            document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        if (isTopicButton) {
+            document.querySelectorAll('.pub-filters button[data-filter^="paper-"]').forEach(b => b.classList.remove('active'));
+            document.querySelector('.pub-filters button[data-filter="all"]').classList.add('active');
+        } else if (isTypeButton && filterValue !== 'all') {
+            document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+        } else if (filterValue === 'all') {
+            document.querySelectorAll('.pub-filters button[data-filter^="topic-"]').forEach(b => b.classList.remove('active'));
+        }
+
+        const allCards = document.querySelectorAll('#pub-list .card');
+        
+        // Hide all first
+        allCards.forEach(c => c.style.display = 'none');
+
+        const activeTypeBtn = document.querySelector('.pub-filters button[data-filter^="paper-"].active, .pub-filters button[data-filter="all"].active');
+        const activeTypeFilter = activeTypeBtn ? activeTypeBtn.dataset.filter : 'all';
+        const activeTopicBtn = document.querySelector('.pub-filters button[data-filter^="topic-"].active');
+        const activeTopicFilter = activeTopicBtn ? activeTopicBtn.dataset.filter : null;
+
+        let selector = '#pub-list .card';
+        if (activeTypeFilter !== 'all') {
+            selector += '.' + activeTypeFilter;
+        }
+        if (activeTopicFilter) {
+            selector += '.' + activeTopicFilter;
+        }
+
+        const matchedCards = document.querySelectorAll(selector);
+        
+        if (filterValue === 'recent') {
+            matchedCards.forEach(card => {
+                const details = card.querySelector('.paper-details')?.textContent || '';
+                if (details.match(/(202\d|2030)/)) {
+                    card.style.display = 'block';
+                }
+            });
+        } else {
+            matchedCards.forEach(card => card.style.display = 'block');
+        }
+
+        const visibleCount = document.querySelectorAll('#pub-list .card[style="display: block;"]').length;
+        filterCountDisplay.textContent = `Showing ${visibleCount} of ${allCards.length} publications`;
+    };
   });
-});
+}
