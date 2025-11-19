@@ -1,44 +1,75 @@
-/* Condensed and Refactored CSS */
+/* Condensed and Refactored CSS with Dark Mode Support */
 
 :root {
-  --primary-color: #4361ee; /* Professional blue */
-  --accent-color: #3a0ca3; /* Complementary purple */
+  /* Light Mode Variables */
+  --primary-color: #4361ee;
+  --primary-rgb: 67, 97, 238;
+  --accent-color: #3a0ca3;
   --text-primary: #2d3748;
   --text-secondary: #4a5568;
-  --background-light: #f8fafc;
-  /* Assuming Bootstrap variables might be used based on original 'a' tag style */
-  /* Add these if Bootstrap isn't defining them */
-  /* --bs-primary-rgb: 67, 97, 238; */
-  /* --bs-link-hover-color-rgb: 29, 78, 216; */
-  /* --bs-primary: var(--primary-color); */ /* Map BS primary to our primary */
+  --background-body: #f8fafc;
+  --background-card: #ffffff;
+  --background-header-box: rgba(255, 255, 255, 0.15);
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+  --link-color: #2563eb;
+  --link-hover-color: #1d4ed8;
+  --nav-link-hover-bg: #e8eff6;
+  --nav-link-hover-color: #2c7be5;
+  --footer-bg: #f1f5f9;
+  --footer-text: #6b7280;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Variables */
+  --primary-color: #60a5fa; /* Lighter blue for dark mode */
+  --primary-rgb: 96, 165, 250;
+  --accent-color: #818cf8;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --background-body: #0f172a;
+  --background-card: #1e293b;
+  --background-header-box: rgba(0, 0, 0, 0.4);
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  --link-color: #60a5fa;
+  --link-hover-color: #93c5fd;
+  --nav-link-hover-bg: #1e293b;
+  --nav-link-hover-color: #60a5fa;
+  --footer-bg: #0f172a;
+  --footer-text: #94a3b8;
 }
 
 /* === Base Styles === */
 body {
   font-family: 'Inter', sans-serif;
-  font-size: 16px; /* Overridden later styles chose 16px */
+  font-size: 16px;
   line-height: 1.7;
-  color: #1f2937; /* Last defined body color */
-  background-color: var(--background-light); /* Consistent background */
+  color: var(--text-primary);
+  background-color: var(--background-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
-  color: #2d3748; /* Default heading color */
+  color: var(--text-primary);
 }
 
 h1, h2, h3 {
-  color: #111827; /* Darker color for major headings (last definition) */
-  font-weight: 600; /* Added weight for major headings (last definition) */
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 a {
-  color: #2563eb; /* Last defined link color */
-  text-decoration: none; /* Last defined link decoration */
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 a:hover {
-  color: #1d4ed8; /* Last defined link hover color */
-  text-decoration: underline; /* Consistent underline on hover */
+  color: var(--link-hover-color);
+  text-decoration: underline;
 }
 
 /* === Header === */
@@ -68,32 +99,37 @@ header .container {
   z-index: 1;
 }
 
+.profile-img-container {
+  display: flex;
+}
+
 .profile-img {
-  max-width: 220px;
-  height: auto;
+  width: 200px; /* Fixed width */
+  height: 200px; /* Fill container height */
+  object-fit: cover; /* Crop to fit */
   border-radius: 6px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* Last defined shadow */
-  transition: transform 0.3s ease; /* Last defined transition */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
 }
 .profile-img:hover {
-  transform: scale(1.05); /* Consistent hover effect */
+  transform: scale(1.02); /* Reduced scale to avoid layout shift issues with stretch */
 }
 
 /* Glassmorphism Text Box in Header */
 .header-text-box {
-  background: rgba(255, 255, 255, 0.15); /* From more detailed definition */
-  -webkit-backdrop-filter: blur(18px); /* From more detailed definition */
-  backdrop-filter: blur(18px); /* From more detailed definition */
-  border: 1px solid rgba(255, 255, 255, 0.18); /* From more detailed definition */
+  background: var(--background-header-box);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* From more detailed definition */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   padding: 1.5rem 2rem;
   max-width: 720px;
-  color: #111827; /* Default text color inside box */
+  color: #ffffff; /* Always white in header due to background image */
 }
 
 .header-text-box h1 {
-  color: #ffffff; /* Ensure heading contrast */
+  color: #ffffff;
   font-size: 3rem;
   font-weight: 600;
   margin-bottom: 0.3rem;
@@ -101,87 +137,93 @@ header .container {
 }
 
 .header-text-box p {
-  color: #1f2937; /* Dark grey for paragraphs */
-  font-size: initial; /* Resetting the 0% from original */
+  color: #e2e8f0;
+  font-size: initial;
   margin-bottom: 0rem;
 }
-.header-text-box p.lead { /* General lead style inside */
+.header-text-box p.lead {
    font-weight: 400;
 }
-.header-text-box p.lead.fs-5 { /* Specific override */
+.header-text-box p.lead.fs-5 {
    font-weight: 500;
-   color: #1f2937; /* Explicitly set if needed, otherwise inherits */
+   color: #f1f5f9;
 }
 
 /* Header Icons (Outside Text Box) */
 .header-icons a {
-  color: #f1f5f9; /* Last defined color */
-  opacity: 0.9; /* Last defined opacity */
-  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease; /* Last defined transition */
+  color: #f1f5f9;
+  opacity: 0.9;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
 }
 .header-icons a:hover {
-  color: #ffffff; /* Last defined hover color */
-  opacity: 1; /* Last defined hover opacity */
-  transform: scale(1.15); /* Last defined hover transform */
+  color: #ffffff;
+  opacity: 1;
+  transform: scale(1.15);
 }
 
 /* === Sections & Titles === */
 .section-title {
-  /* Merging properties from multiple definitions, prioritizing later ones */
-  border-left: 5px solid #60a5fa; /* Last defined border */
+  border-left: 5px solid var(--primary-color);
   padding-left: 0.75rem;
-  margin-bottom: 1.5rem; /* From middle definition */
-  display: inline-block; /* From middle definition */
-  padding-bottom: 0.3rem; /* From middle definition */
-  font-weight: 600; /* Last defined weight */
-  color: #1e293b; /* Last defined color */
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Footer */
+footer {
+  background-color: var(--background-card);
+  color: var(--text-secondary);
 }
 
 /* === Sidebar === */
 .sidebar-sticky {
   position: sticky;
-  top: 20px; /* match data-bs-offset or adjust */
-  height: calc(100vh - 100px); /* optional */
-  overflow-y: auto; /* optional */
+  top: 20px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+#sidebarNav .nav-link {
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
 }
 
 #sidebarNav .nav-link.active,
 #sidebarNav .nav-link:hover {
-  background-color: #e8eff6; /* Using non-commented definition */
-  color: #2c7be5; /* Using non-commented definition */
-  border-radius: 6px; /* Using non-commented definition */
-  /* Removed transform: translateX(5px); from commented rule */
+  background-color: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover-color);
+  border-radius: 6px;
 }
 
 /* === Cards === */
 .card {
-  border: none;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color); /* Added border for dark mode visibility */
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover effect needs explicit :hover rule if desired */
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
   overflow: hidden;
-  margin-bottom: 1rem; /* Default Bootstrap card margin, adjust if needed */
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
-/* Re-add hover if desired, it was commented out multiple times */
-/* .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-} */
 
-/* Specific styles for elements within standard cards */
 .card .card-title {
   font-size: 1rem;
   margin-bottom: 0.2rem;
+  color: var(--text-primary);
 }
 .card .card-subtitle {
   font-size: 0.85rem;
-  /* margin-bottom: 0.3rem; */ /* Kept commented as original */
+  color: var(--text-secondary) !important; /* Force override text-muted */
 }
 .card .card-text {
-  /* font-size: 0.8rem; */
   margin-bottom: 0rem;
+  color: var(--text-primary);
 }
-.card .btn { /* Styles for buttons specifically inside cards */
+.card .btn {
   font-size: 0.7rem;
   padding: 0.15rem 0.4rem;
 }
@@ -190,7 +232,7 @@ header .container {
 .card.custom-override {
     padding: 0.3rem 0.5rem;
     margin-bottom: 0.75rem;
-    --bs-card-spacer-y: 0.5rem; /* Bootstrap variable override */
+    --bs-card-spacer-y: 0.5rem;
 }
 
 /* === Publications / Numbering / Badges === */
@@ -205,21 +247,19 @@ section {
   counter-increment: publication;
   content: counter(publication) ". ";
   font-weight: bold;
-  color: var(--bs-primary, var(--primary-color)); /* Fallback to local primary */
+  color: var(--primary-color);
 }
 
 #presentation-list .card .card-title::before {
   counter-increment: pres;
   content: counter(pres) ". ";
   font-weight: bold;
-  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+  color: var(--primary-color);
 }
 
 #teaching .list-group-item::before {
-  /* counter-increment: teaching; */ /* Kept commented */
-  /* content: counter(teaching) ". "; */ /* Kept commented */
   font-weight: bold;
-  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+  color: var(--primary-color);
   margin-right: 5px;
 }
 
@@ -227,15 +267,15 @@ section {
   counter-increment: software;
   content: counter(software) ". ";
   font-weight: bold;
-  color: var(--bs-primary, var(--primary-color)); /* Fallback */
+  color: var(--primary-color);
 }
 
 /* Publication Card Styling (Borders and Badges) */
-.paper-conf { border-left: 4px solid #4361ee; } /* Blue */
-.paper-jour { border-left: 4px solid #06d6a0; } /* Green */
-.paper-work { border-left: 4px solid #f72585; } /* Pink */
+.paper-conf { border-left: 4px solid #4361ee; }
+.paper-jour { border-left: 4px solid #06d6a0; }
+.paper-work { border-left: 4px solid #f72585; }
 
-/* Disable top ::before badges (as per later rule) */
+/* Disable top ::before badges */
 .card.paper-conf::before,
 .card.paper-jour::before,
 .card.paper-work::before {
@@ -248,7 +288,7 @@ section {
   font-size: 0.7rem;
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
-  margin-top: 0px; /* Overriding default 0.5rem */
+  margin-top: 0px;
   opacity: 0.8;
   font-weight: 500;
 }
@@ -273,34 +313,43 @@ section {
 }
 .pub-filters .btn.active {
   transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 6px var(--shadow-strong);
+}
+
+.filter-count, #searchResults {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
 }
 
 
 /* === Buttons === */
-.btn-outline-primary,
-.btn-outline-secondary,
-.btn-outline-success {
-  border-radius: 6px; /* From later definition */
-  font-weight: 500; /* From later definition */
-  transition: all 0.2s ease; /* From later definition (0.2s vs 0.25s) */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-outline-primary:hover, .btn-outline-primary.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
 }
 
-.btn-outline-primary:hover,
-.btn-outline-secondary:hover,
-.btn-outline-success:hover {
-  color: #fff; /* From initial definition */
-  transform: translateY(-2px); /* From later definition */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* From later definition */
+.btn-outline-secondary {
+    color: var(--text-secondary);
+    border-color: var(--text-secondary);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--text-secondary);
+    border-color: var(--text-secondary);
+    color: var(--background-card);
 }
 
 /* === GitHub Composite Button Styling === */
 .github-composite-button {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  background-color: #f6f8fa;
+  background-color: var(--background-body);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 12px;
   line-height: 20px;
@@ -308,86 +357,77 @@ section {
   vertical-align: middle;
   cursor: default;
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  color: var(--text-primary);
 }
 .github-composite-button:hover {
-  background-color: #f0f2f4;
-  border-color: #d0d7de;
+  background-color: var(--nav-link-hover-bg);
+  border-color: var(--border-color);
 }
 .github-composite-button .repo-link {
   display: inline-flex;
   align-items: center;
   padding: 4px 8px 4px 10px;
   text-decoration: none;
-  color: #0969da;
-  border-right: 1px solid #d0d7de;
+  color: var(--link-color);
+  border-right: 1px solid var(--border-color);
   margin-right: -1px;
   white-space: nowrap;
 }
 .github-composite-button .repo-link .separator {
-  display: none; /* Use border instead */
+  display: none;
 }
 .github-composite-button .repo-link:hover {
   text-decoration: underline;
 }
-.github-composite-button a.github-button { /* Iframe container */
+.github-composite-button a.github-button {
   display: inline-block;
   vertical-align: middle;
   line-height: inherit;
   margin-left: 0;
 }
 
-/* Optional: Fine-tune GitHub Button Vertical Alignment */
-.github-button iframe {
-  vertical-align: middle;
-  margin-bottom: 2px; /* Adjust as needed */
-}
-/* Ensure button group in software card has space */
-#software .card .card-body > div:last-child {
-    margin-bottom: 0;
-}
-
 /* === Footer === */
 footer {
-  background-color: #f1f5f9;
-  color: #6b7280;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   font-size: 0.9rem;
-  padding: 1rem 0; /* Added some default padding */
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color) !important;
 }
 
 /* === Utilities & Overrides === */
-
-/* Apply smooth transitions selectively (Original '*' selector was inefficient) */
-/* Consider adding transitions specifically to elements like a, button, .card, .profile-img etc. if desired */
-/* Keeping original global transition for now to 'maintain functionality as is', but this is not recommended */
-* {
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--background-body);
 }
 ::-webkit-scrollbar-thumb {
   background-color: #b3cce4;
   border-radius: 20px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
+
+/* Global Dark Mode Overrides */
+[data-theme="dark"] .text-muted {
+  color: var(--text-secondary) !important;
 }
 
 /* === Responsive Tweaks === */
 @media (max-width: 992px) {
   .sidebar-sticky {
     border-right: none;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 24px;
-    position: static; /* Override sticky for smaller screens? Check layout */
+    position: static;
     height: auto;
     overflow-y: visible;
   }
   body {
-    padding: 10px; /* Applies only on smaller screens */
+    padding: 10px;
   }
 }
 
@@ -399,74 +439,16 @@ footer {
     font-size: 1rem;
   }
   .header-text-box h1 {
-    font-size: 2.5rem; /* Adjust header font size on mobile */
+    font-size: 2.5rem;
   }
   .header-text-box {
-    padding: 1rem 1.5rem; /* Adjust padding */
+    padding: 1rem 1.5rem;
   }
 }
 
-/* === Additional Styles from HTML === */
-
-/* Critical CSS for above-the-fold content */
+/* === Additional Styles === */
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-}
-
-/* Optimize hero section loading */
-.hero-section {
-  min-height: 60vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.profile-img {
-  width: 200px;
-  height: 200px;
-  /* border-radius: 50%; */
-  object-fit: cover;
-  /* border: 4px solid rgba(255, 255, 255, 0.9); */
-}
-
-/* Loading states */
-.loading {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* Sticky sidebar optimization */
-.sidebar-sticky {
-  position: sticky;
-  top: 2rem;
-  height: calc(100vh - 4rem);
-  overflow-y: auto;
 }
 
 /* Compact Research Section Styles */
@@ -474,11 +456,13 @@ body {
   transition: all 0.3s ease;
   border-radius: 8px;
   overflow: hidden;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
 }
 
 .research-card-compact:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 15px var(--shadow-strong) !important;
 }
 
 .research-card-compact .card-header {
@@ -496,20 +480,6 @@ body {
   opacity: 0.9;
   font-weight: 500;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.research-card-compact .expand-icon {
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.research-card-compact .collapsed .expand-icon {
-  transform: rotate(0deg);
-}
-
-.research-card-compact .expand-icon:not(.collapsed) {
-  transform: rotate(180deg);
 }
 
 /* Enhanced contrast for warning card (yellow background) */
@@ -534,195 +504,126 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive improvements for compact cards */
-@media (max-width: 768px) {
-  .research-card-compact .card-header {
-    padding: 0.75rem;
-  }
-  
-  .research-card-compact .card-body {
-    padding: 0.75rem;
-  }
-}
-
-/* Enhanced Research Section Styles */
-.research-card {
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.research-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-.research-card .card-header {
-  border: none;
-  padding: 1.25rem;
-  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary) 100%);
-}
-
-.research-card .card-header.bg-primary {
-  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%) !important;
-}
-
-.research-card .card-header.bg-success {
-  background: linear-gradient(135deg, #198754 0%, #157347 100%) !important;
-}
-
-.research-card .card-header.bg-info {
-  background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%) !important;
-}
-
-.research-card .card-header.bg-warning {
-  background: linear-gradient(135deg, #ffc107 0%, #ffca2c 100%) !important;
-}
-
-.research-card .card-header.bg-danger {
-  background: linear-gradient(135deg, #dc3545 0%, #b02a37 100%) !important;
-}
-
-.research-card .card-header.bg-secondary {
-  background: linear-gradient(135deg, #6c757d 0%, #565e64 100%) !important;
-}
-
-.research-icon {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.research-stat {
-  padding: 0.5rem;
-}
-
-.research-stat h3 {
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-}
-
-.expand-icon {
-  transition: transform 0.3s ease;
-}
-
-.collapsed .expand-icon {
-  transform: rotate(0deg);
-}
-
-.expand-icon:not(.collapsed) {
-  transform: rotate(180deg);
-}
-
-[data-bs-toggle="collapse"]:not(.collapsed) .expand-text::after {
-  content: " Less";
-}
-
-[data-bs-toggle="collapse"].collapsed .expand-text::after {
-  content: "";
-}
-
-[data-bs-toggle="collapse"]:not(.collapsed) .expand-icon {
-  transform: rotate(180deg);
-}
-
-/* Responsive improvements */
-@media (max-width: 768px) {
-  .research-card .card-header {
-    padding: 1rem;
-  }
-
-  .research-card .card-header .d-flex {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .research-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 0.75rem auto;
-  }
-
-  .research-stat h3 {
-    font-size: 2rem;
-  }
-}
-
-/* Badge enhancements */
-.badge {
-  font-weight: 500;
-  font-size: 0.75em;
-  padding: 0.4em 0.8em;
-}
-
-/* Card body enhancements */
-.research-card .card-body {
-  padding: 1.5rem;
-}
-
-.research-card .card-body h6 {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* Collapse button enhancements */
-.research-card .btn {
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.research-card .btn:hover {
-  transform: translateY(-1px);
-}
-
-/* Interactive features styles */
-.toast-notification {
-  animation: slideInRight 0.3s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.form-control.is-valid,
-.form-select.is-valid {
-  border-color: #198754;
-}
-
-.form-control.is-invalid,
-.form-select.is-invalid {
-  border-color: #dc3545;
-}
-
-mark {
-  background-color: #fff3cd;
-  padding: 0;
+/* Publication Controls */
+.publication-controls {
+  background: var(--background-card);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
 }
 
 #publicationSearch {
-  border-radius: 0.375rem 0 0 0.375rem;
+  background-color: var(--background-body);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+#publicationSearch::placeholder {
+    color: var(--text-secondary);
 }
 
-.publication-controls {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #dee2e6;
+/* Teaching Accordion */
+.accordion-item {
+    background-color: var(--background-card);
+    border-color: var(--border-color);
+}
+.accordion-button {
+    background-color: var(--background-card);
+    color: var(--text-primary);
+}
+.accordion-button:not(.collapsed) {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+}
+.accordion-button::after {
+    filter: grayscale(100%); /* Adjust chevron color if needed */
+}
+[data-theme="dark"] .accordion-button::after {
+    filter: invert(1);
+}
+
+.list-group-item {
+    background-color: var(--background-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* Toggle Switch Styles */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 26px;
+  position: relative;
+  width: 50px;
+  margin-bottom: 0;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 18px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.theme-switch-label {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* Sidebar specific adjustment */
+.sidebar-toggle-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+}
+
+.sidebar-toggle-container .theme-switch-label {
+    color: var(--text-secondary);
+}
+.sidebar-toggle-container:hover .theme-switch-label {
+    color: var(--nav-link-hover-color);
+}
+
+
+
+/* Teaching Philosophy Box */
+.bg-light {
+    background-color: var(--background-card) !important;
+    border: 1px solid var(--border-color);
 }

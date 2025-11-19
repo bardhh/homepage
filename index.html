@@ -138,6 +138,14 @@
           <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
           <li class="nav-item"><a class="nav-link" href="#software">Software</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-2">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox-nav">
+                <input type="checkbox" id="checkbox-nav" class="theme-toggle-checkbox" />
+                <div class="slider"></div>
+              </label>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -146,9 +154,9 @@
   <!-- Enhanced Header / Hero Section with optimized images -->
   <header class="py-5 mb-4 text-white" id="overview">
     <div class="container position-relative">
-      <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+      <div class="d-flex flex-column flex-md-row align-items-center align-items-md-stretch text-center text-md-start">
         <!-- Profile Picture -->
-        <div class="mb-3 mb-md-0 me-md-4">
+        <div class="mb-3 mb-md-0 me-md-4 profile-img-container">
           <picture>
             <source srcset="assets/img/profile.webp" type="image/webp">
             <source srcset="assets/img/profile.jpg" type="image/jpeg">
@@ -158,13 +166,13 @@
         </div>
 
         <!-- Text Info -->
-        <div class="flex-grow-1 mb-3 mb-md-0 header-text-box p-4 rounded-3">
+        <div class="flex-grow-1 mb-3 mb-md-0 header-text-box p-4 rounded-3 d-flex flex-column justify-content-center">
           <h1 class="display-4 fw-bold">Bardh Hoxha</h1>
           <p class="lead fs-4">Senior Principal Scientist</p>
           <p class="lead fs-5">Toyota Research Institute of North America (TRINA)</p>
         </div>
         <!-- Icons/Links -->
-        <div class="ms-md-4">
+        <div class="ms-md-4 align-self-md-center">
           <div class="d-flex justify-content-center justify-content-md-start gap-3 header-icons">
             <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank" rel="noopener"
               class="text-white fs-2" aria-label="Google Scholar Profile">
@@ -202,6 +210,15 @@
           <a class="nav-link" href="#teaching"><i class="fas fa-chalkboard-user fa-fw me-2"></i>Teaching</a>
           <a class="nav-link" href="#software"><i class="fas fa-code fa-fw me-2"></i>Software</a>
           <a class="nav-link" href="#contact"><i class="fas fa-envelope fa-fw me-2"></i>Contact</a>
+          <div class="sidebar-toggle-container">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox-sidebar">
+                <input type="checkbox" id="checkbox-sidebar" class="theme-toggle-checkbox" />
+                <div class="slider"></div>
+              </label>
+              <span class="theme-switch-label">Dark Mode</span>
+            </div>
+          </div>
         </nav>
       </aside>
 
@@ -1245,7 +1262,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="text-center py-5 border-top mt-5 bg-white shadow-sm">
+        <footer class="text-center py-5 border-top mt-5 shadow-sm">
           <div id="footer">
             <!-- Content will be inserted here by the script -->
           </div>
@@ -1257,7 +1274,7 @@
           crossorigin="anonymous"></script>
 
         <!-- jQuery (Load conditionally) -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+
 
         <!-- Main JavaScript file -->
         <script src="assets/js/myscripts.js" defer></script>
