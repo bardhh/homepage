@@ -1,9 +1,0 @@
-{
-    "globalHeaders": {
-      "Content-Type": "text/plain"
-    },
-    "mimeTypes": {
-      ".bib": "text/plain"
-    }
-  }
-  
