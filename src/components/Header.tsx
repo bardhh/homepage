@@ -57,7 +57,7 @@ const Header = () => {
               <SocialLink href="https://github.com/bardhh" icon={<FaGithub size={22} />} label="GitHub" />
               <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin size={22} />} label="LinkedIn" />
               <SocialLink href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" icon={<SiGooglescholar size={22} />} label="Google Scholar" />
-              <SocialLink href="/media/geneaolgy.pdf" icon={<FaSitemap size={22} />} label="Genealogy" />
+              <SocialLink href="/media/geneaolgy.pdf" icon={<FaSitemap size={22} />} label="Mathematical Genealogy" />
             </div>
           </div>
 
@@ -72,10 +72,15 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href} 
     target="_blank" 
     rel="noopener noreferrer" 
-    className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-xl backdrop-blur-md border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group"
+    className="relative p-3 bg-white/10 hover:bg-white/20 text-white rounded-xl backdrop-blur-md border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group"
     aria-label={label}
     title={label}
   >
+    {/* Tooltip */}
+    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900/95 text-white text-sm font-medium rounded-lg backdrop-blur-md border border-white/10 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl">
+      {label}
+      <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900/95"></span>
+    </span>
     <span className="opacity-80 group-hover:opacity-100 transition-opacity">
       {icon}
     </span>
