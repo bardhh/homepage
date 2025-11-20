@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "dependencies": {
     "bibtex-parse-js": "^0.0.24",
     "clsx": "^2.1.1",
