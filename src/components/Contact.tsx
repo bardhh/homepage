@@ -57,7 +57,7 @@ const Contact = () => {
               <a href="https://www.linkedin.com/in/bardhhoxha/" target="_blank" rel="noopener noreferrer" className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full text-blue-700 dark:text-blue-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all transform hover:-translate-y-1">
                 <FaLinkedin className="text-2xl" />
               </a>
-              <a href="https://twitter.com/bardhh" target="_blank" rel="noopener noreferrer" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
+              <a href="https://twitter.com/bardhhoxha" target="_blank" rel="noopener noreferrer" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
                 <FaTwitter className="text-2xl" />
               </a>
             </div>

@@ -53,7 +53,7 @@ const Header = () => {
 
             {/* Social Icons */}
             <div className="flex gap-5 justify-center md:justify-start pt-2">
-              <SocialLink href="https://twitter.com/bardhh" icon={<FaTwitter size={22} />} label="Twitter" />
+              <SocialLink href="https://twitter.com/bardhhoxha" icon={<FaTwitter size={22} />} label="Twitter" />
               <SocialLink href="https://github.com/bardhh" icon={<FaGithub size={22} />} label="GitHub" />
               <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin size={22} />} label="LinkedIn" />
               <SocialLink href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" icon={<SiGooglescholar size={22} />} label="Google Scholar" />

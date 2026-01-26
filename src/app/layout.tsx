@@ -41,7 +41,7 @@ export default function RootLayout({
                 "name": "Toyota Research Institute of North America"
               },
               "sameAs": [
-                "https://twitter.com/bardhh",
+                "https://twitter.com/bardhhoxha",
                 "https://github.com/bardhh",
                 "https://www.linkedin.com/in/bardhhoxha",
                 "https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en"
