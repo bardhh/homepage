@@ -34,6 +34,7 @@ async function getPublications() {
   try {
     const filePath = path.join(process.cwd(), 'public', 'publications.bib');
     
+    // Use fs.promises.readFile to avoid blocking the event loop
     const fileContent = await fs.promises.readFile(filePath, 'utf8');
     const parsed = parseBibtex(fileContent);
     
