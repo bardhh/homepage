@@ -1,5 +1,4 @@
-// @ts-ignore
-const bibtexParse = require('bibtex-parse-js');
+import bibtexParse from 'bibtex-parse-js';
 
 export interface Publication {
   citationKey: string;
@@ -21,7 +20,6 @@ export interface Publication {
 export function parseBibtex(content: string): Publication[] {
   const parsed = bibtexParse.toJSON(content);
   // The library returns a specific structure, we might want to normalize it or just pass it through
-  // @ts-ignore - the library types might be loose or missing
   return parsed as Publication[];
 }
 
