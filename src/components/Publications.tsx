@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Publication, getPublicationType } from '@/lib/bibtex';
-import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaFilter, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt } from 'react-icons/fa';
+import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt } from 'react-icons/fa';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,8 +14,21 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const [filter, setFilter] = useState<string>('all');
   const [search, setSearch] = useState<string>('');
 
+  // Pre-calculate lowercased fields for search
+  const preparedPubs = useMemo(() => {
+    return publications.map(pub => ({
+      pub,
+      lower: {
+        title: pub.entryTags.title?.toLowerCase() || '',
+        author: pub.entryTags.author?.toLowerCase() || '',
+        venue: pub.entryTags.booktitle?.toLowerCase() || '',
+        keywords: pub.entryTags.keywords?.toLowerCase() || ''
+      }
+    }));
+  }, [publications]);
+
   const filteredPubs = useMemo(() => {
-    return publications.filter(pub => {
+    return preparedPubs.filter(({ pub, lower }) => {
       // Type Filter
       if (filter !== 'all') {
         const type = getPublicationType(pub);
@@ -26,7 +39,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         else if (filter === 'paper-jour' && type !== 'journal') return false;
         else if (filter === 'paper-work' && type !== 'workshop') return false;
         else if (filter.startsWith('kw-')) {
-          const keywords = pub.entryTags.keywords?.toLowerCase() || '';
+          const keywords = lower.keywords;
           if (filter === 'kw-learning' && !keywords.includes('learning')) return false;
           if (filter === 'kw-planning' && !keywords.includes('planning')) return false;
           if (filter === 'kw-verification' && !keywords.includes('verification')) return false;
@@ -38,20 +51,16 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
       // Search Filter
       if (search) {
         const searchLower = search.toLowerCase();
-        const title = pub.entryTags.title?.toLowerCase() || '';
-        const author = pub.entryTags.author?.toLowerCase() || '';
-        const venue = pub.entryTags.booktitle?.toLowerCase() || '';
-        const keywords = pub.entryTags.keywords?.toLowerCase() || '';
         
-        return title.includes(searchLower) || 
-               author.includes(searchLower) || 
-               venue.includes(searchLower) ||
-               keywords.includes(searchLower);
+        return lower.title.includes(searchLower) ||
+               lower.author.includes(searchLower) ||
+               lower.venue.includes(searchLower) ||
+               lower.keywords.includes(searchLower);
       }
 
       return true;
-    });
-  }, [publications, filter, search]);
+    }).map(item => item.pub);
+  }, [preparedPubs, filter, search]);
 
   // Sort by year descending
   const sortedPubs = useMemo(() => {
