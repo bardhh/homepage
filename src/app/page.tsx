@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import { parseBibtex } from '@/lib/bibtex';
@@ -35,16 +34,15 @@ async function getPublications() {
   try {
     const filePath = path.join(process.cwd(), 'public', 'publications.bib');
     
-    if (!fs.existsSync(filePath)) {
-      console.error('File not found:', filePath);
-      return [];
-    }
-    
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = await fs.promises.readFile(filePath, 'utf8');
     const parsed = parseBibtex(fileContent);
     
     return parsed;
   } catch (error) {
+    if (error instanceof Error && 'code' in error && (error as { code: string }).code === 'ENOENT') {
+      console.error('File not found:', path.join(process.cwd(), 'public', 'publications.bib'));
+      return [];
+    }
     console.error('Error in getPublications:', error);
     return [];
   }
