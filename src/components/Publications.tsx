@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Publication, getPublicationType } from '@/lib/bibtex';
-import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaFilter, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt } from 'react-icons/fa';
+import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt } from 'react-icons/fa';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -15,6 +15,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const [search, setSearch] = useState<string>('');
 
   const filteredPubs = useMemo(() => {
+    const searchLower = search.toLowerCase();
     return publications.filter(pub => {
       // Type Filter
       if (filter !== 'all') {
@@ -37,7 +38,6 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
       // Search Filter
       if (search) {
-        const searchLower = search.toLowerCase();
         const title = pub.entryTags.title?.toLowerCase() || '';
         const author = pub.entryTags.author?.toLowerCase() || '';
         const venue = pub.entryTags.booktitle?.toLowerCase() || '';
