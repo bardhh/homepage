@@ -1,42 +1,42 @@
 import React from 'react';
-import { FaGithub, FaStar, FaFilePdf } from 'react-icons/fa';
+import { FaGithub, FaFilePdf } from 'react-icons/fa';
+
+const projects = [
+  {
+    title: "CBFKit: A Control Barrier Function Toolbox",
+    description: "Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers, sensors, and estimators.",
+    repo: "bardhh/cbfkit",
+    link: "https://github.com/bardhh/cbfkit",
+    paper: "https://arxiv.org/abs/2404.07158",
+    paperName: "IROS2024"
+  },
+  {
+    title: "S-TaLiRo: Toolbox for Testing and Verification of CPS",
+    description: "S-TaLiRo is a toolbox for Matlab/Simulink that supports testing and verification of hybrid and continuous Cyber-Physical Systems using Metric Temporal Logic (MTL). Widely used in automotive and medical domains.",
+    repo: "s-taliro/s-taliro",
+    link: "https://sites.google.com/a/asu.edu/s-taliro/s-taliro",
+    paper: "/papers/DIFTS2014.pdf",
+    paperName: "DIFTS2014"
+  },
+  {
+    title: "VERITEX: Deep Neural Network Verification",
+    description: "Veritex is a Python toolbox for verification and automated repair of Deep Neural Networks, supporting both exact and over-approximate analysis of reachable outputs.",
+    repo: "Shaddadi/veritex",
+    link: "https://github.com/Shaddadi/veritex",
+    paper: null,
+    paperName: null
+  },
+  {
+    title: "NDF-CoRoCo: Cooperative Perception",
+    description: "Companion codebase for the paper 'NDF-CoRoCo: Cooperative Perception and Recognition Using Neural Density Fields'. Focuses on cooperative perception using Neural Density Fields for robotics applications.",
+    repo: "cps-atlas/ndf-coroco",
+    link: "https://github.com/cps-atlas/ndf-coroco",
+    paper: "https://arxiv.org/abs/2404.16704",
+    paperName: "arXiv Paper"
+  }
+];
 
 const Software = () => {
-  const projects = [
-    {
-      title: "CBFKit: A Control Barrier Function Toolbox",
-      description: "Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers, sensors, and estimators.",
-      repo: "bardhh/cbfkit",
-      link: "https://github.com/bardhh/cbfkit",
-      paper: "https://arxiv.org/abs/2404.07158",
-      paperName: "IROS2024"
-    },
-    {
-      title: "S-TaLiRo: Toolbox for Testing and Verification of CPS",
-      description: "S-TaLiRo is a toolbox for Matlab/Simulink that supports testing and verification of hybrid and continuous Cyber-Physical Systems using Metric Temporal Logic (MTL). Widely used in automotive and medical domains.",
-      repo: "s-taliro/s-taliro",
-      link: "https://sites.google.com/a/asu.edu/s-taliro/s-taliro",
-      paper: "/papers/DIFTS2014.pdf",
-      paperName: "DIFTS2014"
-    },
-    {
-      title: "VERITEX: Deep Neural Network Verification",
-      description: "Veritex is a Python toolbox for verification and automated repair of Deep Neural Networks, supporting both exact and over-approximate analysis of reachable outputs.",
-      repo: "Shaddadi/veritex",
-      link: "https://github.com/Shaddadi/veritex",
-      paper: null,
-      paperName: null
-    },
-    {
-      title: "NDF-CoRoCo: Cooperative Perception",
-      description: "Companion codebase for the paper 'NDF-CoRoCo: Cooperative Perception and Recognition Using Neural Density Fields'. Focuses on cooperative perception using Neural Density Fields for robotics applications.",
-      repo: "cps-atlas/ndf-coroco",
-      link: "https://github.com/cps-atlas/ndf-coroco",
-      paper: "https://arxiv.org/abs/2404.16704",
-      paperName: "arXiv Paper"
-    }
-  ];
-
   return (
     <section id="software" className="scroll-mt-24">
       <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
