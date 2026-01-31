@@ -8,6 +8,9 @@ def convert_xml_to_bibtex(xml_path, output_path, legacy_base_path):
     
     bibtex_entries = []
     
+    # Pre-compile regex for performance
+    year_pattern = re.compile(r'\b(19|20)\d{2}\b')
+
     for paper in root.findall('paper'):
         entry_type = paper.get('type', 'misc')
         bib_type = 'misc'
@@ -24,7 +27,7 @@ def convert_xml_to_bibtex(xml_path, output_path, legacy_base_path):
         venue_year = paper.find('other').text.strip() if paper.find('other') is not None else ''
         
         # Extract year from venue string if possible (simple regex for 4 digits)
-        year_match = re.search(r'\b(19|20)\d{2}\b', venue_year)
+        year_match = year_pattern.search(venue_year)
         year = year_match.group(0) if year_match else ''
         
         # Custom fields
