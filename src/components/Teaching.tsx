@@ -4,39 +4,39 @@ import React, { useState } from 'react';
 import { FaChalkboardTeacher, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import clsx from 'clsx';
 
+const courses = [
+  {
+    title: "CS 591: Testing and Verification of Cyber-Physical Systems",
+    semester: "Fall 2018",
+    university: "Southern Illinois University",
+    description: "This course focused on the verification and testing of Cyber-Physical Systems (CPS). Topics included: Hybrid Automata, Reachability Analysis, Temporal Logics (LTL, MTL, STL), Falsification, and Data-Driven Verification.",
+    link: "/legacy_site/CS591F18.html"
+  },
+  {
+    title: "CS 499: Senior Project",
+    semester: "Spring 2018",
+    university: "Southern Illinois University",
+    description: "Capstone project course for computer science seniors. Students worked in teams to design and implement significant software projects.",
+    link: "/legacy_site/CS499S18.html"
+  },
+  {
+    title: "CS 498: Senior Project",
+    semester: "Fall 2017",
+    university: "Southern Illinois University",
+    description: "First part of the senior capstone sequence. Focus on requirements analysis, design, and prototyping.",
+    link: "/legacy_site/CS498F17.html"
+  },
+  {
+    title: "CS 290: Communication Skills",
+    semester: "Fall 2017",
+    university: "Southern Illinois University",
+    description: "Course designed to improve technical communication skills, including writing technical reports and giving presentations.",
+    link: "/legacy_site/CS290F17.html"
+  }
+];
+
 const Teaching = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const courses = [
-    {
-      title: "CS 591: Testing and Verification of Cyber-Physical Systems",
-      semester: "Fall 2018",
-      university: "Southern Illinois University",
-      description: "This course focused on the verification and testing of Cyber-Physical Systems (CPS). Topics included: Hybrid Automata, Reachability Analysis, Temporal Logics (LTL, MTL, STL), Falsification, and Data-Driven Verification.",
-      link: "/legacy_site/CS591F18.html"
-    },
-    {
-      title: "CS 499: Senior Project",
-      semester: "Spring 2018",
-      university: "Southern Illinois University",
-      description: "Capstone project course for computer science seniors. Students worked in teams to design and implement significant software projects.",
-      link: "/legacy_site/CS499S18.html"
-    },
-    {
-      title: "CS 498: Senior Project",
-      semester: "Fall 2017",
-      university: "Southern Illinois University",
-      description: "First part of the senior capstone sequence. Focus on requirements analysis, design, and prototyping.",
-      link: "/legacy_site/CS498F17.html"
-    },
-    {
-      title: "CS 290: Communication Skills",
-      semester: "Fall 2017",
-      university: "Southern Illinois University",
-      description: "Course designed to improve technical communication skills, including writing technical reports and giving presentations.",
-      link: "/legacy_site/CS290F17.html"
-    }
-  ];
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
