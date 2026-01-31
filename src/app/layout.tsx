@@ -27,6 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg outline-none ring-2 ring-offset-2 ring-blue-600 dark:ring-offset-slate-900 transition-transform"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -58,7 +64,7 @@ export default function RootLayout({
               <Sidebar />
               
               {/* Main Content */}
-              <main className="col-span-1 lg:col-span-9 min-h-screen">
+              <main id="main-content" tabIndex={-1} className="col-span-1 lg:col-span-9 min-h-screen outline-none">
                 <PageTransition>
                   {children}
                 </PageTransition>
