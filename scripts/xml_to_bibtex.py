@@ -18,10 +18,17 @@ def convert_xml_to_bibtex(xml_path, output_path, legacy_base_path):
         elif entry_type == 'work':
             bib_type = 'inproceedings' # Workshops are often inproceedings
             
-        tag = paper.find('tag').text.strip().replace(' ', '_') if paper.find('tag') is not None else 'unknown'
-        title = paper.find('title').text.strip() if paper.find('title') is not None else ''
-        authors = paper.find('authors').text.strip() if paper.find('authors') is not None else ''
-        venue_year = paper.find('other').text.strip() if paper.find('other') is not None else ''
+        tag_elem = paper.find('tag')
+        tag = tag_elem.text.strip().replace(' ', '_') if tag_elem is not None else 'unknown'
+
+        title_elem = paper.find('title')
+        title = title_elem.text.strip() if title_elem is not None else ''
+
+        authors_elem = paper.find('authors')
+        authors = authors_elem.text.strip() if authors_elem is not None else ''
+
+        other_elem = paper.find('other')
+        venue_year = other_elem.text.strip() if other_elem is not None else ''
         
         # Extract year from venue string if possible (simple regex for 4 digits)
         year_match = re.search(r'\b(19|20)\d{2}\b', venue_year)
@@ -31,9 +38,14 @@ def convert_xml_to_bibtex(xml_path, output_path, legacy_base_path):
         links = paper.findall('link')
         link = links[0].text.strip() if links else ''
         
-        video = paper.find('video').text.strip() if paper.find('video') is not None else ''
-        code = paper.find('code').text.strip() if paper.find('code') is not None else ''
-        award = paper.find('award').text.strip() if paper.find('award') is not None else ''
+        video_elem = paper.find('video')
+        video = video_elem.text.strip() if video_elem is not None else ''
+
+        code_elem = paper.find('code')
+        code = code_elem.text.strip() if code_elem is not None else ''
+
+        award_elem = paper.find('award')
+        award = award_elem.text.strip() if award_elem is not None else ''
         
         themes = [t.text.strip() for t in paper.findall('theme')]
         keywords = ', '.join(themes)
