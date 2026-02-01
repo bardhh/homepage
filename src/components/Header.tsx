@@ -77,7 +77,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     title={label}
   >
     {/* Tooltip */}
-    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900/95 text-white text-sm font-medium rounded-lg backdrop-blur-md border border-white/10 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl">
+    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900/95 text-white text-sm font-medium rounded-lg backdrop-blur-md border border-white/10 whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl">
       {label}
       <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900/95"></span>
     </span>

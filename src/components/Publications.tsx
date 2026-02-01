@@ -157,6 +157,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 const FilterButton = ({ active, onClick, children, icon }: { active: boolean, onClick: () => void, children: React.ReactNode, icon?: React.ReactNode }) => (
   <button
     onClick={onClick}
+    aria-pressed={active}
     className={clsx(
       "inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200",
       active 
