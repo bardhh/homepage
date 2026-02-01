@@ -75,13 +75,14 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         
         {/* Search */}
         <div className="relative mb-6 group">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
           <input
             type="text"
             className="block w-full pl-11 pr-4 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
             placeholder="Search publications..."
+            aria-label="Search publications"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
