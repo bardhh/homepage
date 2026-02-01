@@ -75,7 +75,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         
         {/* Search */}
         <div className="relative mb-6 group">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
           <input

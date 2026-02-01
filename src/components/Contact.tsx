@@ -51,13 +51,13 @@ const Contact = () => {
           <div className="flex flex-col justify-center items-center md:items-start border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-700 pt-8 md:pt-0 md:pl-8">
             <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4">Connect</h3>
             <div className="flex gap-4">
-              <a href="https://github.com/bardhh" target="_blank" rel="noopener noreferrer" className="bg-slate-100 dark:bg-slate-700 p-3 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all transform hover:-translate-y-1">
+              <a href="https://github.com/bardhh" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="bg-slate-100 dark:bg-slate-700 p-3 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-800 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all transform hover:-translate-y-1">
                 <FaGithub className="text-2xl" />
               </a>
-              <a href="https://www.linkedin.com/in/bardhhoxha/" target="_blank" rel="noopener noreferrer" className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full text-blue-700 dark:text-blue-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all transform hover:-translate-y-1">
+              <a href="https://www.linkedin.com/in/bardhhoxha/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full text-blue-700 dark:text-blue-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all transform hover:-translate-y-1">
                 <FaLinkedin className="text-2xl" />
               </a>
-              <a href="https://twitter.com/bardhhoxha" target="_blank" rel="noopener noreferrer" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
+              <a href="https://twitter.com/bardhhoxha" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
                 <FaTwitter className="text-2xl" />
               </a>
             </div>
