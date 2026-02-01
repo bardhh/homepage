@@ -15,10 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Build And Deploy
+
+      # PR Verification: Build only (Bypass Azure Limit)
+      - name: Setup Node.js (PR)
+        if: github.event_name == 'pull_request'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install and Build (PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          npm ci
+          npm run build
+
+      # Deployment: Master only
+      - name: Build And Deploy (Master)
+        if: github.event_name == 'push'
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
