@@ -36,7 +36,7 @@ const Sidebar = () => {
 const NavButton = ({ onClick, icon, label }: { onClick: () => void; icon: React.ReactNode; label: string }) => (
   <button 
     onClick={onClick} 
-    className="group flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 rounded-xl transition-all duration-200 font-medium"
+    className="group w-full flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent dark:hover:from-blue-900/20 dark:hover:to-transparent hover:text-blue-600 dark:hover:text-blue-400 rounded-xl transition-all duration-300 font-medium hover:pl-6 hover:shadow-sm"
   >
     <span className="mr-3 text-slate-400 group-hover:text-blue-500 transition-colors">{icon}</span>
     {label}

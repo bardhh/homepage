@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShieldAlt, FaRobot, FaBrain, FaNetworkWired, FaChevronDown } from 'react-icons/fa';
+import { FaShieldAlt, FaRobot, FaBrain, FaNetworkWired } from 'react-icons/fa';
 
 const ResearchAreas = () => {
   return (

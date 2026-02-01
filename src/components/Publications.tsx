@@ -178,39 +178,42 @@ const FilterButton = ({ active, onClick, children, icon }: { active: boolean, on
 const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) => {
   const type = getPublicationType(pub);
   
-  const typeColors = {
-    conference: 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300',
-    journal: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300',
-    workshop: 'bg-pink-100 text-pink-700 dark:bg-pink-500/20 dark:text-pink-300',
-    other: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300'
+  const outlineColors = {
+    conference: 'border-blue-200 text-blue-700 dark:border-blue-500/30 dark:text-blue-300 bg-blue-50/50 dark:bg-blue-500/5',
+    journal: 'border-emerald-200 text-emerald-700 dark:border-emerald-500/30 dark:text-emerald-300 bg-emerald-50/50 dark:bg-emerald-500/5',
+    workshop: 'border-pink-200 text-pink-700 dark:border-pink-500/30 dark:text-pink-300 bg-pink-50/50 dark:bg-pink-500/5',
+    other: 'border-slate-200 text-slate-700 dark:border-slate-500/30 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-500/5'
   };
 
-  const badgeClass = typeColors[type as keyof typeof typeColors] || typeColors.other;
+  const badgeClass = outlineColors[type as keyof typeof outlineColors] || outlineColors.other;
 
   return (
-    <div className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+    <div className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group border-l-4 border-l-transparent hover:border-l-blue-500">
       {/* Decorative Index Number */}
-      <div aria-hidden="true" className="absolute -right-4 -top-4 text-9xl font-bold text-slate-100 dark:text-slate-800/50 opacity-50 pointer-events-none select-none transition-transform group-hover:scale-110 duration-500">
+      <div aria-hidden="true" className="absolute -right-6 -top-6 text-[8rem] font-bold text-slate-50 dark:text-slate-800/30 pointer-events-none select-none transition-transform group-hover:rotate-12 duration-700 ease-out">
         {index}
       </div>
 
-      <div className="relative z-10 flex flex-col gap-3">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+      <div className="relative z-10 flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-50 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-grow">
             {pub.entryTags.title}
           </h3>
+          <span className={clsx("self-start md:self-center shrink-0 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide border", badgeClass)}>
+            {type}
+          </span>
         </div>
         
-        <div className="text-slate-600 dark:text-slate-300 font-medium">
+        <div className="text-slate-600 dark:text-slate-300 font-medium text-lg">
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>
         
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400 italic">
-          <span className="font-semibold not-italic text-slate-700 dark:text-slate-200">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <span className="font-serif italic text-lg text-slate-800 dark:text-slate-200">
             {pub.entryTags.booktitle}
           </span>
           {pub.entryTags.year && (
-            <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 not-italic font-medium">
+            <span className="flex items-center text-slate-400 font-semibold before:content-['•'] before:mr-4 before:text-slate-300 dark:before:text-slate-700">
               {pub.entryTags.year}
             </span>
           )}
@@ -222,13 +225,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
           </div>
         )}
 
-        <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/50 items-center">
-          <span className={clsx("text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide", badgeClass)}>
-            {type}
-          </span>
-
-          <div className="flex-grow"></div>
-
+        <div className="flex flex-wrap gap-3 mt-2 pt-4 border-t border-slate-100 dark:border-slate-700/50 items-center justify-end">
           {pub.entryTags.url && (
             <ActionButton href={pub.entryTags.url} icon={<FaFilePdf />} label="PDF" />
           )}

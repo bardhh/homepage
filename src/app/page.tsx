@@ -57,26 +57,30 @@ export default async function Home() {
       
       {/* About Me Section */}
       <section id="bio" className="scroll-mt-32 animate-fade-in-up">
-        <div className="flex items-center mb-8">
-          <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+        <div className="flex items-center mb-10">
+          <div className="h-12 w-1.5 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full mr-6 shadow-lg shadow-blue-500/30"></div>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white font-heading tracking-tight">
             Welcome
           </h2>
         </div>
         
-        <div className="glass rounded-2xl p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
-          <div className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
-            <p className="mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-3 first-letter:float-left">
-              I am a Senior Principal Scientist at Toyota Research Institute of North America 
+        <div className="glass rounded-3xl p-10 border-none shadow-xl relative overflow-hidden group">
+          <div className="prose prose-xl dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-loose">
+            <p className="mb-8 font-light text-xl md:text-2xl leading-relaxed text-slate-800 dark:text-slate-100">
+              <span className="text-blue-600 dark:text-blue-400 font-semibold">I am a Senior Principal Scientist</span> at Toyota Research Institute of North America
               (<a href="https://amrd.toyota.com/division/trina/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium no-underline border-b-2 border-blue-500/30 hover:border-blue-500 transition-colors">TRINA</a>) 
               in Ann Arbor, Michigan. My research interests include Testing and Verification of Cyber-Physical Systems (CPS), 
-              Temporal Logics, and Motion Planning and Control for Autonomous Systems. Over the past few years, I have worked on 
+              Temporal Logics, and Motion Planning and Control for Autonomous Systems.
+            </p>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+              Over the past few years, I have worked on
               verification and synthesis methods for autonomous mobile systems to support future mobility initiatives. In particular, 
               applying formal methods in the perception - planning - control loop in open-world environments.
             </p>
-            <p>
-              I have served on the program committee for AAAI 23,{' '}
-              <a href="https://hscc.acm.org/2023/organizers/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">HSCC 23</a>,{' '}
+            <div className="pt-8 border-t border-slate-200 dark:border-slate-700/50 text-base">
+              <p>
+                I have served on the program committee for AAAI 23,{' '}
+                <a href="https://hscc.acm.org/2023/organizers/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">HSCC 23</a>,{' '}
               <a href="https://hscc.acm.org/2022/organizers/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">HSCC 22</a>,{' '}
               <a href="https://conf.researchr.org/committee/nfm-2023/nfm-2023-papers-program-committee" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">NFM 23</a>,{' '}
               <a href="https://nfm2022.caltech.edu/#organization" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">NFM 22</a>. 
@@ -84,6 +88,7 @@ export default async function Home() {
               <a href="https://hscc.acm.org/2021/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">HSCC 2021</a>,{' '}
               <a href="https://berkeleylearnverify.github.io/HSCC_2020/#committees" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline">HSCC 2020</a>.
             </p>
+            </div>
           </div>
         </div>
       </section>
