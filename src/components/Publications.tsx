@@ -11,30 +11,36 @@ interface PublicationsProps {
 }
 
 const Publications: React.FC<PublicationsProps> = ({ publications }) => {
-  const [filter, setFilter] = useState<string>('all');
+  const [typeFilter, setTypeFilter] = useState<string>('all');
+  const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const toggleTheme = (theme: string) => {
+    setSelectedThemes(prev =>
+      prev.includes(theme) ? prev.filter(t => t !== theme) : [...prev, theme]
+    );
+  };
 
   const filteredPubs = useMemo(() => {
     const searchLower = search.toLowerCase();
     return publications.filter(pub => {
       // Type Filter
-      if (filter !== 'all') {
+      if (typeFilter !== 'all') {
         const type = getPublicationType(pub);
-        if (filter === 'recent') {
+        if (typeFilter === 'recent') {
           const year = parseInt(pub.entryTags.year || '0');
           if (year < 2020) return false;
-        } else if (filter === 'paper-conf' && type !== 'conference') return false;
-        else if (filter === 'paper-jour' && type !== 'journal') return false;
-        else if (filter === 'paper-work' && type !== 'workshop') return false;
-        else if (filter.startsWith('kw-')) {
-          const keywords = pub.entryTags.keywords?.toLowerCase() || '';
-          if (filter === 'kw-learning' && !keywords.includes('learning')) return false;
-          if (filter === 'kw-planning' && !keywords.includes('planning')) return false;
-          if (filter === 'kw-verification' && !keywords.includes('verification')) return false;
-          if (filter === 'kw-testing' && !keywords.includes('testing')) return false;
-          if (filter === 'kw-risk' && !keywords.includes('risk')) return false;
-        }
+        } else if (typeFilter === 'paper-conf' && type !== 'conference') return false;
+        else if (typeFilter === 'paper-jour' && type !== 'journal') return false;
+        else if (typeFilter === 'paper-work' && type !== 'workshop') return false;
+      }
+
+      // Theme Filter
+      if (selectedThemes.length > 0) {
+        const keywords = pub.entryTags.keywords?.toLowerCase() || '';
+        const matchesTheme = selectedThemes.every(theme => keywords.includes(theme));
+        if (!matchesTheme) return false;
       }
 
       // Search Filter
@@ -52,7 +58,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
       return true;
     });
-  }, [publications, filter, search]);
+  }, [publications, typeFilter, selectedThemes, search]);
 
   // Sort by year descending
   const sortedPubs = useMemo(() => {
@@ -105,19 +111,19 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         {/* Filters */}
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
-            <FilterButton active={filter === 'all'} onClick={() => setFilter('all')} icon={<FaLayerGroup />}>All</FilterButton>
-            <FilterButton active={filter === 'paper-conf'} onClick={() => setFilter('paper-conf')} icon={<FaUsers />}>Conferences</FilterButton>
-            <FilterButton active={filter === 'paper-jour'} onClick={() => setFilter('paper-jour')} icon={<FaBook />}>Journals</FilterButton>
-            <FilterButton active={filter === 'paper-work'} onClick={() => setFilter('paper-work')} icon={<FaLaptopCode />}>Workshops</FilterButton>
-            <FilterButton active={filter === 'recent'} onClick={() => setFilter('recent')} icon={<FaCalendarAlt />}>Recent (2020+)</FilterButton>
+            <FilterButton active={typeFilter === 'all'} onClick={() => setTypeFilter('all')} icon={<FaLayerGroup />}>All</FilterButton>
+            <FilterButton active={typeFilter === 'paper-conf'} onClick={() => setTypeFilter('paper-conf')} icon={<FaUsers />}>Conferences</FilterButton>
+            <FilterButton active={typeFilter === 'paper-jour'} onClick={() => setTypeFilter('paper-jour')} icon={<FaBook />}>Journals</FilterButton>
+            <FilterButton active={typeFilter === 'paper-work'} onClick={() => setTypeFilter('paper-work')} icon={<FaLaptopCode />}>Workshops</FilterButton>
+            <FilterButton active={typeFilter === 'recent'} onClick={() => setTypeFilter('recent')} icon={<FaCalendarAlt />}>Recent (2020+)</FilterButton>
           </div>
 
           <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-200/50 dark:border-slate-700/50">
-            <FilterButton active={filter === 'kw-learning'} onClick={() => setFilter('kw-learning')} icon={<FaBrain />}>Learning</FilterButton>
-            <FilterButton active={filter === 'kw-planning'} onClick={() => setFilter('kw-planning')} icon={<FaRobot />}>Planning</FilterButton>
-            <FilterButton active={filter === 'kw-verification'} onClick={() => setFilter('kw-verification')} icon={<FaCheckDouble />}>Verification</FilterButton>
-            <FilterButton active={filter === 'kw-testing'} onClick={() => setFilter('kw-testing')} icon={<FaVial />}>Testing</FilterButton>
-            <FilterButton active={filter === 'kw-risk'} onClick={() => setFilter('kw-risk')} icon={<FaShieldAlt />}>Risk</FilterButton>
+            <FilterButton active={selectedThemes.includes('learning')} onClick={() => toggleTheme('learning')} icon={<FaBrain />}>Learning</FilterButton>
+            <FilterButton active={selectedThemes.includes('planning')} onClick={() => toggleTheme('planning')} icon={<FaRobot />}>Planning</FilterButton>
+            <FilterButton active={selectedThemes.includes('verification')} onClick={() => toggleTheme('verification')} icon={<FaCheckDouble />}>Verification</FilterButton>
+            <FilterButton active={selectedThemes.includes('testing')} onClick={() => toggleTheme('testing')} icon={<FaVial />}>Testing</FilterButton>
+            <FilterButton active={selectedThemes.includes('risk')} onClick={() => toggleTheme('risk')} icon={<FaShieldAlt />}>Risk</FilterButton>
           </div>
         </div>
         
