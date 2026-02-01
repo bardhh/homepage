@@ -39,7 +39,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
       // Theme Filter
       if (selectedThemes.length > 0) {
         const keywords = pub.entryTags.keywords?.toLowerCase() || '';
-        const matchesTheme = selectedThemes.some(theme => keywords.includes(theme));
+        const matchesTheme = selectedThemes.every(theme => keywords.includes(theme));
         if (!matchesTheme) return false;
       }
 
