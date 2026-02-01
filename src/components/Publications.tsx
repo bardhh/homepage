@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { Publication, getPublicationType } from '@/lib/bibtex';
 import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes } from 'react-icons/fa';
 import clsx from 'clsx';
@@ -13,6 +13,7 @@ interface PublicationsProps {
 const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const [filter, setFilter] = useState<string>('all');
   const [search, setSearch] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const filteredPubs = useMemo(() => {
     const searchLower = search.toLowerCase();
@@ -79,6 +80,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
           <input
+            ref={inputRef}
             type="text"
             className="block w-full pl-11 pr-12 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
             placeholder="Search publications..."
@@ -88,7 +90,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           />
           {search && (
             <button
-              onClick={() => setSearch('')}
+              onClick={() => {
+                setSearch('');
+                inputRef.current?.focus();
+              }}
               className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors rounded-r-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
               aria-label="Clear search"
             >
