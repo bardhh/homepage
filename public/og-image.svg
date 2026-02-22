@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grad1)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="grad1" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Left accent bar -->
+  <rect x="80" y="200" width="6" height="80" rx="3" fill="#3b82f6"/>
+  <!-- Name -->
+  <text x="110" y="245" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="white">Bardh Hoxha</text>
+  <!-- Title -->
+  <text x="110" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#93c5fd">Senior Principal Scientist</text>
+  <!-- Affiliation -->
+  <text x="110" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">Toyota Research Institute of North America</text>
+  <!-- Research areas -->
+  <text x="110" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#64748b">Cyber-Physical Systems  |  Formal Methods  |  Autonomous Systems</text>
+  <!-- URL -->
+  <text x="110" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#3b82f6">bhoxha.com</text>
+</svg>

@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import PageTransition from "@/components/PageTransition";
 import MobileNav from "@/components/MobileNav";
 import BackToTop from "@/components/BackToTop";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({ 
@@ -33,6 +34,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bardh Hoxha" }],
   metadataBase: new URL("https://www.bhoxha.com"),
+  alternates: {
+    canonical: "https://www.bhoxha.com",
+  },
   openGraph: {
     title: "Dr. Bardh Hoxha | Senior Principal Scientist",
     description:
@@ -41,13 +45,22 @@ export const metadata: Metadata = {
     siteName: "Bardh Hoxha",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Dr. Bardh Hoxha - Senior Principal Scientist at Toyota Research Institute of North America",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Dr. Bardh Hoxha | Senior Principal Scientist",
     description:
       "Research in CPS Verification, Temporal Logics, and Autonomous Systems at Toyota Research Institute of North America.",
     creator: "@bardhhoxha",
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
@@ -67,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased">
+        <GoogleAnalytics />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg outline-none ring-2 ring-offset-2 ring-blue-600 dark:ring-offset-slate-900 transition-transform"

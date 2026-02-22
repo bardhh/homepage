@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import { Publication, getPublicationType } from '@/lib/bibtex';
-import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck } from 'react-icons/fa';
+import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -21,6 +21,19 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const recentCutoff = useMemo(() => new Date().getFullYear() - RECENT_YEARS, []);
+
+  // Cmd/Ctrl+K keyboard shortcut to focus search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        inputRef.current?.focus();
+        inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const toggleTheme = (theme: string) => {
     setSelectedThemes(prev =>
@@ -105,7 +118,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             ref={inputRef}
             type="text"
             className="block w-full pl-11 pr-12 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
-            placeholder="Search publications..."
+            placeholder="Search publications... (Ctrl+K)"
             aria-label="Search publications"
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
@@ -319,7 +332,7 @@ const ActionButton = ({ href, icon, label }: { href: string, icon: React.ReactNo
     rel="noopener noreferrer"
     className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5"
   >
-    <span className="mr-1.5">{icon}</span> {label}
+    <span className="mr-1.5">{icon}</span> {label} <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
   </a>
 );
 

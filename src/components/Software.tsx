@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaFilePdf } from 'react-icons/fa';
+import { FaGithub, FaFilePdf, FaExternalLinkAlt } from 'react-icons/fa';
 
 const projects = [
   {
@@ -58,12 +58,12 @@ const Software = () => {
 
             <div className="flex flex-wrap gap-3">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
-                <FaGithub className="mr-1.5" /> Repository
+                <FaGithub className="mr-1.5" /> Repository <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
               </a>
 
               {project.paper && (
                 <a href={project.paper} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
-                  <FaFilePdf className="mr-1.5" /> {project.paperName}
+                  <FaFilePdf className="mr-1.5" /> {project.paperName} <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
                 </a>
               )}
             </div>
