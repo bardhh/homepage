@@ -8,28 +8,6 @@ import Software from '@/components/Software';
 import Teaching from '@/components/Teaching';
 import Contact from '@/components/Contact';
 
-// Note: In a real Next.js app with "use client", we can't use fs directly.
-// However, for this specific setup where data is static or passed down, we might need a different approach.
-// Since the original file used fs in a server component (default), and I'm switching to client for animations,
-// I should ideally keep the data fetching on the server.
-// BUT, to keep it simple and consistent with the "visual overhaul" request without refactoring the entire data flow,
-// I will assume the data fetching happens in a parent or I'll revert to a server component that passes data to a client wrapper.
-// ACTUALLY, the best approach here is to keep the page as a Server Component and use a Client Component wrapper for the animations.
-// OR, just make the sections themselves client components (which they likely are or can be).
-// Let's check the imports. Publications is a client component.
-// The page itself was async, so it's a server component. I should NOT make the page "use client".
-// I will revert the "use client" at the top and keep it as a server component, but I can't use motion.div directly in the server component body easily without a wrapper.
-// However, I can style the static HTML and let the client components handle their own animations.
-// Wait, I want to animate the SECTIONS.
-// I will create a simple "SectionWrapper" client component to handle the reveal animation.
-
-// Let's write the SectionWrapper first in a separate file? No, I can't create new files easily without asking.
-// I will just style the page for now and maybe add a simple client wrapper if needed, or just rely on the components being animated.
-// Actually, I can make a `Reveal` component in this file if I make the whole file client? No, `fs` will break.
-// Okay, I will keep `page.tsx` as a Server Component. I will improve the styling of the "Welcome" section.
-// I will leave the scroll animations to the individual components if possible, or just use CSS animations for the server rendered parts.
-// Let's stick to CSS animations for the Welcome section to avoid complexity.
-
 async function getPublications() {
   try {
     const filePath = path.join(process.cwd(), 'public', 'publications.bib');
@@ -56,7 +34,7 @@ export default async function Home() {
     <div className="space-y-24 pb-24">
       
       {/* About Me Section */}
-      <section id="bio" className="scroll-mt-32 animate-fade-in-up">
+      <section id="bio" className="scroll-mt-32 animate-fade-in-up" role="region" aria-label="About me">
         <div className="flex items-center mb-8">
           <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">

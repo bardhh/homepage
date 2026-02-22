@@ -38,29 +38,32 @@ const projects = [
 
 const Software = () => {
   return (
-    <section id="software" className="scroll-mt-24">
-      <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
-        Software
-      </h2>
-      
+    <section id="software" className="scroll-mt-24" role="region" aria-label="Software projects">
+      <div className="flex items-center mb-8">
+        <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+          Software
+        </h2>
+      </div>
+
       <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
-            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-2">
+          <div key={index} className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {project.title}
             </h3>
             <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm leading-relaxed">
               {project.description}
             </p>
-            
+
             <div className="flex flex-wrap gap-3">
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200 dark:text-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors border border-slate-200 dark:border-slate-600">
-                <FaGithub className="mr-2" /> Repository
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
+                <FaGithub className="mr-1.5" /> Repository
               </a>
-              
+
               {project.paper && (
-                <a href={project.paper} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-700 bg-white rounded-md hover:bg-slate-50 dark:text-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors border border-slate-300 dark:border-slate-600">
-                  <FaFilePdf className="mr-2" /> {project.paperName}
+                <a href={project.paper} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
+                  <FaFilePdf className="mr-1.5" /> {project.paperName}
                 </a>
               )}
             </div>

@@ -6,6 +6,8 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import { Providers } from "./providers";
 import PageTransition from "@/components/PageTransition";
+import MobileNav from "@/components/MobileNav";
+import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({ 
@@ -16,7 +18,45 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Dr. Bardh Hoxha | Senior Principal Scientist",
-  description: "Research in Cyber-Physical Systems and Autonomous Systems",
+  description:
+    "Senior Principal Scientist at Toyota Research Institute of North America. Research in Testing & Verification of Cyber-Physical Systems, Temporal Logics, and Motion Planning for Autonomous Systems.",
+  keywords: [
+    "Bardh Hoxha",
+    "Cyber-Physical Systems",
+    "Autonomous Systems",
+    "Formal Methods",
+    "Temporal Logic",
+    "Motion Planning",
+    "Control Barrier Functions",
+    "Toyota Research",
+    "CPS Verification",
+  ],
+  authors: [{ name: "Bardh Hoxha" }],
+  metadataBase: new URL("https://www.bhoxha.com"),
+  openGraph: {
+    title: "Dr. Bardh Hoxha | Senior Principal Scientist",
+    description:
+      "Senior Principal Scientist at Toyota Research Institute of North America. Research in CPS Verification, Temporal Logics, and Autonomous Systems.",
+    url: "https://www.bhoxha.com",
+    siteName: "Bardh Hoxha",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Dr. Bardh Hoxha | Senior Principal Scientist",
+    description:
+      "Research in CPS Verification, Temporal Logics, and Autonomous Systems at Toyota Research Institute of North America.",
+    creator: "@bardhhoxha",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    "theme-color": "#3b82f6",
+    "apple-mobile-web-app-capable": "yes",
+  },
 };
 
 export default function RootLayout({
@@ -56,6 +96,7 @@ export default function RootLayout({
           }}
         />
         <Providers>
+          <MobileNav />
           <Header />
           
           <div className="container mx-auto px-4 mt-8">
@@ -73,6 +114,7 @@ export default function RootLayout({
           </div>
 
           <Footer />
+          <BackToTop />
         </Providers>
       </body>
     </html>
