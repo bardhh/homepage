@@ -1,0 +1,16 @@
+{
+  "name": "Dr. Bardh Hoxha | Senior Principal Scientist",
+  "short_name": "Bardh Hoxha",
+  "description": "Senior Principal Scientist at Toyota Research Institute of North America. Research in Cyber-Physical Systems, Temporal Logics, and Autonomous Systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

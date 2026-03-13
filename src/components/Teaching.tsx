@@ -75,7 +75,7 @@ const Teaching = () => {
                 <div className="flex items-center gap-3">
                   <FaChalkboardTeacher className={clsx("text-xl", isOpen ? "text-blue-500" : "text-slate-400")} />
                   <div>
-                    <span className="font-semibold block">{course.title}</span>
+                    <h3 className="font-semibold block text-base">{course.title}</h3>
                     <span className="text-sm opacity-75 font-normal">{course.university} &bull; {course.semester}</span>
                   </div>
                 </div>

@@ -20,7 +20,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Dr. Bardh Hoxha | Senior Principal Scientist",
   description:
-    "Senior Principal Scientist at Toyota Research Institute of North America. Research in Testing & Verification of Cyber-Physical Systems, Temporal Logics, and Motion Planning for Autonomous Systems.",
+    "Dr. Bardh Hoxha — Senior Principal Scientist at Toyota Research Institute. Expert in Cyber-Physical Systems verification, temporal logics, motion planning, and autonomous systems safety.",
   keywords: [
     "Bardh Hoxha",
     "Cyber-Physical Systems",
@@ -87,26 +87,47 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Bardh Hoxha",
-              "url": "https://www.bhoxha.com",
-              "jobTitle": "Senior Principal Scientist",
-              "affiliation": {
-                "@type": "Organization",
-                "name": "Toyota Research Institute of North America"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Bardh Hoxha",
+                "url": "https://www.bhoxha.com",
+                "jobTitle": "Senior Principal Scientist",
+                "affiliation": {
+                  "@type": "Organization",
+                  "name": "Toyota Research Institute of North America"
+                },
+                "alumniOf": {
+                  "@type": "Organization",
+                  "name": "Arizona State University"
+                },
+                "knowsAbout": [
+                  "Cyber-Physical Systems",
+                  "Temporal Logic",
+                  "Motion Planning",
+                  "Autonomous Systems",
+                  "Formal Verification",
+                  "Control Barrier Functions"
+                ],
+                "sameAs": [
+                  "https://x.com/bardhhoxha",
+                  "https://github.com/bardhh",
+                  "https://www.linkedin.com/in/bardhhoxha",
+                  "https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en"
+                ]
               },
-              "sameAs": [
-                "https://x.com/bardhhoxha",
-                "https://github.com/bardhh",
-                "https://www.linkedin.com/in/bardhhoxha",
-                "https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en"
-              ]
-            })
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Dr. Bardh Hoxha",
+                "url": "https://www.bhoxha.com"
+              }
+            ])
           }}
         />
         <Providers>
