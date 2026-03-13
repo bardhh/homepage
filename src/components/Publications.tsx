@@ -114,7 +114,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         </h2>
       </div>
 
-      <div className="glass rounded-2xl p-6 mb-8 border border-white/40 dark:border-slate-700/40">
+      <div className="glass rounded-2xl p-6 mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
 
         {/* Search */}
         <div className="relative mb-6 group">
@@ -246,6 +246,13 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
     other: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300'
   };
 
+  const borderColors = {
+    conference: 'border-l-blue-500',
+    journal: 'border-l-emerald-500',
+    workshop: 'border-l-pink-500',
+    other: 'border-l-slate-400'
+  };
+
   const badgeClass = typeColors[type as keyof typeof typeColors] || typeColors.other;
 
   const copyBibtex = useCallback(() => {
@@ -265,7 +272,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
   }, [pub]);
 
   return (
-    <div className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+    <div className={clsx("glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group border-l-4", borderColors[type as keyof typeof borderColors] || borderColors.other)}>
       {/* Decorative Index Number */}
       <div aria-hidden="true" className="absolute -right-4 -top-4 text-9xl font-bold text-slate-100 dark:text-slate-800/50 opacity-50 pointer-events-none select-none transition-transform group-hover:scale-110 duration-500">
         {index}

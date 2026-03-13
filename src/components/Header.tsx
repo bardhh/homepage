@@ -16,7 +16,7 @@ const Header = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/90 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900/80 backdrop-blur-[1px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center">
@@ -24,8 +24,8 @@ const Header = () => {
           
           {/* Profile Image */}
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl">
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
+            <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
               <Image 
                 src="/assets/profile.webp" 
                 alt="Dr. Bardh Hoxha" 

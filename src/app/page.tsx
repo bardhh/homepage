@@ -69,27 +69,37 @@ export default async function Home() {
 
       {/* Publications Section */}
       <Reveal>
-        <Publications publications={publications} />
+        <div className="section-divider">
+          <Publications publications={publications} />
+        </div>
       </Reveal>
 
       {/* Research Areas Section */}
       <Reveal delay={0.1}>
-        <ResearchAreas />
+        <div className="section-divider">
+          <ResearchAreas />
+        </div>
       </Reveal>
 
       {/* Teaching Section */}
       <Reveal delay={0.1}>
-        <Teaching />
+        <div className="section-divider">
+          <Teaching />
+        </div>
       </Reveal>
 
       {/* Software Section */}
       <Reveal delay={0.1}>
-        <Software />
+        <div className="section-divider">
+          <Software />
+        </div>
       </Reveal>
 
       {/* Contact Section */}
       <Reveal delay={0.1}>
-        <Contact />
+        <div className="section-divider">
+          <Contact />
+        </div>
       </Reveal>
 
     </div>
