@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Dr. Bardh Hoxha - Senior Principal Scientist at Toyota Research Institute of North America",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description:
       "Research in CPS Verification, Temporal Logics, and Autonomous Systems at Toyota Research Institute of North America.",
     creator: "@bardhhoxha",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -101,7 +101,7 @@ export default function RootLayout({
                 "name": "Toyota Research Institute of North America"
               },
               "sameAs": [
-                "https://twitter.com/bardhhoxha",
+                "https://x.com/bardhhoxha",
                 "https://github.com/bardhh",
                 "https://www.linkedin.com/in/bardhhoxha",
                 "https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en"

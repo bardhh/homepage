@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaEnvelope, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Contact = () => {
   return (
@@ -47,8 +48,8 @@ const Contact = () => {
               <a href="https://www.linkedin.com/in/bardhhoxha/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full text-blue-700 dark:text-blue-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all transform hover:-translate-y-1">
                 <FaLinkedin className="text-2xl" />
               </a>
-              <a href="https://twitter.com/bardhhoxha" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
-                <FaTwitter className="text-2xl" />
+              <a href="https://x.com/bardhhoxha" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-full text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-white transition-all transform hover:-translate-y-1">
+                <FaXTwitter className="text-2xl" />
               </a>
             </div>
           </div>

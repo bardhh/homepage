@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { FaTwitter, FaGithub, FaLinkedin, FaSitemap } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaSitemap } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { SiGooglescholar } from 'react-icons/si';
 
 const Header = () => {
@@ -53,7 +54,7 @@ const Header = () => {
 
             {/* Social Icons */}
             <div className="flex gap-5 justify-center md:justify-start pt-2">
-              <SocialLink href="https://twitter.com/bardhhoxha" icon={<FaTwitter size={22} />} label="Twitter" />
+              <SocialLink href="https://x.com/bardhhoxha" icon={<FaXTwitter size={22} />} label="X (Twitter)" />
               <SocialLink href="https://github.com/bardhh" icon={<FaGithub size={22} />} label="GitHub" />
               <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin size={22} />} label="LinkedIn" />
               <SocialLink href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" icon={<SiGooglescholar size={22} />} label="Google Scholar" />

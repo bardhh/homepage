@@ -19,6 +19,11 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const [search, setSearch] = useState<string>('');
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setIsMac(navigator.platform.toUpperCase().includes('MAC'));
+  }, []);
 
   const recentCutoff = useMemo(() => new Date().getFullYear() - RECENT_YEARS, []);
 
@@ -75,11 +80,13 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         const title = pub.entryTags.title?.toLowerCase() || '';
         const author = pub.entryTags.author?.toLowerCase() || '';
         const venue = pub.entryTags.booktitle?.toLowerCase() || '';
+        const journal = pub.entryTags.journal?.toLowerCase() || '';
         const keywords = pub.entryTags.keywords?.toLowerCase() || '';
 
         return title.includes(searchLower) ||
                author.includes(searchLower) ||
                venue.includes(searchLower) ||
+               journal.includes(searchLower) ||
                keywords.includes(searchLower);
       }
 
@@ -118,7 +125,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             ref={inputRef}
             type="text"
             className="block w-full pl-11 pr-12 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
-            placeholder="Search publications... (Ctrl+K)"
+            placeholder={`Search publications... (${isMac ? '⌘' : 'Ctrl+'}K)`}
             aria-label="Search publications"
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
