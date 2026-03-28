@@ -2,7 +2,9 @@ import React from 'react';
 import fs from 'fs';
 import path from 'path';
 import { parseBibtex } from '@/lib/bibtex';
-import Publications from '@/components/Publications';
+import dynamic from 'next/dynamic';
+
+const Publications = dynamic(() => import('@/components/Publications'));
 import ResearchAreas from '@/components/ResearchAreas';
 import Software from '@/components/Software';
 import Teaching from '@/components/Teaching';
