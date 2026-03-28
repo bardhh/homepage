@@ -73,7 +73,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href} 
     target="_blank" 
     rel="noopener noreferrer" 
-    className="relative p-3 bg-white/10 hover:bg-white/20 text-white rounded-xl backdrop-blur-md border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group"
+    className="relative p-3 bg-white/10 hover:bg-white/20 text-white rounded-xl max-md:bg-white/20 md:backdrop-blur-md border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group"
     aria-label={label}
     title={label}
   >

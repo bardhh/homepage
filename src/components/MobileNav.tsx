@@ -55,7 +55,7 @@ const MobileNav = () => {
       {/* Floating hamburger button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 right-4 z-50 p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition-all"
+        className="fixed top-4 right-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition-all"
         aria-label="Open navigation menu"
       >
         <FaBars className="text-lg" />
@@ -64,7 +64,7 @@ const MobileNav = () => {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/60"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
