@@ -47,6 +47,56 @@
   }
 }
 
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @media (width >= 768px) {
+    .reveal {
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .page-enter {
+    opacity: 0;
+  }
+
+  @media (width >= 768px) {
+    .page-enter.mounted {
+      animation: page-enter 0.4s ease-in-out forwards;
+    }
+  }
+
+  @media (width < 768px) {
+    .page-enter.mounted {
+      opacity: 1;
+    }
+  }
+
+  .pub-card {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @media (width >= 768px) {
+    .pub-card {
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+  }
+
+  .pub-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -100,6 +150,16 @@ body::after {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -115,4 +175,32 @@ body::after {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-400 dark:bg-slate-600;
+}
+
+/* Mobile performance: disable expensive GPU effects */
+@media (width < 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgb(255 255 255 / 0.8);
+  }
+
+  .dark .glass {
+    background: rgb(15 23 42 / 0.8);
+  }
+
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgb(255 255 255 / 0.7);
+  }
+
+  .dark .glass-card {
+    background: rgb(30 41 59 / 0.7);
+  }
 }
