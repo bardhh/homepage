@@ -6,9 +6,9 @@ import { SiGooglescholar } from 'react-icons/si';
 
 const Header = () => {
   return (
-    <header className="relative w-full h-[500px] md:h-[400px] overflow-hidden">
+    <header className="relative w-full h-[500px] md:h-[400px]">
       {/* Background Image with Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/assets/bkg2.webp"
           alt="Abstract geometric background pattern"
@@ -16,7 +16,7 @@ const Header = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900/80 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 via-70% to-slate-50 dark:to-slate-900 backdrop-blur-[1px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center">
@@ -24,8 +24,8 @@ const Header = () => {
           
           {/* Profile Image */}
           <div className="relative group">
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+            <div className="absolute -inset-1 bg-gradient-to-br from-white/30 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+            <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-lg shadow-black/30">
               <Image 
                 src="/assets/profile.webp" 
                 alt="Dr. Bardh Hoxha" 

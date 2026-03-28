@@ -134,7 +134,7 @@ export default function RootLayout({
           <MobileNav />
           <Header />
           
-          <div className="container mx-auto px-4 mt-8">
+          <div className="container mx-auto px-4 -mt-12 relative z-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Sidebar (Desktop) */}
               <Sidebar />
