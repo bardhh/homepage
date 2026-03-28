@@ -4,7 +4,6 @@ import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { Publication, getPublicationType } from '@/lib/bibtex';
 import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 import clsx from 'clsx';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const ITEMS_PER_PAGE = 15;
 const RECENT_YEARS = 5;
@@ -105,6 +104,14 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const visiblePubs = sortedPubs.slice(0, visibleCount);
   const hasMore = visibleCount < sortedPubs.length;
 
+  const [cardsVisible, setCardsVisible] = useState(false);
+
+  useEffect(() => {
+    setCardsVisible(false);
+    const id = requestAnimationFrame(() => setCardsVisible(true));
+    return () => cancelAnimationFrame(id);
+  }, [typeFilter, selectedThemes, search, visibleCount]);
+
   return (
     <section id="publications" className="scroll-mt-24" role="region" aria-label="Publications">
       <div className="flex items-center mb-8">
@@ -176,32 +183,26 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
       {/* List */}
       <div className="space-y-6">
-        <AnimatePresence mode="popLayout">
-          {visiblePubs.map((pub, index) => (
-            <motion.div
-              key={pub.citationKey}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
-              layout
-            >
-              <PublicationCard pub={pub} index={sortedPubs.length - index} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {visiblePubs.map((pub, index) => (
+          <div
+            key={pub.citationKey}
+            className={`pub-card${cardsVisible ? ' visible' : ''}`}
+            style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}
+          >
+            <PublicationCard pub={pub} index={sortedPubs.length - index} />
+          </div>
+        ))}
 
         {sortedPubs.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <div
             className="text-center py-20"
+            style={{ animation: 'fade-in 0.3s ease-out' }}
           >
             <div className="inline-block p-4 rounded-full bg-slate-100 dark:bg-slate-800 mb-4">
               <FaSearch className="text-4xl text-slate-400" />
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-lg">No publications found matching your criteria.</p>
-          </motion.div>
+          </div>
         )}
 
         {hasMore && (
