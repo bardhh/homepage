@@ -182,7 +182,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
       </div>
 
       {/* List */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {visiblePubs.map((pub, index) => (
           <div
             key={pub.citationKey}
@@ -244,101 +244,99 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
     conference: 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300',
     journal: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300',
     workshop: 'bg-pink-100 text-pink-700 dark:bg-pink-500/20 dark:text-pink-300',
-    other: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300'
+    other: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300',
   };
-
   const borderColors = {
     conference: 'border-l-blue-500',
     journal: 'border-l-emerald-500',
     workshop: 'border-l-pink-500',
-    other: 'border-l-slate-400'
+    other: 'border-l-slate-400',
   };
-
   const badgeClass = typeColors[type as keyof typeof typeColors] || typeColors.other;
+  const borderClass = borderColors[type as keyof typeof borderColors] || borderColors.other;
 
   const copyBibtex = useCallback(() => {
     const entryType = pub.entryType || 'misc';
-    const tags = pub.entryTags;
-    const lines: string[] = [];
-    for (const [key, value] of Object.entries(tags)) {
-      if (value) {
-        lines.push(`  ${key} = {${value}}`);
-      }
-    }
-    const bibtex = `@${entryType}{${pub.citationKey},\n${lines.join(',\n')}\n}`;
-    navigator.clipboard.writeText(bibtex).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    const lines = Object.entries(pub.entryTags)
+      .filter(([, v]) => v)
+      .map(([k, v]) => `  ${k} = {${v}}`);
+    navigator.clipboard.writeText(`@${entryType}{${pub.citationKey},\n${lines.join(',\n')}\n}`)
+      .then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); });
   }, [pub]);
 
   return (
-    <div className={clsx("glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden group border-l-4", borderColors[type as keyof typeof borderColors] || borderColors.other)}>
-      {/* Decorative Index Number */}
-      <div aria-hidden="true" className="absolute -right-4 -top-4 text-9xl font-bold text-slate-100 dark:text-slate-800/50 opacity-50 pointer-events-none select-none transition-transform group-hover:scale-110 duration-500">
+    <div className={clsx(
+      "glass-card rounded-lg px-4 py-3 relative group border-l-4 flex items-start gap-4",
+      borderClass
+    )}>
+      {/* Index */}
+      <div className="shrink-0 pt-0.5 w-8 text-right font-mono text-xs text-slate-400 dark:text-slate-500 tabular-nums">
         {index}
       </div>
 
-      <div className="relative z-10 flex flex-col gap-3">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+      {/* Main content */}
+      <div className="min-w-0 flex-1">
+        {pub.entryTags.url ? (
+          <a
+            href={pub.entryTags.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group/title"
+          >
+            <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">
+              {pub.entryTags.title}
+            </h3>
+          </a>
+        ) : (
+          <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug">
             {pub.entryTags.title}
           </h3>
-        </div>
-
-        <div className="text-slate-600 dark:text-slate-300 font-medium">
+        )}
+        <div className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 truncate">
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>
-
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400 italic">
-          <span className="font-semibold not-italic text-slate-700 dark:text-slate-200">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <span className="font-medium text-slate-700 dark:text-slate-300">
             {pub.entryTags.booktitle}
           </span>
-          {pub.entryTags.year && (
-            <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 not-italic font-medium">
-              {pub.entryTags.year}
+          {pub.entryTags.year && <span className="text-slate-400">· {pub.entryTags.year}</span>}
+          <span className={clsx("px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide", badgeClass)}>
+            {type}
+          </span>
+          {pub.entryTags.award && (
+            <span className="inline-flex items-center text-amber-600 dark:text-amber-400 font-semibold">
+              <FaAward className="mr-1 text-[0.85em]" />{pub.entryTags.award}
             </span>
           )}
         </div>
+      </div>
 
-        {pub.entryTags.award && (
-          <div className="flex items-center text-amber-600 dark:text-amber-400 text-sm font-bold mt-1">
-            <FaAward className="mr-2 text-lg" /> {pub.entryTags.award}
-          </div>
-        )}
-
-        <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/50 items-center">
-          <span className={clsx("text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide", badgeClass)}>
-            {type}
-          </span>
-
-          <div className="flex-grow"></div>
-
-          <button
-            onClick={copyBibtex}
-            className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5"
-            aria-label={copied ? "Citation copied" : "Copy BibTeX citation"}
-          >
-            <span className="mr-1.5">{copied ? <FaCheck /> : <FaQuoteLeft />}</span>
-            {copied ? 'Copied!' : 'Cite'}
-          </button>
-
-          {pub.entryTags.url && (
-            <ActionButton href={pub.entryTags.url} icon={<FaFilePdf />} label="PDF" />
-          )}
-
-          {pub.entryTags.video && (
-            <ActionButton href={pub.entryTags.video} icon={<FaVideo />} label="Video" />
-          )}
-
-          {pub.entryTags.code && (
-            <ActionButton href={pub.entryTags.code} icon={<FaCode />} label="Code" />
-          )}
-        </div>
+      {/* Action icons */}
+      <div className="shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity">
+        <IconBtn onClick={copyBibtex} label={copied ? 'Copied' : 'Cite'}>
+          {copied ? <FaCheck className="text-emerald-500"/> : <FaQuoteLeft/>}
+        </IconBtn>
+        {pub.entryTags.url   && <IconLink href={pub.entryTags.url}   label="PDF"  ><FaFilePdf/></IconLink>}
+        {pub.entryTags.video && <IconLink href={pub.entryTags.video} label="Video"><FaVideo/></IconLink>}
+        {pub.entryTags.code  && <IconLink href={pub.entryTags.code}  label="Code" ><FaCode/></IconLink>}
       </div>
     </div>
   );
 };
+
+const IconBtn = ({ onClick, label, children }: { onClick: () => void, label: string, children: React.ReactNode }) => (
+  <button onClick={onClick} aria-label={label} title={label}
+    className="w-7 h-7 grid place-items-center rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs">
+    {children}
+  </button>
+);
+
+const IconLink = ({ href, label, children }: { href: string, label: string, children: React.ReactNode }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}
+    className="w-7 h-7 grid place-items-center rounded hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-xs">
+    {children}
+  </a>
+);
 
 const ActionButton = ({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) => (
   <a

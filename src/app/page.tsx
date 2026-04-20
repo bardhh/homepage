@@ -34,7 +34,7 @@ export default async function Home() {
   const publications = await getPublications();
 
   return (
-    <div className="space-y-24 pb-24">
+    <div className="space-y-12 pb-24">
 
       {/* About Me Section */}
       <section id="bio" className="scroll-mt-32 animate-fade-in-up" role="region" aria-label="About me">

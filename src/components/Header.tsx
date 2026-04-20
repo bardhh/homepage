@@ -1,21 +1,59 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaSitemap } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiGooglescholar } from 'react-icons/si';
 
 const Header = () => {
+  const headerRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+  const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mql.matches) return;
+
+  const onScroll = () => {
+    const bg = bgRef.current;
+    const el = headerRef.current;
+    if (!bg || !el) return;
+    // How far the page has scrolled, normalized by the header's own height.
+    // At scrollY=0 -> 0px offset. At scrollY=headerHeight -> 80px offset.
+    const progress = Math.min(1, Math.max(0, window.scrollY / el.offsetHeight));
+    bg.style.setProperty('--par-y', `${progress * 80}px`);
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  return () => window.removeEventListener('scroll', onScroll);
+}, []);
+
   return (
-    <header className="relative w-full h-[500px] md:h-[400px]">
+    <header ref={headerRef} className="relative w-full h-[500px] md:h-[400px] overflow-hidden">
+      <style>{`
+        @keyframes bkgPan {
+          from { background-position: 0% center; }
+          to   { background-position: 30% center; }
+        }
+        .bkg-pan-parallax {
+          position: absolute; inset: -12% 0;
+          background-image: url('/assets/bkg2.webp');
+          background-size: 140% auto;
+          background-repeat: no-repeat;
+          transform: translateY(var(--par-y, 0px)) scale(1.08);
+          will-change: transform, background-position;
+          animation: bkgPan 45s linear infinite alternate;
+          transition: transform 0.08s linear;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .bkg-pan-parallax { animation: none; transform: none; }
+        }
+      `}</style>
+
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src="/assets/bkg2.webp"
-          alt="Abstract geometric background pattern"
-          fill
-          className="object-cover"
-          priority
-        />
+        <div ref={bgRef} className="bkg-pan-parallax" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 via-70% to-slate-50 dark:to-slate-900 backdrop-blur-[1px]"></div>
       </div>
 
@@ -77,7 +115,6 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     aria-label={label}
     title={label}
   >
-    {/* Tooltip */}
     <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900/95 text-white text-sm font-medium rounded-lg backdrop-blur-md border border-white/10 whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl">
       {label}
       <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900/95"></span>
