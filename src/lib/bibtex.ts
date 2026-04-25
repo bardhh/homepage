@@ -25,13 +25,18 @@ export function parseBibtex(content: string): Publication[] {
 
 export function getPublicationType(entry: Publication): 'conference' | 'journal' | 'workshop' | 'other' {
   const type = entry.entryType.toLowerCase();
-  if (type === 'article') return 'journal';
-  if (type === 'inproceedings' || type === 'conference') {
-    // Heuristic: check booktitle for "workshop"
-    if (entry.entryTags.booktitle?.toLowerCase().includes('workshop')) {
-      return 'workshop';
-    }
-    return 'conference';
+  const venue = (entry.entryTags.booktitle || entry.entryTags.journal || '').toLowerCase();
+
+  if (venue.includes('workshop')) return 'workshop';
+
+  if (type === 'article') {
+    if (!venue) return 'other';
+    if (venue.includes('arxiv') || venue.includes('preprint')) return 'conference';
+    if (venue.includes('proc.') || venue.includes('proceedings')) return 'conference';
+    return 'journal';
   }
+
+  if (type === 'inproceedings' || type === 'conference') return 'conference';
+
   return 'other';
 }
