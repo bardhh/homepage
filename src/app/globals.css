@@ -26,7 +26,7 @@
   }
   
   .glass-card {
-    @apply bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-white/50 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1;
+    @apply bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-white/50 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-500;
   }
 
   .text-gradient {

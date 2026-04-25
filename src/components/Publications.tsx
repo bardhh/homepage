@@ -236,6 +236,17 @@ const FilterButton = ({ active, onClick, children, icon }: { active: boolean, on
   </button>
 );
 
+function fallbackCopy(text: string, onSuccess: () => void) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;left:-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  onSuccess();
+}
+
 const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) => {
   const [copied, setCopied] = useState(false);
   const type = getPublicationType(pub);
@@ -260,8 +271,17 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
     const lines = Object.entries(pub.entryTags)
       .filter(([, v]) => v)
       .map(([k, v]) => `  ${k} = {${v}}`);
-    navigator.clipboard.writeText(`@${entryType}{${pub.citationKey},\n${lines.join(',\n')}\n}`)
-      .then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); });
+    const text = `@${entryType}{${pub.citationKey},\n${lines.join(',\n')}\n}`;
+
+    const onSuccess = () => { setCopied(true); setTimeout(() => setCopied(false), 2000); };
+
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+        fallbackCopy(text, onSuccess);
+      });
+    } else {
+      fallbackCopy(text, onSuccess);
+    }
   }, [pub]);
 
   return (
@@ -312,10 +332,17 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
       </div>
 
       {/* Action icons */}
-      <div className="shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity">
-        <IconBtn onClick={copyBibtex} label={copied ? 'Copied' : 'Cite'}>
-          {copied ? <FaCheck className="text-emerald-500"/> : <FaQuoteLeft/>}
-        </IconBtn>
+      <div className="shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity relative">
+        <div className="relative">
+          <IconBtn onClick={copyBibtex} label={copied ? 'Copied' : 'Cite'}>
+            {copied ? <FaCheck className="text-emerald-500"/> : <FaQuoteLeft/>}
+          </IconBtn>
+          {copied && (
+            <span className="absolute bottom-full right-0 mb-1 px-2 py-1 bg-emerald-600 text-white text-[10px] font-medium rounded-md whitespace-nowrap animate-fade-in shadow-lg">
+              Copied to clipboard
+            </span>
+          )}
+        </div>
         {pub.entryTags.url   && <IconLink href={pub.entryTags.url}   label="PDF"  ><FaFilePdf/></IconLink>}
         {pub.entryTags.video && <IconLink href={pub.entryTags.video} label="Video"><FaVideo/></IconLink>}
         {pub.entryTags.code  && <IconLink href={pub.entryTags.code}  label="Code" ><FaCode/></IconLink>}
