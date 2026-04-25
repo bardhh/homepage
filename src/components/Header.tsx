@@ -30,7 +30,7 @@ const Header = () => {
 }, []);
 
   return (
-    <header ref={headerRef} className="relative w-full h-[500px] md:h-[400px] overflow-hidden">
+    <header ref={headerRef} className="relative w-full h-[400px] overflow-hidden">
       <style>{`
         @keyframes bkgPan {
           from { background-position: 0% center; }
@@ -46,6 +46,15 @@ const Header = () => {
           animation: bkgPan 45s linear infinite alternate;
           transition: transform 0.08s linear;
         }
+        @media (max-width: 767px) {
+          .bkg-pan-parallax {
+            background-size: cover;
+            background-position: center 30%;
+            animation: none;
+            transform: none;
+            inset: 0;
+          }
+        }
         @media (prefers-reduced-motion: reduce) {
           .bkg-pan-parallax { animation: none; transform: none; }
         }
@@ -58,12 +67,12 @@ const Header = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center">
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-8 md:gap-12 pb-10">
-          
+        <div className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-12 pb-4 md:pb-10">
+
           {/* Profile Image */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-br from-white/30 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-lg shadow-black/30">
+            <div className="relative w-[140px] h-[140px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-lg shadow-black/30">
               <Image 
                 src="/assets/profile.webp" 
                 alt="Dr. Bardh Hoxha" 
@@ -77,7 +86,7 @@ const Header = () => {
           {/* Text Content */}
           <div className="flex-grow text-center md:text-left space-y-4">
             <div className="space-y-2">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white font-heading">
+              <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white font-heading">
                 Bardh Hoxha
               </h1>
               <div className="space-y-1">

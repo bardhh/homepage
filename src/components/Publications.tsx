@@ -121,10 +121,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         </h2>
       </div>
 
-      <div className="glass rounded-2xl p-6 mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
+      <div className="glass rounded-2xl p-4 md:p-6 mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
 
         {/* Search */}
-        <div className="relative mb-6 group">
+        <div className="relative mb-4 md:mb-6 group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
@@ -152,10 +152,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         </div>
 
         {/* Filters */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           <fieldset>
             <legend className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Filter by type</legend>
-            <div className="flex flex-wrap gap-2" role="group">
+            <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
               <FilterButton active={typeFilter === 'all'} onClick={() => handleTypeFilter('all')} icon={<FaLayerGroup />}>All</FilterButton>
               <FilterButton active={typeFilter === 'paper-conf'} onClick={() => handleTypeFilter('paper-conf')} icon={<FaUsers />}>Conferences</FilterButton>
               <FilterButton active={typeFilter === 'paper-jour'} onClick={() => handleTypeFilter('paper-jour')} icon={<FaBook />}>Journals</FilterButton>
@@ -166,7 +166,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
           <fieldset>
             <legend className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pt-2 border-t border-slate-200/50 dark:border-slate-700/50 w-full block">Filter by theme (multi-select)</legend>
-            <div className="flex flex-wrap gap-2" role="group">
+            <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
               <FilterButton active={selectedThemes.includes('learning')} onClick={() => toggleTheme('learning')} icon={<FaBrain />}>Learning</FilterButton>
               <FilterButton active={selectedThemes.includes('planning')} onClick={() => toggleTheme('planning')} icon={<FaRobot />}>Planning</FilterButton>
               <FilterButton active={selectedThemes.includes('verification')} onClick={() => toggleTheme('verification')} icon={<FaCheckDouble />}>Verification</FilterButton>
@@ -225,7 +225,7 @@ const FilterButton = ({ active, onClick, children, icon }: { active: boolean, on
     onClick={onClick}
     aria-pressed={active}
     className={clsx(
-      "inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200",
+      "inline-flex items-center px-2.5 py-1.5 md:px-4 md:py-2 rounded-lg md:rounded-xl text-xs md:text-sm font-medium transition-all duration-200",
       active
         ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25 scale-105"
         : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"

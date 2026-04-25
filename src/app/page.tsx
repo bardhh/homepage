@@ -47,7 +47,7 @@ export default async function Home() {
 
         <div className="glass rounded-2xl p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
           <div className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
-            <p className="mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-3 first-letter:float-left">
+            <p className="mb-6 first-letter:text-4xl md:first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 md:first-letter:mr-3 first-letter:float-left">
               I am a Senior Principal Scientist at Toyota Research Institute of North America
               (<ExternalLink href="https://amrd.toyota.com/division/trina/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium no-underline border-b-2 border-blue-500/30 hover:border-blue-500 transition-colors" showIcon={false}>TRINA</ExternalLink>)
               in Ann Arbor, Michigan. My research interests include Testing and Verification of Cyber-Physical Systems (CPS),

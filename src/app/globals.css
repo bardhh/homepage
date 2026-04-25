@@ -177,6 +177,15 @@ body::after {
   @apply bg-slate-400 dark:bg-slate-600;
 }
 
+/* Hide scrollbar for horizontal filter rows */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Mobile performance: disable expensive GPU effects */
 @media (width < 768px) {
   body::before,
