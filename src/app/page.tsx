@@ -57,6 +57,7 @@ export default async function Home() {
             </p>
             <p>
               I have served on the program committee for{' '}
+              <ExternalLink href="https://esweek.org/emsoft-program-committee/" className={linkClass} showIcon={false}>EMSOFT 26</ExternalLink>,{' '}
               <ExternalLink href="https://www.usenix.org/conference/vehiclesec26#organizers" className={linkClass} showIcon={false}>VehicleSec 26</ExternalLink>,{' '}
               <ExternalLink href="https://rv2026.smithengineering.queensu.ca/committees/" className={linkClass} showIcon={false}>RV 26</ExternalLink>,{' '}
               <ExternalLink href="https://easychair.org/cfp/nfm-2026" className={linkClass} showIcon={false}>NFM 26</ExternalLink>,{' '}
