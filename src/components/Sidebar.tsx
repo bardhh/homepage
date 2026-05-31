@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { FaUser, FaBookOpen, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
+import { FaUser, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
 import clsx from 'clsx';
 
 const emptySubscribe = () => () => {};
@@ -10,6 +10,7 @@ const emptySubscribe = () => () => {};
 const sections = [
   { id: 'bio', label: 'About Me', icon: <FaUser /> },
   { id: 'publications', label: 'Publications', icon: <FaBookOpen /> },
+  { id: 'patents', label: 'Patents', icon: <FaCertificate /> },
   { id: 'research', label: 'Research Areas', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },

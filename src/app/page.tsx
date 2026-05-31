@@ -5,6 +5,7 @@ import { parseBibtex } from '@/lib/bibtex';
 import dynamic from 'next/dynamic';
 
 const Publications = dynamic(() => import('@/components/Publications'));
+import Patents from '@/components/Patents';
 import ResearchAreas from '@/components/ResearchAreas';
 import Software from '@/components/Software';
 import Teaching from '@/components/Teaching';
@@ -86,6 +87,13 @@ export default async function Home() {
       <Reveal>
         <div className="section-divider">
           <Publications publications={publications} />
+        </div>
+      </Reveal>
+
+      {/* Patents Section */}
+      <Reveal delay={0.1}>
+        <div className="section-divider">
+          <Patents />
         </div>
       </Reveal>
 
