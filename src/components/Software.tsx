@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaFilePdf, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaFilePdf, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 
 const projects = [
   {
@@ -7,6 +7,7 @@ const projects = [
     description: "Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers, sensors, and estimators.",
     repo: "bardhh/cbfkit",
     link: "https://github.com/bardhh/cbfkit",
+    blog: "https://bardhh.github.io/cbfkit/",
     paper: "https://arxiv.org/abs/2404.07158",
     paperName: "IROS2024"
   },
@@ -76,6 +77,12 @@ const Software = () => {
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
                 <FaGithub className="mr-1.5" /> Repository <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
               </a>
+
+              {project.blog && (
+                <a href={project.blog} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
+                  <FaBlog className="mr-1.5" /> Blog <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
+                </a>
+              )}
 
               {project.paper && (
                 <a href={project.paper} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
