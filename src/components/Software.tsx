@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaFilePdf, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
+import { FaGithub, FaFilePdf, FaExternalLinkAlt, FaBlog, FaBook } from 'react-icons/fa';
 
 const projects = [
   {
@@ -10,6 +10,15 @@ const projects = [
     blog: "https://bardhh.github.io/cbfkit/",
     paper: "https://arxiv.org/abs/2404.07158",
     paperName: "IROS2024"
+  },
+  {
+    title: "STREM: Spatio-Temporal Pattern Matching over Perception Streams",
+    description: "STREM is a Rust command-line tool that matches spatio-temporal patterns against annotated perception streams. Using Spatial Regular Expressions (SpREs), it combines regular-expression-style temporal patterns with spatial reasoning over bounding-box detections, making it possible to query large video and autonomous driving datasets for specific scenarios.",
+    repo: "cps-atlas/strem",
+    link: "https://github.com/cps-atlas/strem",
+    docs: "https://cps-atlas.github.io/strem/",
+    paper: "https://arxiv.org/abs/2411.05946",
+    paperName: "STTT2024"
   },
   {
     title: "RTAMT: Runtime Robustness Monitors for STL",
@@ -81,6 +90,12 @@ const Software = () => {
               {project.blog && (
                 <a href={project.blog} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
                   <FaBlog className="mr-1.5" /> Blog <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
+                </a>
+              )}
+
+              {project.docs && (
+                <a href={project.docs} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5">
+                  <FaBook className="mr-1.5" /> Docs <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
                 </a>
               )}
 
