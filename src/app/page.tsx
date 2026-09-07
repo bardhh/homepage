@@ -1,7 +1,5 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import { parseBibtex } from '@/lib/bibtex';
+import { getPublications } from '@/lib/publications';
 import dynamic from 'next/dynamic';
 
 const Publications = dynamic(() => import('@/components/Publications'));
@@ -12,22 +10,6 @@ import Teaching from '@/components/Teaching';
 import Contact from '@/components/Contact';
 import Reveal from '@/components/Reveal';
 import ExternalLink from '@/components/ExternalLink';
-
-async function getPublications() {
-  try {
-    const filePath = path.join(process.cwd(), 'public', 'publications.bib');
-    const fileContent = await fs.promises.readFile(filePath, 'utf8');
-    const parsed = parseBibtex(fileContent);
-    return parsed;
-  } catch (error) {
-    if (error instanceof Error && 'code' in error && (error as { code: string }).code === 'ENOENT') {
-      console.error('File not found:', path.join(process.cwd(), 'public', 'publications.bib'));
-      return [];
-    }
-    console.error('Error in getPublications:', error);
-    return [];
-  }
-}
 
 const linkClass = "font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline";
 

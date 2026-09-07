@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
+import Link from 'next/link';
 import type { Publication } from '@/lib/bibtex';
-import { getPublicationType, publicationLinks, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
+import { getPublicationType, publicationLinks, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 import clsx from 'clsx';
 
@@ -223,6 +224,9 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           </div>
         )}
       </div>
+      <p className="mt-6 text-center text-sm">
+        <Link prefetch={false} href="/publications/" className="font-medium text-blue-600 dark:text-blue-400 hover:underline">Full publication archive</Link>
+      </p>
     </section>
   );
 };
@@ -277,11 +281,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
   const borderClass = borderColors[type as keyof typeof borderColors] || borderColors.other;
 
   const copyBibtex = useCallback(() => {
-    const entryType = pub.entryType || 'misc';
-    const lines = Object.entries(pub.entryTags)
-      .filter(([, v]) => v)
-      .map(([k, v]) => `  ${k} = {${v}}`);
-    const text = `@${entryType}{${pub.citationKey},\n${lines.join(',\n')}\n}`;
+    const text = publicationBibtex(pub);
 
     const onSuccess = () => { setCopied(true); setTimeout(() => setCopied(false), 2000); };
 
@@ -306,22 +306,15 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
 
       {/* Main content */}
       <div className="min-w-0 flex-1">
-        {links.paper || links.pdf ? (
-          <a
-            href={links.paper || links.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group/title"
-          >
-            <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">
-              {pub.entryTags.title}
-            </h3>
-          </a>
-        ) : (
-          <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug">
+        <Link
+          prefetch={false}
+          href={publicationPath(pub)}
+          className="block group/title"
+        >
+          <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">
             {pub.entryTags.title}
           </h3>
-        )}
+        </Link>
         <div className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 truncate">
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>

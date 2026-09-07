@@ -21,6 +21,8 @@ const sections = [
 const Sidebar = () => {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState('bio');
+  const currentSection = pathname === '/' ? activeSection
+    : pathname === '/publications' || pathname.startsWith('/publications/') ? 'publications' : '';
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -43,7 +45,7 @@ const Sidebar = () => {
     });
 
     return () => observers.forEach(o => o.disconnect());
-  }, []);
+  }, [pathname]);
 
   return (
     <aside className="hidden lg:block col-span-3 sticky top-8 h-fit">
@@ -56,22 +58,22 @@ const Sidebar = () => {
               href={`${pathname === "/" ? "" : "/"}#${id}`}
               className={clsx(
                 "group flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium",
-                activeSection === id
+                currentSection === id
                   ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                   : "text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400"
               )}
-              aria-current={activeSection === id ? "location" : undefined}
+              aria-current={currentSection === id ? "location" : undefined}
             >
               <span className={clsx(
                 "mr-3 transition-colors",
-                activeSection === id
+                currentSection === id
                   ? "text-blue-500"
                   : "text-slate-400 group-hover:text-blue-500"
               )}>
                 {icon}
               </span>
               {label}
-              {activeSection === id && (
+              {currentSection === id && (
                 <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
               )}
             </a>

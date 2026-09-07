@@ -26,6 +26,120 @@ export function publicationLinks(entry: Publication) {
   return { paper: url, pdf: explicitPdf };
 }
 
+export const SITE_URL = 'https://www.bhoxha.com';
+
+export function publicationPath(entry: Pick<Publication, 'citationKey'>) {
+  return `/publications/${encodeURIComponent(entry.citationKey)}/`;
+}
+
+export function publicationAuthors(value = ''): string[] {
+  // Older entries use a comma-separated list of full names instead of BibTeX's "and".
+  const commaParts = value.split(',').map(name => name.trim());
+  if (!/\s+and\s+/i.test(value) && commaParts.length > 2 && commaParts.every(name => /\s/.test(name))) {
+    return commaParts;
+  }
+  return value.split(/\s+and\s+/i).map(name => {
+    const [family, given, suffix] = name.trim().split(',').map(part => part.trim());
+    if (suffix) return `${suffix} ${family}, ${given}`; // Last, Jr, First
+    return given ? `${given} ${family}` : family;
+  }).filter(Boolean);
+}
+
+export function publicationBibtex(entry: Publication) {
+  const fields = Object.entries(entry.entryTags)
+    .filter(([, value]) => value)
+    .map(([key, value]) => `  ${key} = {${value}}`);
+  return `@${entry.entryType}{${entry.citationKey},\n${fields.join(',\n')}\n}`;
+}
+
+function absolutePublicationUrl(value?: string) {
+  if (!value) return undefined;
+  const url = new URL(value, `${SITE_URL}/`);
+  if (!['https:', 'http:'].includes(url.protocol)) throw new Error(`Unsupported publication URL: ${value}`);
+  return url.href;
+}
+
+export function publicationRecord(entry: Publication) {
+  const tags = entry.entryTags;
+  const links = publicationLinks(entry);
+  return {
+    id: entry.citationKey,
+    title: tags.title || '',
+    authors: publicationAuthors(tags.author),
+    year: tags.year,
+    type: getPublicationType(entry),
+    venue: tags.booktitle || tags.journal,
+    abstract: tags.abstract,
+    keywords: (tags.keywords || '').split(',').map(keyword => keyword.trim()).filter(Boolean),
+    award: tags.award,
+    doi: tags.doi,
+    url: `${SITE_URL}${publicationPath(entry)}`,
+    links: {
+      paper: absolutePublicationUrl(links.paper),
+      pdf: absolutePublicationUrl(links.pdf),
+      code: absolutePublicationUrl(tags.code),
+      video: absolutePublicationUrl(tags.video),
+    },
+    bibtex: publicationBibtex(entry),
+  };
+}
+
+export function publicationJsonLd(entry: Publication) {
+  const record = publicationRecord(entry);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ScholarlyArticle',
+    '@id': `${record.url}#article`,
+    url: record.url,
+    mainEntityOfPage: record.url,
+    headline: record.title,
+    name: record.title,
+    author: record.authors.map(name => ({
+      '@type': 'Person', name,
+      ...(name === 'Bardh Hoxha' ? { '@id': `${SITE_URL}/#person` } : {}),
+    })),
+    // Do not manufacture a month/day when the bibliography only supplies a year.
+    datePublished: record.year,
+    creativeWorkStatus: record.type === 'preprint' ? 'Preprint' : undefined,
+    description: record.abstract,
+    keywords: record.keywords,
+    isPartOf: record.venue ? { '@type': 'CreativeWork', name: record.venue } : undefined,
+    identifier: record.doi,
+    sameAs: record.links.paper,
+    encoding: record.links.pdf ? {
+      '@type': 'MediaObject', contentUrl: record.links.pdf, encodingFormat: 'application/pdf',
+    } : undefined,
+    award: record.award,
+  };
+}
+
+export function serializeJsonLd(value: unknown) {
+  // Prevent data in the bibliography from closing the HTML script element.
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
+export function publicationsMarkdown(entries: Publication[]) {
+  const text = (value: string) => value.replace(/[\\`*_[\]<>#]/g, '\\$&').replace(/\r?\n/g, ' ');
+  return '# Publications — Bardh Hoxha\n\nSource: https://www.bhoxha.com/publications.bib\n\n' + entries.map(entry => {
+    const record = publicationRecord(entry);
+    return [
+      `## ${text(record.title)}`,
+      '',
+      `- Citation key: ${text(record.id)}`,
+      `- Authors: ${record.authors.map(text).join('; ')}`,
+      record.year && `- Year: ${text(record.year)}`,
+      `- Type: ${record.type}`,
+      record.venue && `- Venue: ${text(record.venue)}`,
+      `- Page: ${record.url}`,
+      ...Object.entries(record.links).filter(([, url]) => url).map(([label, url]) => `- ${label}: ${url}`),
+      record.keywords.length > 0 && `- Topics: ${record.keywords.map(text).join('; ')}`,
+      record.award && `- Award: ${text(record.award)}`,
+      record.doi && `- DOI: ${text(record.doi)}`,
+      record.abstract && `\n${text(record.abstract)}`,
+    ].filter(line => line !== undefined && line !== false).join('\n');
+  }).join('\n\n') + '\n';
+}
+
 export const ITEMS_PER_PAGE = 15;
 export const FILTER_TYPES = ['all', 'conference', 'journal', 'workshop', 'preprint', 'recent'] as const;
 export const THEMES = ['learning', 'planning', 'verification', 'testing', 'risk'] as const;

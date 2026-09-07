@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run check:links",
+    "build": "next build && npm run check:links && npm run check:publications",
     "start": "next start",
     "lint": "eslint",
     "check:links": "node scripts/check-internal-links.mjs",
+    "check:publications": "node scripts/check-publication-exports.mjs",
     "test": "node --test scripts/publications.test.mjs"
   },
   "engines": {

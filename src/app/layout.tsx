@@ -95,6 +95,7 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Person",
+                "@id": "https://www.bhoxha.com/#person",
                 "name": "Bardh Hoxha",
                 "url": "https://www.bhoxha.com",
                 "jobTitle": "Senior Principal Scientist",

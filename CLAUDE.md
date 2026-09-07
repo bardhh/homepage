@@ -7,7 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` — Start development server
 - `npm run build` — Production build (static export to `out/`)
 - `npm run lint` — Run ESLint
-- No test framework is configured
+- `npm test` — Publication behavior tests using Node's test runner
+- `npm run check:publications` — Verify generated archive, paper pages, and exports against BibTeX (after building)
 
 ## Architecture
 
@@ -21,7 +22,7 @@ Static academic portfolio for bhoxha.com built with Next.js 16 (App Router), Rea
 
 ### Data Flow
 
-`page.tsx` reads `public/publications.bib` at build time via `fs.promises.readFile()`, parses it with `bibtex-parse-js`, and passes the result to the client-side `<Publications>` component (lazy-loaded via `next/dynamic`). All other section content (Research, Teaching, Software, Contact) is hardcoded in their respective components.
+`src/lib/publications.ts` reads `public/publications.bib` at build time and parses it with `bibtex-parse-js`. This is the only publication data source: the homepage, static archive, individual paper pages, JSON-LD, Markdown, JSON, and sitemap all use it. See `docs/publication-publishing.md`. The Markdown/JSON route handlers are build-time-only static file generators, not deployed APIs. All other section content (Research, Teaching, Software, Contact) is hardcoded in their respective components.
 
 ### Key Directories
 
@@ -41,4 +42,4 @@ Tailwind CSS 4 with `@import "tailwindcss"` syntax. Custom utilities (`.glass`, 
 
 ### Deployment
 
-Auto-deploys from `master` via GitHub Actions to Azure Static Web Apps. PRs run build-only verification.
+Auto-deploys from `master` via GitHub Actions to Azure Static Web Apps. PRs run lint, tests, and the static build, including link and publication-export checks.
