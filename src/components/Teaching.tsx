@@ -10,28 +10,28 @@ const courses = [
     semester: "Fall 2018",
     university: "Southern Illinois University",
     description: "This course focused on the verification and testing of Cyber-Physical Systems (CPS). Topics included: Hybrid Automata, Reachability Analysis, Temporal Logics (LTL, MTL, STL), Falsification, and Data-Driven Verification.",
-    link: "/legacy_site/CS591F18.html"
+    link: null
   },
   {
     title: "CS 499: Senior Project",
     semester: "Spring 2018",
     university: "Southern Illinois University",
     description: "Capstone project course for computer science seniors. Students worked in teams to design and implement significant software projects.",
-    link: "/legacy_site/CS499S18.html"
+    link: null
   },
   {
     title: "CS 498: Senior Project",
     semester: "Fall 2017",
     university: "Southern Illinois University",
     description: "First part of the senior capstone sequence. Focus on requirements analysis, design, and prototyping.",
-    link: "/legacy_site/CS498F17.html"
+    link: null
   },
   {
     title: "CS 290: Communication Skills",
     semester: "Fall 2017",
     university: "Southern Illinois University",
     description: "Course designed to improve technical communication skills, including writing technical reports and giving presentations.",
-    link: "/legacy_site/CS290F17.html"
+    link: null
   }
 ];
 
@@ -44,7 +44,7 @@ const Teaching = () => {
   };
 
   return (
-    <section id="teaching" className="scroll-mt-24" role="region" aria-label="Teaching experience">
+    <section tabIndex={-1} id="teaching" className="scroll-mt-24" role="region" aria-label="Teaching experience">
       <div className="flex items-center mb-8">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">

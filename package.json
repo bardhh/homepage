@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run check:links",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:links": "node scripts/check-internal-links.mjs",
+    "test": "node --test scripts/publications.test.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

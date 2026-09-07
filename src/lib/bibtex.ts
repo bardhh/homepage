@@ -22,21 +22,3 @@ export function parseBibtex(content: string): Publication[] {
   // The library returns a specific structure, we might want to normalize it or just pass it through
   return parsed as Publication[];
 }
-
-export function getPublicationType(entry: Publication): 'conference' | 'journal' | 'workshop' | 'other' {
-  const type = entry.entryType.toLowerCase();
-  const venue = (entry.entryTags.booktitle || entry.entryTags.journal || '').toLowerCase();
-
-  if (venue.includes('workshop')) return 'workshop';
-
-  if (type === 'article') {
-    if (!venue) return 'other';
-    if (venue.includes('arxiv') || venue.includes('preprint')) return 'conference';
-    if (venue.includes('proc.') || venue.includes('proceedings')) return 'conference';
-    return 'journal';
-  }
-
-  if (type === 'inproceedings' || type === 'conference') return 'conference';
-
-  return 'other';
-}

@@ -108,3 +108,11 @@ This project is for personal academic use.
 ## Acknowledgments
 
 Built with Next.js and deployed on Azure Static Web Apps.
+
+## Publication filters and validation
+
+Publication searches can be shared using the `q`, `type`, `themes`, and `count` URL parameters. Selected themes use AND matching. Preprints have their own classification and filter; arXiv paper-page and PDF links are distinguished automatically. The optional BibTeX `pdf` field can supply a direct PDF separately from a paper's `url`.
+
+Run `npm run lint`, `npm test`, and `npm run build`. Production builds automatically run `check:links`, which checks local files and anchors in the exported HTML and the full bibliography, including publications hidden by pagination. Broken local references fail the build. External destinations are not comprehensively crawled.
+
+The current scope and verification notes are saved in [the improvement plan](docs/homepage-improvements.md).

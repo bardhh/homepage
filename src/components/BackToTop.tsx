@@ -16,7 +16,7 @@ const BackToTop = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   };
 
   if (!visible) return null;
@@ -27,7 +27,7 @@ const BackToTop = () => {
       className="fixed bottom-6 right-6 z-40 p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
       aria-label="Back to top"
     >
-      <FaArrowUp className="text-lg" />
+      <FaArrowUp aria-hidden="true" className="text-lg" />
     </button>
   );
 };

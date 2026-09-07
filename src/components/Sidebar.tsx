@@ -4,6 +4,7 @@ import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 import { FaUser, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
 import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 const emptySubscribe = () => () => {};
 
@@ -18,6 +19,7 @@ const sections = [
 ];
 
 const Sidebar = () => {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState('bio');
 
   useEffect(() => {
@@ -43,29 +45,22 @@ const Sidebar = () => {
     return () => observers.forEach(o => o.disconnect());
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <aside className="hidden lg:block col-span-3 sticky top-8 h-fit">
       <div className="glass rounded-2xl p-6 space-y-8 transition-all duration-300 hover:shadow-xl border border-white/40 dark:border-slate-700/40">
         <nav className="flex flex-col space-y-2" aria-label="Page sections">
           <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-4">Navigation</p>
           {sections.map(({ id, label, icon }) => (
-            <button
+            <a
               key={id}
-              onClick={() => scrollToSection(id)}
+              href={`${pathname === "/" ? "" : "/"}#${id}`}
               className={clsx(
                 "group flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium",
                 activeSection === id
                   ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                   : "text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400"
               )}
-              aria-current={activeSection === id ? "true" : undefined}
+              aria-current={activeSection === id ? "location" : undefined}
             >
               <span className={clsx(
                 "mr-3 transition-colors",
@@ -79,7 +74,7 @@ const Sidebar = () => {
               {activeSection === id && (
                 <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
               )}
-            </button>
+            </a>
           ))}
         </nav>
 
@@ -92,7 +87,7 @@ const Sidebar = () => {
 };
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme: theme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!mounted) {

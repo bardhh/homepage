@@ -31,6 +31,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           npm ci
+          npm run lint
+          npm test
           npm run build
 
       # Deployment: Master only

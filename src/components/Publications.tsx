@@ -1,28 +1,41 @@
 "use client";
 
-import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react';
-import { Publication, getPublicationType } from '@/lib/bibtex';
+import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
+import type { Publication } from '@/lib/bibtex';
+import { getPublicationType, publicationLinks, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 import clsx from 'clsx';
 
 const ITEMS_PER_PAGE = 15;
 const RECENT_YEARS = 5;
 
+const stateEvent = 'publication-state-change';
+function subscribe(callback: () => void) {
+  window.addEventListener('popstate', callback);
+  window.addEventListener(stateEvent, callback);
+  return () => { window.removeEventListener('popstate', callback); window.removeEventListener(stateEvent, callback); };
+}
+const getSnapshot = () => window.location.search;
+const getServerSnapshot = () => '';
+const emptySubscribe = () => () => {};
+
 interface PublicationsProps {
   publications: Publication[];
 }
 
 const Publications: React.FC<PublicationsProps> = ({ publications }) => {
-  const [typeFilter, setTypeFilter] = useState<string>('all');
-  const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
-  const [search, setSearch] = useState<string>('');
-  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+  const query = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const state = useMemo(() => readPublicationState(query), [query]);
+  const { type: typeFilter, themes: selectedThemes, search, count: visibleCount } = state;
+  const update = (patch: Partial<PublicationState>, replace = false) => {
+    const next = writePublicationState(window.location.search, { ...state, ...patch });
+    const url = `${window.location.pathname}${next ? `?${next}` : ''}#publications`;
+    if (replace) window.history.replaceState(null, '', url);
+    else window.history.pushState(null, '', url);
+    window.dispatchEvent(new Event(stateEvent));
+  };
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isMac, setIsMac] = useState(false);
-
-  useEffect(() => {
-    setIsMac(navigator.platform.toUpperCase().includes('MAC'));
-  }, []);
+  const isMac = useSyncExternalStore(emptySubscribe, () => navigator.platform.toUpperCase().includes('MAC'), () => false);
 
   const recentCutoff = useMemo(() => new Date().getFullYear() - RECENT_YEARS, []);
 
@@ -32,7 +45,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         inputRef.current?.focus();
-        inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        inputRef.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -40,21 +53,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   }, []);
 
   const toggleTheme = (theme: string) => {
-    setSelectedThemes(prev =>
-      prev.includes(theme) ? prev.filter(t => t !== theme) : [...prev, theme]
-    );
-    setVisibleCount(ITEMS_PER_PAGE);
+    update({ themes: selectedThemes.includes(theme) ? selectedThemes.filter(t => t !== theme) : [...selectedThemes, theme], count: ITEMS_PER_PAGE });
   };
-
-  const handleTypeFilter = (filter: string) => {
-    setTypeFilter(filter);
-    setVisibleCount(ITEMS_PER_PAGE);
-  };
-
-  const handleSearch = (value: string) => {
-    setSearch(value);
-    setVisibleCount(ITEMS_PER_PAGE);
-  };
+  const handleTypeFilter = (type: string) => update({ type, count: ITEMS_PER_PAGE });
+  const handleSearch = (search: string) => update({ search, count: ITEMS_PER_PAGE }, true);
 
   const filteredPubs = useMemo(() => {
     const searchLower = search.toLowerCase();
@@ -64,9 +66,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         if (typeFilter === 'recent') {
           const year = parseInt(pub.entryTags.year || '0');
           if (year < recentCutoff) return false;
-        } else if (typeFilter === 'paper-conf' && type !== 'conference') return false;
-        else if (typeFilter === 'paper-jour' && type !== 'journal') return false;
-        else if (typeFilter === 'paper-work' && type !== 'workshop') return false;
+        } else if (typeFilter === 'conference' && type !== 'conference') return false;
+        else if (typeFilter === 'journal' && type !== 'journal') return false;
+        else if (typeFilter === 'workshop' && type !== 'workshop') return false;
+        else if (typeFilter === 'preprint' && type !== 'preprint') return false;
       }
 
       if (selectedThemes.length > 0) {
@@ -107,13 +110,16 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const [cardsVisible, setCardsVisible] = useState(false);
 
   useEffect(() => {
-    setCardsVisible(false);
-    const id = requestAnimationFrame(() => setCardsVisible(true));
-    return () => cancelAnimationFrame(id);
+    let showFrame = 0;
+    const resetFrame = requestAnimationFrame(() => {
+      setCardsVisible(false);
+      showFrame = requestAnimationFrame(() => setCardsVisible(true));
+    });
+    return () => { cancelAnimationFrame(resetFrame); cancelAnimationFrame(showFrame); };
   }, [typeFilter, selectedThemes, search, visibleCount]);
 
   return (
-    <section id="publications" className="scroll-mt-24" role="region" aria-label="Publications">
+    <section tabIndex={-1} id="publications" className="scroll-mt-24" role="region" aria-label="Publications">
       <div className="flex items-center mb-8">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
@@ -157,9 +163,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             <legend className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Filter by type</legend>
             <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
               <FilterButton active={typeFilter === 'all'} onClick={() => handleTypeFilter('all')} icon={<FaLayerGroup />}>All</FilterButton>
-              <FilterButton active={typeFilter === 'paper-conf'} onClick={() => handleTypeFilter('paper-conf')} icon={<FaUsers />}>Conferences</FilterButton>
-              <FilterButton active={typeFilter === 'paper-jour'} onClick={() => handleTypeFilter('paper-jour')} icon={<FaBook />}>Journals</FilterButton>
-              <FilterButton active={typeFilter === 'paper-work'} onClick={() => handleTypeFilter('paper-work')} icon={<FaLaptopCode />}>Workshops</FilterButton>
+              <FilterButton active={typeFilter === 'conference'} onClick={() => handleTypeFilter('conference')} icon={<FaUsers />}>Conferences</FilterButton>
+              <FilterButton active={typeFilter === 'journal'} onClick={() => handleTypeFilter('journal')} icon={<FaBook />}>Journals</FilterButton>
+              <FilterButton active={typeFilter === 'workshop'} onClick={() => handleTypeFilter('workshop')} icon={<FaLaptopCode />}>Workshops</FilterButton>
+              <FilterButton active={typeFilter === 'preprint'} onClick={() => handleTypeFilter('preprint')} icon={<FaFilePdf />}>Preprints</FilterButton>
               <FilterButton active={typeFilter === 'recent'} onClick={() => handleTypeFilter('recent')} icon={<FaCalendarAlt />}>Recent ({recentCutoff}+)</FilterButton>
             </div>
           </fieldset>
@@ -208,7 +215,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         {hasMore && (
           <div className="text-center pt-4">
             <button
-              onClick={() => setVisibleCount(prev => prev + ITEMS_PER_PAGE)}
+              onClick={() => update({ count: visibleCount + ITEMS_PER_PAGE })}
               className="inline-flex items-center px-6 py-3 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded-xl transition-all border border-blue-200 dark:border-blue-800"
             >
               Show more ({sortedPubs.length - visibleCount} remaining)
@@ -250,17 +257,20 @@ function fallbackCopy(text: string, onSuccess: () => void) {
 const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) => {
   const [copied, setCopied] = useState(false);
   const type = getPublicationType(pub);
+  const links = publicationLinks(pub);
 
   const typeColors = {
     conference: 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300',
     journal: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300',
     workshop: 'bg-pink-100 text-pink-700 dark:bg-pink-500/20 dark:text-pink-300',
+    preprint: 'bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200',
     other: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300',
   };
   const borderColors = {
     conference: 'border-l-blue-500',
     journal: 'border-l-emerald-500',
     workshop: 'border-l-pink-500',
+    preprint: 'border-l-amber-500',
     other: 'border-l-slate-400',
   };
   const badgeClass = typeColors[type as keyof typeof typeColors] || typeColors.other;
@@ -296,9 +306,9 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
 
       {/* Main content */}
       <div className="min-w-0 flex-1">
-        {pub.entryTags.url ? (
+        {links.paper || links.pdf ? (
           <a
-            href={pub.entryTags.url}
+            href={links.paper || links.pdf}
             target="_blank"
             rel="noopener noreferrer"
             className="block group/title"
@@ -317,7 +327,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
           <span className="font-medium text-slate-700 dark:text-slate-300">
-            {pub.entryTags.booktitle}
+            {pub.entryTags.booktitle || pub.entryTags.journal}
           </span>
           {pub.entryTags.year && <span className="text-slate-400">· {pub.entryTags.year}</span>}
           <span className={clsx("px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide", badgeClass)}>
@@ -343,7 +353,8 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
             </span>
           )}
         </div>
-        {pub.entryTags.url   && <IconLink href={pub.entryTags.url}   label="PDF"  ><FaFilePdf/></IconLink>}
+        {links.paper && <IconLink href={links.paper} label="Paper"><FaExternalLinkAlt/></IconLink>}
+        {links.pdf && <IconLink href={links.pdf} label="PDF"><FaFilePdf/></IconLink>}
         {pub.entryTags.video && <IconLink href={pub.entryTags.video} label="Video"><FaVideo/></IconLink>}
         {pub.entryTags.code  && <IconLink href={pub.entryTags.code}  label="Code" ><FaCode/></IconLink>}
       </div>
@@ -362,17 +373,6 @@ const IconLink = ({ href, label, children }: { href: string, label: string, chil
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}
     className="w-7 h-7 grid place-items-center rounded hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-xs">
     {children}
-  </a>
-);
-
-const ActionButton = ({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5"
-  >
-    <span className="mr-1.5">{icon}</span> {label} <FaExternalLinkAlt className="ml-1.5 text-[0.6em] opacity-50" />
   </a>
 );
 

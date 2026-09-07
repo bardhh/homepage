@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -12,12 +13,12 @@ const Footer = () => {
         {/* Quick Links + Social */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-500 dark:text-slate-400" aria-label="Footer navigation">
-            <a href="#bio" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-            <a href="#publications" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</a>
-            <a href="#research" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Research</a>
-            <a href="#teaching" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Teaching</a>
-            <a href="#software" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Software</a>
-            <a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+            <Link href="/#bio" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/#publications" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</Link>
+            <Link href="/#research" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Research</Link>
+            <Link href="/#teaching" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Teaching</Link>
+            <Link href="/#software" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Software</Link>
+            <Link href="/#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</Link>
           </nav>
 
           <div className="flex gap-3">
