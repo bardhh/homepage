@@ -30,8 +30,9 @@ Use standard BibTeX `and` separators between authors. Both `First Last` and
 `Last, First` names are supported, as are the older comma-separated full-name lists
 already in this bibliography. Prefer `and` for new entries to avoid ambiguity.
 
-Optional fields `abstract`, `doi`, `keywords`, `award`, `url`, `pdf`, `code`, and
-`video` automatically appear in the relevant generated views. No abstracts or
+Optional fields `abstract`, `doi`, `keywords`, `award`, `url`, `pdf`, `website`
+(project page or blog post), `code`, and `video` automatically appear in the
+relevant generated views. No abstracts or
 publication dates are inferred. Existing type classification is shared with the
 homepage: an accepted paper with a named venue keeps its type even if hosted on arXiv.
 For preprints, explicitly use an arXiv/preprint venue until the entry is updated.

@@ -77,6 +77,7 @@ export function publicationRecord(entry: Publication) {
     links: {
       paper: absolutePublicationUrl(links.paper),
       pdf: absolutePublicationUrl(links.pdf),
+      website: absolutePublicationUrl(tags.website),
       code: absolutePublicationUrl(tags.code),
       video: absolutePublicationUrl(tags.video),
     },

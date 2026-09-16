@@ -42,8 +42,10 @@ test('author identities handle both BibTeX name orders and existing legacy lists
 });
 
 test('exports resolve local assets at the site root and keep paper status consistent', () => {
-  const pub = entry('inproceedings', { title: 'A paper', author: 'Hoxha, Bardh', booktitle: 'ACC 2026', year: '2026', url: 'papers/example.pdf', code: 'https://example.com/code' });
+  const pub = entry('inproceedings', { title: 'A paper', author: 'Hoxha, Bardh', booktitle: 'ACC 2026', year: '2026', url: 'papers/example.pdf', code: 'https://example.com/code', website: 'https://example.github.io/project/' });
   const record = publicationRecord(pub);
+  assert.equal(record.links.website, 'https://example.github.io/project/');
+  assert.ok(publicationsMarkdown([pub]).includes('- website: https://example.github.io/project/'));
   assert.equal(record.links.pdf, 'https://www.bhoxha.com/papers/example.pdf');
   assert.equal(record.links.paper, undefined);
   assert.equal(record.url, 'https://www.bhoxha.com/publications/test/');

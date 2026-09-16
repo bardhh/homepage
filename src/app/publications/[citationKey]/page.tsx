@@ -53,6 +53,7 @@ export default async function PublicationPage({ params }: Props) {
         <nav aria-label="Paper resources" className="flex flex-wrap gap-x-5 gap-y-3 mt-6">
           {publication.links.paper && <a href={publication.links.paper} className={publicationLinkClass}>Read paper</a>}
           {publication.links.pdf && <a href={publication.links.pdf} className={publicationLinkClass}>PDF</a>}
+          {publication.links.website && <a href={publication.links.website} className={publicationLinkClass}>Project page</a>}
           {publication.links.code && <a href={publication.links.code} className={publicationLinkClass}>Code</a>}
           {publication.links.video && <a href={publication.links.video} className={publicationLinkClass}>Video</a>}
         </nav>

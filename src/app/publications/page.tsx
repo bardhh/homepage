@@ -40,6 +40,7 @@ export default async function PublicationsArchive() {
               <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3 text-sm">
                 {publication.links.paper && <a href={publication.links.paper} className={publicationLinkClass}>Paper</a>}
                 {publication.links.pdf && <a href={publication.links.pdf} className={publicationLinkClass}>PDF</a>}
+                {publication.links.website && <a href={publication.links.website} className={publicationLinkClass}>Project page</a>}
                 {publication.links.code && <a href={publication.links.code} className={publicationLinkClass}>Code</a>}
                 {publication.links.video && <a href={publication.links.video} className={publicationLinkClass}>Video</a>}
               </div>

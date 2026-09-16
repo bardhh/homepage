@@ -37,6 +37,6 @@ for (const file of htmlFiles) {
 }
 // Include papers hidden behind client-side pagination.
 const bibliography = bibtex.toJSON(await readFile('public/publications.bib', 'utf8'));
-for (const pub of bibliography) for (const key of ['url', 'pdf', 'code', 'video']) if (pub.entryTags[key]) await check(pub.entryTags[key], path.join(root, 'index.html'));
+for (const pub of bibliography) for (const key of ['url', 'pdf', 'website', 'code', 'video']) if (pub.entryTags[key]) await check(pub.entryTags[key], path.join(root, 'index.html'));
 if (failures.size) { console.error([...failures].join('\n')); process.exitCode = 1; }
 else console.log(`Checked ${checked} internal references across ${htmlFiles.length} HTML pages and ${bibliography.length} bibliography entries.`);

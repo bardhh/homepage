@@ -4,7 +4,7 @@ import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExtern
 import Link from 'next/link';
 import type { Publication } from '@/lib/bibtex';
 import { getPublicationType, publicationLinks, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
-import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 import clsx from 'clsx';
 
 const ITEMS_PER_PAGE = 15;
@@ -348,6 +348,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
         </div>
         {links.paper && <IconLink href={links.paper} label="Paper"><FaExternalLinkAlt/></IconLink>}
         {links.pdf && <IconLink href={links.pdf} label="PDF"><FaFilePdf/></IconLink>}
+        {pub.entryTags.website && <IconLink href={pub.entryTags.website} label="Project page"><FaBlog/></IconLink>}
         {pub.entryTags.video && <IconLink href={pub.entryTags.video} label="Video"><FaVideo/></IconLink>}
         {pub.entryTags.code  && <IconLink href={pub.entryTags.code}  label="Code" ><FaCode/></IconLink>}
       </div>
