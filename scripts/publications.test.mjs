@@ -10,6 +10,7 @@ const entry = (entryType, entryTags) => ({ entryType, entryTags, citationKey: 't
 test('preprint venues are not promoted to conferences', () => {
   for (const type of ['article','inproceedings','misc']) assert.equal(getPublicationType(entry(type,{booktitle:'arXiv preprint, 2026'})), 'preprint');
   assert.equal(getPublicationType(entry('misc',{url:'https://arxiv.org/abs/1234.56789'})), 'preprint');
+  assert.equal(getPublicationType(entry('inproceedings',{booktitle:'Under review at ICLR, 2027'})), 'preprint');
 });
 test('accepted papers keep their venue classification even when hosted on arXiv', () => {
   assert.equal(getPublicationType(entry('inproceedings',{booktitle:'IROS 2026',url:'https://arxiv.org/abs/1234.56789'})), 'conference');

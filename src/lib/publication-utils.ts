@@ -5,7 +5,7 @@ export function getPublicationType(entry: Publication): 'conference' | 'journal'
   const venue = (entry.entryTags.booktitle || entry.entryTags.journal || '').toLowerCase();
   if (venue.includes('workshop')) return 'workshop';
   // A known venue takes precedence over an arXiv URL for accepted papers.
-  if (venue.includes('arxiv') || venue.includes('preprint')) return 'preprint';
+  if (venue.includes('arxiv') || venue.includes('preprint') || venue.includes('under review')) return 'preprint';
   if (!venue && (entry.entryTags.eprint || /arxiv\.org/.test(entry.entryTags.url || ''))) return 'preprint';
   if (type === 'inproceedings' || type === 'conference') return 'conference';
   if (type === 'article') {
