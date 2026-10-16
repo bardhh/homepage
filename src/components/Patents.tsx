@@ -19,6 +19,14 @@ const search = (title: string) =>
 const patents: Patent[] = [
   // --- Granted ---
   {
+    title: 'Learning abstractions for multi-robot path planning in unstructured environments',
+    number: 'US 12,654,320 B2',
+    status: 'granted',
+    inventors: 'Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
+    year: '2026',
+    link: 'https://patents.google.com/patent/US12654320B2/en',
+  },
+  {
     title: 'Systems and methods for risk-bounded control barrier functions',
     number: 'US 12,487,598 B2',
     status: 'granted',
@@ -44,12 +52,52 @@ const patents: Patent[] = [
   },
   // --- Pending applications ---
   {
+    title: 'Neural configuration distance function for continuum robot control',
+    number: 'US App. 19/057,472',
+    status: 'pending',
+    inventors: 'Kehan Long, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto',
+    year: '2026',
+    link: 'https://patents.google.com/patent/US20260241561A1/en',
+  },
+  {
+    title: 'Methods of qualitative and quantitative verification of complex learning-enabled systems and temporal logic verification',
+    number: 'US App. 19/003,350',
+    status: 'pending',
+    inventors: 'Bardh Hoxha, Georgios Fainekos, Hideki Okamoto, Danil Prokhorov, Hoang-Dung Tran',
+    year: '2026',
+    link: 'https://patents.google.com/patent/US20260184308A1/en',
+  },
+  {
+    title: 'System and method for manipulating an omnidirectional cart using an armed robot',
+    number: 'US App. 18/983,979',
+    status: 'pending',
+    inventors: 'Bardh Hoxha, Georgios Fainekos, Hideki Okamoto, Danil V. Prokhorov, Mitchell Black',
+    year: '2026',
+    link: 'https://patents.google.com/patent/US20260166711A1/en',
+  },
+  {
     title: 'Producing a simulation recording to test an automated driving system',
     number: 'US App. 19/016,308',
     status: 'pending',
     inventors: 'Yan Miao, Bardh Hoxha, Georgios Fainekos, Hideki Okamoto, Michael J. Johnson, Vladimeros Vladimerou',
     year: '2026',
     link: search('Producing a simulation recording to test an automated driving system'),
+  },
+  {
+    title: 'Methods and systems for spatio-temporal regular expression matching',
+    number: 'US App. 19/230,678',
+    status: 'pending',
+    inventors: 'Jacob W. Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
+    year: '2025',
+    link: 'https://patents.google.com/patent/US20250298855A1/en',
+  },
+  {
+    title: 'System and method for optimization of vehicle perception sensor configuration',
+    number: 'US App. 18/593,630',
+    status: 'pending',
+    inventors: 'Noah T. Curran, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
+    year: '2025',
+    link: 'https://patents.google.com/patent/US20250276708A1/en',
   },
   {
     title: 'System and method for safe control synthesis for hybrid systems through local control barrier functions',
@@ -66,14 +114,6 @@ const patents: Patent[] = [
     inventors: 'Mitchell Black, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil Prokhorov',
     year: '2025',
     link: search('Systems and methods for predictive risk-aware control of vehicles in dynamic environments'),
-  },
-  {
-    title: 'Learning abstractions for multi-robot path planning in unstructured environments',
-    number: 'US App. 18/614,355',
-    status: 'pending',
-    inventors: 'Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
-    year: '2025',
-    link: search('Learning abstractions for multi-robot path planning in unstructured environments'),
   },
   {
     title: 'Systems and methods for control barrier functions for enhanced feasibility in optimization-based control',
