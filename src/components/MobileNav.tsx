@@ -5,6 +5,8 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import {
   FaUser,
+  FaAward, FaMicrophoneAlt,
+  FaUsers,
   FaBookOpen,
   FaCertificate,
   FaMicroscope,
@@ -24,6 +26,9 @@ const sections = [
   { id: 'research', label: 'Research', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },
+  { id: 'honors', label: 'Honors', icon: <FaAward /> },
+  { id: 'talks', label: 'Invited Talks', icon: <FaMicrophoneAlt /> },
+  { id: 'service', label: 'Service', icon: <FaUsers /> },
   { id: 'contact', label: 'Contact', icon: <FaEnvelope /> },
 ];
 

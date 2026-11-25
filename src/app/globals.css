@@ -102,7 +102,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 

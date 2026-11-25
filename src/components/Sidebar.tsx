@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { FaUser, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
+import { FaUser, FaAward, FaMicrophoneAlt, FaUsers, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
 import clsx from 'clsx';
+import SidebarTrace from './verification/NetworkVerification';
+import styles from './verification/verification.module.css';
 import { usePathname } from 'next/navigation';
 
 const emptySubscribe = () => () => {};
@@ -15,6 +17,9 @@ const sections = [
   { id: 'research', label: 'Research Areas', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },
+  { id: 'honors', label: 'Honors', icon: <FaAward /> },
+  { id: 'talks', label: 'Invited Talks', icon: <FaMicrophoneAlt /> },
+  { id: 'service', label: 'Service', icon: <FaUsers /> },
   { id: 'contact', label: 'Contact', icon: <FaEnvelope /> },
 ];
 
@@ -48,7 +53,7 @@ const Sidebar = () => {
   }, [pathname]);
 
   return (
-    <aside className="hidden lg:block col-span-3 sticky top-8 h-fit">
+    <aside className={clsx("hidden lg:block col-span-3 sticky top-8 h-fit", pathname === "/" && styles.profileRail)}>
       <div className="glass rounded-2xl p-6 space-y-8 transition-all duration-300 hover:shadow-xl border border-white/40 dark:border-slate-700/40">
         <nav className="flex flex-col space-y-2" aria-label="Page sections">
           <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-4">Navigation</p>
@@ -84,6 +89,7 @@ const Sidebar = () => {
           <ThemeToggle />
         </div>
       </div>
+      {pathname === "/" && <div className={styles.underMenu}><SidebarTrace /></div>}
     </aside>
   );
 };

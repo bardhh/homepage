@@ -8,10 +8,11 @@ import ResearchAreas from '@/components/ResearchAreas';
 import Software from '@/components/Software';
 import Teaching from '@/components/Teaching';
 import Contact from '@/components/Contact';
+import Honors, { InvitedTalks } from '@/components/Honors';
+import Service from '@/components/Service';
 import Reveal from '@/components/Reveal';
 import ExternalLink from '@/components/ExternalLink';
 
-const linkClass = "font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 no-underline hover:underline";
 
 export default async function Home() {
   const publications = await getPublications();
@@ -30,36 +31,14 @@ export default async function Home() {
 
         <div className="glass rounded-2xl p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
           <div className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
-            <p className="mb-6 first-letter:text-4xl md:first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 md:first-letter:mr-3 first-letter:float-left">
-              I am a Senior Principal Scientist at Toyota Research Institute of North America
-              (<ExternalLink href="https://amrd.toyota.com/division/trina/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium no-underline border-b-2 border-blue-500/30 hover:border-blue-500 transition-colors" showIcon={false}>TRINA</ExternalLink>)
-              in Ann Arbor, Michigan. My research interests include Testing and Verification of Cyber-Physical Systems (CPS),
-              Temporal Logics, and Motion Planning and Control for Autonomous Systems. Over the past few years, I have worked on
-              verification and synthesis methods for autonomous mobile systems to support future mobility initiatives. In particular,
-              applying formal methods in the perception - planning - control loop in open-world environments.
-            </p>
             <p>
-              I have served on the program committee for{' '}
-              <ExternalLink href="https://esweek.org/emsoft-program-committee/" className={linkClass} showIcon={false}>EMSOFT 26</ExternalLink>,{' '}
-              <ExternalLink href="https://www.usenix.org/conference/vehiclesec26#organizers" className={linkClass} showIcon={false}>VehicleSec 26</ExternalLink>,{' '}
-              <ExternalLink href="https://rv2026.smithengineering.queensu.ca/committees/" className={linkClass} showIcon={false}>RV 26</ExternalLink>,{' '}
-              <ExternalLink href="https://easychair.org/cfp/nfm-2026" className={linkClass} showIcon={false}>NFM 26</ExternalLink>,{' '}
-              <ExternalLink href="https://hscc-iccps26.hotcrp.com/users/pc" className={linkClass} showIcon={false}>ICCPS/HSCC 26</ExternalLink>,{' '}
-              <ExternalLink href="https://rv25.isec.tugraz.at/committees/" className={linkClass} showIcon={false}>RV 25</ExternalLink>,{' '}
-              <ExternalLink href="https://hscc.acm.org/2025/organizers/" className={linkClass} showIcon={false}>HSCC 25</ExternalLink>,{' '}
-              <ExternalLink href="https://hscc.acm.org/2024/organizers/" className={linkClass} showIcon={false}>HSCC 24</ExternalLink>,{' '}
-              AAAI 23,{' '}
-              <ExternalLink href="https://hscc.acm.org/2023/organizers/" className={linkClass} showIcon={false}>HSCC 23</ExternalLink>,{' '}
-              <ExternalLink href="https://conf.researchr.org/profile/nfm-2023/bardhhoxha" className={linkClass} showIcon={false}>NFM 23</ExternalLink>,{' '}
-              AutoSec 22,{' '}
-              <ExternalLink href="https://hscc.acm.org/2022/organizers/" className={linkClass} showIcon={false}>HSCC 22</ExternalLink>,{' '}
-              <ExternalLink href="https://nfm2022.caltech.edu/#organization" className={linkClass} showIcon={false}>NFM 22</ExternalLink>,{' '}
-              <ExternalLink href="https://sites.google.com/virginia.edu/mt-cps2021/committes" className={linkClass} showIcon={false}>MT-CPS 21</ExternalLink>,{' '}
-              <ExternalLink href="https://www.ieee-security.org/TC/SPW2020/SafeThings/" className={linkClass} showIcon={false}>SafeThings 20</ExternalLink>,{' '}
-              <ExternalLink href="https://sites.google.com/view/mt-cps2020/" className={linkClass} showIcon={false}>MT-CPS 20</ExternalLink>.
-              I have chaired repeatability evaluation for{' '}
-              <ExternalLink href="https://hscc.acm.org/2021/organizers/" className={linkClass} showIcon={false}>HSCC 2021</ExternalLink>,{' '}
-              <ExternalLink href="https://berkeleylearnverify.github.io/HSCC_2020/" className={linkClass} showIcon={false}>HSCC 2020</ExternalLink>.
+              My research at <ExternalLink href="https://amrd.toyota.com/division/trina/" className="font-medium text-blue-600 hover:underline dark:text-blue-400" showIcon={false}>Toyota Research Institute of North America</ExternalLink> focuses
+              on the design and verification of autonomous and cyber-physical systems. Across perception, planning,
+              and control, I use formal requirements both to design systems that are correct by construction and
+              to determine what guarantees an existing design can support. My work also draws on statistical
+              methods to quantify risk and on testing and runtime monitoring to identify where behavior departs
+              from a specification. Those findings help identify which assumptions to revisit, which
+              experiments to run next, and where to revise the design.
             </p>
           </div>
         </div>
@@ -98,6 +77,16 @@ export default async function Home() {
         <div className="section-divider">
           <Software />
         </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="section-divider"><Honors publications={publications} /></div>
+      </Reveal>
+      <Reveal>
+        <div className="section-divider"><InvitedTalks /></div>
+      </Reveal>
+      <Reveal>
+        <div className="section-divider"><Service /></div>
       </Reveal>
 
       {/* Contact Section */}

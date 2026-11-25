@@ -1,0 +1,49 @@
+.track { position: relative; margin-bottom: 28px; scroll-margin-top: 12px; }
+.track::after { content: ""; display: block; height: clamp(850px,155vh,1400px); }
+.panel { position: sticky; top: 12px; }
+.panel {
+  padding: 10px 12px 3px; overflow: hidden; border-radius: 14px;
+  border: 1px solid #354359;
+  background: radial-gradient(ellipse at 62% 38%,#1d3041 0%,#101d2d 53%,#101828 100%);
+}
+.layerArt { display: block; width: 100%; height: auto; max-height: min(32vh,230px); }
+.traceSteps { display: flex; justify-content: center; }
+.traceSteps button {
+  width: 26px; height: 24px; cursor: pointer; display: grid; place-items: center;
+  border-radius: 4px;
+}
+.traceSteps button::after {
+  content: ''; width: 4px; height: 4px; border-radius: 4px; background: #546379;
+}
+.traceSteps button[data-past=true]::after { background: #93aec1; }
+.traceSteps button[aria-pressed=true]::after { width: 15px; background: #a5edff; box-shadow: 0 0 6px #8acdde80; }
+.traceSteps button:hover::after { background: white; }
+.traceSteps button:focus-visible { outline: 2px solid #8de1f6; }
+/* Keep the menu and the layer stack together as the profile scrolls. */
+.profileRail { top: 12px; }
+.profileRail > div:first-child { padding: 12px; }
+.profileRail nav { gap: 1px; }
+.profileRail nav > * { margin-block: 0; }
+.profileRail nav > p { padding: 2px 10px 6px; }
+.profileRail nav a { padding: 6px 10px; font-size: 14px; line-height: 1.35; }
+.profileRail nav + div { margin-top: 8px; padding-top: 8px; }
+.profileRail nav + div button { padding: 6px 10px; }
+.underMenu {
+  margin-top: 12px; pointer-events: none; user-select: none;
+  opacity: .7; filter: saturate(.64) brightness(.65);
+}
+:global(.dark) .underMenu { opacity: .69; filter: saturate(.65); }
+.underMenu .layerArt { width: 100%; height: clamp(155px, 28vh, 270px); max-height: none; }
+@media (min-height: 780px) {
+  .profileRail nav a { padding-block: 9px; }
+}
+@media(min-width:64rem) {
+  .track { display: none; }
+}
+@media(max-height:680px) {
+  .profileRail nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .profileRail nav > p { grid-column: 1/-1; }
+  .profileRail nav a { padding: 5px 4px; font-size: 12px; }
+  .profileRail nav a > span:first-child { display: none; }
+  .profileRail { top: min(12px, calc(100dvh - 425px)); }
+}

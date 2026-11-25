@@ -28,6 +28,11 @@ export function publicationLinks(entry: Publication) {
 
 export const SITE_URL = 'https://www.bhoxha.com';
 
+/** Venue without a trailing ", 2024", for places that print the year separately. */
+export function publicationVenueName(entry: Publication) {
+  return (entry.entryTags.booktitle || entry.entryTags.journal || '').replace(/,\s*\d{4}\s*$/, '');
+}
+
 export function publicationPath(entry: Pick<Publication, 'citationKey'>) {
   return `/publications/${encodeURIComponent(entry.citationKey)}/`;
 }
