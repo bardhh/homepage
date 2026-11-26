@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPublications } from '@/lib/publications';
-import { publicationJsonLd, publicationRecord, serializeJsonLd } from '@/lib/publication-utils';
+import { publicationJsonLd, publicationRecord, publicationVenueName, serializeJsonLd } from '@/lib/publication-utils';
 import { researchAreas } from '@/data/research-areas';
 import { projects } from '@/components/Software';
 import PublicationCitation from '@/components/PublicationCitation';
@@ -26,13 +26,32 @@ async function getPublication(params: Props['params']) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const publication = publicationRecord(await getPublication(params));
+  const entry = await getPublication(params);
+  const publication = publicationRecord(entry);
+  const { pages, volume, number } = entry.entryTags;
+  const venue = publicationVenueName(entry);
+  const citation: Record<string, string | string[]> = {
+    citation_title: publication.title,
+    citation_author: publication.authors,
+  };
+  if (publication.year) citation.citation_publication_date = publication.year;
+  if (venue && publication.type === 'journal') citation.citation_journal_title = venue;
+  if (venue && (publication.type === 'conference' || publication.type === 'workshop')) citation.citation_conference_title = venue;
+  if (volume) citation.citation_volume = volume;
+  if (number) citation.citation_issue = number;
+  if (publication.doi) citation.citation_doi = publication.doi;
+  const range = pages?.trim().match(/^(\d+)(?:\s*[-–—]+\s*(\d+))?$/);
+  if (range && (!range[2] || Number(range[2]) >= Number(range[1]))) {
+    citation.citation_firstpage = range[1];
+    if (range[2]) citation.citation_lastpage = range[2];
+  }
   const description = publication.abstract || `${publication.authors.join(', ')}. ${publication.venue || publication.type}${publication.year ? ` (${publication.year})` : ''}.`;
   return {
     title: `${publication.title} | Bardh Hoxha`,
     description,
     authors: publication.authors.map(name => ({ name })),
     keywords: publication.keywords,
+    other: citation,
     alternates: { canonical: publication.url },
     openGraph: { title: publication.title, description, url: publication.url, type: 'article', authors: publication.authors },
     twitter: { card: 'summary', title: publication.title, description },
@@ -76,7 +95,7 @@ export default async function PublicationPage({ params }: Props) {
         </section>}
         {publication.keywords.length > 0 && <p className="mt-6 text-sm text-slate-600 dark:text-slate-400"><strong>Topics:</strong> {publication.keywords.join('; ')}</p>}
         {publication.doi && <p className="mt-3 text-sm"><strong>DOI:</strong> {publication.doi}</p>}
-        <PublicationCitation bibtex={publication.bibtex} />
+        <PublicationCitation bibtex={publication.bibtex} paperUrl={publication.url} />
       </article>
       <div className="px-1">
         <p className="mb-3 text-sm text-slate-500 dark:text-slate-400">Download the complete bibliography</p>

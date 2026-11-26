@@ -16,7 +16,7 @@ import {
   FaEnvelope,
   FaSun,
   FaMoon,
-  FaBars,
+  FaBars, FaSearch,
   FaTimes,
 } from 'react-icons/fa';
 
@@ -107,6 +107,15 @@ const MobileNav = () => {
 
           {/* Nav links */}
           <nav aria-label="Mobile page sections" className="flex flex-col space-y-1 flex-grow">
+            <a href={pathname === '/' ? '#publication-search' : '/#publication-search'}
+              onClick={() => {
+                navigating.current = true;
+                dialog.current?.close();
+                if (pathname === '/') window.dispatchEvent(new Event('focus-publication-search'));
+              }}
+              className="mb-2 flex min-h-11 items-center gap-3 border-b border-[var(--edge)] px-4 pb-2 text-sm font-semibold text-[var(--link)] hover:underline underline-offset-4">
+              <FaSearch aria-hidden="true" /> Find a paper
+            </a>
             {sections.map((section) => (
               <a
                 key={section.id}

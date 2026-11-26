@@ -33,6 +33,15 @@ for (const entry of entries) {
   assert.ok(visible.includes(escapeHtml(record.title)), `${entry.citationKey} missing title`);
   for (const author of record.authors) assert.ok(visible.includes(escapeHtml(author)), `${entry.citationKey} missing author ${author}`);
   assert.ok(visible.includes(`<link rel="canonical" href="${record.url}"`), `${entry.citationKey} wrong canonical`);
+  const head = visible.slice(0, visible.indexOf('</head>'));
+  const citationValues = name => [...head.matchAll(new RegExp(`<meta name="${name}" content="([^"]*)"`, 'g'))].map(match => match[1]);
+  assert.deepEqual(citationValues('citation_title'), [escapeHtml(record.title)]);
+  assert.deepEqual(citationValues('citation_author'), record.authors.map(escapeHtml));
+  assert.deepEqual(citationValues('citation_publication_date'), record.year ? [record.year] : []);
+  if (record.type === 'preprint') {
+    assert.deepEqual(citationValues('citation_journal_title'), []);
+    assert.deepEqual(citationValues('citation_conference_title'), []);
+  }
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
   const article = schemas.find(schema => schema['@type'] === 'ScholarlyArticle');
   assert.deepEqual(article, JSON.parse(JSON.stringify(publicationJsonLd(entry))), `${entry.citationKey} inconsistent metadata`);

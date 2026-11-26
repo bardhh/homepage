@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
+import { flushSync } from 'react-dom';
 import PublicationAuthors from './PublicationAuthors';
 import type { Publication } from '@/lib/bibtex';
 import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
@@ -52,12 +53,17 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   useEffect(() => {
     let frame = 0;
     function focusSearch() {
-      setFiltersOpen(true);
+      if (!inputRef.current?.getClientRects().length) setFiltersOpen(true);
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         inputRef.current?.focus({ preventScroll: true });
         inputRef.current?.scrollIntoView({ block: 'center' });
       });
+    }
+    function focusFromMenu() {
+      // Mobile browsers can show the keyboard when focus follows the tap synchronously.
+      if (!inputRef.current?.getClientRects().length) flushSync(() => setFiltersOpen(true));
+      inputRef.current?.focus();
     }
     function onHashChange() {
       if (location.hash === '#publication-search') focusSearch();
@@ -70,10 +76,12 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
     }
     onHashChange();
     window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('focus-publication-search', focusFromMenu);
     document.addEventListener('keydown', onKeyDown);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('hashchange', onHashChange);
+      window.removeEventListener('focus-publication-search', focusFromMenu);
       document.removeEventListener('keydown', onKeyDown);
     };
   }, []);
