@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 const Publications = dynamic(() => import('@/components/Publications'));
 import Patents from '@/components/Patents';
 import ResearchAreas from '@/components/ResearchAreas';
-import Software from '@/components/Software';
+import Software, { projects } from '@/components/Software';
 import Teaching from '@/components/Teaching';
 import ResearchMentorship from '@/components/ResearchMentorship';
 import Contact from '@/components/Contact';
@@ -17,6 +17,8 @@ import Reveal from '@/components/Reveal';
 
 export default async function Home() {
   const publications = await getPublications();
+
+  const softwareNames = Object.fromEntries(projects.map(project => [project.paperKey, project.title.split(':')[0]]));
 
   return (
     <div className="profile-content space-y-12">
@@ -47,7 +49,7 @@ export default async function Home() {
       {/* Publications Section */}
       <Reveal>
         <div className="section-divider">
-          <Publications publications={publications} />
+          <Publications publications={publications} softwareNames={softwareNames} />
         </div>
       </Reveal>
 

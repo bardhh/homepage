@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { flushSync } from 'react-dom';
 import PublicationAuthors from './PublicationAuthors';
 import type { Publication } from '@/lib/bibtex';
-import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
+import { ITEMS_PER_PAGE, getPublicationType, matchesPublicationSearch, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaChevronDown, FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 import clsx from 'clsx';
 import { researchAreas } from '@/data/research-areas';
@@ -24,9 +24,10 @@ const emptySubscribe = () => () => {};
 
 interface PublicationsProps {
   publications: Publication[];
+  softwareNames: Record<string, string>;
 }
 
-const Publications: React.FC<PublicationsProps> = ({ publications }) => {
+const Publications: React.FC<PublicationsProps> = ({ publications, softwareNames }) => {
   const query = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const state = useMemo(() => readPublicationState(query), [query]);
   const { type: typeFilter, themes: selectedThemes, matchAny, search, count: visibleCount } = state;
@@ -93,9 +94,6 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const handleSearch = (search: string) => update({ search, count: ITEMS_PER_PAGE }, true);
 
   const filteredPubs = useMemo(() => {
-    const searchLower = search.toLowerCase();
-    const authorQuery = searchLower.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
-    const joinedQuery = authorQuery.replaceAll(' ', '');
     return publications.filter(pub => {
       if (typeFilter !== 'all') {
         const type = getPublicationType(pub);
@@ -115,28 +113,9 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         if (!matchesTheme) return false;
       }
 
-      if (search) {
-        const title = pub.entryTags.title?.toLowerCase() || '';
-        const author = pub.entryTags.author?.toLowerCase() || '';
-        const venue = pub.entryTags.booktitle?.toLowerCase() || '';
-        const journal = pub.entryTags.journal?.toLowerCase() || '';
-        const keywords = pub.entryTags.keywords?.toLowerCase() || '';
-
-        return title.includes(searchLower) ||
-               author.includes(searchLower) ||
-               (authorQuery !== '' && publicationAuthors(author).some(name => {
-                 const parts = name.split(/\s+/);
-                 return name.includes(authorQuery) || parts.join('').includes(joinedQuery) ||
-                        matchesContributor(name, authorQuery);
-               })) ||
-               venue.includes(searchLower) ||
-               journal.includes(searchLower) ||
-               keywords.includes(searchLower);
-      }
-
-      return true;
+      return matchesPublicationSearch(pub, search, softwareNames[pub.citationKey]);
     });
-  }, [publications, typeFilter, selectedThemes, matchAny, search, recentCutoff]);
+  }, [publications, softwareNames, typeFilter, selectedThemes, matchAny, search, recentCutoff]);
 
   const sortedPubs = useMemo(() => {
     return [...filteredPubs].sort((a, b) => {

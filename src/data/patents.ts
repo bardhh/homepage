@@ -9,8 +9,8 @@ export interface Patent {
   year: string;
   /** Google Patents URL — direct page for granted, title search for pending applications. */
   link: string;
-  /** Citation key of the paper this patent grew out of, when there is a clear one. */
-  related?: string;
+  /** Citation keys of directly related papers. */
+  related?: string[];
 }
 
 // Search Google Patents by exact title for applications without a confirmed publication number.
@@ -45,7 +45,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'Methods and systems for spatio-temporal regular expression matching',
-    related: 'anderson2023pattern',
+    related: ['anderson2023pattern', 'STTT2024'],
     number: 'US 12,361,086 B2',
     status: 'granted',
     inventors: 'Jacob W. Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
@@ -54,7 +54,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'Systems and methods for online monitoring using a neural model by an automated vehicle',
-    related: 'bogomolov2022runtime',
+    related: ['bogomolov2022runtime'],
     number: 'US 12,358,532 B2',
     status: 'granted',
     inventors: 'Bardh Hoxha, Tomoya Yamaguchi, Abdelrahman Hekal, Sergiy Bogomolov',
@@ -80,7 +80,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'Neural configuration distance function for continuum robot control',
-    related: 'IROS2025',
+    related: ['IROS2025'],
     number: 'US App. 19/057,472',
     status: 'pending',
     inventors: 'Kehan Long, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto',
@@ -105,7 +105,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'Methods and systems for spatio-temporal regular expression matching',
-    related: 'anderson2023pattern',
+    related: ['anderson2023pattern'],
     number: 'US App. 19/230,678',
     status: 'pending',
     inventors: 'Jacob W. Anderson, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Danil V. Prokhorov',
@@ -122,7 +122,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'System and method for safe control synthesis for hybrid systems through local control barrier functions',
-    related: 'yang2023safe',
+    related: ['yang2023safe'],
     number: 'US App. 18/751,977',
     status: 'pending',
     inventors: 'Shuo Yang, Georgios Fainekos, Bardh Hoxha, Mitchell Black, Hideki Okamoto, Danil V. Prokhorov, Hardik Parwana',
@@ -147,7 +147,7 @@ export const patents: Patent[] = [
   },
   {
     title: 'Timed partial order identification for task learning from data',
-    related: 'watanabe2023timed',
+    related: ['watanabe2023timed'],
     number: 'US App. 18/297,481',
     status: 'pending',
     inventors: 'Kandai Watanabe, Bardh Hoxha, Georgios Fainekos, Tomoya Yamaguchi, Danil Prokhorov',

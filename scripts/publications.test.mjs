@@ -5,7 +5,7 @@ import ts from 'typescript';
 // Exercise the same pure helpers as the UI, without adding a browser test dependency.
 const source = readFileSync(new URL('../src/lib/publication-utils.ts', import.meta.url), 'utf8');
 const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } });
-const { getPublicationType, publicationLinks, readPublicationState, writePublicationState, publicationAuthors, publicationRecord, publicationJsonLd, publicationsMarkdown, serializeJsonLd } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`);
+const { matchesPublicationSearch, getPublicationType, publicationLinks, readPublicationState, writePublicationState, publicationAuthors, publicationRecord, publicationJsonLd, publicationsMarkdown, serializeJsonLd } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`);
 const entry = (entryType, entryTags) => ({ entryType, entryTags, citationKey: 'test' });
 test('preprint venues are not promoted to conferences', () => {
   for (const type of ['article','inproceedings','misc']) assert.equal(getPublicationType(entry(type,{booktitle:'arXiv preprint, 2026'})), 'preprint');
@@ -48,6 +48,18 @@ test('author identities handle both BibTeX name orders and existing legacy lists
   assert.deepEqual(publicationAuthors('Avishree Khare, Hideki Okamoto, Bardh Hoxha'), ['Avishree Khare', 'Hideki Okamoto', 'Bardh Hoxha']);
   assert.deepEqual(publicationAuthors('Hoxha, Bardh'), ['Bardh Hoxha']);
   assert.deepEqual(publicationAuthors('Smith, Jr, John and Bardh Hoxha'), ['John Smith, Jr', 'Bardh Hoxha']);
+});
+
+test('publication search combines fields, linked software names and normalized authors', () => {
+  const paper = entry('article', {
+    title: 'Querying Perception Streams', author: 'Yiqi Zhao and Oliver Schön and Sung Woo Choi',
+    year: '2024', journal: 'STTT', keywords: 'runtime verification',
+  });
+  for (const query of ['STREM', '2024 StReM', 'Zhao, STTT 2024', 'Schon verification', 'Sungwoo Choi', 'Yiqi (Nick) Zhao']) {
+    assert.equal(matchesPublicationSearch(paper, query, 'STREM'), true, query);
+  }
+  assert.equal(matchesPublicationSearch(paper, 'STREM 2025', 'STREM'), false);
+  assert.equal(matchesPublicationSearch(paper, 'STREM'), false);
 });
 
 test('exports resolve local assets at the site root and keep paper status consistent', () => {

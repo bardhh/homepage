@@ -65,6 +65,26 @@ export function matchesContributor(creditedName: string, residentName: string) {
     credit.slice(-resident.length).join(' ') === resident.join(' ');
 }
 
+function searchText(value: string) {
+  return value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+}
+
+export function matchesPublicationSearch(entry: Publication, query: string, softwareName = '') {
+  if (!query.trim()) return true;
+  const terms = searchText(query);
+  if (!terms) return false;
+  const { title, author, booktitle, journal, keywords, year } = entry.entryTags;
+  const names = publicationAuthors(author);
+  const fields = searchText([title, author, booktitle, journal, keywords, year, softwareName].join(' '));
+  const compactNames = names.map(name => searchText(name).replaceAll(' ', ''));
+  if (terms.split(' ').every(term => fields.includes(term) || compactNames.some(name => name.includes(term)))) {
+    return true;
+  }
+  // Mentorship links use full names, which can include a nickname or different given-name spacing.
+  return names.some(name => matchesContributor(name, query));
+}
+
 export function publicationBibtex(entry: Publication) {
   const fields = Object.entries(entry.entryTags)
     .filter(([, value]) => value)

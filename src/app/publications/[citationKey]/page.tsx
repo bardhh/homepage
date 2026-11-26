@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { getPublications } from '@/lib/publications';
 import { publicationJsonLd, publicationRecord, publicationVenueName, serializeJsonLd } from '@/lib/publication-utils';
 import { researchAreas } from '@/data/research-areas';
+import { patents } from '@/data/patents';
 import { projects } from '@/components/Software';
 import PublicationCitation from '@/components/PublicationCitation';
 import PublicationResources, { publicationLinkClass } from '@/components/PublicationResources';
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PublicationPage({ params }: Props) {
   const entry = await getPublication(params);
   const publication = publicationRecord(entry);
+  const relatedGrants = patents.filter(patent => patent.status === 'granted' && patent.related?.includes(entry.citationKey));
   const project = projects.find(project => project.paperKey === entry.citationKey);
   const guide = researchAreas.find(area => area.paper === entry.citationKey);
   return (
@@ -87,6 +89,9 @@ export default async function PublicationPage({ params }: Props) {
           {publication.links.website && <a href={publication.links.website} className={publicationLinkClass}>Project page</a>}
           {publication.links.code && <a href={publication.links.code} className={publicationLinkClass}>Code</a>}
           {project && <Link prefetch={false} href={`/#software-${project.paperKey}`} className={publicationLinkClass}>{project.title.split(':')[0]} software</Link>}
+          {relatedGrants.map(patent => (
+            <a key={patent.number} href={patent.link} className={publicationLinkClass}>Related patent · {patent.number}</a>
+          ))}
           {publication.links.video && <a href={publication.links.video} className={publicationLinkClass}>Video</a>}
         </nav>
         {publication.abstract && <section aria-labelledby="abstract-heading" className="mt-8">
