@@ -50,6 +50,21 @@ export function publicationAuthors(value = ''): string[] {
   }).filter(Boolean);
 }
 
+function nameParts(name: string) {
+  return name.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+    .replace(/\([^)]*\)/g, ' ').replace(/[.,]/g, '').trim().split(/\s+/);
+}
+
+/** Match a full name, allowing omitted middle names and differences in given-name spacing. */
+export function matchesContributor(creditedName: string, residentName: string) {
+  const credit = nameParts(creditedName);
+  const resident = nameParts(residentName);
+  if (resident.length < 2 || credit.at(-1) !== resident.at(-1)) return false;
+  return credit.join('') === resident.join('') ||
+    (resident.length === 2 && credit[0] === resident[0]) ||
+    credit.slice(-resident.length).join(' ') === resident.join(' ');
+}
+
 export function publicationBibtex(entry: Publication) {
   const fields = Object.entries(entry.entryTags)
     .filter(([, value]) => value)
@@ -146,9 +161,9 @@ export function publicationsMarkdown(entries: Publication[]) {
   }).join('\n\n') + '\n';
 }
 
-export const ITEMS_PER_PAGE = 15;
+export const ITEMS_PER_PAGE = 5;
 export const FILTER_TYPES = ['all', 'conference', 'journal', 'workshop', 'preprint', 'recent'] as const;
-export const THEMES = ['learning', 'planning', 'verification', 'testing', 'risk'] as const;
+export const THEMES = ['learning', 'planning', 'verification', 'testing', 'risk', 'monitoring'] as const;
 export function readPublicationState(search: string) {
   const params = new URLSearchParams(search);
   const type = params.get('type') || 'all';

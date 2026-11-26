@@ -38,6 +38,6 @@ for (const entry of entries) {
   assert.deepEqual(article, JSON.parse(JSON.stringify(publicationJsonLd(entry))), `${entry.citationKey} inconsistent metadata`);
 }
 const home = withoutScripts(await readFile('out/index.html', 'utf8'));
-assert.equal((home.match(/class="pub-card/g) || []).length, 15, 'Homepage should still initially show only 15 papers');
+assert.equal((home.match(/class="pub-card/g) || []).length, Math.min(5, entries.length), 'Homepage should initially show up to five papers');
 assert.ok(home.includes('href="/publications/"'), 'Homepage must link to archive');
-console.log(`Verified ${entries.length} paper pages, complete HTML archive, JSON, Markdown, sitemap, and 15-card homepage against publications.bib.`);
+console.log(`Verified ${entries.length} paper pages, complete HTML archive, JSON, Markdown, sitemap, and five-card homepage against publications.bib.`);

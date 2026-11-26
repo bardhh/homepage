@@ -17,6 +17,7 @@ const Footer = () => {
             <Link href="/#publications" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Publications</Link>
             <Link href="/#research" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Research</Link>
             <Link href="/#teaching" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Teaching</Link>
+            <Link href="/#mentorship" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Mentorship</Link>
             <Link href="/#software" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Software</Link>
             <Link href="/#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</Link>
           </nav>

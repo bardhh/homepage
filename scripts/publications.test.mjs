@@ -30,9 +30,9 @@ test('shareable state round-trips Unicode queries, themes and pagination', () =>
   assert.equal(new URLSearchParams(query).get('utm_source'),'profile');
 });
 test('invalid URL state falls back safely and clear removes only owned parameters', () => {
-  assert.deepEqual(readPublicationState('?type=bogus&themes=risk,risk,bogus&count=Infinity'),{type:'all',themes:['risk'],search:'',count:15});
-  assert.equal(readPublicationState('?count=-20').count,15);
-  assert.equal(writePublicationState('?type=journal&q=old&count=30&utm_source=x',{type:'all',themes:[],search:'',count:15}), 'utm_source=x');
+  assert.deepEqual(readPublicationState('?type=bogus&themes=risk,risk,bogus&count=Infinity'),{type:'all',themes:['risk'],search:'',count:5});
+  assert.equal(readPublicationState('?count=-20').count,5);
+  assert.equal(writePublicationState('?type=journal&q=old&count=30&utm_source=x',{type:'all',themes:[],search:'',count:5}), 'utm_source=x');
 });
 
 test('author identities handle both BibTeX name orders and existing legacy lists', () => {

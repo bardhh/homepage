@@ -21,19 +21,60 @@
 .traceSteps button:focus-visible { outline: 2px solid #8de1f6; }
 /* Keep the menu and the layer stack together as the profile scrolls. */
 .profileRail { top: 12px; }
-.profileRail > div:first-child { padding: 12px; }
+.profileRail > div:first-child {
+  padding: 12px;
+  /* The pinned menu can use a solid tint without resampling the scrolling page. */
+  background-color: #f3f6fb;
+  backdrop-filter: none;
+}
+:global(.dark) .profileRail > div:first-child { background-color: #101728; }
 .profileRail nav { gap: 1px; }
 .profileRail nav > * { margin-block: 0; }
 .profileRail nav > p { padding: 2px 10px 6px; }
 .profileRail nav a { padding: 6px 10px; font-size: 14px; line-height: 1.35; }
 .profileRail nav + div { margin-top: 8px; padding-top: 8px; }
 .profileRail nav + div button { padding: 6px 10px; }
-.underMenu {
-  margin-top: 12px; pointer-events: none; user-select: none;
-  opacity: .7; filter: saturate(.64) brightness(.65);
+.edgeRail { display: none; }
+
+@media (min-width: 64rem) {
+  :global(.container):has(.profileRail) {
+    --figure-width: clamp(4.5rem, 6vw, 7rem);
+    container-type: inline-size;
+  }
+  /* Use the existing outer margin first, reserving content space only as needed. */
+  .profileRail ~ main {
+    margin-right: max(0px, calc(var(--figure-width) + 1rem - (100vw - 100cqw) / 2));
+  }
+  .edgeRail {
+    display: block;
+    position: fixed;
+    right: .375rem;
+    top: 1rem;
+    bottom: 4.75rem;
+    width: var(--figure-width);
+    pointer-events: none;
+    user-select: none;
+    contain: layout paint;
+    overflow: clip;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .edgeRail[data-shown="true"] {
+    visibility: visible;
+    opacity: .76;
+    transition: opacity 200ms ease-out;
+  }
+  .edgeRail .layerArt {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    /* Leave the input visible even when the header fills a short viewport. */
+    transform: translateY(min(var(--header-offset, 0px), 70%));
+  }
 }
-:global(.dark) .underMenu { opacity: .69; filter: saturate(.65); }
-.underMenu .layerArt { width: 100%; height: clamp(155px, 28vh, 270px); max-height: none; }
+@media (prefers-reduced-motion: reduce) {
+  .edgeRail[data-shown="true"] { transition: none; }
+}
 @media (min-height: 780px) {
   .profileRail nav a { padding-block: 9px; }
 }

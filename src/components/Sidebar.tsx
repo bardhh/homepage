@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { FaUser, FaAward, FaMicrophoneAlt, FaUsers, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaLaptopCode, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
+import { FaUser, FaAward, FaMicrophoneAlt, FaUsers, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaUserGraduate, FaLaptopCode, FaEnvelope, FaSun, FaMoon, FaSearch } from 'react-icons/fa';
 import clsx from 'clsx';
-import SidebarTrace from './verification/NetworkVerification';
+import { sectionScrollTop } from '@/lib/section-navigation';
+import VerificationRail from './verification/NetworkVerification';
 import styles from './verification/verification.module.css';
 import { usePathname } from 'next/navigation';
 
@@ -16,6 +17,7 @@ const sections = [
   { id: 'patents', label: 'Patents', icon: <FaCertificate /> },
   { id: 'research', label: 'Research Areas', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
+  { id: 'mentorship', label: 'Mentorship', icon: <FaUserGraduate /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },
   { id: 'honors', label: 'Honors', icon: <FaAward /> },
   { id: 'talks', label: 'Invited Talks', icon: <FaMicrophoneAlt /> },
@@ -30,67 +32,116 @@ const Sidebar = () => {
     : pathname === '/publications' || pathname.startsWith('/publications/') ? 'publications' : '';
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    if (pathname !== '/') return;
+    const targets = sections.map(({ id }) => document.getElementById(id))
+      .filter((node): node is HTMLElement => node !== null);
+    let stops: number[] = [];
+    let pending = -1;
 
-    sections.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    function currentIndex() {
+      return stops.findLastIndex(top => top <= window.scrollY + 2);
+    }
+    function updateActive() {
+      const current = targets[Math.max(0, currentIndex())];
+      if (current) setActiveSection(current.id);
+    }
+    function measure() {
+      stops = targets.map(sectionScrollTop);
+      updateActive();
+    }
+    function clearPending() { pending = -1; }
+    function onKey(event: KeyboardEvent) {
+      if (event.key !== ' ' || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey ||
+          event.isComposing || document.querySelector('dialog[open]')) return;
+      const el = event.target;
+      if (el instanceof HTMLElement && (el.isContentEditable ||
+          el.closest('input, textarea, select, button, a[href], summary, video, audio, [role="button"], [role="textbox"]'))) return;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
-      );
+      let index: number;
+      if (pending >= 0) index = pending + (event.shiftKey ? -1 : 1);
+      else if (event.shiftKey) index = stops.findLastIndex(top => top < window.scrollY - 2);
+      else index = currentIndex() + 1;
+      const target = targets[index];
+      if (!target) return;
+      event.preventDefault();
+      if (event.repeat) return;
+      pending = index;
+      if (location.hash !== '#' + target.id) window.history.pushState(null, '', '#' + target.id);
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    }
 
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach(o => o.disconnect());
+    const resize = new ResizeObserver(measure);
+    targets.forEach(target => resize.observe(target));
+    resize.observe(document.body);
+    measure();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('scrollend', clearPending);
+    window.addEventListener('wheel', clearPending, { passive: true });
+    window.addEventListener('pointerdown', clearPending);
+    window.addEventListener('resize', measure);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      resize.disconnect();
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('scrollend', clearPending);
+      window.removeEventListener('wheel', clearPending);
+      window.removeEventListener('pointerdown', clearPending);
+      window.removeEventListener('resize', measure);
+      document.removeEventListener('keydown', onKey);
+    };
   }, [pathname]);
 
   return (
-    <aside className={clsx("hidden lg:block col-span-3 sticky top-8 h-fit", pathname === "/" && styles.profileRail)}>
-      <div className="glass rounded-2xl p-6 space-y-8 transition-all duration-300 hover:shadow-xl border border-white/40 dark:border-slate-700/40">
-        <nav className="flex flex-col space-y-2" aria-label="Page sections">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-4">Navigation</p>
-          {sections.map(({ id, label, icon }) => (
-            <a
-              key={id}
-              href={`${pathname === "/" ? "" : "/"}#${id}`}
-              className={clsx(
-                "group flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium",
-                currentSection === id
-                  ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400"
-              )}
-              aria-current={currentSection === id ? "location" : undefined}
-            >
-              <span className={clsx(
-                "mr-3 transition-colors",
-                currentSection === id
-                  ? "text-blue-500"
-                  : "text-slate-400 group-hover:text-blue-500"
-              )}>
-                {icon}
-              </span>
-              {label}
-              {currentSection === id && (
-                <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
-              )}
-            </a>
-          ))}
-        </nav>
+    <>
+      <aside className={clsx("hidden lg:block col-span-3 sticky top-8 h-fit", pathname === "/" && styles.profileRail)}>
+        <div className="glass rounded-2xl p-6 space-y-8 transition-all duration-300 hover:shadow-xl border border-white/40 dark:border-slate-700/40">
+          <nav className="flex flex-col space-y-2" aria-label="Page sections">
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-4">Navigation</p>
+            {sections.map(({ id, label, icon }) => (
+              <a
+                key={id}
+                href={`${pathname === "/" ? "" : "/"}#${id}`}
+                className={clsx(
+                  "group flex items-center px-4 py-3 rounded-xl transition-all duration-200 font-medium",
+                  currentSection === id
+                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400"
+                )}
+                aria-current={currentSection === id ? "location" : undefined}
+              >
+                <span className={clsx(
+                  "mr-3 transition-colors",
+                  currentSection === id
+                    ? "text-blue-500"
+                    : "text-slate-400 group-hover:text-blue-500"
+                )}>
+                  {icon}
+                </span>
+                {label}
+                {currentSection === id && (
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
+                )}
+              </a>
+            ))}
+          </nav>
 
-        <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
-          <ThemeToggle />
+          <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
+            <ThemeToggle />
+          </div>
         </div>
-      </div>
-      {pathname === "/" && <div className={styles.underMenu}><SidebarTrace /></div>}
-    </aside>
+        {pathname === '/' && (
+          <a
+            href="#publication-search"
+            className="mt-3 flex min-h-11 items-center gap-2.5 rounded-lg px-4 text-sm font-medium text-slate-600 underline-offset-4 hover:text-blue-700 hover:underline dark:text-slate-400 dark:hover:text-blue-300"
+          >
+            <FaSearch aria-hidden="true" className="text-xs" />
+            Find a paper
+          </a>
+        )}
+      </aside>
+      {pathname === "/" && <VerificationRail />}
+    </>
   );
 };
 

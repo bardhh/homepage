@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     { url: `${SITE_URL}/publications/`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/cv/`, changeFrequency: 'monthly', priority: 0.8 },
     ...(await getPublications()).map(publication => ({ url: `${SITE_URL}${publicationPath(publication)}` })),
   ]
 }

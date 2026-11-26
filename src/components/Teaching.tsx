@@ -4,7 +4,25 @@ import React, { useState, useId } from 'react';
 import { FaChalkboardTeacher, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import clsx from 'clsx';
 
-const courses = [
+interface Course {
+  title: string;
+  semester: string;
+  university: string;
+  description?: string;
+  link?: string | null;
+}
+
+const courses: Course[] = [
+  {
+    title: "CS 437: Machine Learning and Soft Computing",
+    semester: "Fall 2019",
+    university: "Southern Illinois University",
+  },
+  {
+    title: "CS 404: Autonomous Mobile Robots",
+    semester: "Spring 2019",
+    university: "Southern Illinois University",
+  },
   {
     title: "CS 591: Testing and Verification of Cyber-Physical Systems",
     semester: "Fall 2018",
@@ -18,6 +36,11 @@ const courses = [
     university: "Southern Illinois University",
     description: "Capstone project course for computer science seniors. Students worked in teams to design and implement significant software projects.",
     link: null
+  },
+  {
+    title: "CS 410: Computer Security",
+    semester: "Spring 2018",
+    university: "Southern Illinois University",
   },
   {
     title: "CS 498: Senior Project",
@@ -36,7 +59,7 @@ const courses = [
 ];
 
 const Teaching = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(() => courses.findIndex(course => course.description));
   const baseId = useId();
 
   const toggleAccordion = (index: number) => {
@@ -45,41 +68,52 @@ const Teaching = () => {
 
   return (
     <section tabIndex={-1} id="teaching" className="scroll-mt-24" role="region" aria-label="Teaching experience">
-      <div className="flex items-center mb-8">
+      <div className="flex items-center mb-5">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
           Teaching
         </h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-1.5">
         {courses.map((course, index) => {
           const isOpen = openIndex === index;
           const headerId = `${baseId}-header-${index}`;
           const panelId = `${baseId}-panel-${index}`;
+          const summary = (
+            <div className="flex min-w-0 flex-1 items-center gap-2.5">
+              <FaChalkboardTeacher aria-hidden="true" className={clsx("shrink-0 text-sm", isOpen ? "text-blue-500" : "text-slate-400")} />
+              <div className="min-w-0 flex-1 sm:flex sm:items-baseline sm:justify-between sm:gap-3">
+                <h3 className="font-semibold text-sm leading-5">{course.title}</h3>
+                <span className="block text-xs leading-4 text-slate-600 dark:text-slate-400 sm:shrink-0">{course.university} &bull; {course.semester}</span>
+              </div>
+            </div>
+          );
+
+          if (!course.description && !course.link) {
+            return (
+              <div key={course.title} className="glass-card flex min-h-11 items-center rounded-lg px-4 py-2 sm:pr-10 text-slate-800 dark:text-slate-200">
+                {summary}
+              </div>
+            );
+          }
 
           return (
-            <div key={index} className="glass-card rounded-2xl overflow-hidden">
+            <div key={course.title} className="glass-card rounded-lg">
               <button
                 id={headerId}
                 onClick={() => toggleAccordion(index)}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 className={clsx(
-                  "w-full px-6 py-4 text-left flex items-center justify-between transition-colors",
+                  "flex min-h-11 w-full items-center justify-between gap-3 rounded-lg px-4 py-2 text-left transition-colors",
                   isOpen
                     ? "bg-blue-50/50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300"
                     : "hover:bg-slate-50/50 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <FaChalkboardTeacher className={clsx("text-xl", isOpen ? "text-blue-500" : "text-slate-400")} />
-                  <div>
-                    <h3 className="font-semibold block text-base">{course.title}</h3>
-                    <span className="text-sm opacity-75 font-normal">{course.university} &bull; {course.semester}</span>
-                  </div>
-                </div>
-                {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+                {summary}
+                {isOpen ? <FaChevronUp aria-hidden="true" className="shrink-0 text-xs" /> : <FaChevronDown aria-hidden="true" className="shrink-0 text-xs" />}
               </button>
 
               {isOpen && (
@@ -87,9 +121,9 @@ const Teaching = () => {
                   id={panelId}
                   role="region"
                   aria-labelledby={headerId}
-                  className="px-6 py-4 border-t border-slate-100/50 dark:border-slate-700/50"
+                  className="px-4 py-2 sm:pl-10 border-t border-slate-100/50 dark:border-slate-700/50"
                 >
-                  <p className="text-slate-600 dark:text-slate-300 mb-3 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-5">
                     {course.description}
                   </p>
                   {course.link && (

@@ -1,3 +1,68 @@
+// Hand-maintained profile facts that are not in publications.bib.
+// Sources and dates are recorded in docs/superpowers/plans/2026-11-16-ieee-fellow-readiness.md.
+
+/** Google Scholar totals. Update the numbers and the date together. */
+export const scholar = {
+  url: 'https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en',
+  citations: 2008,
+  hIndex: 25,
+  i10Index: 50,
+  asOf: 'November 2026',
+};
+
+/** Rounds a citation count down to the nearest ten for display, e.g. 196 -> "190+". */
+export const citedAtLeast = (count: number) => `${(Math.floor(count / 10) * 10).toLocaleString('en-US')}+`;
+
+export interface SelectedPublication {
+  /** Citation key in publications.bib. The build fails if it does not exist. */
+  key: string;
+  /** One line on why the paper mattered. */
+  note: string;
+  /** Google Scholar citation count as of `scholar.asOf`. */
+  citations?: number;
+}
+
+export const selectedPublications: SelectedPublication[] = [
+  {
+    key: 'dokhanchi2014line',
+    note: 'Computes temporal logic robustness online for formulas with bounded future and unbounded past, which made quantitative runtime monitoring of cyber-physical systems practical.',
+    citations: 196,
+  },
+  {
+    key: 'hoxha2014benchmarks',
+    note: 'Automotive models and requirements that became standard problems for falsification tools, including the ARCH-COMP falsification competition.',
+    citations: 163,
+  },
+  {
+    key: 'hoxha2017mining',
+    note: 'Parameter mining: finds the range of requirement parameters for which a system satisfies or violates a temporal logic specification.',
+    citations: 132,
+  },
+  {
+    key: 'yang2022neural',
+    note: 'Repairs unsafe deep neural networks using reachability analysis. Received the FORMATS 2022 Best Software Artifact Award.',
+    citations: 63,
+  },
+  {
+    key: 'STTT2023',
+    note: 'RTAMT, an open-source library for offline and online monitoring of Signal Temporal Logic, applied to cyber-physical systems and robotics.',
+    citations: 48,
+  },
+  {
+    key: 'yaghoubi2020risk',
+    note: 'Stochastic barrier functions that bound the probability of unsafe behavior, the start of a line of risk-aware control work.',
+    citations: 46,
+  },
+  {
+    key: 'anderson2023pattern',
+    note: 'Spatial regular expressions for searching perception streams. Best paper finalist at RV 2023 and the basis of the STREM tool and a granted US patent.',
+  },
+  {
+    key: 'hekmatnejad2022formalizing',
+    note: 'Spatio-Temporal Perception Logic, a language for stating and evaluating requirements on the perception systems of automated vehicles.',
+  },
+];
+
 export interface Honor {
   year: string;
   title: string;
@@ -11,16 +76,19 @@ export const honors: Honor[] = [
 
 export interface Talk {
   year: string;
+  monthDay?: string;
   title: string;
   venue: string;
+  programUrl?: string;
 }
 
 export const invitedTalks: Talk[] = [
   { year: '2024', title: 'Future Mobility: Challenges and Recent Developments in V&V', venue: 'Dagstuhl Seminar on Safety Assurance for Autonomous Mobility' },
   { year: '2023', title: 'Advancing Safety in ML-Driven Systems: Spatio-Temporal Quantitative Verification Techniques', venue: 'Stony Brook University' },
-  { year: '2023', title: 'Safety in Advanced ML-Driven Systems', venue: 'University of Michigan' },
+  { year: '2023', monthDay: 'November 15', title: 'Safety in Advanced ML-Driven Systems', venue: 'University of Michigan' },
   { year: '2022', title: 'Verification and Synthesis of Cyber-Physical Systems with Learning-enabled Components', venue: 'NSF Center of Cognitive Autonomy' },
-  { year: '2022', title: 'Simulation-Based Testing of Autonomous CPS', venue: 'Stony Brook University' },
+  { year: '2021', monthDay: 'August 23', title: 'Autonomous CPS: Verification and Control', venue: 'SNR Workshop at QONFEST', programUrl: 'https://qonfest2021.lacl.fr/speakers.php' },
+  { year: '2021', monthDay: 'April 15', title: 'Simulation-Based Testing of Autonomous CPS', venue: 'Stony Brook University' },
   { year: '2021', title: 'Verification of Deep Neural Networks', venue: 'University of Southern California, Center for Cyber-Physical Systems and the Internet of Things' },
 ];
 
@@ -49,6 +117,11 @@ export const leadershipRoles: ServiceRole[] = [
       { label: '2020', href: 'https://berkeleylearnverify.github.io/HSCC_2020/' },
     ],
   },
+  {
+    role: 'Advisory Committee Member',
+    venue: 'HSCC Repeatability Evaluation',
+    terms: [{ label: '2020' }],
+  },
 ];
 
 export interface CommitteeVenue {
@@ -63,6 +136,7 @@ export const programCommittees: CommitteeVenue[] = [
     short: 'HSCC',
     name: 'Hybrid Systems: Computation and Control',
     terms: [
+      { label: '2027 (with ICCPS)' },
       { label: '2026 (with ICCPS)', href: 'https://hscc-iccps26.hotcrp.com/users/pc' },
       { label: '2025', href: 'https://hscc.acm.org/2025/organizers/' },
       { label: '2024', href: 'https://hscc.acm.org/2024/organizers/' },
@@ -74,6 +148,7 @@ export const programCommittees: CommitteeVenue[] = [
     short: 'NFM',
     name: 'NASA Formal Methods Symposium',
     terms: [
+      { label: '2027', href: 'https://conf.researchr.org/profile/nfm-2027/bardhhoxha' },
       { label: '2026', href: 'https://easychair.org/cfp/nfm-2026' },
       { label: '2023', href: 'https://conf.researchr.org/profile/nfm-2023/bardhhoxha' },
       { label: '2022', href: 'https://nfm2022.caltech.edu/#organization' },
@@ -108,7 +183,10 @@ export const programCommittees: CommitteeVenue[] = [
   {
     short: 'VehicleSec',
     name: 'USENIX Symposium on Vehicle Security and Privacy',
-    terms: [{ label: '2026', href: 'https://www.usenix.org/conference/vehiclesec26#organizers' }],
+    terms: [
+      { label: '2027 (Cycle 1)', href: 'https://www.usenix.org/conference/vehiclesec27#organizers' },
+      { label: '2026', href: 'https://www.usenix.org/conference/vehiclesec26#organizers' },
+    ],
   },
   {
     short: 'AutoSec',
@@ -144,12 +222,16 @@ export const programCommittees: CommitteeVenue[] = [
 export const journalReviewing = [
   'IEEE Transactions on Automatic Control',
   'IEEE Systems Journal',
+  'IEEE Computational Intelligence Magazine (2021, 2022)',
+  'Nonlinear Analysis: Hybrid Systems (2024)',
   'Acta Informatica',
   'Logical Methods in Computer Science',
 ];
 
 export const conferenceReviewing = [
   'IEEE Conference on Decision and Control (CDC)',
+  'IEEE International Conference on Automation Science and Engineering (CASE 2023)',
+  'IEEE International Conference on Robotics and Automation (ICRA 2027)',
   'American Control Conference (ACC)',
   'IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)',
   'International Conference on Cyber-Physical Systems (ICCPS)',
@@ -157,6 +239,29 @@ export const conferenceReviewing = [
 ];
 
 export const memberships = [
-  'Institute of Electrical and Electronics Engineers (IEEE)',
-  'Association for Computing Machinery (ACM)',
+  'IEEE Senior Member',
+  'ACM Member',
+];
+
+export const education = [
+  {
+    year: '2017',
+    degree: 'Ph.D. in Computer Science',
+    school: 'Arizona State University',
+    detail: 'Thesis: Formal Requirements-Driven Analysis of Cyber Physical Systems. Advisor: Georgios Fainekos.',
+  },
+  {
+    year: '2010',
+    degree: 'M.A. in Mathematics',
+    school: 'Central Connecticut State University',
+    detail: 'Area of study: Actuarial Science. Advisor: Frank Bensics.',
+  },
+];
+
+export const employment = [
+  { years: 'Present', role: 'Senior Principal Scientist', place: 'Toyota Research Institute of North America, Ann Arbor, Michigan' },
+  { years: '2017 – 2020', role: 'Assistant Professor, Department of Computer Science', place: 'Southern Illinois University, Carbondale, Illinois' },
+  { years: '2011 – 2017', role: 'Research Assistant', place: 'Arizona State University, Tempe, Arizona' },
+  { years: '2010 – 2011', role: 'Mathematics Lecturer', place: 'Central Connecticut State University, New Britain, Connecticut' },
+  { years: '2009 – 2011', role: 'Mathematics Lecturer', place: 'Capital Community College, Hartford, Connecticut' },
 ];

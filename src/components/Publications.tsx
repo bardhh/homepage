@@ -3,11 +3,10 @@
 import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import type { Publication } from '@/lib/bibtex';
-import { getPublicationType, publicationLinks, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
+import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 import clsx from 'clsx';
 
-const ITEMS_PER_PAGE = 15;
 const RECENT_YEARS = 5;
 
 const stateEvent = 'publication-state-change';
@@ -61,6 +60,8 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
   const filteredPubs = useMemo(() => {
     const searchLower = search.toLowerCase();
+    const authorQuery = searchLower.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
+    const joinedQuery = authorQuery.replaceAll(' ', '');
     return publications.filter(pub => {
       if (typeFilter !== 'all') {
         const type = getPublicationType(pub);
@@ -88,6 +89,11 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
         return title.includes(searchLower) ||
                author.includes(searchLower) ||
+               (authorQuery !== '' && publicationAuthors(author).some(name => {
+                 const parts = name.split(/\s+/);
+                 return name.includes(authorQuery) || parts.join('').includes(joinedQuery) ||
+                        matchesContributor(name, authorQuery);
+               })) ||
                venue.includes(searchLower) ||
                journal.includes(searchLower) ||
                keywords.includes(searchLower);
@@ -120,7 +126,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   }, [typeFilter, selectedThemes, search, visibleCount]);
 
   return (
-    <section tabIndex={-1} id="publications" className="scroll-mt-24" role="region" aria-label="Publications">
+    <section tabIndex={-1} id="publications" className="scroll-mt-24 focus:outline-none" role="region" aria-label="Publications">
       <div className="flex items-center mb-8">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
@@ -136,9 +142,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
           <input
+            id="publication-search"
             ref={inputRef}
             type="text"
-            className="block w-full pl-11 pr-12 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
+            className="block w-full scroll-mt-28 pl-11 pr-12 py-3 border-none rounded-xl bg-slate-100/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-500/50 transition-all"
             placeholder={`Search publications... (${isMac ? '⌘' : 'Ctrl+'}K)`}
             aria-label="Search publications"
             value={search}
@@ -180,6 +187,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
               <FilterButton active={selectedThemes.includes('verification')} onClick={() => toggleTheme('verification')} icon={<FaCheckDouble />}>Verification</FilterButton>
               <FilterButton active={selectedThemes.includes('testing')} onClick={() => toggleTheme('testing')} icon={<FaVial />}>Testing</FilterButton>
               <FilterButton active={selectedThemes.includes('risk')} onClick={() => toggleTheme('risk')} icon={<FaShieldAlt />}>Risk</FilterButton>
+              <FilterButton active={selectedThemes.includes('monitoring')} onClick={() => toggleTheme('monitoring')}>Monitoring</FilterButton>
             </div>
           </fieldset>
         </div>

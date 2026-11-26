@@ -20,29 +20,29 @@ const Honors = ({ publications }: { publications: Publication[] }) => {
 
   return (
     <section tabIndex={-1} id="honors" className="scroll-mt-24" role="region" aria-label="Honors and recognition">
-      <div className="flex items-center mb-8">
+      <div className="flex items-center mb-5">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
           Honors &amp; Recognition
         </h2>
       </div>
 
-      <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+      <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
         <FaAward className="text-amber-500" aria-hidden="true" /> Awards and Distinctions
       </h3>
-      <ul className="space-y-3">
+      <ul className="space-y-1.5">
         {items.map(item => (
-          <li key={`${item.year}-${item.title}-${item.detail}`} className="glass-card rounded-lg px-4 py-3 border-l-4 border-l-amber-500 flex items-start gap-4">
-            <div className="shrink-0 pt-0.5 w-10 font-mono text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+          <li key={`${item.year}-${item.title}-${item.detail}`} className="glass-card rounded-lg px-3 py-2 border-l-2 border-l-amber-500 flex items-start gap-2.5">
+            <div className="shrink-0 pt-0.5 w-8 font-mono text-xs text-slate-500 dark:text-slate-400 tabular-nums">
               {item.year}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug">
+              <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 leading-snug">
                 {item.title}
               </p>
               <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{item.detail}</p>
               {item.paper && (
-                <p className="text-xs mt-1">
+                <p className="text-xs mt-0.5">
                   <Link
                     prefetch={false}
                     href={publicationPath(item.paper)}
@@ -63,21 +63,21 @@ const Honors = ({ publications }: { publications: Publication[] }) => {
 
 export const InvitedTalks = () => (
     <section tabIndex={-1} id="talks" className="scroll-mt-24" aria-labelledby="talks-title">
-      <div className="flex items-center mb-8">
+      <div className="flex items-center mb-5">
         <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
         <h2 id="talks-title" className="text-3xl font-bold text-slate-900 dark:text-white font-heading">Invited Talks</h2>
       </div>
-      <ul className="space-y-3">
+      <ul className="space-y-1.5">
         {invitedTalks.map(talk => (
-          <li key={`${talk.year}-${talk.title}`} className="glass-card rounded-lg px-4 py-3 border-l-4 border-l-blue-500 flex items-start gap-4">
-            <div className="shrink-0 pt-0.5 w-10 font-mono text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+          <li key={`${talk.year}-${talk.title}`} className="glass-card rounded-lg px-3 py-2 border-l-2 border-l-blue-500 flex items-start gap-2.5">
+            <div className="shrink-0 pt-0.5 w-8 font-mono text-xs text-slate-500 dark:text-slate-400 tabular-nums">
               {talk.year}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug">
-                {talk.title}
+              <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 leading-snug">
+                {talk.programUrl ? <a href={talk.programUrl} className="underline decoration-slate-400/50 underline-offset-2">{talk.title}</a> : talk.title}
               </p>
-              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{talk.venue}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{talk.venue}{talk.monthDay && ` · ${talk.monthDay}`}</p>
             </div>
           </li>
         ))}

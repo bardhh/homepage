@@ -7,6 +7,7 @@ import Patents from '@/components/Patents';
 import ResearchAreas from '@/components/ResearchAreas';
 import Software from '@/components/Software';
 import Teaching from '@/components/Teaching';
+import ResearchMentorship from '@/components/ResearchMentorship';
 import Contact from '@/components/Contact';
 import Honors, { InvitedTalks } from '@/components/Honors';
 import Service from '@/components/Service';
@@ -18,7 +19,7 @@ export default async function Home() {
   const publications = await getPublications();
 
   return (
-    <div className="space-y-12 pb-24">
+    <div className="profile-content space-y-12 pb-24">
 
       {/* About Me Section */}
       <section tabIndex={-1} id="bio" className="scroll-mt-32 animate-fade-in-up" role="region" aria-label="About me">
@@ -70,6 +71,10 @@ export default async function Home() {
         <div className="section-divider">
           <Teaching />
         </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="section-divider"><ResearchMentorship publications={publications} /></div>
       </Reveal>
 
       {/* Software Section */}

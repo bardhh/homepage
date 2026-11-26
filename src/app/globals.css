@@ -186,6 +186,19 @@ body::after {
   display: none;
 }
 
+/* Use the same heading inset for fragment links, keyboard navigation and the rail. */
+.profile-content section[id] { scroll-margin-top: 12px; }
+.profile-content section[id][tabindex="-1"]:focus { outline: none; }
+.profile-content #contact { min-height: calc(100svh - 9rem); }
+.profile-content .reveal { transform: none; }
+.page-enter.mounted:has(.profile-content), .profile-content #bio { animation-name: fade-in; }
+
+/* Tint scrolling cards directly so the browser can reuse their painted content. */
+.profile-content :is(.glass, .glass-card) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 /* Mobile performance: disable expensive GPU effects */
 @media (width < 768px) {
   body::before,
@@ -223,4 +236,28 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* The CV page prints as a plain document: no site chrome, dark text on white. */
+@media print {
+  html:has(.cv-page), body:has(.cv-page) { background: #fff !important; color-scheme: light !important; }
+  body:has(.cv-page)::before, body:has(.cv-page)::after { display: none !important; }
+  .cv-page ol { padding-left: 2.25rem !important; }
+  body:has(.cv-page) .container > .grid { display: block !important; }
+  body:has(.cv-page) :is(header, aside, footer, dialog, .cv-screen-only),
+  body:has(.cv-page) > :not(.container):not(script) { display: none !important; }
+  body:has(.cv-page) .container { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  body:has(.cv-page) main { grid-column: 1 / -1 !important; min-height: 0 !important; }
+  .cv-page, .cv-page * {
+    color: #111 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: #bbb !important;
+    backdrop-filter: none !important;
+  }
+  .cv-page { padding: 0 !important; border: 0 !important; font-size: 10.5pt; page: cv; }
+  .cv-page a { text-decoration: none !important; }
+  .cv-page h2 { break-after: avoid; }
+  .cv-page li { break-inside: avoid; }
+  @page cv { margin: 18mm 16mm; }
 }
