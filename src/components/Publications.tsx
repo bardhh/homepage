@@ -134,6 +134,8 @@ const Publications: React.FC<PublicationsProps> = ({ publications, softwareNames
   const guided = Boolean(firstPaper);
   const resultsQuery = writePublicationState(guided && guide ? `start=${guide.paper}` : '', state);
   const paperQuery = new URLSearchParams({ results: resultsQuery }).toString();
+  const canBroadenSearch = sortedPubs.length === 0 && activeFilters.length > 0 &&
+    publications.some(pub => matchesPublicationSearch(pub, search, softwareNames[pub.citationKey]));
   const hasMore = visibleCount < sortedPubs.length;
 
   const [cardsVisible, setCardsVisible] = useState(false);
@@ -264,14 +266,20 @@ const Publications: React.FC<PublicationsProps> = ({ publications, softwareNames
         ))}
 
         {sortedPubs.length === 0 && (
-          <div
-            className="text-center py-20"
-            style={{ animation: 'fade-in 0.3s ease-out' }}
-          >
-            <div className="inline-block p-4 rounded-full bg-slate-100 dark:bg-slate-800 mb-4">
-              <FaSearch className="text-4xl text-slate-400" />
-            </div>
-            <p className="text-slate-500 dark:text-slate-400 text-lg">No publications found matching your criteria.</p>
+          <div className="rounded-lg border border-[var(--edge)] px-4 py-3 text-sm">
+            <p className="text-[var(--muted)]">No matching publications{activeFilters.length ? ' with these filters' : ''}.</p>
+            <button type="button" className="min-h-9 max-w-full break-words text-left font-medium text-[var(--link)] hover:underline"
+              onClick={() => {
+                if (canBroadenSearch) {
+                  update({ type: 'all', themes: [], matchAny: false, count: ITEMS_PER_PAGE });
+                }
+                inputRef.current?.focus({ preventScroll: true });
+                if (!canBroadenSearch) inputRef.current?.select();
+              }}>
+              {canBroadenSearch
+                ? (search.trim() ? `Search all publications for “${search.trim()}”` : 'Clear filters')
+                : 'Edit search'}
+            </button>
           </div>
         )}
 

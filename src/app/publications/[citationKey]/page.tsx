@@ -88,7 +88,7 @@ export default async function PublicationPage({ params }: Props) {
           {publication.links.pdf && <a href={publication.links.pdf} className={publicationLinkClass}>PDF</a>}
           {publication.links.website && <a href={publication.links.website} className={publicationLinkClass}>Project page</a>}
           {publication.links.code && <a href={publication.links.code} className={publicationLinkClass}>Code</a>}
-          {project && <Link prefetch={false} href={`/#software-${project.paperKey}`} className={publicationLinkClass}>{project.title.split(':')[0]} software</Link>}
+          {project && <a href={`/#example-${project.paperKey}`} className={publicationLinkClass}>View worked example<span className="sr-only"> for {project.title.split(':')[0]}</span></a>}
           {relatedGrants.map(patent => (
             <a key={patent.number} href={patent.link} className={publicationLinkClass}>Related patent · {patent.number}</a>
           ))}

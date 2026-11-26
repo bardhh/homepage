@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { publicationPath } from '@/lib/publication-utils';
 import { FaCode, FaBookOpen, FaBlog, FaBook } from 'react-icons/fa';
 
@@ -177,21 +178,32 @@ function ProjectExample({ project }: { project: Project }) {
       <summary className="w-fit cursor-pointer rounded-sm py-1 text-xs font-medium text-blue-700 marker:text-slate-400 dark:text-blue-300">
         Example<span className="sr-only"> for {project.title.split(':')[0]}</span>
       </summary>
-      {example === 'strem' ? <StremExample /> : (
-        <div className="my-2 max-w-lg border-l-2 border-slate-300 pl-3 dark:border-slate-600">
-          <p className="font-medium text-slate-900 dark:text-slate-100">{example.question}</p>
-          <dl className="my-2 grid grid-cols-3 gap-2">
-            {example.readings.map(([label, value]) => (
-              <div key={label}>
-                <dt className="text-xs leading-4 text-slate-600 dark:text-slate-400">{label}</dt>
-                <dd className="mt-0.5 text-sm font-semibold tabular-nums">{value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="text-sm leading-5 text-slate-700 dark:text-slate-300">{example.explanation}</p>
-          <a href={example.source.href} className={resourceLink}>{example.source.label}</a>
-        </div>
-      )}
+      <div id={`example-${project.paperKey}`} className="scroll-mt-28">
+        {example === 'strem' ? <StremExample /> : (
+          <div className="my-2 max-w-lg border-l-2 border-slate-300 pl-3 dark:border-slate-600">
+            <p className="font-medium text-slate-900 dark:text-slate-100">{example.question}</p>
+            {project.repo === 'bardhh/cbfkit' && (
+              <figure className="mt-3">
+                <div role="img" aria-label="The dashed direct route crosses the obstacle. The filtered trajectory curves above it, passing 5.93 centimeters from its edge at the marked sample.">
+                  <Image src="/figures/cbfkit-clearance-light.webp" width={1210} height={440} alt="" className="h-auto w-full rounded-md dark:hidden" />
+                  <Image src="/figures/cbfkit-clearance-dark.webp" width={1210} height={440} alt="" className="hidden h-auto w-full rounded-md dark:block" />
+                </div>
+                <figcaption className="mt-1 text-xs text-[var(--muted)]">Filtered trajectory (solid) and direct route to the goal (dashed).</figcaption>
+              </figure>
+            )}
+            <dl className="my-2 grid grid-cols-3 gap-2">
+              {example.readings.map(([label, value]) => (
+                <div key={label}>
+                  <dt className="text-xs leading-4 text-slate-600 dark:text-slate-400">{label}</dt>
+                  <dd className="mt-0.5 text-sm font-semibold tabular-nums">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="text-sm leading-5 text-slate-700 dark:text-slate-300">{example.explanation}</p>
+            <a href={example.source.href} className={resourceLink}>{example.source.label}</a>
+          </div>
+        )}
+      </div>
     </details>
   );
 }
