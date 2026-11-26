@@ -1,0 +1,134 @@
+.page {
+  --branch: #728ba0;
+  --node: #526c80;
+  --path: #226aa5;
+  --landmark: #267768;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --chart: color-mix(in srgb, var(--surface) 95%, var(--link));
+  min-height: 100dvh;
+  color: var(--foreground);
+  background: var(--background);
+}
+:global(.dark) .page {
+  --branch: #8ca8bc;
+  --node: #a8b9c8;
+  --path: #8cc9ff;
+  --landmark: #8ddac6;
+}
+.mast,.intro,.plotHead,.pathHeading,.source,.mast nav,.mast a,.mast button,.searchButton,.legend,.landmarks,.landmarks a,.source div,.source a,.recordActions,.recordActions a,.relations a,.dialog header,.dialog a {
+  display: flex; align-items: center;
+}
+.mast {justify-content: space-between; min-height: 68px; border-bottom: 1px solid var(--edge); padding: 0 clamp(18px,3.5vw,64px);}
+.mast nav {gap: 24px;}
+.mast nav a,.source a,.recordActions a {gap: 5px; font-size: 13px; color: var(--muted);}
+.mast nav button {border: 1px solid var(--edge); border-radius: 50%; width: 36px; height: 36px; justify-content: center;}
+.sun,:global(.dark) .moon {display: none;}
+:global(.dark) .sun {display: block;}
+.identity {gap: 11px; font-size: 17px; font-weight: 650; letter-spacing: -.03em;}
+.identity svg {color: var(--muted);}
+.sheet {max-width: 1740px; margin: auto; padding: 0 clamp(18px,3.5vw,64px) 32px;}
+.intro {justify-content: space-between; gap: 18px; padding: clamp(28px,4.7vh,55px) 0 27px;}
+.intro h1 {font-size: clamp(34px,3.4vw,56px); letter-spacing: -.045em; font-weight: 600; line-height: 1.08;}
+.intro p,.pathHeading p,.source p {font-size: 14px; line-height: 1.55; color: var(--muted);}
+.intro p {margin-top: 9px;}
+.searchButton {flex-shrink: 0; gap: 9px; padding: 10px 16px; border: 1px solid var(--edge); border-radius: 8px; background: var(--surface); font-size: 14px;}
+.workspace {display: grid; grid-template-columns: minmax(0,1fr) clamp(245px,22vw,330px); border: 1px solid var(--edge); border-radius: 14px; background: var(--surface); overflow: clip;}
+.plot {min-width: 0; position: relative; scroll-margin: 14px; border-right: 1px solid var(--edge);
+  background-color: var(--chart); background-image: radial-gradient(color-mix(in srgb,var(--branch) 22%,transparent) .65px, transparent .85px);
+  background-size: 16px 16px;}
+.plotHead {justify-content: space-between; gap: 10px; padding: 18px 23px 4px;}
+.plotHead h2 {font-size: 16px; font-weight: 600; letter-spacing: -.025em;}
+.plotHead span,.legend,.eyebrow,.step,.pathYear,.dialog small {font-family: var(--mono); font-variant-numeric: tabular-nums;}
+.plotHead span,.legend {font-size: 11px; color: var(--muted);}
+.plot svg {display: block; width: 100%; overflow: visible;}
+.branches,.route {fill: none; pointer-events: none;}
+.branches {stroke: var(--branch); stroke-width: .95; opacity: .53;}
+.route {stroke: var(--path); stroke-width: 2.3;}
+.halo {fill: color-mix(in srgb, var(--path) 12%,var(--chart)); stroke: var(--path); stroke-width: 1.25; pointer-events: none;}
+.point {fill: var(--node); stroke: var(--chart); stroke-width: .75; pointer-events: none;}
+.point[data-named=true] {fill: var(--landmark);}
+.point[data-on=true] {fill: var(--path);}
+.plot svg a {cursor: pointer;}
+.plot svg a:hover .point,.plot svg a:focus-visible .point {fill: var(--foreground); stroke: var(--path); stroke-width: 2px;}
+.labels {fill: var(--foreground); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: var(--chart); stroke-width: 5px; stroke-linejoin: round;}
+.tooltip {position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); background: var(--foreground); color: var(--background); border-radius: 5px; padding: 5px 10px; font-size: 12px; pointer-events: none; text-align: center; width: max-content; max-width: 92%;}
+.legend {flex-wrap: wrap; gap: 6px 18px; padding: 7px 23px 16px;}
+.legend span {display: inline-flex; align-items: center; gap: 7px;}
+.legend i {width: 16px; height: 1px; background: var(--branch);}
+.legend span:first-child i {width: 6px; height: 6px; border-radius: 50%; background: var(--node);}
+.legend span:last-child i {height: 2px; background: var(--path);}
+.record {padding: 24px clamp(16px,2vw,30px); scroll-margin-top: 16px; align-self: start;}
+.record:focus {outline: none;}
+.eyebrow {color: var(--muted); text-transform: uppercase; letter-spacing: .13em; font-size: 10px;}
+.record h2 {margin: 12px 0; font-size: clamp(24px,2vw,34px); line-height: 1.12; letter-spacing: -.04em; font-weight: 600; overflow-wrap: anywhere;}
+.year {width: fit-content; font: 550 14px var(--mono); color: var(--path); margin: 12px 0 3px;}
+.institution,.endNote {color: var(--muted);font-size: 14px;line-height: 1.5;}
+.relations {border-top: 1px solid var(--edge); margin-top: 21px; padding-top: 14px;}
+.relations h3 {color: var(--muted); font-size: 12px; font-weight: 550; margin-bottom: 5px;}
+.relations a {font-size: 15px; font-weight: 550; letter-spacing: -.015em; gap: 8px; padding: 7px 0; justify-content: space-between;}
+.relations svg {flex-shrink: 0; color: var(--link);}
+.recordActions {gap: 16px; margin-top: 20px;}
+.backMap {display: none;}
+.endNote {margin-top: 20px;}
+.landmarks {flex-wrap: wrap; gap: 10px 22px; padding: 17px 0; border-bottom: 1px solid var(--edge);}
+.landmarks strong {font-size: 13px; font-weight: 600;}
+.landmarks a {gap: 4px; font-size: 13px; color: var(--link);}
+.landmarks svg,.source svg {height: 13px; width: 13px;}
+.path {margin-top: 32px;}
+.pathHeading {gap: 15px; justify-content: space-between;}
+.pathHeading h2 {font-size: clamp(22px,2vw,29px); letter-spacing: -.035em; font-weight: 600;}
+.pathHeading p {font-size: 13px;}
+.path ol {margin-top: 16px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0 24px; list-style: none;}
+.path li {border-top: 1px solid var(--edge);}
+.path li a {display: grid; grid-template-columns: 21px minmax(0,1fr) auto; align-items: baseline; gap: 8px; padding: 13px 0;}
+.step,.pathYear {color: var(--muted);font-size: 11px;}
+.pathName {font-size: 14px; font-weight: 550; line-height: 1.4;}
+.path a[aria-current=true] .pathName {color: var(--link);}
+.source {border-top: 1px solid var(--edge); margin-top: 30px; padding-top: 18px; justify-content: space-between; gap: 8px 25px; flex-wrap: wrap;}
+.source p {font-size: 12px;}
+.source div {flex-wrap: wrap; gap: 7px 15px;}
+.source a {font-size: 12px;}
+.page a:hover,.page button:hover {color: var(--link);}
+.page a:hover .pathName,.relations a:hover span,.landmarks a:hover {text-decoration: underline; text-underline-offset: 3px;}
+.dialog {position: fixed; margin: auto; width: min(90vw,550px); padding: 22px; border: 1px solid var(--edge); border-radius: 12px; background: var(--surface); color: var(--foreground); box-shadow: 0 24px 80px #0003;}
+.dialog::backdrop {background: rgb(15 22 32 / .54);}
+.dialog header,.dialog a {justify-content: space-between; gap: 12px;}
+.dialog h2 {font-size: 23px; font-weight: 600; letter-spacing: -.035em;}
+.dialog header button {padding: 8px;}
+.dialog input {width: 100%; margin: 12px 0 6px; padding: 10px; color: var(--foreground); background: var(--background); border: 1px solid var(--edge); border-radius: 7px;}
+.dialog p {font-size: 12px; margin: 5px 0; color: var(--muted);}
+.dialog ul {max-height: 46dvh; overflow: auto;}
+.dialog a {padding: 10px 4px; border-bottom: 1px solid var(--edge); font-size: 14px;}
+.dialog small {color: var(--muted);}
+@media (max-width:1050px){.path ol {grid-template-columns: repeat(3,minmax(0,1fr));}}
+@media (max-width:790px){
+  .workspace {grid-template-columns: 1fr;}
+  .plot {border-right: 0; border-bottom: 1px solid var(--edge);}
+  .record {padding: 18px 20px;}
+  .recordActions {margin-top: 12px;}
+  .backMap {display: inline; font-size: 13px; color: var(--link);}
+  .path ol {grid-template-columns: repeat(2,minmax(0,1fr));}
+}
+@media (max-width:580px){
+  .mast {min-height: 56px;} .mast nav {gap: 12px;} .mast nav a {font-size: 12px;} .identity {font-size: 14px; gap: 6px;}
+  .intro {align-items: flex-start; flex-direction: column; gap: 14px; padding: 25px 0 18px;}
+  .searchButton {padding: 7px 12px; font-size: 13px;}
+  .plotHead {padding: 14px 13px 3px;} .plotHead span,.legend {font-size: 10px;} .legend {padding: 5px 12px 13px; gap: 6px 10px;}
+  .labels {font-size: 11px;}
+  .path ol {grid-template-columns: 1fr;} .pathHeading {align-items: flex-start;flex-direction: column;gap: 2px;}
+  .path li a {padding: 10px 0;} .landmarks {gap: 8px 15px;} .landmarks strong {width: 100%;}
+}
+.plotHead {flex-wrap: wrap;}
+.plotHead > span {margin-left: auto;}
+.zoom {display: inline-flex; align-items: center; margin-left: 8px; background: var(--surface); border: 1px solid var(--edge); border-radius: 6px;}
+.zoom button {display: grid; place-items: center; min-width: 26px; min-height: 26px; font: 10px var(--mono); color: var(--muted);}
+.zoom button:nth-child(2) {min-width: 38px;}
+.zoom button:disabled {opacity: .35; cursor: default;}
+.zoom svg {width: 12px; height: 12px;}
+.viewport {overflow: auto; overflow-anchor: none; overscroll-behavior: contain; scrollbar-color: var(--branch) transparent;}
+.viewport[data-zoomed=true] {cursor: grab; user-select: none;}
+.viewport[data-zoomed=true]:active {cursor: grabbing;}
+.viewport svg {max-width: none; transition-property: none;}
+.labelLeader {fill: none; stroke: var(--node); stroke-width: .8; opacity: .65; pointer-events: none;}
+.labels a:hover {fill: var(--link);}
+@media(max-width:420px){.plotHead {gap: 4px;}.zoom {margin-left: 4px;}.zoom button {min-height: 28px;min-width: 23px;}.plotHead span {font-size: 9px;}}

@@ -10,7 +10,7 @@ import BackToTop from "@/components/BackToTop";
 
 export default function ProfileFrame({children}: {children: React.ReactNode}) {
   const path = usePathname();
-  if (path === '/research-map' || path === '/research-map/') {
+  if (['/research-map', '/genealogy'].includes(path.replace(/\/$/, ''))) {
     return <main id="main-content" tabIndex={-1}>{children}</main>;
   }
   return <>

@@ -123,7 +123,7 @@ const ProfileHeader = () => {
                 <SocialLink href="https://github.com/bardhh" icon={<FaGithub />} label="GitHub" />
                 <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin />} label="LinkedIn" />
                 <SocialLink href="https://x.com/bardhhoxha" icon={<FaXTwitter />} label="X (Twitter)" />
-                <SocialLink href="/media/geneaolgy.pdf" icon={<FaSitemap />} label="Mathematical Genealogy" />
+                <Link href="/genealogy/" className="grid size-9 place-items-center rounded-md text-base text-white/80 hover:bg-white/10 hover:text-white md:size-11" aria-label="Academic genealogy" title="Academic genealogy"><FaSitemap aria-hidden="true" /></Link>
               </div>
             </div>
           </div>
