@@ -7,7 +7,6 @@ import clsx from 'clsx';
 interface Course {
   title: string;
   semester: string;
-  university: string;
   description?: string;
   link?: string | null;
 }
@@ -16,46 +15,39 @@ const courses: Course[] = [
   {
     title: "CS 437: Machine Learning and Soft Computing",
     semester: "Fall 2019",
-    university: "Southern Illinois University",
     description: "Introduced rule-based reasoning, fuzzy logic, neural networks, and evolutionary computation. Topics included designing fuzzy inference systems and using genetic algorithms to search for solutions.",
   },
   {
     title: "CS 404: Autonomous Mobile Robots",
     semester: "Spring 2019",
-    university: "Southern Illinois University",
     description: "Examined how mobile robots use sensors, actuators, and control algorithms to move through their environment. The course also covered coordination among robots and interaction with people.",
   },
   {
     title: "CS 591: Testing and Verification of Cyber-Physical Systems",
     semester: "Fall 2018",
-    university: "Southern Illinois University",
     description: "This course focused on the verification and testing of Cyber-Physical Systems (CPS). Topics included: Hybrid Automata, Reachability Analysis, Temporal Logics (LTL, MTL, STL), Falsification, and Data-Driven Verification.",
     link: null
   },
   {
     title: "CS 499: Senior Project",
     semester: "Spring 2018",
-    university: "Southern Illinois University",
     description: "Capstone project course for computer science seniors. Students worked in teams to design and implement significant software projects.",
     link: null
   },
   {
     title: "CS 410: Computer Security",
     semester: "Spring 2018",
-    university: "Southern Illinois University",
     description: "Surveyed how cryptography and access controls protect data and how software and network defenses protect systems. Topics also included security auditing, risk management, and privacy.",
   },
   {
     title: "CS 498: Senior Project",
     semester: "Fall 2017",
-    university: "Southern Illinois University",
     description: "First part of the senior capstone sequence. Focus on requirements analysis, design, and prototyping.",
     link: null
   },
   {
     title: "CS 290: Communication Skills",
     semester: "Fall 2017",
-    university: "Southern Illinois University",
     description: "Course designed to improve technical communication skills, including writing technical reports and giving presentations.",
     link: null
   }
@@ -71,11 +63,9 @@ const Teaching = () => {
 
   return (
     <section tabIndex={-1} id="teaching" className="scroll-mt-24" role="region" aria-label="Teaching experience">
-      <div className="flex items-center mb-5">
-
-        <h2 className="profile-title">
-          Teaching
-        </h2>
+      <div className="mb-4">
+        <h2 className="profile-title">Teaching</h2>
+        <p className="mt-1 text-sm text-[var(--muted)]">Southern Illinois University</p>
       </div>
 
       <div className="space-y-1.5">
@@ -88,7 +78,7 @@ const Teaching = () => {
               <FaChalkboardTeacher aria-hidden="true" className={clsx("shrink-0 text-sm", isOpen ? "text-blue-500" : "text-slate-400")} />
               <div className="min-w-0 flex-1 sm:flex sm:items-baseline sm:justify-between sm:gap-3">
                 <h3 className="font-semibold text-sm leading-5">{course.title}</h3>
-                <span className="block text-xs leading-4 text-slate-600 dark:text-slate-400 sm:shrink-0">{course.university} &bull; {course.semester}</span>
+                <span className="block text-xs leading-4 text-slate-600 dark:text-slate-400 sm:shrink-0">{course.semester}</span>
               </div>
             </div>
           );

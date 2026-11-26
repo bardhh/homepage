@@ -227,7 +227,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
       </div>
 
       {/* List */}
-      <div className="space-y-4">
+      <div className="space-y-2">
         {visiblePubs.map((pub, index) => (
           <div
             key={pub.citationKey}
@@ -336,7 +336,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
 
   return (
     <div className={clsx(
-      "glass-card rounded-lg px-4 py-3 relative group border-l-4 grid gap-1.5 md:flex md:items-start md:gap-4",
+      "glass-card rounded-lg px-4 py-2.5 relative group border-l-4 grid gap-1.5 md:flex md:items-start md:gap-4",
       borderClass
     )}>
       {/* Index */}
@@ -373,7 +373,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
       </div>
 
       {/* Action icons */}
-      <div className="shrink-0 flex justify-end items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity relative">
+      <div className="shrink-0 flex justify-end items-center gap-1 text-[var(--muted)] md:pointer-fine:opacity-60 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity relative">
         <div className="relative">
           <IconBtn onClick={copyBibtex} label={copied ? 'Copied' : 'Cite'}>
             {copied ? <FaCheck className="text-emerald-500"/> : <FaQuoteLeft/>}

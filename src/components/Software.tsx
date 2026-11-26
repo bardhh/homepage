@@ -113,17 +113,19 @@ const Software = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-2">
+      <div className="@container grid grid-cols-1 gap-2">
         {projects.map((project) => (
-          <div key={project.repo} className="glass-card rounded-lg px-4 py-3">
-            <h3 className="text-base font-semibold leading-5 text-slate-900 dark:text-slate-100">
-              {project.title}
-            </h3>
-            <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
-              {project.description}{project.homepageNote && <> {project.homepageNote}</>}
-            </p>
+          <div key={project.repo} className="glass-card rounded-lg px-4 py-2.5 @min-[44rem]:grid @min-[44rem]:grid-cols-[minmax(0,1fr)_auto] @min-[44rem]:items-center @min-[44rem]:gap-x-5">
+            <div>
+              <h3 className="text-base font-semibold leading-5 text-slate-900 dark:text-slate-100">
+                {project.title}
+              </h3>
+              <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
+                {project.description}{project.homepageNote && <> {project.homepageNote}</>}
+              </p>
+            </div>
 
-            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
+            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 @min-[44rem]:mt-0">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className={resourceLink}>
                 <FaCode aria-hidden="true" /> Repository
               </a>

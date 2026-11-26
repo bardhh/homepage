@@ -39,7 +39,7 @@ function PatentCard({ patent }: { patent: Patent }) {
       href={patent.link}
       target="_blank"
       rel="noopener noreferrer"
-      className={`block glass-card rounded-lg px-4 py-3 border-l-4 ${style.border} group flex items-start gap-4`}
+      className={`block glass-card rounded-lg px-4 py-2.5 border-l-4 ${style.border} group flex items-start gap-4`}
     >
       {/* Icon */}
       <div className="shrink-0 pt-0.5 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 transition-colors" aria-hidden="true">
@@ -91,7 +91,7 @@ const Patents = () => {
           <a href="/#patents" className="ml-3 text-blue-700 underline dark:text-blue-300">View all patents</a>
         </p>
       )}
-      <div className="space-y-4">
+      <div className="space-y-2">
         {results.slice(0, initialCount).map(patent => <PatentCard key={patent.number} patent={patent} />)}
         {results.length > initialCount && (
           <details className="group/patents">
@@ -99,7 +99,7 @@ const Patents = () => {
               <span className="group-open/patents:hidden">Show more ({results.length - initialCount} remaining)</span>
               <span className="hidden group-open/patents:inline">Show fewer patents</span>
             </summary>
-            <div className="mt-4 space-y-4">
+            <div className="mt-2 space-y-2">
               {results.slice(initialCount).map(patent => <PatentCard key={patent.number} patent={patent} />)}
             </div>
           </details>
