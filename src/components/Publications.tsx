@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
+import PublicationAuthors from './PublicationAuthors';
 import type { Publication } from '@/lib/bibtex';
 import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaChevronDown, FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
@@ -48,17 +49,33 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
     selectedThemes.join(matchAny ? ' or ' : ' · '),
   ].filter(Boolean);
 
-  // Cmd/Ctrl+K keyboard shortcut to focus search
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        inputRef.current?.focus();
-        inputRef.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
+    let frame = 0;
+    function focusSearch() {
+      setFiltersOpen(true);
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        inputRef.current?.focus({ preventScroll: true });
+        inputRef.current?.scrollIntoView({ block: 'center' });
+      });
+    }
+    function onHashChange() {
+      if (location.hash === '#publication-search') focusSearch();
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        focusSearch();
       }
+    }
+    onHashChange();
+    window.addEventListener('hashchange', onHashChange);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('hashchange', onHashChange);
+      document.removeEventListener('keydown', onKeyDown);
     };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const toggleTheme = (theme: string) => {
@@ -127,6 +144,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const visiblePubs = firstPaper
     ? [firstPaper, ...sortedPubs.filter(pub => pub !== firstPaper).slice(0, visibleCount - 1)]
     : sortedPubs.slice(0, visibleCount);
+  const guided = Boolean(firstPaper);
   const hasMore = visibleCount < sortedPubs.length;
 
   const [cardsVisible, setCardsVisible] = useState(false);
@@ -149,7 +167,17 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         </h2>
       </div>
 
-      <div className="glass flex flex-col rounded-2xl p-4 md:p-6 mb-5 md:mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
+      {guided && <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-[var(--edge)] pb-2">
+        <span className="font-semibold">{guide?.title}</span>
+        <span aria-live="polite" className="text-sm text-[var(--muted)]">{visiblePubs.length} of {sortedPubs.length} papers</span>
+        <button type="button" aria-expanded={filtersOpen} aria-controls="publication-controls"
+          onClick={() => setFiltersOpen(open => !open)}
+          className="ml-auto inline-flex min-h-9 items-center gap-2 text-sm font-medium text-[var(--link)] hover:underline">
+          {filtersOpen ? 'Hide filters' : 'Change filters'}
+          <FaChevronDown aria-hidden="true" className={clsx('size-2.5', filtersOpen && 'rotate-180')} />
+        </button>
+      </div>}
+      <div id="publication-controls" className={clsx(guided && !filtersOpen ? 'hidden' : 'flex', "glass flex-col rounded-2xl p-4 md:p-6 mb-5 md:mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5")}>
 
         {/* Search */}
         <div className="relative mb-1 md:mb-6 group">
@@ -180,7 +208,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-2 md:order-last md:mt-4">
+        <div className={clsx(guided ? 'hidden' : 'flex', 'items-center justify-between gap-2 md:order-last md:mt-4')}>
           <div className="text-[13px] font-medium text-[var(--muted)]" aria-live="polite" aria-atomic="true">
             Showing {visiblePubs.length} of {sortedPubs.length} {sortedPubs.length === 1 ? 'publication' : 'publications'}
             {activeFilters.length > 0 && (
@@ -366,7 +394,7 @@ const PublicationCard = ({ pub, index, reason }: { pub: Publication, index: numb
         </Link>
         {reason && <p className="my-1 max-w-prose text-sm leading-relaxed text-[var(--muted)]">{reason}</p>}
         <div className="text-[13px] leading-[1.45] text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-2 md:line-clamp-none md:truncate">
-          {pub.entryTags.author?.replace(/ and /g, ', ')}
+          <PublicationAuthors names={publicationAuthors(pub.entryTags.author)} />
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
           {venue && <span className="font-medium text-slate-700 dark:text-slate-300">{venue}</span>}

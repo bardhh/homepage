@@ -1,9 +1,11 @@
+import PublicationAuthors from '@/components/PublicationAuthors';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPublications } from '@/lib/publications';
 import { publicationJsonLd, publicationRecord, serializeJsonLd } from '@/lib/publication-utils';
 import { researchAreas } from '@/data/research-areas';
+import { projects } from '@/components/Software';
 import PublicationCitation from '@/components/PublicationCitation';
 import PublicationResources, { publicationLinkClass } from '@/components/PublicationResources';
 
@@ -38,6 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PublicationPage({ params }: Props) {
   const entry = await getPublication(params);
   const publication = publicationRecord(entry);
+  const project = projects.find(project => project.paperKey === entry.citationKey);
   const guide = researchAreas.find(area => area.paper === entry.citationKey);
   return (
     <div className="pb-24 space-y-8">
@@ -49,7 +52,7 @@ export default async function PublicationPage({ params }: Props) {
           <span className="capitalize">{publication.type}</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold font-heading leading-tight text-slate-900 dark:text-white">{publication.title}</h1>
-        <p className="mt-5 text-slate-700 dark:text-slate-300 leading-relaxed">{publication.authors.join(', ')}</p>
+        <p className="mt-5 text-slate-700 dark:text-slate-300 leading-relaxed"><PublicationAuthors names={publication.authors} /></p>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{publication.venue}</p>
         {publication.award && <p className="mt-3 font-medium text-amber-700 dark:text-amber-300">{publication.award}</p>}
         {guide && <p className="mt-5 max-w-prose leading-relaxed text-slate-700 dark:text-slate-300">{guide.summary}</p>}
@@ -58,6 +61,7 @@ export default async function PublicationPage({ params }: Props) {
           {publication.links.pdf && <a href={publication.links.pdf} className={publicationLinkClass}>PDF</a>}
           {publication.links.website && <a href={publication.links.website} className={publicationLinkClass}>Project page</a>}
           {publication.links.code && <a href={publication.links.code} className={publicationLinkClass}>Code</a>}
+          {project && <Link prefetch={false} href={`/#software-${project.paperKey}`} className={publicationLinkClass}>{project.title.split(':')[0]} software</Link>}
           {publication.links.video && <a href={publication.links.video} className={publicationLinkClass}>Video</a>}
         </nav>
         {publication.abstract && <section aria-labelledby="abstract-heading" className="mt-8">

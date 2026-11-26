@@ -1,3 +1,4 @@
+import PublicationAuthors from '@/components/PublicationAuthors';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPublications } from '@/lib/publications';
@@ -144,7 +145,7 @@ export default async function CurriculumVitae() {
               const venue = publicationVenueName(pub);
               return (
                 <li key={pub.citationKey}>
-                  {publicationAuthors(pub.entryTags.author).join(', ')}.{' '}
+                  <PublicationAuthors names={publicationAuthors(pub.entryTags.author)} />.{' '}
                   <Link prefetch={false} href={publicationPath(pub)} className={linkClass}>{pub.entryTags.title}</Link>.{' '}
                   {[venue, pub.entryTags.year].filter(Boolean).join(', ')}.
                   {pub.entryTags.award && <span className="font-semibold"> {pub.entryTags.award}.</span>}

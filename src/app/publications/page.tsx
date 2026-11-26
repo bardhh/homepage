@@ -1,3 +1,4 @@
+import PublicationAuthors from '@/components/PublicationAuthors';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPublications } from '@/lib/publications';
@@ -48,7 +49,7 @@ export default async function PublicationsArchive() {
                   <h3 className="font-semibold text-lg leading-snug">
                     <Link prefetch={false} href={new URL(publication.url).pathname} className="hover:text-blue-600 dark:hover:text-blue-400">{publication.title}</Link>
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{publication.authors.join(', ')}</p>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400"><PublicationAuthors names={publication.authors} /></p>
                   <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{publication.venue}</p>
                   <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3 text-sm">
                     {publication.links.paper && <a href={publication.links.paper} className={publicationLinkClass}>Paper</a>}

@@ -1,5 +1,6 @@
-import React from 'react';
-import { FaCode, FaFilePdf, FaBlog, FaBook } from 'react-icons/fa';
+import Link from 'next/link';
+import { publicationPath } from '@/lib/publication-utils';
+import { FaCode, FaBookOpen, FaBlog, FaBook } from 'react-icons/fa';
 
 interface Project {
   title: string;
@@ -8,8 +9,8 @@ interface Project {
   link: string;
   blog?: string;
   docs?: string;
-  paper: string | null;
-  paperName: string | null;
+  paperKey: string;
+  paperName: string;
   /** Short evidence of adoption or recognition, shown as a list under the description. */
   impact?: string[];
   homepageNote?: string;
@@ -24,8 +25,8 @@ export const projects: Project[] = [
     repo: "bardhh/cbfkit",
     link: "https://github.com/bardhh/cbfkit",
     blog: "https://bardhh.github.io/cbfkit/",
-    paper: "https://arxiv.org/abs/2404.07158",
-    paperName: "IROS2024",
+    paperKey: "IROS2024",
+    paperName: "IROS 2024",
     impact: [
       'Published at IROS 2024',
       '116 GitHub stars',
@@ -37,8 +38,8 @@ export const projects: Project[] = [
     repo: "cps-atlas/strem",
     link: "https://github.com/cps-atlas/strem",
     docs: "https://cps-atlas.github.io/strem/",
-    paper: "https://arxiv.org/abs/2411.05946",
-    paperName: "STTT2024",
+    paperKey: "STTT2024",
+    paperName: "STTT 2024",
     impact: [
       'Best paper finalist at RV 2023',
       'Journal version in STTT 2024',
@@ -50,8 +51,8 @@ export const projects: Project[] = [
     description: "Monitor a signal as it arrives and measure how closely it satisfies a Signal Temporal Logic specification.",
     repo: "nickovic/rtamt",
     link: "https://github.com/nickovic/rtamt",
-    paper: "/papers/rtamt2023.pdf",
-    paperName: "STTT2023",
+    paperKey: "STTT2023",
+    paperName: "STTT 2023",
     impact: [
       '83 GitHub stars, 32 forks',
       'Tool paper cited 40+ times',
@@ -62,8 +63,8 @@ export const projects: Project[] = [
     description: "Compute temporal logic robustness in parallel across recorded signals to evaluate test runs.",
     repo: "versyslab/tltk",
     link: "https://bitbucket.org/versyslab/tltk/src/master/",
-    paper: "/papers/RV2020.pdf",
-    paperName: "RV2020",
+    paperKey: "cralley2020tltk",
+    paperName: "RV 2020",
     impact: [
       'Tool paper at RV 2020',
     ],
@@ -74,8 +75,8 @@ export const projects: Project[] = [
     homepageNote: "Its falsification benchmarks have been used in ARCH-COMP.",
     repo: "s-taliro/s-taliro",
     link: "https://sites.google.com/a/asu.edu/s-taliro/s-taliro",
-    paper: "/papers/DIFTS2014.pdf",
-    paperName: "DIFTS2014",
+    paperKey: "hoxha2014towards",
+    paperName: "DIFTS 2014",
     impact: [
       'Benchmarks used in the ARCH-COMP falsification competition',
       'Benchmark paper cited 160+ times',
@@ -87,17 +88,17 @@ export const projects: Project[] = [
     description: "Compute the reachable outputs of a neural network and use the resulting sets to guide repairs.",
     repo: "Shaddadi/veritex",
     link: "https://github.com/Shaddadi/veritex",
-    paper: null,
-    paperName: null,
+    paperKey: "yang2022neural",
+    paperName: "FORMATS 2022",
     impact: ['Best Software Artifact Award at FORMATS 2022', 'Repair paper cited 60+ times'],
   },
   {
-    title: "NDF-CoRoCo: Cooperative Perception",
-    description: "Use neural density fields to combine observations from multiple agents for cooperative perception and recognition.",
+    title: "NDF-CoRoCo: Continuum Robot Control",
+    description: "Use learned distance fields to check collisions and plan motions for continuum robots.",
     repo: "cps-atlas/ndf-coroco",
     link: "https://github.com/cps-atlas/ndf-coroco",
-    paper: "https://arxiv.org/abs/2404.16704",
-    paperName: "arXiv Paper"
+    paperKey: "IROS2025",
+    paperName: "IROS 2025",
   }
 ];
 
@@ -115,7 +116,7 @@ const Software = () => {
 
       <div className="@container grid grid-cols-1 gap-2">
         {projects.map((project) => (
-          <div key={project.repo} className="glass-card rounded-lg px-4 py-2.5 @min-[44rem]:grid @min-[44rem]:grid-cols-[minmax(0,1fr)_auto] @min-[44rem]:items-center @min-[44rem]:gap-x-5">
+          <div id={`software-${project.paperKey}`} key={project.repo} className="glass-card rounded-lg px-4 py-2.5 @min-[44rem]:grid @min-[44rem]:grid-cols-[minmax(0,1fr)_auto] @min-[44rem]:items-center @min-[44rem]:gap-x-5">
             <div>
               <h3 className="text-base font-semibold leading-5 text-slate-900 dark:text-slate-100">
                 {project.title}
@@ -142,11 +143,9 @@ const Software = () => {
                 </a>
               )}
 
-              {project.paper && (
-                <a href={project.paper} target="_blank" rel="noopener noreferrer" className={resourceLink}>
-                  <FaFilePdf aria-hidden="true" /> {project.paperName}
-                </a>
-              )}
+              <Link prefetch={false} href={publicationPath({ citationKey: project.paperKey })} className={resourceLink}>
+                <FaBookOpen aria-hidden="true" /> Paper · {project.paperName}
+              </Link>
             </div>
           </div>
         ))}
