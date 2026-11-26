@@ -128,8 +128,8 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   return (
     <section tabIndex={-1} id="publications" className="scroll-mt-24 focus:outline-none" role="region" aria-label="Publications">
       <div className="flex items-center mb-8">
-        <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+
+        <h2 className="profile-title">
           Publications
         </h2>
       </div>
@@ -168,7 +168,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         {/* Filters */}
         <div className="space-y-3">
           <fieldset>
-            <legend className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Filter by type</legend>
+            <legend className="text-[13px] font-semibold text-[var(--muted)] mb-2">Filter by type</legend>
             <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
               <FilterButton active={typeFilter === 'all'} onClick={() => handleTypeFilter('all')} icon={<FaLayerGroup />}>All</FilterButton>
               <FilterButton active={typeFilter === 'conference'} onClick={() => handleTypeFilter('conference')} icon={<FaUsers />}>Conferences</FilterButton>
@@ -180,7 +180,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           </fieldset>
 
           <fieldset>
-            <legend className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pt-2 border-t border-slate-200/50 dark:border-slate-700/50 w-full block">Filter by theme (multi-select)</legend>
+            <legend className="text-[13px] font-semibold text-[var(--muted)] mb-2 pt-2 border-t border-slate-200/50 dark:border-slate-700/50 w-full block">Filter by theme (multi-select)</legend>
             <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
               <FilterButton active={selectedThemes.includes('learning')} onClick={() => toggleTheme('learning')} icon={<FaBrain />}>Learning</FilterButton>
               <FilterButton active={selectedThemes.includes('planning')} onClick={() => toggleTheme('planning')} icon={<FaRobot />}>Planning</FilterButton>
@@ -192,7 +192,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           </fieldset>
         </div>
 
-        <div className="mt-4 text-xs font-medium text-slate-400 uppercase tracking-wider" aria-live="polite">
+        <div className="mt-4 text-[13px] font-medium text-[var(--muted)]" aria-live="polite">
           Showing {visiblePubs.length} of {sortedPubs.length} publications
         </div>
       </div>
@@ -246,7 +246,7 @@ const FilterButton = ({ active, onClick, children, icon }: { active: boolean, on
     className={clsx(
       "inline-flex items-center px-2.5 py-1.5 md:px-4 md:py-2 rounded-lg md:rounded-xl text-xs md:text-sm font-medium transition-all duration-200",
       active
-        ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25 scale-105"
+        ? "bg-[var(--primary)] text-white"
         : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
     )}
   >
@@ -304,11 +304,11 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
 
   return (
     <div className={clsx(
-      "glass-card rounded-lg px-4 py-3 relative group border-l-4 flex items-start gap-4",
+      "glass-card rounded-lg px-4 py-3 relative group border-l-4 grid gap-1.5 md:flex md:items-start md:gap-4",
       borderClass
     )}>
       {/* Index */}
-      <div className="shrink-0 pt-0.5 w-8 text-right font-mono text-xs text-slate-400 dark:text-slate-500 tabular-nums">
+      <div className="hidden md:block shrink-0 pt-0.5 w-8 text-right font-mono text-xs text-slate-400 dark:text-slate-500 tabular-nums">
         {index}
       </div>
 
@@ -319,11 +319,11 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
           href={publicationPath(pub)}
           className="block group/title"
         >
-          <h3 className="text-sm md:text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 leading-[1.35] group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">
             {pub.entryTags.title}
           </h3>
         </Link>
-        <div className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 truncate">
+        <div className="text-[13px] leading-[1.45] text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-2 md:line-clamp-none md:truncate">
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -343,7 +343,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
       </div>
 
       {/* Action icons */}
-      <div className="shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity relative">
+      <div className="shrink-0 flex justify-end items-center gap-1 text-slate-500 dark:text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity relative">
         <div className="relative">
           <IconBtn onClick={copyBibtex} label={copied ? 'Copied' : 'Cite'}>
             {copied ? <FaCheck className="text-emerald-500"/> : <FaQuoteLeft/>}

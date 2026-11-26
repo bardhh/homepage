@@ -24,14 +24,14 @@ export default async function Home() {
       {/* About Me Section */}
       <section tabIndex={-1} id="bio" className="scroll-mt-32 animate-fade-in-up" role="region" aria-label="About me">
         <div className="flex items-center mb-8">
-          <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+
+          <h2 className="profile-title">
             Building Safer Autonomous Systems
           </h2>
         </div>
 
-        <div className="glass rounded-2xl p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
-          <div className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
+        <div className="glass rounded-2xl p-5 md:p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
+          <div className="max-w-[70ch] text-[17px] leading-[1.55] text-slate-700 dark:text-slate-300">
             <p>
               My research at <ExternalLink href="https://amrd.toyota.com/division/trina/" className="font-medium text-blue-600 hover:underline dark:text-blue-400" showIcon={false}>Toyota Research Institute of North America</ExternalLink> focuses
               on the design and verification of autonomous and cyber-physical systems. Across perception, planning,

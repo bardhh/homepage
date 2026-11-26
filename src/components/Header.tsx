@@ -63,7 +63,7 @@ const Header = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div ref={bgRef} className="bkg-pan-parallax" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 via-70% to-slate-50 dark:to-slate-900 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 hero-overlay backdrop-blur-[1px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center">
@@ -86,14 +86,14 @@ const Header = () => {
           {/* Text Content */}
           <div className="flex-grow text-center md:text-left space-y-4">
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white font-heading">
+              <h1 className="text-[38px] md:text-[64px] leading-none font-semibold tracking-[-.035em] text-white font-heading">
                 Bardh Hoxha
               </h1>
               <div className="space-y-1">
-                <p className="text-xl md:text-2xl text-blue-200 font-light tracking-wide">
+                <p className="text-xl md:text-2xl text-[#f4f6f8] font-medium">
                   Senior Principal Scientist
                 </p>
-                <p className="text-lg md:text-xl text-slate-300 font-medium">
+                <p className="text-lg md:text-xl text-[#e0e5ec] font-normal">
                   Toyota Research Institute of North America (TRINA)
                 </p>
               </div>

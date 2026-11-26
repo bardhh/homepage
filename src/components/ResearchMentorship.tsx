@@ -65,8 +65,8 @@ export default function ResearchMentorship({ publications }: { publications: Pub
   return (
     <section id="mentorship" tabIndex={-1} aria-labelledby="mentorship-title" className="scroll-mt-24">
       <div className="mb-3 flex items-center">
-        <div className="mr-4 h-10 w-1 rounded-full bg-blue-500" />
-        <h2 id="mentorship-title" className="font-heading text-3xl font-bold text-slate-900 dark:text-white">Mentorship</h2>
+
+        <h2 id="mentorship-title" className="profile-title">Mentorship</h2>
       </div>
       <ResidentList compact publications={publications} />
     </section>

@@ -19,7 +19,7 @@ const stages = [
   { section: 'contact', label: 'Verify', title: 'Project onto the safety margin axis', formula: `m ∈ [${minMargin}, ${maxMargin}]`, text: `The polygons collapse to the interval of reachable margins. Its lower endpoint is ${minMargin} above zero, so every input is safe.` },
 ];
 
-const tones = ['#65d2f1', '#a398ff', '#60d5b4', '#ffbe83'];
+const tones = ['var(--set-blue, #65d2f1)', 'var(--set-violet, #a398ff)', 'var(--set-green, #60d5b4)', 'var(--set-amber, #ffbe83)'];
 // Project each two-dimensional layer onto a separate plane in the stack.
 const plane: Point[] = [[-2,-2], [3,-2], [3,3], [-2,3]];
 const corners: Point[] = [[-1,-1], [1,-1], [1,1], [-1,1]];
@@ -47,7 +47,7 @@ function NetworkGlyph({ progress }: { progress: number }) {
         return <g key={from * 2 + to}>
           <line x1={start} y1={a} x2={start + 27} y2={b} stroke="#52667b" strokeWidth=".9" />
           {!silenced && <line x1={start} y1={a} x2={start + 27 * t} y2={a + (b-a)*t}
-            stroke="#9cdaee" strokeWidth="1.2" opacity=".85" />}
+            stroke="var(--trace-ink, #9cdaee)" strokeWidth="1.2" opacity=".85" />}
         </g>;
       }))}
     </g>)}
@@ -84,19 +84,19 @@ const LayerPlane = memo(function LayerPlane({ depth, current, reached, spacing }
   // Move the safety boundary along with the set during the translation.
   const boundary = -unsafeAt * Math.min(1, Math.max(0, output + 2 - depth));
   return (
-    <g opacity={secondary ? 0.53 : 1}>
-      {whole && <polygon points={contour(depth > output ? marginPlane : plane,depth,spacing)} fill="#193247" fillOpacity=".3"
+    <g opacity={secondary ? 'var(--secondary-plane, .53)' : 1}>
+      {whole && <polygon points={contour(depth > output ? marginPlane : plane,depth,spacing)} fill="var(--plane-fill, #193247)" fillOpacity=".3"
         stroke={current ? '#7491a9' : '#496076'} strokeWidth=".75" />}
-      {depth >= output + 1 && <g opacity={reached ? .9 : .16}>
-        <polygon points={contour([marginPlane[0],marginPlane[1],[3,boundary],[-2,boundary]],depth,spacing)} fill="#ffc389" fillOpacity=".23" />
-        <polyline points={contour([[-2,boundary],[3,boundary]],depth,spacing)} fill="none" stroke="#ffc389" strokeWidth=".9" />
+      {depth >= output + 1 && <g opacity={reached ? .9 : 'var(--unreached-set, .16)'}>
+        <polygon points={contour([marginPlane[0],marginPlane[1],[3,boundary],[-2,boundary]],depth,spacing)} fill="var(--unsafe-line, #ffc389)" fillOpacity=".23" />
+        <polyline points={contour([[-2,boundary],[3,boundary]],depth,spacing)} fill="none" stroke="var(--unsafe-line, #ffc389)" strokeWidth=".9" />
       </g>}
       {cells.map((cell,i) => {
         const pts = cell.map(v => atLayer(v, depth));
         const outline = contour(pts,depth,spacing);
-        return <g key={i} stroke={tones[i]} strokeLinejoin="round" opacity={reached ? 1 : 0.18}>
+        return <g key={i} stroke={tones[i]} strokeLinejoin="round" opacity={reached ? 1 : 'var(--unreached-set, .18)'}>
           {current && <polygon points={outline} fill="none" strokeWidth="4.5" opacity=".13" />}
-          <polygon points={outline} fill={tones[i]} fillOpacity={current ? .35 : .13} strokeWidth={current ? 1.65 : 1} />
+          <polygon points={outline} fill={tones[i]} fillOpacity={current ? .35 : 'var(--set-fill-opacity, .13)'} strokeWidth={current ? 'var(--active-width, 1.65)' : 'var(--set-width, 1)'} />
           {current && pts.map((p,j) => {
             const [cx,cy] = screen(p,depth,spacing);
             return <circle key={j} cx={cx} cy={cy} r="1.5" stroke="none" fill={tones[i]} />;
@@ -108,6 +108,7 @@ const LayerPlane = memo(function LayerPlane({ depth, current, reached, spacing }
 });
 
 const viewWidth = 180;
+const reflowDuration = 420;
 
 type RailLayout = { height: number; spacing: number[] };
 
@@ -130,20 +131,20 @@ function TraceFigure({ progress, layout }: { progress: number; layout: RailLayou
         ))}
         {tracks.map((v,i) => (
           <g key={i} fill="none" stroke={tones[i]}>
-            <polyline points={fixedDepths.map(j => screen(atLayer(v,j),j,spacing).join(',')).join(' ')} strokeOpacity=".16" strokeDasharray="2 4" />
+            <polyline points={fixedDepths.map(j => screen(atLayer(v,j),j,spacing).join(',')).join(' ')} strokeOpacity="var(--future-path-opacity, .16)" strokeWidth="var(--path-width, 1)" strokeDasharray="2 4" />
             <polyline points={traveled.map(j => screen(atLayer(v,j),j,spacing).join(',')).join(' ')}
-              strokeOpacity=".68" strokeWidth="1" />
+              strokeOpacity="var(--path-opacity, .68)" strokeWidth="var(--path-width, 1)" />
           </g>
         ))}
         {planes.map(depth => (
           <LayerPlane key={Number.isInteger(depth) ? depth : 'moving'}
             depth={depth} spacing={spacing} current={depth === layer} reached={depth <= layer} />
         ))}
-        <polyline points={trail} fill="none" stroke="#e8faff" strokeWidth="1" opacity=".72" />
+        <polyline points={trail} fill="none" stroke="var(--trace-ink, #e8faff)" strokeWidth="var(--path-width, 1)" opacity=".72" />
         <g transform={`translate(${tipX} ${tipY})`}>
-          <circle r="6" fill="#bdedff" opacity=".10" />
-          <circle r="3.8" fill="none" stroke="#d8f5ff" strokeWidth=".75" opacity=".70" />
-          <circle r="1.9" fill="#f3fcff" />
+          <circle r="6" fill="var(--trace-ink, #bdedff)" opacity=".10" />
+          <circle r="3.8" fill="none" stroke="var(--trace-ink, #d8f5ff)" strokeWidth=".75" opacity=".70" />
+          <circle r="1.9" fill="var(--trace-ink, #f3fcff)" />
         </g>
         <g transform="translate(63 0)">
           <NetworkGlyph progress={progress} />
@@ -171,25 +172,47 @@ export default function VerificationRail() {
     if (!header || !element || landmarks.length !== stages.length) return;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     let tops: number[] = [];
+    let targetTops: number[] = [];
+    let transition: { from: number[]; start: number } | null = null;
+    let railHeight = 0;
     let frame = 0;
     let inViewport = false;
     let headerEnd = 0;
     let previousOffset = -1;
     let layoutDirty = true;
 
-    function update() {
+    function update(now: number) {
       frame = 0;
       const y = window.scrollY;
       if (layoutDirty) {
         const bounds = element!.getBoundingClientRect();
         if (!bounds.width) return;
         const height = viewWidth * bounds.height / bounds.width;
-        tops = landmarks.map(sectionScrollTop);
-        const span = Math.max(1, tops[lastPlane] - tops[0]);
-        const scale = (top: number) => (height - 122) * (top - tops[0]) / span;
-        setLayout({ height, spacing: tops.map(scale) });
+        const measured = landmarks.map(sectionScrollTop);
+        if (height !== railHeight || measured.some((top, i) => top !== targetTops[i])) {
+          // Retarget from the visible positions if another list changes mid-transition.
+          transition = tops.length > 0 && height === railHeight && !reduced.matches
+            ? { from: tops, start: now } : null;
+          targetTops = measured;
+          railHeight = height;
+        }
         headerEnd = header!.getBoundingClientRect().bottom + y;
         layoutDirty = false;
+      }
+      const previousTops = tops;
+      if (transition) {
+        const { from, start } = transition;
+        const t = reduced.matches ? 1 : Math.min(1, (now - start) / reflowDuration);
+        const eased = t * t * (3 - 2 * t);
+        tops = t < 1 ? targetTops.map((top, i) => from[i] + (top - from[i]) * eased) : targetTops;
+        if (t < 1) schedule();
+        else transition = null;
+      } else {
+        tops = targetTops;
+      }
+      if (tops !== previousTops) {
+        const span = Math.max(1, tops[lastPlane] - tops[0]);
+        setLayout({ height: railHeight, spacing: tops.map(top => (railHeight - 122) * (top - tops[0]) / span) });
       }
       const offset = Math.max(0, headerEnd - y);
       if (offset !== previousOffset) {

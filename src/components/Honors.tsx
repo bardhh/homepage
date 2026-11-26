@@ -21,8 +21,8 @@ const Honors = ({ publications }: { publications: Publication[] }) => {
   return (
     <section tabIndex={-1} id="honors" className="scroll-mt-24" role="region" aria-label="Honors and recognition">
       <div className="flex items-center mb-5">
-        <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+
+        <h2 className="profile-title">
           Honors &amp; Recognition
         </h2>
       </div>
@@ -64,8 +64,8 @@ const Honors = ({ publications }: { publications: Publication[] }) => {
 export const InvitedTalks = () => (
     <section tabIndex={-1} id="talks" className="scroll-mt-24" aria-labelledby="talks-title">
       <div className="flex items-center mb-5">
-        <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-        <h2 id="talks-title" className="text-3xl font-bold text-slate-900 dark:text-white font-heading">Invited Talks</h2>
+
+        <h2 id="talks-title" className="profile-title">Invited Talks</h2>
       </div>
       <ul className="space-y-1.5">
         {invitedTalks.map(talk => (

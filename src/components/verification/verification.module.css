@@ -24,10 +24,9 @@
 .profileRail > div:first-child {
   padding: 12px;
   /* The pinned menu can use a solid tint without resampling the scrolling page. */
-  background-color: #f3f6fb;
+  background-color: var(--surface);
   backdrop-filter: none;
 }
-:global(.dark) .profileRail > div:first-child { background-color: #101728; }
 .profileRail nav { gap: 1px; }
 .profileRail nav > * { margin-block: 0; }
 .profileRail nav > p { padding: 2px 10px 6px; }
@@ -35,6 +34,26 @@
 .profileRail nav + div { margin-top: 8px; padding-top: 8px; }
 .profileRail nav + div button { padding: 6px 10px; }
 .edgeRail { display: none; }
+
+/* The narrow SVG scales its strokes down. Give light mode darker inks and enough line weight. */
+:global(html:not(.dark)) .edgeRail {
+  --set-blue: #00658a;
+  --set-violet: #61479c;
+  --set-green: #00775c;
+  --set-amber: #9b5017;
+  --unsafe-line: #9b5017;
+  --trace-ink: #173c57;
+  --plane-fill: #c7d4df;
+  --secondary-plane: .85;
+  --unreached-set: .7;
+  --set-fill-opacity: .22;
+  --future-path-opacity: .52;
+  --path-opacity: .9;
+  --active-width: 2.8;
+  --set-width: 1.9;
+  --path-width: 2;
+  --rail-opacity: .95;
+}
 
 @media (min-width: 64rem) {
   :global(.container):has(.profileRail) {
@@ -61,7 +80,7 @@
   }
   .edgeRail[data-shown="true"] {
     visibility: visible;
-    opacity: .76;
+    opacity: var(--rail-opacity, .76);
     transition: opacity 200ms ease-out;
   }
   .edgeRail .layerArt {

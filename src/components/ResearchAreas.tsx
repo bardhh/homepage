@@ -35,8 +35,8 @@ const ResearchAreas = () => {
   return (
     <section tabIndex={-1} id="research" className="scroll-mt-24" role="region" aria-label="Research areas">
       <div className="flex items-center mb-8">
-        <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white font-heading">
+
+        <h2 className="profile-title">
           Research Areas
         </h2>
       </div>
