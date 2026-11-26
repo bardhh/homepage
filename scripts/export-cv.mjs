@@ -27,7 +27,7 @@ try {
     document.body.replaceChildren(container);
     await document.fonts.ready;
   });
-  await page.pdf({ path: path.join(output, filename), format: 'Letter', preferCSSPageSize: true, tagged: true });
+  await page.pdf({ path: path.join(output, filename), format: 'Letter', preferCSSPageSize: true, tagged: true, outline: true });
   // Make the generated download available to next dev as well.
   await mkdir('public', { recursive: true });
   await copyFile(path.join(output, filename), path.join('public', filename));

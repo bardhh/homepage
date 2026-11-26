@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import PublicationReturnLink from '@/components/PublicationReturnLink';
 import PublicationAuthors from '@/components/PublicationAuthors';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -44,7 +46,11 @@ export default async function PublicationPage({ params }: Props) {
   const guide = researchAreas.find(area => area.paper === entry.citationKey);
   return (
     <div className="pb-24 space-y-8">
-      <Link prefetch={false} href="/publications/" className={`inline-block text-sm ${publicationLinkClass}`}>← All publications</Link>
+      <Suspense fallback={
+        <Link prefetch={false} href="/publications/" className={`inline-block text-sm ${publicationLinkClass}`}>← All publications</Link>
+      }>
+        <PublicationReturnLink />
+      </Suspense>
       <article className="glass rounded-2xl p-6 md:p-8 border border-white/40 dark:border-slate-700/40 shadow-sm break-words">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(publicationJsonLd(entry)) }} />
         <div className="flex flex-wrap gap-3 mb-4 text-sm font-medium text-slate-500 dark:text-slate-400">

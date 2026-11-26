@@ -145,6 +145,8 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
     ? [firstPaper, ...sortedPubs.filter(pub => pub !== firstPaper).slice(0, visibleCount - 1)]
     : sortedPubs.slice(0, visibleCount);
   const guided = Boolean(firstPaper);
+  const resultsQuery = writePublicationState(guided && guide ? `start=${guide.paper}` : '', state);
+  const paperQuery = new URLSearchParams({ results: resultsQuery }).toString();
   const hasMore = visibleCount < sortedPubs.length;
 
   const [cardsVisible, setCardsVisible] = useState(false);
@@ -270,7 +272,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             className={`pub-card${cardsVisible ? ' visible' : ''}`}
             style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}
           >
-            <PublicationCard pub={pub} index={sortedPubs.length - index} reason={pub === firstPaper ? guide?.reason : undefined} />
+            <PublicationCard pub={pub} href={`${publicationPath(pub)}?${paperQuery}`} index={sortedPubs.length - index} reason={pub === firstPaper ? guide?.reason : undefined} />
           </div>
         ))}
 
@@ -331,7 +333,7 @@ function fallbackCopy(text: string, onSuccess: () => void) {
   onSuccess();
 }
 
-const PublicationCard = ({ pub, index, reason }: { pub: Publication, index: number, reason?: string }) => {
+const PublicationCard = ({ pub, href, index, reason }: { pub: Publication, href: string, index: number, reason?: string }) => {
   const [copied, setCopied] = useState(false);
   const type = getPublicationType(pub);
   const links = publicationLinks(pub);
@@ -385,7 +387,7 @@ const PublicationCard = ({ pub, index, reason }: { pub: Publication, index: numb
         {reason && <p className="mb-1 text-xs font-semibold text-[var(--link)]">Start here</p>}
         <Link
           prefetch={false}
-          href={publicationPath(pub)}
+          href={href}
           className="block group/title"
         >
           <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 leading-[1.35] group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors">

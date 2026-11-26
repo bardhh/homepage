@@ -232,5 +232,12 @@ html { scroll-behavior: smooth; }
   .cv-page .cv-website-address { display: inline; overflow-wrap: anywhere; color: inherit !important; }
   .cv-page h2 { break-after: avoid; }
   .cv-page li { break-inside: avoid; }
-  @page cv { margin: 18mm 16mm; }
+  @page cv {
+    margin: 18mm 16mm;
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font: 9pt sans-serif;
+      color: #555;
+    }
+  }
 }

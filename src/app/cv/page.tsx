@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPublications } from '@/lib/publications';
 import { getPublicationType, publicationAuthors, publicationPath, publicationVenueName, SITE_URL } from '@/lib/publication-utils';
+import { courses } from '@/data/courses';
 import { patents } from '@/data/patents';
 import { projects } from '@/components/Software';
 import { existsSync } from 'node:fs';
@@ -164,6 +165,15 @@ export default async function CurriculumVitae() {
                 <a href={project.link} className={linkClass}>{project.title}</a>
                 {project.impact && <>. {project.impact.join('; ')}.</>}
               </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section heading="Teaching">
+          <p className="mb-2">Southern Illinois University</p>
+          <ul className="space-y-1">
+            {courses.map(course => (
+              <Row key={course.title} when={course.semester}>{course.title}</Row>
             ))}
           </ul>
         </Section>
