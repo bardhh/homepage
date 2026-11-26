@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function PublicationCitation({ bibtex }: { bibtex: string }) {
   const [status, setStatus] = useState('');
+  const details = useRef<HTMLDetailsElement>(null);
   async function copy() {
     try {
       await navigator.clipboard.writeText(bibtex);
       setStatus('Citation copied.');
     } catch {
+      if (details.current) details.current.open = true;
       setStatus('Select the citation below to copy it.');
     }
   }
@@ -19,7 +21,10 @@ export default function PublicationCitation({ bibtex }: { bibtex: string }) {
         <button type="button" onClick={copy} className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Copy BibTeX</button>
         <span role="status" className="text-sm text-slate-600 dark:text-slate-400">{status}</span>
       </div>
-      <pre className="whitespace-pre-wrap break-words rounded-xl bg-slate-100 dark:bg-slate-900 p-4 text-xs leading-relaxed select-text"><code>{bibtex}</code></pre>
+      <details ref={details}>
+        <summary className="w-fit cursor-pointer text-sm font-medium text-[var(--muted)] hover:underline">View BibTeX</summary>
+        <pre className="mt-3 whitespace-pre-wrap break-words rounded-xl bg-slate-100 dark:bg-slate-900 p-4 text-xs leading-relaxed select-text"><code>{bibtex}</code></pre>
+      </details>
     </section>
   );
 }

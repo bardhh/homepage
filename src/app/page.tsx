@@ -12,7 +12,6 @@ import Contact from '@/components/Contact';
 import Honors, { InvitedTalks } from '@/components/Honors';
 import Service from '@/components/Service';
 import Reveal from '@/components/Reveal';
-import ExternalLink from '@/components/ExternalLink';
 
 
 export default async function Home() {
@@ -33,13 +32,12 @@ export default async function Home() {
         <div className="glass rounded-2xl p-5 md:p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
           <div className="max-w-[70ch] text-[17px] leading-[1.55] text-slate-700 dark:text-slate-300">
             <p>
-              My research at <ExternalLink href="https://amrd.toyota.com/division/trina/" className="font-medium text-blue-600 hover:underline dark:text-blue-400" showIcon={false}>Toyota Research Institute of North America</ExternalLink> focuses
-              on the design and verification of autonomous and cyber-physical systems. Across perception, planning,
-              and control, I use formal requirements both to design systems that are correct by construction and
-              to determine what guarantees an existing design can support. My work also draws on statistical
-              methods to quantify risk and on testing and runtime monitoring to identify where behavior departs
-              from a specification. Those findings help identify which assumptions to revisit, which
-              experiments to run next, and where to revise the design.
+              I study how formal requirements can guide the design of autonomous systems and help establish
+              what guarantees an existing system can support. Across perception, planning, and control, I
+              develop methods for constructing systems that satisfy a specification and for verifying their
+              behavior under explicit assumptions. Where uncertainty limits those guarantees, I use statistical
+              methods to quantify risk. When testing is the available evidence, I use the requirements to
+              choose experiments that expose weaknesses and inform the next design revision.
             </p>
           </div>
         </div>

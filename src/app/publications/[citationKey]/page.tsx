@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPublications } from '@/lib/publications';
 import { publicationJsonLd, publicationRecord, serializeJsonLd } from '@/lib/publication-utils';
+import { researchAreas } from '@/data/research-areas';
 import PublicationCitation from '@/components/PublicationCitation';
 import PublicationResources, { publicationLinkClass } from '@/components/PublicationResources';
 
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PublicationPage({ params }: Props) {
   const entry = await getPublication(params);
   const publication = publicationRecord(entry);
+  const guide = researchAreas.find(area => area.paper === entry.citationKey);
   return (
     <div className="pb-24 space-y-8">
       <Link prefetch={false} href="/publications/" className={`inline-block text-sm ${publicationLinkClass}`}>← All publications</Link>
@@ -50,6 +52,7 @@ export default async function PublicationPage({ params }: Props) {
         <p className="mt-5 text-slate-700 dark:text-slate-300 leading-relaxed">{publication.authors.join(', ')}</p>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{publication.venue}</p>
         {publication.award && <p className="mt-3 font-medium text-amber-700 dark:text-amber-300">{publication.award}</p>}
+        {guide && <p className="mt-5 max-w-prose leading-relaxed text-slate-700 dark:text-slate-300">{guide.summary}</p>}
         <nav aria-label="Paper resources" className="flex flex-wrap gap-x-5 gap-y-3 mt-6">
           {publication.links.paper && <a href={publication.links.paper} className={publicationLinkClass}>Read paper</a>}
           {publication.links.pdf && <a href={publication.links.pdf} className={publicationLinkClass}>PDF</a>}

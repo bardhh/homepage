@@ -6,6 +6,7 @@ import type { Publication } from '@/lib/bibtex';
 import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
 import { FaChevronDown, FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 import clsx from 'clsx';
+import { researchAreas } from '@/data/research-areas';
 
 const RECENT_YEARS = 5;
 
@@ -28,7 +29,9 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const state = useMemo(() => readPublicationState(query), [query]);
   const { type: typeFilter, themes: selectedThemes, matchAny, search, count: visibleCount } = state;
   const update = (patch: Partial<PublicationState>, replace = false) => {
-    const next = writePublicationState(window.location.search, { ...state, ...patch });
+    const params = new URLSearchParams(window.location.search);
+    if ('themes' in patch || 'matchAny' in patch || 'type' in patch || 'search' in patch) params.delete('start');
+    const next = writePublicationState(params.toString(), { ...state, ...patch });
     const url = `${window.location.pathname}${next ? `?${next}` : ''}#publications`;
     if (replace) window.history.replaceState(null, '', url);
     else window.history.pushState(null, '', url);
@@ -118,7 +121,12 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
     });
   }, [filteredPubs]);
 
-  const visiblePubs = sortedPubs.slice(0, visibleCount);
+  const start = new URLSearchParams(query).get('start');
+  const guide = researchAreas.find(area => area.paper === start);
+  const firstPaper = guide && sortedPubs.find(pub => pub.citationKey === guide.paper);
+  const visiblePubs = firstPaper
+    ? [firstPaper, ...sortedPubs.filter(pub => pub !== firstPaper).slice(0, visibleCount - 1)]
+    : sortedPubs.slice(0, visibleCount);
   const hasMore = visibleCount < sortedPubs.length;
 
   const [cardsVisible, setCardsVisible] = useState(false);
@@ -234,7 +242,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
             className={`pub-card${cardsVisible ? ' visible' : ''}`}
             style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}
           >
-            <PublicationCard pub={pub} index={sortedPubs.length - index} />
+            <PublicationCard pub={pub} index={sortedPubs.length - index} reason={pub === firstPaper ? guide?.reason : undefined} />
           </div>
         ))}
 
@@ -295,7 +303,7 @@ function fallbackCopy(text: string, onSuccess: () => void) {
   onSuccess();
 }
 
-const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) => {
+const PublicationCard = ({ pub, index, reason }: { pub: Publication, index: number, reason?: string }) => {
   const [copied, setCopied] = useState(false);
   const type = getPublicationType(pub);
   const links = publicationLinks(pub);
@@ -346,6 +354,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
 
       {/* Main content */}
       <div className="min-w-0 flex-1">
+        {reason && <p className="mb-1 text-xs font-semibold text-[var(--link)]">Start here</p>}
         <Link
           prefetch={false}
           href={publicationPath(pub)}
@@ -355,6 +364,7 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
             {pub.entryTags.title}
           </h3>
         </Link>
+        {reason && <p className="my-1 max-w-prose text-sm leading-relaxed text-[var(--muted)]">{reason}</p>}
         <div className="text-[13px] leading-[1.45] text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-2 md:line-clamp-none md:truncate">
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>
