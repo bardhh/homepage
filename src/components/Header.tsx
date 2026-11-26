@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const path = usePathname();
-  if (path === '/cv' || path === '/cv/' || path === '/publications' || path.startsWith('/publications/')) {
+  if (path === '/research-map' || path === '/research-map/' || path === '/cv' || path === '/cv/' || path === '/publications' || path.startsWith('/publications/')) {
     return (
       <header className="document-header border-b border-[var(--edge)]">
         <div className="container mx-auto flex h-[72px] items-center px-4">

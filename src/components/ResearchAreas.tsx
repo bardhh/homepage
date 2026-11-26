@@ -3,7 +3,10 @@ import { researchAreas } from '@/data/research-areas';
 export default function ResearchAreas() {
   return (
     <section tabIndex={-1} id="research" aria-labelledby="research-title">
-      <h2 id="research-title" className="profile-title mb-6">Research Areas</h2>
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="research-title" className="profile-title">Research Areas</h2>
+        <a href="/research-map/" className="text-sm font-medium text-[var(--link)] hover:underline">Explore research map →</a>
+      </div>
       <ul className="divide-y divide-[var(--edge)] border-y border-[var(--edge)]">
         {researchAreas.map(area => (
           <li key={area.title} className="relative grid items-baseline gap-1.5 py-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-8 sm:py-5">

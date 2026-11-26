@@ -14,7 +14,7 @@ export default function PageTransition({
   const pathname = usePathname();
 
   // Publication pages and the CV must be visible even when JavaScript is disabled.
-  if (pathname === '/publications' || pathname.startsWith('/publications/') || pathname === '/cv' || pathname === '/cv/') return <div>{children}</div>;
+  if (pathname === '/research-map' || pathname === '/research-map/' || pathname === '/publications' || pathname.startsWith('/publications/') || pathname === '/cv' || pathname === '/cv/') return <div>{children}</div>;
 
   return (
     <div className={`page-enter${mounted ? ' mounted' : ''}`}>

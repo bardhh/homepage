@@ -30,7 +30,10 @@ export default async function PublicationsArchive() {
       <div className="glass rounded-2xl p-6 md:p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
         <h1 className="text-3xl font-bold font-heading text-slate-900 dark:text-white">Publication archive</h1>
         <p className="mt-3 mb-5 text-slate-600 dark:text-slate-400">All {publications.length} publications, from newest to oldest.</p>
-        <PublicationResources />
+        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+          <PublicationResources />
+          <Link href="/research-map/" className={publicationLinkClass}>Research map</Link>
+        </div>
       </div>
       <nav aria-label="Jump to year" className="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-1 text-sm">
         <span className="font-semibold">Jump to year</span>

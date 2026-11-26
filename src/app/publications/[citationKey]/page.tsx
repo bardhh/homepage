@@ -9,6 +9,7 @@ import { publicationJsonLd, publicationRecord, publicationVenueName, serializeJs
 import { researchAreas } from '@/data/research-areas';
 import { patents } from '@/data/patents';
 import { projects } from '@/components/Software';
+import ConnectedPapers from '@/components/ConnectedPapers';
 import PublicationCitation from '@/components/PublicationCitation';
 import PublicationResources, { publicationLinkClass } from '@/components/PublicationResources';
 
@@ -100,6 +101,7 @@ export default async function PublicationPage({ params }: Props) {
         </section>}
         {publication.keywords.length > 0 && <p className="mt-6 text-sm text-slate-600 dark:text-slate-400"><strong>Topics:</strong> {publication.keywords.join('; ')}</p>}
         {publication.doi && <p className="mt-3 text-sm"><strong>DOI:</strong> {publication.doi}</p>}
+        <ConnectedPapers current={entry} />
         <PublicationCitation bibtex={publication.bibtex} paperUrl={publication.url} />
       </article>
       <div className="px-1">
