@@ -3,8 +3,8 @@
 import React, { useState, useMemo, useRef, useCallback, useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import type { Publication } from '@/lib/bibtex';
-import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
-import { FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
+import { ITEMS_PER_PAGE, getPublicationType, matchesContributor, publicationAuthors, publicationLinks, publicationVenueName, publicationPath, publicationBibtex, readPublicationState, writePublicationState, type PublicationState } from '@/lib/publication-utils';
+import { FaChevronDown, FaFilePdf, FaVideo, FaCode, FaAward, FaSearch, FaLayerGroup, FaUsers, FaBook, FaLaptopCode, FaCalendarAlt, FaBrain, FaRobot, FaCheckDouble, FaVial, FaShieldAlt, FaTimes, FaQuoteLeft, FaCheck, FaExternalLinkAlt, FaBlog } from 'react-icons/fa';
 import clsx from 'clsx';
 
 const RECENT_YEARS = 5;
@@ -26,7 +26,7 @@ interface PublicationsProps {
 const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   const query = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const state = useMemo(() => readPublicationState(query), [query]);
-  const { type: typeFilter, themes: selectedThemes, search, count: visibleCount } = state;
+  const { type: typeFilter, themes: selectedThemes, matchAny, search, count: visibleCount } = state;
   const update = (patch: Partial<PublicationState>, replace = false) => {
     const next = writePublicationState(window.location.search, { ...state, ...patch });
     const url = `${window.location.pathname}${next ? `?${next}` : ''}#publications`;
@@ -34,10 +34,16 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
     else window.history.pushState(null, '', url);
     window.dispatchEvent(new Event(stateEvent));
   };
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const isMac = useSyncExternalStore(emptySubscribe, () => navigator.platform.toUpperCase().includes('MAC'), () => false);
 
   const recentCutoff = useMemo(() => new Date().getFullYear() - RECENT_YEARS, []);
+
+  const activeFilters = [
+    ...(typeFilter === 'all' ? [] : [typeFilter === 'recent' ? `Recent (${recentCutoff}+)` : typeFilter]),
+    selectedThemes.join(matchAny ? ' or ' : ' · '),
+  ].filter(Boolean);
 
   // Cmd/Ctrl+K keyboard shortcut to focus search
   useEffect(() => {
@@ -76,7 +82,8 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
       if (selectedThemes.length > 0) {
         const keywords = pub.entryTags.keywords?.toLowerCase() || '';
-        const matchesTheme = selectedThemes.every(theme => keywords.includes(theme));
+        const hasTheme = (theme: string) => keywords.includes(theme);
+        const matchesTheme = matchAny ? selectedThemes.some(hasTheme) : selectedThemes.every(hasTheme);
         if (!matchesTheme) return false;
       }
 
@@ -101,7 +108,7 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
 
       return true;
     });
-  }, [publications, typeFilter, selectedThemes, search, recentCutoff]);
+  }, [publications, typeFilter, selectedThemes, matchAny, search, recentCutoff]);
 
   const sortedPubs = useMemo(() => {
     return [...filteredPubs].sort((a, b) => {
@@ -134,10 +141,10 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
         </h2>
       </div>
 
-      <div className="glass rounded-2xl p-4 md:p-6 mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
+      <div className="glass flex flex-col rounded-2xl p-4 md:p-6 mb-5 md:mb-8 border border-blue-200/40 dark:border-blue-800/30 shadow-md shadow-blue-500/5">
 
         {/* Search */}
-        <div className="relative mb-4 md:mb-6 group">
+        <div className="relative mb-1 md:mb-6 group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
             <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors" />
           </div>
@@ -165,8 +172,27 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
           )}
         </div>
 
-        {/* Filters */}
-        <div className="space-y-3">
+        <div className="flex items-center justify-between gap-2 md:order-last md:mt-4">
+          <div className="text-[13px] font-medium text-[var(--muted)]" aria-live="polite" aria-atomic="true">
+            Showing {visiblePubs.length} of {sortedPubs.length} {sortedPubs.length === 1 ? 'publication' : 'publications'}
+            {activeFilters.length > 0 && (
+              <span className="block capitalize md:hidden">
+                <span className="sr-only">Active filters: </span>{activeFilters.join(' · ')}
+              </span>
+            )}
+          </div>
+          <button
+            type="button"
+            aria-expanded={filtersOpen}
+            aria-controls="publication-filters"
+            onClick={() => setFiltersOpen(open => !open)}
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300 md:hidden"
+          >
+            Filters
+            <FaChevronDown aria-hidden="true" className={clsx('size-2.5', filtersOpen && 'rotate-180')} />
+          </button>
+        </div>
+        <div id="publication-filters" className={clsx('space-y-3 pt-2 md:block md:pt-0', !filtersOpen && 'hidden')}>
           <fieldset>
             <legend className="text-[13px] font-semibold text-[var(--muted)] mb-2">Filter by type</legend>
             <div className="flex flex-wrap gap-x-4 gap-y-3 md:gap-2" role="group">
@@ -189,12 +215,15 @@ const Publications: React.FC<PublicationsProps> = ({ publications }) => {
               <FilterButton active={selectedThemes.includes('risk')} onClick={() => toggleTheme('risk')} icon={<FaShieldAlt />}>Risk</FilterButton>
               <FilterButton active={selectedThemes.includes('monitoring')} onClick={() => toggleTheme('monitoring')}>Monitoring</FilterButton>
             </div>
+            {selectedThemes.length > 1 && (
+              <label className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                <input type="checkbox" checked={!!matchAny} onChange={event => update({ matchAny: event.target.checked, count: ITEMS_PER_PAGE })} />
+                Match any selected theme
+              </label>
+            )}
           </fieldset>
         </div>
 
-        <div className="mt-4 text-[13px] font-medium text-[var(--muted)]" aria-live="polite">
-          Showing {visiblePubs.length} of {sortedPubs.length} publications
-        </div>
       </div>
 
       {/* List */}
@@ -270,6 +299,9 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
   const [copied, setCopied] = useState(false);
   const type = getPublicationType(pub);
   const links = publicationLinks(pub);
+  const year = pub.entryTags.year;
+  const venue = year ? publicationVenueName(pub) : (pub.entryTags.booktitle || pub.entryTags.journal || '');
+  const showYear = year && !venue.split(/\W+/).includes(year);
 
   const typeColors = {
     conference: 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300',
@@ -327,10 +359,8 @@ const PublicationCard = ({ pub, index }: { pub: Publication, index: number }) =>
           {pub.entryTags.author?.replace(/ and /g, ', ')}
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
-          <span className="font-medium text-slate-700 dark:text-slate-300">
-            {pub.entryTags.booktitle || pub.entryTags.journal}
-          </span>
-          {pub.entryTags.year && <span className="text-slate-400">· {pub.entryTags.year}</span>}
+          {venue && <span className="font-medium text-slate-700 dark:text-slate-300">{venue}</span>}
+          {showYear && <span className="text-slate-400">{venue && '· '}{year}</span>}
           <span className={clsx("px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide", badgeClass)}>
             {type}
           </span>

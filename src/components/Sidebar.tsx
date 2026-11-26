@@ -4,7 +4,7 @@ import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 import { FaUser, FaAward, FaMicrophoneAlt, FaUsers, FaBookOpen, FaCertificate, FaMicroscope, FaChalkboardTeacher, FaUserGraduate, FaLaptopCode, FaEnvelope, FaSun, FaMoon, FaSearch } from 'react-icons/fa';
 import clsx from 'clsx';
-import { sectionScrollTop } from '@/lib/section-navigation';
+import { sectionScrollStops } from '@/lib/section-navigation';
 import VerificationRail from './verification/NetworkVerification';
 import styles from './verification/verification.module.css';
 import { usePathname } from 'next/navigation';
@@ -13,9 +13,9 @@ const emptySubscribe = () => () => {};
 
 const sections = [
   { id: 'bio', label: 'About Me', icon: <FaUser /> },
+  { id: 'research', label: 'Research Areas', icon: <FaMicroscope /> },
   { id: 'publications', label: 'Publications', icon: <FaBookOpen /> },
   { id: 'patents', label: 'Patents', icon: <FaCertificate /> },
-  { id: 'research', label: 'Research Areas', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
   { id: 'mentorship', label: 'Mentorship', icon: <FaUserGraduate /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },
@@ -46,7 +46,7 @@ const Sidebar = () => {
       if (current) setActiveSection(current.id);
     }
     function measure() {
-      stops = targets.map(sectionScrollTop);
+      stops = sectionScrollStops(targets);
       updateActive();
     }
     function clearPending() { pending = -1; }

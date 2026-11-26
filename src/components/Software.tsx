@@ -12,6 +12,7 @@ interface Project {
   paperName: string | null;
   /** Short evidence of adoption or recognition, shown as a list under the description. */
   impact?: string[];
+  homepageNote?: string;
 }
 
 
@@ -19,7 +20,7 @@ interface Project {
 export const projects: Project[] = [
   {
     title: "CBFKit: A Control Barrier Function Toolbox",
-    description: "Build advanced, safe robotic systems with CBFKit. Powered by JAX, this extensible Python/ROS2 toolbox integrates CBFs (including with MPPI!), supports diverse robots, controllers, sensors, and estimators.",
+    description: "Design and simulate robot controllers with control barrier functions in Python, then run them with ROS 2.",
     repo: "bardhh/cbfkit",
     link: "https://github.com/bardhh/cbfkit",
     blog: "https://bardhh.github.io/cbfkit/",
@@ -32,7 +33,7 @@ export const projects: Project[] = [
   },
   {
     title: "STREM: Spatio-Temporal Pattern Matching over Perception Streams",
-    description: "STREM is a Rust command-line tool that matches spatio-temporal patterns against annotated perception streams. Using Spatial Regular Expressions (SpREs), it combines regular-expression-style temporal patterns with spatial reasoning over bounding-box detections, making it possible to query large video and autonomous driving datasets for specific scenarios.",
+    description: "Search annotated video for sequences of spatial events using regular expressions.",
     repo: "cps-atlas/strem",
     link: "https://github.com/cps-atlas/strem",
     docs: "https://cps-atlas.github.io/strem/",
@@ -46,7 +47,7 @@ export const projects: Project[] = [
   },
   {
     title: "RTAMT: Runtime Robustness Monitors for STL",
-    description: "RTAMT is a Python library for monitoring Signal Temporal Logic (STL) specifications. It supports offline and online (real-time) monitoring with both discrete- and dense-time semantics and quantitative robustness degrees, making it well-suited for runtime verification of Cyber-Physical Systems and robotics.",
+    description: "Monitor a signal as it arrives and measure how closely it satisfies a Signal Temporal Logic specification.",
     repo: "nickovic/rtamt",
     link: "https://github.com/nickovic/rtamt",
     paper: "/papers/rtamt2023.pdf",
@@ -58,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     title: "TLTk: Parallel Robustness Computation for Temporal Logic",
-    description: "TLTk is a Python toolbox for computing robustness of Metric Temporal Logic (MTL) and Signal Temporal Logic (STL) specifications. It enables parallel robustness computation, making it well-suited for runtime verification and falsification-based testing of Cyber-Physical Systems.",
+    description: "Compute temporal logic robustness in parallel across recorded signals to evaluate test runs.",
     repo: "versyslab/tltk",
     link: "https://bitbucket.org/versyslab/tltk/src/master/",
     paper: "/papers/RV2020.pdf",
@@ -69,7 +70,8 @@ export const projects: Project[] = [
   },
   {
     title: "S-TaLiRo: Toolbox for Testing and Verification of CPS",
-    description: "S-TaLiRo is a toolbox for Matlab/Simulink that supports testing and verification of hybrid and continuous Cyber-Physical Systems using Metric Temporal Logic (MTL). Widely used in automotive and medical domains.",
+    description: "Search MATLAB and Simulink models for trajectories that violate a temporal logic requirement.",
+    homepageNote: "Its falsification benchmarks have been used in ARCH-COMP.",
     repo: "s-taliro/s-taliro",
     link: "https://sites.google.com/a/asu.edu/s-taliro/s-taliro",
     paper: "/papers/DIFTS2014.pdf",
@@ -82,7 +84,7 @@ export const projects: Project[] = [
   },
   {
     title: "VERITEX: Deep Neural Network Verification",
-    description: "Veritex is a Python toolbox for verification and automated repair of Deep Neural Networks, supporting both exact and over-approximate analysis of reachable outputs.",
+    description: "Compute the reachable outputs of a neural network and use the resulting sets to guide repairs.",
     repo: "Shaddadi/veritex",
     link: "https://github.com/Shaddadi/veritex",
     paper: null,
@@ -91,7 +93,7 @@ export const projects: Project[] = [
   },
   {
     title: "NDF-CoRoCo: Cooperative Perception",
-    description: "Companion codebase for the paper 'NDF-CoRoCo: Cooperative Perception and Recognition Using Neural Density Fields'. Focuses on cooperative perception using Neural Density Fields for robotics applications.",
+    description: "Use neural density fields to combine observations from multiple agents for cooperative perception and recognition.",
     repo: "cps-atlas/ndf-coroco",
     link: "https://github.com/cps-atlas/ndf-coroco",
     paper: "https://arxiv.org/abs/2404.16704",
@@ -118,7 +120,7 @@ const Software = () => {
               {project.title}
             </h3>
             <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
-              {project.description}
+              {project.description}{project.homepageNote && <> {project.homepageNote}</>}
             </p>
 
             <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1">

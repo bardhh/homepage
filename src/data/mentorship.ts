@@ -37,7 +37,7 @@ export const residencyGroups: ResidencyGroup[] = [
     residents: [
       { name: 'Victoria Tuck', profileUrl: 'https://github.com/victoria-tuck', university: 'UC Berkeley' },
       { name: 'Hardik Parwana', profileUrl: 'https://sites.google.com/view/hardik-parwana/home', university: 'University of Michigan' },
-      { name: 'Kehan Long', profileUrl: 'https://kehanlong.github.io/', topic: 'Learning-based control barrier functions' },
+      { name: 'Kehan Long', profileUrl: 'https://kehanlong.github.io/', university: 'UC San Diego', topic: 'Learning-based control barrier functions' },
       { name: 'Yan Miao', profileUrl: 'https://yanmiao.netlify.app/', university: 'University of Illinois Urbana-Champaign', topic: 'Perception' },
     ],
   },

@@ -2,14 +2,14 @@
 
 import { memo, useEffect, useRef, useState } from 'react';
 import { atLayer, cells, minMargin, maxMargin, unsafeAt, type Point } from './geometry';
-import { sectionScrollTop } from '@/lib/section-navigation';
+import { sectionScrollStops } from '@/lib/section-navigation';
 import styles from './verification.module.css';
 
 const stages = [
   { section: 'bio', label: 'Input', title: 'Start with a region of inputs', formula: 'x ∈ [−1, 1]²', text: 'Each point in the square is a possible input. Verification follows the entire square through the network.' },
-  { section: 'publications', label: 'Rotate', title: 'Rotate the input square', formula: 'r = R(45°)x', text: 'The first part of the hidden affine map rotates every input by 45 degrees.' },
-  { section: 'patents', label: 'Scale', title: 'Scale the rotated region', formula: 's = √2 r', text: 'Uniform scaling gives the difference and sum of the input coordinates.' },
-  { section: 'research', label: 'Affine', title: 'Mix the two coordinates', formula: 'z = (x₁ − x₂ + ½, x₁ + x₂ + ½)', text: 'The hidden layer rotates, scales and shifts the square. Its intersections with the two zero axes determine which neurons will be active.' },
+  { section: 'research', label: 'Rotate', title: 'Rotate the input square', formula: 'r = R(45°)x', text: 'The first part of the hidden affine map rotates every input by 45 degrees.' },
+  { section: 'publications', label: 'Scale', title: 'Scale the rotated region', formula: 's = √2 r', text: 'Uniform scaling gives the difference and sum of the input coordinates.' },
+  { section: 'patents', label: 'Affine', title: 'Mix the two coordinates', formula: 'z = (x₁ − x₂ + ½, x₁ + x₂ + ½)', text: 'The hidden layer rotates, scales and shifts the square. Its intersections with the two zero axes determine which neurons will be active.' },
   { section: 'teaching', label: 'ReLU', title: 'Split at the activation boundaries', formula: 'hᵢ = max(0, zᵢ)', text: 'Positive coordinates pass through. A region with one negative coordinate collapses onto an axis. The region with two negative coordinates collapses to the origin.' },
   { section: 'mentorship', label: 'Rotate', title: 'Rotate the activation regions', formula: 'u = R(−45°)h', text: 'The output map first rotates the activation regions clockwise.' },
   { section: 'software', label: 'Scale', title: 'Stretch the output coordinates', formula: 'v = (√2 u₁, u₂/√2)', text: 'The two axes scale differently, stretching each reachable region horizontally.' },
@@ -188,7 +188,7 @@ export default function VerificationRail() {
         const bounds = element!.getBoundingClientRect();
         if (!bounds.width) return;
         const height = viewWidth * bounds.height / bounds.width;
-        const measured = landmarks.map(sectionScrollTop);
+        const measured = sectionScrollStops(landmarks);
         if (height !== railHeight || measured.some((top, i) => top !== targetTops[i])) {
           // Retarget from the visible positions if another list changes mid-transition.
           transition = tops.length > 0 && height === railHeight && !reduced.matches
@@ -221,7 +221,11 @@ export default function VerificationRail() {
       }
       let value = 0;
       for (let i = 1; i < tops.length; i++) {
-        value += Math.max(0, Math.min(1, (y - tops[i - 1]) / Math.max(1, tops[i] - tops[i - 1])));
+        if (y >= tops[i] - 0.5) value = i;
+        else {
+          value += Math.max(0, (y - tops[i - 1]) / Math.max(1, tops[i] - tops[i - 1]));
+          break;
+        }
       }
       const stage = reduced.matches ? Math.round(value) : value;
       // Ignore subpixel movement in this small illustration on long sections.

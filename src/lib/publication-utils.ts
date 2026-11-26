@@ -168,9 +168,11 @@ export function readPublicationState(search: string) {
   const params = new URLSearchParams(search);
   const type = params.get('type') || 'all';
   const requestedCount = Number(params.get('count'));
+  const themes = [...new Set((params.get('themes') || '').split(',').filter(theme => THEMES.includes(theme as typeof THEMES[number])))];
   return {
     type: FILTER_TYPES.includes(type as typeof FILTER_TYPES[number]) ? type : 'all',
-    themes: [...new Set((params.get('themes') || '').split(',').filter(theme => THEMES.includes(theme as typeof THEMES[number])))],
+    themes,
+    ...(themes.length > 1 && params.get('match') === 'any' ? { matchAny: true } : {}),
     search: params.get('q') || '',
     count: Number.isFinite(requestedCount) && requestedCount >= ITEMS_PER_PAGE ? Math.min(Math.floor(requestedCount), 10000) : ITEMS_PER_PAGE,
   };
@@ -178,9 +180,10 @@ export function readPublicationState(search: string) {
 export type PublicationState = ReturnType<typeof readPublicationState>;
 export function writePublicationState(current: string, state: PublicationState) {
   const params = new URLSearchParams(current);
-  for (const key of ['type', 'themes', 'q', 'count']) params.delete(key);
+  for (const key of ['type', 'themes', 'match', 'q', 'count']) params.delete(key);
   if (state.type !== 'all') params.set('type', state.type);
   if (state.themes.length) params.set('themes', state.themes.join(','));
+  if (state.themes.length > 1 && state.matchAny) params.set('match', 'any');
   if (state.search) params.set('q', state.search);
   if (state.count > ITEMS_PER_PAGE) params.set('count', String(state.count));
   return params.toString();

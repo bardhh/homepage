@@ -4,9 +4,24 @@ import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaSitemap } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { SiGooglescholar } from 'react-icons/si';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const Header = () => {
+export default function Header() {
+  const path = usePathname();
+  if (path === '/cv' || path === '/cv/' || path === '/publications' || path.startsWith('/publications/')) {
+    return (
+      <header className="document-header border-b border-[var(--edge)]">
+        <div className="container mx-auto flex h-[72px] items-center px-4">
+          <Link href="/" className="text-lg font-semibold tracking-tight hover:underline underline-offset-4">Bardh Hoxha</Link>
+        </div>
+      </header>
+    );
+  }
+  return <ProfileHeader />;
+}
+
+const ProfileHeader = () => {
   const headerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
 
@@ -99,13 +114,17 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Social Icons */}
-            <div className="flex gap-5 justify-center md:justify-start pt-2">
-              <SocialLink href="https://x.com/bardhhoxha" icon={<FaXTwitter size={22} />} label="X (Twitter)" />
-              <SocialLink href="https://github.com/bardhh" icon={<FaGithub size={22} />} label="GitHub" />
-              <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin size={22} />} label="LinkedIn" />
-              <SocialLink href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" icon={<SiGooglescholar size={22} />} label="Google Scholar" />
-              <SocialLink href="/media/geneaolgy.pdf" icon={<FaSitemap size={22} />} label="Mathematical Genealogy" />
+            <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-start md:gap-x-4">
+              <div className="flex items-center gap-4 text-sm font-semibold text-white md:text-base">
+                <Link href="/cv/" className="inline-flex min-h-11 items-center underline decoration-white/45 underline-offset-4 hover:decoration-white">CV</Link>
+                <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline decoration-white/45 underline-offset-4 hover:decoration-white">Google Scholar</a>
+              </div>
+              <div className="flex items-center border-l border-white/30 pl-2 md:pl-4">
+                <SocialLink href="https://github.com/bardhh" icon={<FaGithub />} label="GitHub" />
+                <SocialLink href="https://www.linkedin.com/in/bardhhoxha" icon={<FaLinkedin />} label="LinkedIn" />
+                <SocialLink href="https://x.com/bardhhoxha" icon={<FaXTwitter />} label="X (Twitter)" />
+                <SocialLink href="/media/geneaolgy.pdf" icon={<FaSitemap />} label="Mathematical Genealogy" />
+              </div>
             </div>
           </div>
 
@@ -120,18 +139,10 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href} 
     target="_blank" 
     rel="noopener noreferrer" 
-    className="relative p-3 bg-white/10 hover:bg-white/20 text-white rounded-xl max-md:bg-white/20 md:backdrop-blur-md border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group"
+    className="grid size-9 place-items-center rounded-md text-base text-white/80 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-white md:size-11"
     aria-label={label}
     title={label}
   >
-    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-900/95 text-white text-sm font-medium rounded-lg backdrop-blur-md border border-white/10 whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl">
-      {label}
-      <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900/95"></span>
-    </span>
-    <span className="opacity-80 group-hover:opacity-100 transition-opacity">
-      {icon}
-    </span>
+    {icon}
   </a>
 );
-
-export default Header;

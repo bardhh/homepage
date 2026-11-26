@@ -63,16 +63,12 @@ export default async function CurriculumVitae() {
 
   return (
     <div className="pb-24 space-y-6">
-      <div className="cv-screen-only flex flex-wrap items-center justify-between gap-4">
-        <Link prefetch={false} href="/" className={`text-sm ${linkClass}`}>← Back to homepage</Link>
-        <PrintButton />
-      </div>
-
       <article className="cv-page glass rounded-2xl p-6 md:p-10 border border-white/40 dark:border-slate-700/40 shadow-sm text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl font-bold font-heading text-slate-900 dark:text-white">Bardh Hoxha</h1>
-          <p className="text-slate-500 dark:text-slate-400">Curriculum Vitae, {scholar.asOf}</p>
+          <PrintButton />
         </div>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">Curriculum Vitae, {scholar.asOf}</p>
         <p className="mt-2">
           Senior Principal Scientist, Toyota Research Institute of North America, Ann Arbor, Michigan
         </p>

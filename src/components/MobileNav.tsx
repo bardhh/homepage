@@ -22,9 +22,9 @@ import {
 
 const sections = [
   { id: 'bio', label: 'About', icon: <FaUser /> },
+  { id: 'research', label: 'Research', icon: <FaMicroscope /> },
   { id: 'publications', label: 'Publications', icon: <FaBookOpen /> },
   { id: 'patents', label: 'Patents', icon: <FaCertificate /> },
-  { id: 'research', label: 'Research', icon: <FaMicroscope /> },
   { id: 'teaching', label: 'Teaching', icon: <FaChalkboardTeacher /> },
   { id: 'mentorship', label: 'Mentorship', icon: <FaUserGraduate /> },
   { id: 'software', label: 'Software', icon: <FaLaptopCode /> },

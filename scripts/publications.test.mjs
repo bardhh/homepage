@@ -29,6 +29,14 @@ test('shareable state round-trips Unicode queries, themes and pagination', () =>
   assert.deepEqual(readPublicationState(query),state);
   assert.equal(new URLSearchParams(query).get('utm_source'),'profile');
 });
+test('risk or monitoring links retain their match mode until only one theme remains', () => {
+  const state = readPublicationState('?themes=risk,monitoring&match=any');
+  assert.equal(state.matchAny, true);
+  assert.deepEqual(readPublicationState(writePublicationState('', state)), state);
+  const single = writePublicationState('?match=any', { ...state, themes: ['risk'] });
+  assert.equal(single, 'themes=risk');
+  assert.equal(readPublicationState('?themes=risk,monitoring').matchAny, undefined);
+});
 test('invalid URL state falls back safely and clear removes only owned parameters', () => {
   assert.deepEqual(readPublicationState('?type=bogus&themes=risk,risk,bogus&count=Infinity'),{type:'all',themes:['risk'],search:'',count:5});
   assert.equal(readPublicationState('?count=-20').count,5);

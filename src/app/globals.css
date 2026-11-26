@@ -158,7 +158,6 @@ body {
 /* Use the same heading inset for fragment links, keyboard navigation and the rail. */
 .profile-content section[id] { scroll-margin-top: 12px; }
 .profile-content section[id][tabindex="-1"]:focus { outline: none; }
-.profile-content #contact { min-height: calc(100svh - 9rem); }
 .profile-content .reveal { transform: none; }
 .page-enter.mounted:has(.profile-content), .profile-content #bio { animation-name: fade-in; }
 
@@ -190,6 +189,9 @@ body {
 @media (width < 768px) {
   .glass, .glass-card { backdrop-filter: none; }
 }
+
+/* Interior documents start below their compact header. */
+.document-header + .container { margin-top: 1.5rem; }
 
 /* Keyboard access without changing the default appearance. */
 :where(a, button, input, summary):focus-visible {

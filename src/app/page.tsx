@@ -19,7 +19,7 @@ export default async function Home() {
   const publications = await getPublications();
 
   return (
-    <div className="profile-content space-y-12 pb-24">
+    <div className="profile-content space-y-12">
 
       {/* About Me Section */}
       <section tabIndex={-1} id="bio" className="scroll-mt-32 animate-fade-in-up" role="region" aria-label="About me">
@@ -45,6 +45,13 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Research Areas Section */}
+      <Reveal delay={0.1}>
+        <div className="section-divider">
+          <ResearchAreas />
+        </div>
+      </Reveal>
+
       {/* Publications Section */}
       <Reveal>
         <div className="section-divider">
@@ -56,13 +63,6 @@ export default async function Home() {
       <Reveal delay={0.1}>
         <div className="section-divider">
           <Patents />
-        </div>
-      </Reveal>
-
-      {/* Research Areas Section */}
-      <Reveal delay={0.1}>
-        <div className="section-divider">
-          <ResearchAreas />
         </div>
       </Reveal>
 

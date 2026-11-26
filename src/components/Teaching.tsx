@@ -17,11 +17,13 @@ const courses: Course[] = [
     title: "CS 437: Machine Learning and Soft Computing",
     semester: "Fall 2019",
     university: "Southern Illinois University",
+    description: "Introduced rule-based reasoning, fuzzy logic, neural networks, and evolutionary computation. Topics included designing fuzzy inference systems and using genetic algorithms to search for solutions.",
   },
   {
     title: "CS 404: Autonomous Mobile Robots",
     semester: "Spring 2019",
     university: "Southern Illinois University",
+    description: "Examined how mobile robots use sensors, actuators, and control algorithms to move through their environment. The course also covered coordination among robots and interaction with people.",
   },
   {
     title: "CS 591: Testing and Verification of Cyber-Physical Systems",
@@ -41,6 +43,7 @@ const courses: Course[] = [
     title: "CS 410: Computer Security",
     semester: "Spring 2018",
     university: "Southern Illinois University",
+    description: "Surveyed how cryptography and access controls protect data and how software and network defenses protect systems. Topics also included security auditing, risk management, and privacy.",
   },
   {
     title: "CS 498: Senior Project",
@@ -59,7 +62,7 @@ const courses: Course[] = [
 ];
 
 const Teaching = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(() => courses.findIndex(course => course.description));
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
 
   const toggleAccordion = (index: number) => {
