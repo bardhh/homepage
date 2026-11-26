@@ -1,7 +1,7 @@
 export const researchAreas = [
   {
     title: 'Requirements-driven testing',
-    question: 'How can a specification guide the search for experiments that expose failures and inform the next design revision?',
+    result: 'In S-TaLiRo, we used the distance from a requirement violation to guide the search for failures in simulated automotive systems.',
     filter: 'themes=testing',
     paper: 'fainekos2019robustness',
     reason: 'A single measure of how closely a trajectory satisfies a requirement connects three uses of S-TaLiRo.',
@@ -9,7 +9,7 @@ export const researchAreas = [
   },
   {
     title: 'Verification of learning-enabled systems',
-    question: 'Which behaviors can a learned component or closed-loop system exhibit, and which requirements hold across those behaviors?',
+    result: 'We identified aircraft encounters that triggered unsafe neural network advisories, used them to guide repairs, and verified the revised networks.',
     filter: 'themes=learning,verification',
     paper: 'yang2022neural',
     reason: 'This paper follows a failed safety check through to a change in the neural controller.',
@@ -17,7 +17,7 @@ export const researchAreas = [
   },
   {
     title: 'Statistical guarantees and runtime monitoring',
-    question: 'What can observations tell us about risk when the system state, its environment, or its model is uncertain?',
+    result: 'We derived statistical bounds on the safety margin of a predicted trajectory that remain valid under a bounded shift in operating conditions.',
     filter: 'themes=risk,monitoring&match=any',
     paper: 'zhao2023robust',
     reason: 'This paper makes the assumptions behind a statistical runtime guarantee explicit.',
@@ -25,10 +25,10 @@ export const researchAreas = [
   },
   {
     title: 'Safe planning and control',
-    question: 'How can safety requirements shape the decisions of a robot, a vehicle, or a team of agents?',
+    result: 'We built a diffusion planner that steers a simulated tractor-trailer around obstacles while keeping the trailer from jackknifing.',
     filter: 'themes=planning',
-    paper: 'IROS2024',
-    reason: 'CBFKit shows how a safety constraint enters the control loop of a physical robot.',
-    summary: 'CBFKit translates safety requirements expressed as control barrier functions into constraints on robot commands. Its Python and ROS tools support deterministic and stochastic dynamics. The paper demonstrates the approach on a Toyota Human Support Robot in simulation and in physical experiments.',
+    paper: 'Kim25-SafeMPD',
+    reason: 'A safety shield enforces the vehicle’s motion and safety constraints as the planner generates each trajectory.',
+    summary: 'Safe Model Predictive Diffusion uses a safety shield at each denoising step to keep candidate trajectories feasible under the vehicle dynamics. In tractor-trailer simulations, the planner found collision-free maneuvers that also respected the articulation limits between tractor and trailer.',
   },
 ];

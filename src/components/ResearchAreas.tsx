@@ -16,7 +16,7 @@ export default function ResearchAreas() {
                 {area.title}<span className="whitespace-nowrap text-[var(--link)]" aria-hidden="true">&nbsp;→</span>
               </a>
             </h3>
-            <p className="max-w-prose text-sm leading-relaxed text-[var(--muted)]">{area.question}</p>
+            <p className="max-w-prose text-sm leading-relaxed text-[var(--muted)]">{area.result}</p>
           </li>
         ))}
       </ul>

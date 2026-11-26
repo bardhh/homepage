@@ -3,6 +3,7 @@ import type { Publication } from './bibtex';
 import { researchConcepts } from '@/data/research-concepts';
 import { researchApplications } from '@/data/research-applications';
 import { paperConnections } from '@/data/paper-connections';
+import { perceptionReadingPath } from '@/data/perception-reading-path';
 
 export interface MapPaper { id: string; title: string; year: string; venue: string; underReview: boolean; concepts: string[]; applications: string[] }
 export const concepts = researchConcepts.map(({id, name}) => ({id, name}));
@@ -18,7 +19,12 @@ export function buildResearchMap(publications: Publication[]): MapPaper[] {
     concepts: researchConcepts.filter(c => c.papers.includes(p.citationKey)).map(c => c.id),
   }));
   const keys = new Set(papers.map(p => p.id));
-  for (const key of [...[...researchConcepts, ...researchApplications].flatMap(group => group.papers), ...paperConnections.flatMap(e => [e.from, e.to])]) {
+  const referencedPapers = [
+    ...[...researchConcepts, ...researchApplications].flatMap(group => group.papers),
+    ...paperConnections.flatMap(e => [e.from, e.to]),
+    ...perceptionReadingPath.map(step => step.paper),
+  ];
+  for (const key of referencedPapers) {
     if (!keys.has(key)) throw new Error(`Unknown paper in research map: ${key}`);
   }
   return papers;

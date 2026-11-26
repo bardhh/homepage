@@ -7,6 +7,7 @@ import { FiArrowLeft, FiArrowRight, FiBarChart2, FiMoon, FiSun, FiShare2, FiX } 
 import ResearchNetwork from './ResearchNetwork';
 import MapSearch from './MapSearch';
 import { applications, concepts, closestPapers, type MapPaper } from '@/lib/research-map';
+import { perceptionReadingPath } from '@/data/perception-reading-path';
 import { publicationPath } from '@/lib/publication-utils';
 import styles from './ResearchMap.module.css';
 import PaperTimeline from './PaperTimeline';
@@ -53,6 +54,7 @@ export default function ResearchMap({ papers }: { papers: MapPaper[] }) {
   const application = applications.find(a => a.id === params.get('application'));
   const group = concept || application;
   const selected = paper?.id || group?.id || '';
+  const showReadingPath = !selected || perceptionReadingPath.some(step => step.paper === selected);
   const {resolvedTheme, setTheme} = useTheme();
   const dateYears = papers.map(p => p.year).filter(Boolean).sort();
   const nearby = paper ? closestPapers(paper,papers) : [];
@@ -81,7 +83,10 @@ export default function ResearchMap({ papers }: { papers: MapPaper[] }) {
           <h1>{timeline ? 'Publication timeline' : 'Research network'}</h1>
           <p>{timeline ? 'Choose a year to explore its papers.' : 'Select a concept, paper, or application to trace its connections.'}</p>
         </div>
-        <div className={styles.tools}><MapSearch papers={papers} choose={select}/></div>
+        <div className={styles.tools}>
+          <MapSearch papers={papers} choose={select}/>
+          {!timeline && showReadingPath && <a className={styles.pathShortcut} href="#reading-path-title">Reading path ↓</a>}
+        </div>
       </div>
       {selected && <div className={styles.selection}>
         <button aria-label="Clear selection" onClick={() => select('')}><FiX/></button>
@@ -98,6 +103,28 @@ export default function ResearchMap({ papers }: { papers: MapPaper[] }) {
         <ResearchNetwork papers={papers} selected={selected} choose={select}
           chooseYear={year=>updateMap({view:'timeline',year,paper:null,concept:null,application:null})}/>
         <aside id="map-selection" className={styles.detail} aria-label="Map selection">
+          {!selected && <>
+            <p className={styles.micro}>Collection</p>
+            <div className={styles.facts}><div><b>{papers.length}</b><span>Papers</span></div><div><b>{concepts.length}</b><span>Concepts</span></div><div><b>{applications.length}</b><span>Applications</span></div></div>
+            <p className={styles.range}>{dateYears[0]} — {dateYears.at(-1)}</p>
+          </>}
+          {showReadingPath && <nav className={styles.readingPath} aria-labelledby="reading-path-title">
+            <h2 id="reading-path-title">From perception requirements to runtime monitoring</h2>
+            <ol>{perceptionReadingPath.map((step, index) => {
+              const active = selected === step.paper;
+              return <li key={step.paper}>
+                <a href={'?paper=' + step.paper} aria-current={active ? 'step' : undefined} onClick={event => {
+                  if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+                  event.preventDefault();
+                  select(step.paper);
+                }}>
+                  <span className={styles.stepNumber} aria-hidden="true">{index + 1}</span>
+                  {step.label}
+                </a>
+                {active && <p>{step.note} <a href="#research-network" className={styles.showOnMap}>View on map ↑</a></p>}
+              </li>;
+            })}</ol>
+          </nav>}
           {paper ? <>
             <p className={styles.micro}>Paper · {paper.year}</p>
             <h2>{paper.title}</h2>
@@ -126,19 +153,7 @@ export default function ResearchMap({ papers }: { papers: MapPaper[] }) {
             </>}
             <h3>Papers</h3>
             {members.map(p=><button key={p.id} className={styles.entry} onClick={()=>select(p.id)}><small>{p.year}</small><strong>{p.title}</strong></button>)}
-          </> : <>
-            <p className={styles.micro}>Collection</p>
-            <div className={styles.facts}><div><b>{papers.length}</b><span>Papers</span></div><div><b>{concepts.length}</b><span>Concepts</span></div><div><b>{applications.length}</b><span>Applications</span></div></div>
-            <p className={styles.range}>{dateYears[0]} — {dateYears.at(-1)}</p>
-            <h3>Start with a paper</h3>
-            {['Tran25-CAV','STTT2024','Zhao25'].map(id=>{
-              const start = papers.find(p=>p.id===id);
-              return start && <button key={id} className={styles.entry} onClick={()=>select(id)}>
-                <small>{start.year} · {concepts.find(c=>c.id===start.concepts[0])?.name}</small>
-                <strong>{start.title}</strong>
-              </button>;
-            })}
-          </>}
+          </> : null}
         </aside>
       </div>}
     </div>

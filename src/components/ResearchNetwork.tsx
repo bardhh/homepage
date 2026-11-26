@@ -136,7 +136,7 @@ export default function ResearchNetwork({ papers, selected, choose, chooseYear }
       onFocus: () => setHover(id), onBlur: () => setHover('') };
   }
   const hoverPaper = nodes.find(n => n.id === hover);
-  return <div className={styles.diagram} ref={plot}>
+  return <div id="research-network" className={styles.diagram} ref={plot}>
     <div className={styles.axis}><span>Concepts</span><span>Papers by year</span></div>
     <svg className={styles.svg} data-narrow={width < 820} viewBox={`0 0 ${width} ${height}`} aria-label="Graph of research concepts, papers and applications">
       <g aria-hidden="true" fill="none">{paths}</g>

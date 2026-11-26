@@ -72,6 +72,9 @@ export default function ResearchMentorship({ publications }: { publications: Pub
         <h2 id="mentorship-title" className="profile-title">Mentorship</h2>
       </div>
       <ResidentList compact publications={publications} />
+      <a href="/genealogy/" className="mt-2 inline-flex min-h-10 items-center gap-1 text-sm font-medium text-[var(--link)] underline-offset-4 hover:underline">
+        Explore my academic genealogy <span aria-hidden="true">→</span>
+      </a>
     </section>
   );
 }

@@ -1,12 +1,11 @@
 // Hand-maintained profile facts that are not in publications.bib.
 // Sources and dates are recorded in docs/superpowers/plans/2026-11-16-ieee-fellow-readiness.md.
 
-export const researchSummary = [
+export const researchSummaryParagraphs = [
   'I study how formal requirements can guide the design of autonomous systems and help establish what guarantees an existing system can support.',
-  'Across perception, planning, and control, I develop methods for constructing systems that satisfy a specification and for verifying their behavior under explicit assumptions.',
-  'Where uncertainty limits those guarantees, I use statistical methods to quantify risk.',
-  'When testing is the available evidence, I use the requirements to choose experiments that expose weaknesses and inform the next design revision.',
-].join(' ');
+  'Across perception, planning, and control, I develop methods for constructing systems that satisfy a specification and for verifying their behavior under explicit assumptions. Where uncertainty limits those guarantees, I use statistical methods to quantify risk. When testing is the available evidence, I use the requirements to choose experiments that expose weaknesses and inform the next design revision.',
+];
+export const researchSummary = researchSummaryParagraphs.join(' ');
 
 /** Google Scholar totals. Update the numbers and the date together. */
 export const scholar = {

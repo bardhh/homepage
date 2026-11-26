@@ -45,7 +45,7 @@ const ProfileHeader = () => {
 }, []);
 
   return (
-    <header ref={headerRef} className="relative w-full h-[400px] overflow-hidden">
+    <header ref={headerRef} className="relative w-full overflow-hidden md:h-[400px]">
       <style>{`
         @keyframes bkgPan {
           from { background-position: 0% center; }
@@ -81,13 +81,13 @@ const ProfileHeader = () => {
         <div className="absolute inset-0 hero-overlay backdrop-blur-[1px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center">
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-12 pb-4 md:pb-10">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col justify-center pt-14 pb-4 md:h-full md:py-0">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-2 md:flex md:items-end md:gap-12 md:pb-10">
 
           {/* Profile Image */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-br from-white/30 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative w-[140px] h-[140px] md:w-[220px] md:h-[220px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-lg shadow-black/30">
+            <div className="relative size-24 md:size-[220px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-lg shadow-black/30">
               <Image 
                 src="/assets/profile.webp" 
                 alt="Dr. Bardh Hoxha" 
@@ -99,22 +99,22 @@ const ProfileHeader = () => {
           </div>
 
           {/* Text Content */}
-          <div className="flex-grow text-center md:text-left space-y-4">
-            <div className="space-y-2">
-              <h1 className="text-[38px] md:text-[64px] leading-none font-semibold tracking-[-.035em] text-white font-heading">
+          <div className="contents md:block md:flex-grow md:space-y-4">
+            <div className="min-w-0 space-y-1 md:space-y-2">
+              <h1 className="text-[clamp(1.65rem,8vw,2.15rem)] md:text-[64px] leading-none font-semibold tracking-[-.035em] text-white font-heading">
                 Bardh Hoxha
               </h1>
-              <div className="space-y-1">
-                <p className="text-xl md:text-2xl text-[#f4f6f8] font-medium">
+              <div className="space-y-0.5 md:space-y-1">
+                <p className="text-lg md:text-2xl text-[#f4f6f8] font-medium">
                   Senior Principal Scientist
                 </p>
-                <p className="text-lg md:text-xl text-[#e0e5ec] font-normal">
+                <p className="text-sm text-balance md:text-xl text-[#e0e5ec] font-normal">
                   Toyota Research Institute of North America (TRINA)
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-start md:gap-x-4">
+            <div className="col-span-full flex flex-wrap items-center gap-x-2 md:gap-x-4">
               <div className="flex items-center gap-4 text-sm font-semibold text-white md:text-base">
                 <Link href="/cv/" className="inline-flex min-h-11 items-center underline decoration-white/45 underline-offset-4 hover:decoration-white">CV</Link>
                 <a href="https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline decoration-white/45 underline-offset-4 hover:decoration-white">Google Scholar</a>
