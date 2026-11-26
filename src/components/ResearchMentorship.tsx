@@ -11,7 +11,10 @@ function ResidentInfo({ resident, authors }: { resident: Resident; authors: stri
     <div className="space-y-0.5 text-sm text-slate-600 dark:text-slate-400">
       {topic && <p>{topic}</p>}
       <div className="flex flex-wrap gap-x-3">
-        <a className={linkStyle} href={profileUrl} aria-label={`Website for ${name}`}>Website</a>
+        <a className={linkStyle} href={profileUrl} aria-label={`Website for ${name}`}>
+          <span className="cv-website-label">Website</span>
+          <span className="cv-website-address hidden">{profileUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+        </a>
         {authors.some(author => matchesContributor(author, name)) && (
           <a className={linkStyle} href={`/?q=${encodeURIComponent(name)}#publications`} aria-label={`Papers by ${name}`}>Papers</a>
         )}

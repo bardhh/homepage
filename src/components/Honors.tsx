@@ -75,9 +75,13 @@ export const InvitedTalks = () => (
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 leading-snug">
-                {talk.programUrl ? <a href={talk.programUrl} className="underline decoration-slate-400/50 underline-offset-2">{talk.title}</a> : talk.title}
+                {talk.title}
               </p>
-              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{talk.venue}{talk.monthDay && ` · ${talk.monthDay}`}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{talk.venue}{talk.monthDay && ` · ${talk.monthDay}`}
+                {talk.resources?.map(resource => (
+                  <a key={resource.href} href={resource.href} aria-label={`${resource.label} for ${talk.title}`}
+                    className="ml-3 inline-block font-medium text-[var(--link)] underline-offset-4 hover:underline">{resource.label}</a>
+                ))}</p>
             </div>
           </li>
         ))}

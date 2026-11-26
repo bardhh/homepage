@@ -5,6 +5,7 @@ import { getPublications } from '@/lib/publications';
 import { getPublicationType, publicationAuthors, publicationPath, publicationVenueName, SITE_URL } from '@/lib/publication-utils';
 import { patents } from '@/data/patents';
 import { projects } from '@/components/Software';
+import { existsSync } from 'node:fs';
 import PrintButton from '@/components/PrintButton';
 import { ResidentList } from '@/components/ResearchMentorship';
 import {
@@ -17,6 +18,7 @@ import {
   leadershipRoles,
   memberships,
   programCommittees,
+  researchSummary,
   scholar,
 } from '@/data/profile';
 
@@ -67,7 +69,11 @@ export default async function CurriculumVitae() {
       <article className="cv-page glass rounded-2xl p-6 md:p-10 border border-white/40 dark:border-slate-700/40 shadow-sm text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl font-bold font-heading text-slate-900 dark:text-white">Bardh Hoxha</h1>
-          <PrintButton />
+          {process.env.NODE_ENV === 'development' && !existsSync('public/Bardh-Hoxha-CV.pdf') ? <PrintButton /> : (
+            <a href="/Bardh-Hoxha-CV.pdf" download className="cv-screen-only inline-flex min-h-11 items-center rounded-lg bg-blue-600 px-4 text-sm font-semibold text-white hover:bg-blue-700">
+              Download CV (PDF)
+            </a>
+          )}
         </div>
         <p className="mt-2 text-slate-500 dark:text-slate-400">Curriculum Vitae, {scholar.asOf}</p>
         <p className="mt-2">
@@ -82,17 +88,7 @@ export default async function CurriculumVitae() {
         </p>
 
         <Section heading="Summary">
-          <p>
-            I develop methods and tools for testing, monitoring, and controlling autonomous and cyber-physical
-            systems so that their safety can be checked against formal requirements. My work covers
-            requirements-driven testing and falsification, runtime monitoring of signals and perception
-            streams, and risk-aware control and verification of learning-enabled systems.
-          </p>
-          <p className="mt-2">
-            {publications.length - preprints} peer-reviewed publications and {preprints} preprints, {granted.length} granted US patents and {pending.length} pending
-            applications. {scholar.citations.toLocaleString('en-US')} citations, h-index {scholar.hIndex},
-            i10-index {scholar.i10Index} (Google Scholar, {scholar.asOf}).
-          </p>
+          <p>{researchSummary}</p>
         </Section>
 
         <Section heading="Education">
@@ -129,6 +125,7 @@ export default async function CurriculumVitae() {
         </Section>
 
         <Section heading="Patents">
+          <p className="mb-3">{granted.length} granted US patents and {pending.length} pending applications.</p>
           <ol className="space-y-1.5 list-decimal pl-5">
             {patents.map(patent => (
               <li key={patent.number}>
@@ -140,6 +137,11 @@ export default async function CurriculumVitae() {
         </Section>
 
         <Section heading="Publications">
+          <p className="mb-3">
+            {publications.length - preprints} peer-reviewed publications and {preprints} preprints.
+            {' '}{scholar.citations.toLocaleString('en-US')} citations, h-index {scholar.hIndex},
+            i10-index {scholar.i10Index} (Google Scholar, {scholar.asOf}).
+          </p>
           <ol className="space-y-1.5 list-decimal pl-5" reversed>
             {publications.map(pub => {
               const venue = publicationVenueName(pub);
@@ -175,9 +177,13 @@ export default async function CurriculumVitae() {
             {invitedTalks.map(talk => (
               <Row key={`${talk.year}-${talk.title}`} when={talk.year}>
                 <span className="font-semibold text-slate-900 dark:text-slate-100">
-                  {talk.programUrl ? <a href={talk.programUrl} className={linkClass}>{talk.title}</a> : talk.title}
+                  {talk.title}
                 </span>
                 <br />{talk.venue}{talk.monthDay && ` · ${talk.monthDay}`}
+                {talk.resources?.map(resource => (
+                  <a key={resource.href} href={resource.href} aria-label={`${resource.label} for ${talk.title}`}
+                    className="ml-3 inline-block font-medium text-[var(--link)] underline-offset-4 hover:underline">{resource.label}</a>
+                ))}
               </Row>
             ))}
           </ul>

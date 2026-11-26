@@ -1,6 +1,13 @@
 // Hand-maintained profile facts that are not in publications.bib.
 // Sources and dates are recorded in docs/superpowers/plans/2026-11-16-ieee-fellow-readiness.md.
 
+export const researchSummary = [
+  'I study how formal requirements can guide the design of autonomous systems and help establish what guarantees an existing system can support.',
+  'Across perception, planning, and control, I develop methods for constructing systems that satisfy a specification and for verifying their behavior under explicit assumptions.',
+  'Where uncertainty limits those guarantees, I use statistical methods to quantify risk.',
+  'When testing is the available evidence, I use the requirements to choose experiments that expose weaknesses and inform the next design revision.',
+].join(' ');
+
 /** Google Scholar totals. Update the numbers and the date together. */
 export const scholar = {
   url: 'https://scholar.google.com/citations?user=kK7LubkAAAAJ&hl=en',
@@ -79,15 +86,20 @@ export interface Talk {
   monthDay?: string;
   title: string;
   venue: string;
-  programUrl?: string;
+  resources?: { label: 'Program' | 'Seminar' | 'Report' | 'Slides' | 'Recording'; href: string }[];
 }
 
 export const invitedTalks: Talk[] = [
-  { year: '2024', title: 'Future Mobility: Challenges and Recent Developments in V&V', venue: 'Dagstuhl Seminar on Safety Assurance for Autonomous Mobility' },
+  { year: '2024', title: 'Future Mobility: Challenges and Recent Developments in V&V', venue: 'Dagstuhl Seminar on Safety Assurance for Autonomous Mobility',
+    resources: [
+      { label: 'Seminar', href: 'https://www.dagstuhl.de/24071' },
+      { label: 'Report', href: 'https://doi.org/10.4230/DagRep.14.2.95' },
+    ] },
   { year: '2023', title: 'Advancing Safety in ML-Driven Systems: Spatio-Temporal Quantitative Verification Techniques', venue: 'Stony Brook University' },
   { year: '2023', monthDay: 'November 15', title: 'Safety in Advanced ML-Driven Systems', venue: 'University of Michigan' },
-  { year: '2022', title: 'Verification and Synthesis of Cyber-Physical Systems with Learning-enabled Components', venue: 'NSF Center of Cognitive Autonomy' },
-  { year: '2021', monthDay: 'August 23', title: 'Autonomous CPS: Verification and Control', venue: 'SNR Workshop at QONFEST', programUrl: 'https://qonfest2021.lacl.fr/speakers.php' },
+  { year: '2022', title: 'Verification and Synthesis of Cyber-Physical Systems with Learning-enabled Components', venue: 'NSF Center of Cognitive Autonomy', monthDay: 'April 8',
+    resources: [{ label: 'Program', href: 'https://autonomy.unm.edu/speaker-series/2022.html' }] },
+  { year: '2021', monthDay: 'August 23', title: 'Autonomous CPS: Verification and Control', venue: 'SNR Workshop at QONFEST', resources: [{ label: 'Program', href: 'https://qonfest2021.lacl.fr/speakers.php#hoxha' }] },
   { year: '2021', monthDay: 'April 15', title: 'Simulation-Based Testing of Autonomous CPS', venue: 'Stony Brook University' },
   { year: '2021', title: 'Verification of Deep Neural Networks', venue: 'University of Southern California, Center for Cyber-Physical Systems and the Internet of Things' },
 ];

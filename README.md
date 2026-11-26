@@ -52,7 +52,7 @@ Generate a static export:
 npm run build
 ```
 
-The static files will be generated in the `out` directory.
+The static files are generated in `out`. The build uses Google Chrome (stable) to print the exported CV to `out/Bardh-Hoxha-CV.pdf` and copies it to `public/` for local development.
 
 ## Project Structure
 

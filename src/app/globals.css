@@ -222,7 +222,14 @@ html { scroll-behavior: smooth; }
     backdrop-filter: none !important;
   }
   .cv-page { padding: 0 !important; border: 0 !important; font-size: 10.5pt; page: cv; }
-  .cv-page a { text-decoration: none !important; }
+  .cv-page a[href] {
+    color: #214c70 !important;
+    text-decoration: underline;
+    text-decoration-thickness: 0.6pt;
+    text-underline-offset: 0.12em;
+  }
+  .cv-page .cv-website-label { display: none; }
+  .cv-page .cv-website-address { display: inline; overflow-wrap: anywhere; color: inherit !important; }
   .cv-page h2 { break-after: avoid; }
   .cv-page li { break-inside: avoid; }
   @page cv { margin: 18mm 16mm; }

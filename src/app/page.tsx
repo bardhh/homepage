@@ -1,4 +1,5 @@
 import React from 'react';
+import { researchSummary } from '@/data/profile';
 import { getPublications } from '@/lib/publications';
 import dynamic from 'next/dynamic';
 
@@ -31,14 +32,7 @@ export default async function Home() {
 
         <div className="glass rounded-2xl p-5 md:p-8 border border-white/40 dark:border-slate-700/40 shadow-sm">
           <div className="max-w-[70ch] text-[17px] leading-[1.55] text-slate-700 dark:text-slate-300">
-            <p>
-              I study how formal requirements can guide the design of autonomous systems and help establish
-              what guarantees an existing system can support. Across perception, planning, and control, I
-              develop methods for constructing systems that satisfy a specification and for verifying their
-              behavior under explicit assumptions. Where uncertainty limits those guarantees, I use statistical
-              methods to quantify risk. When testing is the available evidence, I use the requirements to
-              choose experiments that expose weaknesses and inform the next design revision.
-            </p>
+            <p>{researchSummary}</p>
           </div>
         </div>
       </section>
