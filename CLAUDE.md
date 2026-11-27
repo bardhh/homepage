@@ -22,7 +22,7 @@ Static academic portfolio for bhoxha.com built with Next.js 16 (App Router), Rea
 
 ### Data Flow
 
-`src/lib/publications.ts` reads `public/publications.bib` at build time and parses it with `bibtex-parse-js`. This is the only publication data source: the homepage, static archive, individual paper pages, JSON-LD, Markdown, JSON, and sitemap all use it. See `docs/publication-publishing.md`. The Markdown/JSON route handlers are build-time-only static file generators, not deployed APIs. All other section content (Research, Teaching, Software, Contact) is hardcoded in their respective components.
+For paper additions, acceptance updates, and publication corrections, use `/add-paper` and follow `docs/publication-publishing.md`. `src/lib/publications.ts` reads `public/publications.bib` at build time. The homepage, CV, archive, paper pages, metadata, and exports share that bibliography. Curated concepts, applications, connections, and reading paths use citation keys in `src/data/`.
 
 ### Key Directories
 

@@ -67,9 +67,9 @@ export function ResidentList({ compact = false, publications }: { compact?: bool
 export default function ResearchMentorship({ publications }: { publications: Publication[] }) {
   return (
     <section id="mentorship" tabIndex={-1} aria-labelledby="mentorship-title" className="scroll-mt-24">
-      <div className="mb-3 flex items-center">
-
+      <div className="mb-3">
         <h2 id="mentorship-title" className="profile-title">Mentorship</h2>
+        <p className="mt-1 text-sm text-[var(--muted)]">Graduate researchers I have had the opportunity to mentor and co-mentor at TRINA.</p>
       </div>
       <ResidentList compact publications={publications} />
       <a href="/genealogy/" className="mt-2 inline-flex min-h-10 items-center gap-1 text-sm font-medium text-[var(--link)] underline-offset-4 hover:underline">
